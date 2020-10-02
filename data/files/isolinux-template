@@ -1,0 +1,61 @@
+DEFAULT vesamenu.c32
+TIMEOUT 100
+
+MENU VSHIFT 5
+MENU BACKGROUND splash.png
+MENU TITLE Welcome to [TITLE]
+MENU COLOR border 0 #00000000 #00000000 none
+MENU COLOR sel 7 #ffeeeeee #66000000 none
+MENU COLOR title 0 #ffeeeeee #00000000 none
+MENU COLOR tabmsg 0 #ffeeeeee #00000000 none
+MENU COLOR unsel 0 #ffeeeeee #00000000 none
+MENU COLOR hotsel 0 #ff000000 #ffffffff none
+MENU COLOR hotkey 7 #ffffffff #ff000000 none
+MENU COLOR timeout_msg 0 #ffffffff #00000000 none
+MENU COLOR timeout 0 #ffffffff #00000000 none
+MENU COLOR cmdline 0 #ffffffff #00000000 none
+
+[MENU]
+
+[LOCALES]
+
+MENU BEGIN advanced
+MENU TITLE Advanced options
+    LABEL xforcevesa
+        MENU LABEL Start [TITLE] (safe)
+        KERNEL [VMLINUZ]
+        APPEND initrd=[INITRD] boot=live components memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal
+
+    [MENUPLUS]
+
+    LABEL check
+        MENU LABEL Check the integrity of the medium
+        KERNEL [VMLINUZ]
+        APPEND initrd=[INITRD] boot=live verify-checksums
+
+    LABEL hdt
+        MENU LABEL Hardware Detection Tool
+        com32 hdt.c32
+
+    LABEL memtest
+        MENU LABEL Memory Diagnostic Tool
+        KERNEL memtest86
+
+    LABEL local
+        MENU LABEL Boot from disk
+        com32 chain.c32
+        APPEND hd0 0
+
+    LABEL restart
+        MENU LABEL System restart
+        com32 reboot.c32
+
+    LABEL off
+        MENU LABEL System shutdown
+        com32 poweroff.c32
+
+    LABEL mainmenu
+        MENU LABEL ^Back...
+        MENU exit
+MENU end
+

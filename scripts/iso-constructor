@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Check if GUI is already started
+if ! pgrep -f python3.*iso-constructor &>/dev/null; then
+    if [ -t 1 ]; then
+        # Already in terminal
+        pkexec iso-constructor-pkexec $@
+    else
+        # Start in terminal
+        TERM=$(which x-terminal-emulator)
+        if [ -z $TERM ]; then
+            TERM=$(which xterm)
+        fi
+        eval "$TERM -e \"pkexec iso-constructor-pkexec $@\""
+    fi
+fi

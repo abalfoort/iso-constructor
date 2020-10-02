@@ -1,0 +1,579 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Arjen Balfoort <translations@solydxk.com>, 2018
+# ilu lu, 2015
+# pitfd, 2017
+# pitfd, 2018-2019
+msgid ""
+msgstr ""
+"Project-Id-Version: solydxk-constructor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-02 14:20+0200\n"
+"PO-Revision-Date: 2020-07-09 12:41+0000\n"
+"Last-Translator: Arjen Balfoort <translations@solydxk.com>\n"
+"Language-Team: German (http://www.transifex.com/solydxk/solydxk-constructor/"
+"language/de/)\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: iso-constructor/__init__.py:89 data/iso-constructor.desktop.in.h:1
+#, fuzzy
+msgid "ISO Constructor"
+msgstr "SolydXK Constructor Hilfe"
+
+#: iso-constructor/__init__.py:90
+msgid "Select all"
+msgstr "Alle auswählen"
+
+#: iso-constructor/__init__.py:91
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: iso-constructor/__init__.py:92
+msgid "Remove"
+msgstr "Entfernen"
+
+#: iso-constructor/__init__.py:93
+msgid "Edit"
+msgstr "Editieren"
+
+#: iso-constructor/__init__.py:94
+msgid "Upgrade"
+msgstr "Upgrade"
+
+#: iso-constructor/__init__.py:95
+msgid "Localize"
+msgstr "Sprache anpassen"
+
+#: iso-constructor/__init__.py:96
+msgid "Build"
+msgstr "Bauen"
+
+#: iso-constructor/__init__.py:97
+msgid "Help"
+msgstr "Hilfe"
+
+#: iso-constructor/__init__.py:100
+msgid "Add Distribution"
+msgstr "Distribution hinzufügen"
+
+#: iso-constructor/__init__.py:101
+msgid "ISO"
+msgstr "ISO"
+
+#: iso-constructor/__init__.py:103
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: iso-constructor/__init__.py:125
+msgid "Version"
+msgstr "Version"
+
+#: iso-constructor/__init__.py:144
+msgid ""
+"Are you sure you want to remove the selected distribution from the list?\n"
+"(This will not remove the directory and its data)"
+msgstr ""
+"Sind Sie sicher, dass Sie die ausgewählte Distribution von der Liste "
+"entfernen möchten?\n"
+"(Dies wird das Verzeichnis und die darin befindlichen Daten nicht löschen.)"
+
+#: iso-constructor/__init__.py:166
+msgid "Services detected"
+msgstr "Dienste erkannt"
+
+#: iso-constructor/__init__.py:188
+#, fuzzy
+msgid "Upgrade done"
+msgstr "Upgrade"
+
+#: iso-constructor/__init__.py:263
+msgid "Select"
+msgstr "Auswählen"
+
+#: iso-constructor/__init__.py:263
+msgid "Distribution"
+msgstr "Distribution"
+
+#: iso-constructor/__init__.py:263
+msgid "Working directory"
+msgstr "Arbeitsverzeichnis"
+
+#: iso-constructor/__init__.py:304
+#, fuzzy
+msgid "Select ISO file"
+msgstr "Alle auswählen"
+
+#: iso-constructor/__init__.py:312
+msgid "Select directory"
+msgstr "Verzeichnis auswählen"
+
+#: iso-constructor/__init__.py:322
+msgid "Save existing working directory"
+msgstr "Sichere das existierende Arbeitsverzeichnis"
+
+#: iso-constructor/__init__.py:324
+msgid "Unpack ISO and save"
+msgstr "ISO Datei entpacken und sichern"
+
+#: iso-constructor/__init__.py:330
+#, python-format
+msgid "Could not create directory %(dir)s: exiting"
+msgstr "Konnte Verzeichnisse %(dir)s nicht erstellen: Abbruch"
+
+#: iso-constructor/__init__.py:335
+msgid ""
+"The path to the ISO file does not exist:\n"
+"{}"
+msgstr ""
+"Der Pfad zur ISO Datei existiert nicht:\n"
+"{}"
+
+#: iso-constructor/__init__.py:339
+msgid ""
+"The destination directory is not empty.\n"
+"Are you sure you want to overwrite all data in {}?"
+msgstr ""
+"Das Zielverzeichnis ist nicht leer.\n"
+"Sind Sie sicher, alle Daten zu überschreiben {}?"
+
+#: iso-constructor/__init__.py:353
+msgid "Existing working directory added"
+msgstr "Existierendes Arbeitsverzeichnis hinzugefügt"
+
+#: iso-constructor/__init__.py:394
+msgid "Unpack ISO to directory"
+msgstr "ISO-Datei in das Verzeichnis entpacken"
+
+#: iso-constructor/__init__.py:395
+msgid "Unpack & Save"
+msgstr "Entpacken & Sichern"
+
+#: iso-constructor/__init__.py:403
+msgid "Work directory"
+msgstr "Arbeitsverzeichnis"
+
+#: iso-constructor/__init__.py:404
+msgid "Save"
+msgstr "Sichern"
+
+#: data/iso-constructor.desktop.in.h:2
+msgid "Tool to build and maintain Debian isos"
+msgstr ""
+
+#. (itstool) path: action/message
+#: data/com.debian.pkexec.iso-constructor.policy:8
+#, fuzzy
+msgid "Authentication is required to run ISO Constructor"
+msgstr ""
+"Zur Ausführung von SolydXK Constructor ist eine Authentifizierung "
+"erforderlich."
+
+#: po/en/help.html%2Bhtml.body.h1:8-2
+#, fuzzy
+msgid "ISO Constructor Help"
+msgstr "SolydXK Constructor Hilfe"
+
+#: po/en/help.html%2Bhtml.body.div.p:11-9
+#, fuzzy
+msgid ""
+"ISO Constructor helps building your custom Debian ISO, and was originally "
+"created for maintaining SolydXK ISOs, but it might benefit those who want to "
+"build their custom Debian ISO."
+msgstr ""
+"SolydXK Constructor hilft Ihnen bei der Erstellung Ihrer individuellen "
+"SolydXK ISO und wurde ausschließlich für die Pflege der aktuellen SolydXK "
+"ISOs erstellt."
+
+#: po/en/help.html%2Bhtml.body.div.h2:15-9
+msgid "Content"
+msgstr "Inhalt"
+
+#: po/en/help.html%2Bhtml.body.div.ol.li:17-13
+msgid "Add distribution"
+msgstr "Distribution hinzufügen"
+
+#: po/en/help.html%2Bhtml.body.div.ol.li:18-13
+msgid "Remove distributions"
+msgstr "Distribution entfernen"
+
+#: po/en/help.html%2Bhtml.body.div.ol.li:19-13
+msgid "Open directory"
+msgstr "Verzeichnis öffnen"
+
+#: po/en/help.html%2Bhtml.body.div.ol.li:20-13
+msgid "Edit in terminal"
+msgstr "Im Terminal editieren"
+
+#: po/en/help.html%2Bhtml.body.div.ol.li:21-13
+#, fuzzy
+msgid "Dist-upgrade distributions"
+msgstr "5. Aktualisieren von Distributionen"
+
+#: po/en/help.html%2Bhtml.body.div.ol.li:22-13
+msgid "Build ISOs"
+msgstr "ISOs erstellen"
+
+#: po/en/help.html%2Bhtml.body.div.ol.li:23-13
+msgid "Localize the ISOs"
+msgstr "ISOs lokalisieren"
+
+#: po/en/help.html%2Bhtml.body.div.ol.li:24-13
+#, fuzzy
+msgid "Use Debian live as base"
+msgstr "Debian live als Basis verwenden"
+
+#: po/en/help.html%2Bhtml.body.div.ol.li:25-13
+msgid "Important files"
+msgstr "Wichtige Dateien"
+
+#: po/en/help.html%2Bhtml.body.div.h2:28-27
+msgid "1. Add distribution"
+msgstr "1. Eine Distribution hinzufügen"
+
+#: po/en/help.html%2Bhtml.body.div.p:29-9
+#, fuzzy
+msgid "Unpack an ISO"
+msgstr "Entpacken & Sichern"
+
+#: po/en/help.html%2Bhtml.body.div.p:30-9
+msgid ""
+"Browse for the downloaded ISO, and select a directory to unpack the ISO to."
+msgstr ""
+"Die heruntergeladene ISO Datei finden und ein Verzeichns, in das die ISO "
+"Datei entpackt werden soll, aussuchen."
+
+#: po/en/help.html%2Bhtml.body.div.p:32-9
+msgid ""
+"The button to browse for the unpack directory comes available if the path to "
+"the ISO exists."
+msgstr ""
+"Die Schaltfläche zur Auswahl des Auspackzielverzeichnisses wird verfügbar, "
+"wenn der Pfad zur ISO Datei existiert."
+
+#: po/en/help.html%2Bhtml.body.div.p:33-9
+#, fuzzy
+msgid "Add an existing directory"
+msgstr "Ein existierendes Verzeichnis hinzufügen."
+
+#: po/en/help.html%2Bhtml.body.div.p:34-9
+#, fuzzy
+msgid ""
+"If you previously unpacked an ISO, and removed the distribution from ISO "
+"Constructor's list, you can add the existing directory by unchecking the "
+"\"Create from ISO\" checkbox"
+msgstr ""
+"Wenn Sie bereits eine ISO Datei entpackt und die Distribution aus der "
+"SolydXK Constructor Liste entfernt haben, können Sie das bestehende "
+"Verzeichnis hinzufügen, indem Sie den Dialog \"Von der ISO Datei erstellen\" "
+"abwählen."
+
+#: po/en/help.html%2Bhtml.body.div.p:36-9
+msgid ""
+"The Save button comes available if both the path to the ISO, and the unpack "
+"directory exist."
+msgstr ""
+"Die Sichern Schaltfläche wird verfügbar, wenn sowohl das Zielverzeichnis der "
+"ISO Datei als auch das Auspackverzeichnis existieren."
+
+#: po/en/help.html%2Bhtml.body.div.h2:38-30
+msgid "2. Remove distributions"
+msgstr "2. Distributionen entfernen"
+
+#: po/en/help.html%2Bhtml.body.div.p:39-9
+msgid ""
+"This will only remove the selected distributions. The distribution "
+"directory, and its contents will NOT be deleted."
+msgstr ""
+"Es werden nur die ausgewählten Distributionen entfernt. Das "
+"Distributionsverzeichnis und sein Inhalt wird NICHT gelöscht."
+
+#: po/en/help.html%2Bhtml.body.div.h2:42-28
+msgid "3. Open directory"
+msgstr "3. Verzeichnis öffnen"
+
+#: po/en/help.html%2Bhtml.body.div.p:43-9
+msgid "Opens the selected working directory in the default file manager."
+msgstr "Öffnet das ausgewählte Arbeitsverzeichnis im Standard Dateimanager."
+
+#: po/en/help.html%2Bhtml.body.div.h2:45-28
+msgid "4. Edit in terminal"
+msgstr "4. Im Terminal editieren"
+
+#: po/en/help.html%2Bhtml.body.div.p:46-9
+msgid ""
+"Open a chrooted terminal, and start installing (and removing) all the "
+"packages you need. It's easier to change configuration in the distribution's "
+"root directory, and not through this terminal."
+msgstr ""
+"Öffne ein \"chrooted\" Terminal und beginne die Installation (und die "
+"Löschung) aller benötigten Pakete. Es bietet sich die Konfiguration im "
+"Wurzelverzeichnis der Distribution zu ändern und nicht im Terminal."
+
+#: po/en/help.html%2Bhtml.body.div.h2:49-31
+msgid "5. Upgrade distributions"
+msgstr "5. Aktualisieren von Distributionen"
+
+#: po/en/help.html%2Bhtml.body.div.p:50-9
+msgid ""
+"Simply runs \"apt-get dist-upgrade\" but taking into account that some "
+"services need to be handled before and after the upgrade."
+msgstr ""
+"Führt einfach \"apt-get dist-upgrade\" aus, wobei jedoch zu berücksichtigen "
+"ist, dass einige Dienste vor und nach dem Upgrade behandelt werden müssen."
+
+#: po/en/help.html%2Bhtml.body.div.h2:52-29
+msgid "6. Build ISOs"
+msgstr "6. Erstelle die ISO Datei"
+
+#: po/en/help.html%2Bhtml.body.div.p:53-9
+msgid "This consists of these steps:"
+msgstr "Dafür sind folgende Schritte notwendig:"
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:55-13
+msgid "Download offline packages (/lib/live/mount/medium/offline)."
+msgstr ""
+"Laden Sie die offline Pakete herunter (/lib/live/mount/medium/offline)."
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:56-13
+msgid "Install all firmware drivers."
+msgstr "Installieren Sie alle Firmwaretreiber."
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:57-13
+msgid "Remove orphaned and unavailable packages (including the old kernel)."
+msgstr ""
+"Entfernen Sie verwaiste und nicht verfügbare Pakete (einschließlich des "
+"alten Kernels)."
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:58-13
+msgid "Configure the system."
+msgstr "Konfigurieren Sie das System."
+
+#: po/en/help.html%2Bhtml.body.div.p:60-9
+msgid ""
+"The building process can take a long time. If you need to quit the process "
+"before it ends, you can open a terminal and run:"
+msgstr ""
+"Der Erstellungsvorgang kann sehr lange dauern. Wenn Sie den Prozess beenden "
+"müssen, bevor er endet, können Sie ein Terminal öffnen und ausführen:"
+
+#: po/en/help.html%2Bhtml.body.div.div:61-9
+msgid "sudo killall mksquashfs"
+msgstr "sudo killall mksquashfs"
+
+#: po/en/help.html%2Bhtml.body.div.p:62-9
+msgid ""
+"You need to repeat that if you have more than one distribution selected in "
+"the list."
+msgstr ""
+"Für den Fall, dass Sie mehrere Distributionen aus der Liste ausgewählt "
+"haben,  müssen Sie den Befehl wiederholen."
+
+#: po/en/help.html%2Bhtml.body.div.h2:64-32
+msgid "7. Localize the ISOs"
+msgstr "7. Lokalisierung der ISO Dateien"
+
+#: po/en/help.html%2Bhtml.body.div.p:65-9
+msgid ""
+"This will localize your ISO, setting language and time zone and consists of "
+"6 different steps:"
+msgstr ""
+"Damit wird Ihre ISO Datei lokalisiert, die damit verbunde Auswahl der "
+"Sprache und Zeitzone besteht aus 6 Schritten:"
+
+#: po/en/help.html%2Bhtml.body.div.ol.li.p:67-17
+msgid "Set the desired locale."
+msgstr "Festlegung der gewünschten Sprache"
+
+#: po/en/help.html%2Bhtml.body.div.ol.li.p:68-17
+msgid "Set the default locale."
+msgstr "Festlegung der Standardsprache"
+
+#: po/en/help.html%2Bhtml.body.div.ol.li.p:69-17
+msgid "Set the time zone."
+msgstr "Festlegung der Zeitzone"
+
+#: po/en/help.html%2Bhtml.body.div.ol.li:70-13
+msgid "Change the live configuration (/etc/live/config.conf)."
+msgstr "Änderung der live Konfiguration (/etc/live/config.conf)."
+
+#: po/en/help.html%2Bhtml.body.div.ol.li:71-13
+msgid "Upgrade (apt-get dist-upgrade)."
+msgstr "Führen Sie ein Upgrade durch (apt-get dist-upgrade)."
+
+#: po/en/help.html%2Bhtml.body.div.ol.li:72-13
+msgid ""
+"When needed, install packages for KDE, Firefox, Thunderbird, LibreOffice and "
+"other localization packages. Check the setlocale.sh script for locale "
+"specific packages."
+msgstr ""
+"Installieren Sie bei Bedarf Pakete für KDE, Firefox, Thunderbird, "
+"LibreOffice und andere Lokalisierungspakete. Überprüfen Sie das setlocale.sh-"
+"Skript auf lokale-spezifische Pakete."
+
+#: po/en/help.html%2Bhtml.body.div.p:74-9
+msgid ""
+"Do not forget to translate boot/boot/grub/grub.cfg and boot/isolinux/"
+"isolinux.cfg of the ISO."
+msgstr ""
+"Vergessen Sie nicht, boot/boot/grub/grub/grub.cfg und boot/isolinux/isolinux/"
+"isolinux.cfg der ISO zu übersetzen."
+
+#: po/en/help.html%2Bhtml.body.div.h2:76-30
+msgid "8. Use Debian live as base"
+msgstr "Debian live als Basis verwenden"
+
+#: po/en/help.html%2Bhtml.body.div.p:77-9
+msgid ""
+"You can even use a Debian Live DVD as a base: <a href=\"http://www.debian."
+"org/CD/live\" target=\"_blank\">http://www.debian.org/CD/live</a> If you use "
+"Debian, you'll need the \"isolinux\" directory (and its contents) to replace "
+"the \"isolinux\" directory in the Debian unpack directory. After that you'll "
+"need to configure the distribution from scratch. It's a lot of work, but for "
+"a CE (Community Edition) well worth it."
+msgstr ""
+"Sie können sogar eine Debian Live DVD als Basis verwenden: <a href=\"http://"
+"www.debian.org/CD/live\" target=\"_blank\">http://www.debian.org/CD/live</a> "
+"Wenn Sie Debian verwenden, benötigen Sie das Verzeichnis \"isolinux\" (und "
+"seinen Inhalt), um das Verzeichnis \"isolinux\" im Debian-Auspackverzeichnis "
+"zu ersetzen. Danach müssen Sie die Distribution von Grund auf neu "
+"konfigurieren. Es ist eine Menge Arbeit, aber für eine CE (Community "
+"Edition) lohnt es sich."
+
+#: po/en/help.html%2Bhtml.body.div.h2:79-29
+msgid "9. Important files"
+msgstr "9. Wichtige Dateien"
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:81-13
+#, fuzzy
+msgid "~/.constructor/distributions.list: list with distribution directories."
+msgstr ""
+"~/.constructor/distros.list: Hier werden alle Distributionsverzeichnisse "
+"gespeichert."
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:82-13
+#, fuzzy
+msgid ""
+"/usr/share/iso-constructor/grubgen.sh: generates boot/boot/grub/grub.cfg "
+"(with grub-template)."
+msgstr ""
+"/usr/lib/solydxk/constructor/files/grubgen.sh: erzeugt boot/boot/grub/grub."
+"cfg (with grub-template)."
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:83-13
+#, fuzzy
+msgid ""
+"/usr/share/iso-constructor/isolinuxgen.sh: generates boot/isolinux/isolinux."
+"cfg (with isolinux-template)."
+msgstr ""
+"/usr/lib/solydxk/constructor/files/isolinuxgen.sh: erzeugt boot/isolinux/"
+"isolinux.cfg (with isolinux-template)."
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:84-13
+#, fuzzy
+msgid ""
+"/usr/share/iso-constructor/cleanup.sh: this script cleans up prior to "
+"building the ISO."
+msgstr ""
+"/usr/lib/solydxk/constructor/files/cleanup.sh: dieses Skript bereinigt vor "
+"dem Erstellen der ISO."
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:85-13
+#, fuzzy
+msgid ""
+"/usr/share/iso-constructor/setlocale.sh: sets the locale of the ISO. Default "
+"is: en_US"
+msgstr ""
+"/usr/lib/solydxk/constructor/files/setlocale.sh: setzt das Gebietsschema der "
+"ISO. Standard ist: en_US"
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:86-13
+#, fuzzy
+msgid ""
+"/usr/share/iso-constructor/excludes: list with directories excluded from the "
+"ISO build."
+msgstr ""
+"/usr/lib/solydxk/constructor/files/excludes: Liste mit Verzeichnissen, die "
+"vom ISO Build ausgeschlossen sind."
+
+#, fuzzy
+#~| msgid "1. Add distribution"
+#~ msgid "<a href=\"#add\">Add distribution</a>"
+#~ msgstr "1. Eine Distribution hinzufügen"
+
+#, fuzzy
+#~| msgid "2. Remove distributions"
+#~ msgid "<a href=\"#remove\">Remove distributions</a>"
+#~ msgstr "2. Distributionen entfernen"
+
+#, fuzzy
+#~| msgid "2. Remove distributions"
+#~ msgid "<a href=\"#open\">Open directory</a>"
+#~ msgstr "2. Distributionen entfernen"
+
+#, fuzzy
+#~| msgid "4. Edit in terminal"
+#~ msgid "<a href=\"#edit\">Edit in terminal</a>"
+#~ msgstr "4. Im Terminal editieren"
+
+#, fuzzy
+#~| msgid "Dist-upgrade distributions"
+#~ msgid "<a href=\"#upgrade\">Dist-upgrade distributions</a>"
+#~ msgstr "Dist-upgrade-Distributionen"
+
+#, fuzzy
+#~| msgid "1. Add distribution"
+#~ msgid "<a href=\"#build\">Build ISOs</a>"
+#~ msgstr "1. Eine Distribution hinzufügen"
+
+#, fuzzy
+#~| msgid "Use Debian live as base"
+#~ msgid "<a href=\"#debian\">Use Debian live as base</a>"
+#~ msgstr "Debian live Sytem als Basis nutzen"
+
+#, fuzzy
+#~| msgid "4. Edit in terminal"
+#~ msgid "<a href=\"#files\">Important files</a>"
+#~ msgstr "4. Im Terminal editieren"
+
+#, fuzzy
+#~| msgid "Unpack an ISO"
+#~ msgid "<strong>Unpack an ISO</strong>"
+#~ msgstr "Eine ISO Datei entpacken"
+
+#~ msgid ""
+#~ "/usr/lib/solydxk/constructor/files/isolinux/kde-splash.png/xfce-splash."
+#~ "png: isolinux splash files."
+#~ msgstr ""
+#~ "/usr/lib/solydxk/constructor/files/isolinux/kde-splash.png/xfce-splash."
+#~ "png: isolinux splash files."
+
+#~ msgid "SolydXK Constructor"
+#~ msgstr "SolydXK Constructor"
+
+#~ msgid "Select SolydXK ISO"
+#~ msgstr "SolydXK ISO auswählen"
+
+#~ msgid "ISO constructor for SolydXK"
+#~ msgstr "ISO Konstrukteur für SolydXK"
+
+#~ msgid ""
+#~ "You can download SolydXK ISOs here: <a href=\"https://downloads.solydxk."
+#~ "com\" target=\"_blank\">https://downloads.solydxk.com</a>"
+#~ msgstr ""
+#~ "SolydXK ISOs lassen sich von hier herunterlagen: <a href=\"https://"
+#~ "downloads.solydxk.com\" target=\"_blank\">https://downloads.solydxk.com</"
+#~ "a>"
+
+#~ msgid ""
+#~ "/usr/lib/solydxk/constructor/files/constructor.conf: configuration file "
+#~ "for SolydXK Constructor."
+#~ msgstr ""
+#~ "/usr/lib/solydxk/constructor/files/constructor.conf: Konfigurationsdatei "
+#~ "für SolydXK Constructor."

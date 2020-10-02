@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ISO Constructor
+Comment=Tool to build and maintain Debian isos
+Exec=iso-constructor
+Icon=iso-constructor
+Terminal=false
+Type=Application
+Categories=Development;
+StartupNotify=true

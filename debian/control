@@ -1,0 +1,45 @@
+Source: iso-constructor
+Section: devel
+Priority: optional
+Maintainer: Arjen Balfoort <arjenbalfoort@solydxk.com>
+Build-Depends: debhelper-compat (= 12)
+  , dh-python
+  , python3-all
+  , intltool
+  , itstool
+  , po4a
+  , transifex-client
+  , translate-toolkit
+Standards-Version: 4.5.0
+Vcs-Git: https://gitlab.com/abalfoort/iso-creator.git
+X-Python3-Version: >= 3.6
+
+Package: iso-constructor
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${python3:Depends}
+  , python3-gi
+  , python3-apt
+  , gir1.2-gtk-3.0
+  , squashfs-tools
+  , rsync
+  , apt-show-versions
+  , isolinux
+  , gconf2
+  , xorriso
+  , dosfstools
+  , mtools
+  , uni2ascii
+  , grub-efi-amd64-bin
+Conflicts: solydxk-constructor (<= 3.7.3)
+Replaces: solydxk-constructor (<= 3.7.3)
+Description: Create custom Debian ISO files
+ Tool to build and maintain Debian ISO files.
+
+Package: solydxk-constructor
+Architecture: all
+Section: oldlibs
+Depends: iso-constructor, ${misc:Depends}
+Description: transitional package
+ This is a transitional package. It can safely be removed.
+

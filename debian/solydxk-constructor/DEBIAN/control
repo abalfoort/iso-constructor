@@ -1,0 +1,11 @@
+Package: solydxk-constructor
+Source: iso-constructor
+Version: 3.7.4
+Architecture: all
+Maintainer: Arjen Balfoort <arjenbalfoort@solydxk.com>
+Installed-Size: 14
+Depends: iso-constructor
+Section: oldlibs
+Priority: optional
+Description: transitional package
+ This is a transitional package. It can safely be removed.

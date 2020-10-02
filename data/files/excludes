@@ -1,0 +1,15 @@
+dev/*
+home/*
+media/*
+mnt/*
+proc/*
+run/*
+srv/*
+sys/*
+tmp/*
+var/backups/*
+var/lib/os-prober/*
+var/local/*
+var/mail/*
+var/opt/*
+var/tmp/* 

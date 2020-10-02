@@ -1,0 +1,10 @@
+__title__ = 'iso-creator'
+__version__ = '3.7.4'
+__author__ = 'Arjen Balfoort'
+__author_email__ = 'arjenbalfoort@solydxk.com'
+__maintainer__ = 'Arjen Balfoort'
+__maintainer_email__ = 'arjenbalfoort@solydxk.com'
+__url__ = 'https://gitlab.com/abalfoort/iso-creator'
+__description__ = 'Tool to build and maintain Debian isos.'
+__download_url__ = 'https://gitlab.com/abalfoort/iso-creator/-/archive/master/iso-creator-master.tar.gz'
+

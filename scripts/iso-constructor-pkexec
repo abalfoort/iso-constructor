@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Handle some arguments before running the application
+# Supported arguments:
+# -d|--debug: debug with -Wd arguments
+ARGS=$@
+DEBUG='-OO'
+for ARG in "$ARGS"; do
+  case $ARG in
+    -d|--debug)
+      DEBUG='-Wd'
+      ;;
+    *)
+      # unknown option
+    ;;
+  esac
+done
+
+echo "python3 ${DEBUG} -c \"import importlib; ic = importlib.import_module('iso-constructor'); ic.main() $@\""
+python3 ${DEBUG} -c "import importlib; ic = importlib.import_module('iso-constructor'); ic.main() $@"
