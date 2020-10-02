@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div id="background"></div>
-	<h1>ISO Constructor Help</h1>
+	<h1>ISO Constructor Hilfe</h1>
 
 	<div class="main">	
         <p>ISO Constructor helps building your custom Debian ISO, and was originally
@@ -35,9 +35,9 @@ Datei entpackt werden soll, aussuchen.</p>
         <p>Die Schaltfläche zur Auswahl des Auspackzielverzeichnisses wird verfügbar,
 wenn der Pfad zur ISO Datei existiert.</p>
         <p><strong>Add an existing directory</strong></p>
-        <p>If you previously unpacked an ISO, and removed the distribution from ISO
-Constructor's list, you can add the existing directory by unchecking the
-"Create from ISO" checkbox</p>
+        <p>Wenn Sie bereits eine ISO Datei entpackt und die Distribution aus der ISO
+Constructor Liste entfernt haben, können Sie das bestehende Verzeichnis
+hinzufügen, indem Sie den Dialog "Von der ISO Datei erstellen" abwählen.</p>
         <img alt="" src="../link/addexistingdistrowindow.png" />
         <p>Die Sichern Schaltfläche wird verfügbar, wenn sowohl das Zielverzeichnis der
 ISO Datei als auch das Auspackverzeichnis existieren.</p>
@@ -102,17 +102,18 @@ Menge Arbeit, aber für eine CE (Community Edition) lohnt es sich.</p>
 
         <a name="files"></a><h2>9. Wichtige Dateien</h2>
         <ul>
-            <li>~/.constructor/distributions.list: list with distribution directories.</li>
-            <li>/usr/share/iso-constructor/grubgen.sh: generates boot/boot/grub/grub.cfg
-(with grub-template).</li>
-            <li>/usr/share/iso-constructor/isolinuxgen.sh: generates
+            <li>~/.constructor/distributions.list: Hier werden alle
+Distributionsverzeichnisse gespeichert.</li>
+            <li>/usr/share/iso-constructor/grubgen.sh: erzeugt boot/boot/grub/grub.cfg (with
+grub-template).</li>
+            <li>/usr/share/iso-constructor/isolinuxgen.sh: erzeugt
 boot/isolinux/isolinux.cfg (with isolinux-template).</li>
-            <li>/usr/share/iso-constructor/cleanup.sh: this script cleans up prior to
-building the ISO.</li>
-            <li>/usr/share/iso-constructor/setlocale.sh: sets the locale of the ISO. Default
-is: en_US</li>
-            <li>/usr/share/iso-constructor/excludes: list with directories excluded from the
-ISO build.</li>
+            <li>/usr/share/iso-constructor/cleanup.sh: dieses Skript bereinigt vor dem
+Erstellen der ISO.</li>
+            <li>/usr/share/iso-constructor/setlocale.sh: setzt das Gebietsschema der
+ISO. Standard ist: en_US</li>
+            <li>/usr/share/iso-constructor/excludes: Liste mit Verzeichnissen, die vom ISO
+Build ausgeschlossen sind.</li>
         </ul>
 	</div>
 </body>

@@ -1,22 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Arjen, 2017
 # Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020
-# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2017-2019
-# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020
-# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2015
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: solydxk-constructor\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 14:20+0200\n"
-"PO-Revision-Date: 2020-08-06 07:51+0000\n"
-"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>\n"
-"Language-Team: Dutch (http://www.transifex.com/abalfoort/solydxk-constructor/"
-"language/nl/)\n"
+"POT-Creation-Date: 2020-10-02 16:14+0200\n"
+"PO-Revision-Date: 2020-10-02 13:14+0000\n"
+"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020\n"
+"Language-Team: Dutch (https://www.transifex.com/abalfoort/teams/54212/nl/)\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,9 +22,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: iso-constructor/__init__.py:89 data/iso-constructor.desktop.in.h:1
-#, fuzzy
 msgid "ISO Constructor"
-msgstr "SolydXK Constructor Help"
+msgstr "ISO Constructor"
 
 #: iso-constructor/__init__.py:90
 msgid "Select all"
@@ -42,7 +39,7 @@ msgstr "Verwijderen"
 
 #: iso-constructor/__init__.py:93
 msgid "Edit"
-msgstr "Aanpassen"
+msgstr "Bewerken"
 
 #: iso-constructor/__init__.py:94
 msgid "Upgrade"
@@ -106,9 +103,8 @@ msgid "Working directory"
 msgstr "Werkdirectory"
 
 #: iso-constructor/__init__.py:304
-#, fuzzy
 msgid "Select ISO file"
-msgstr "Selecteer alles"
+msgstr "Selecteer ISO bestand"
 
 #: iso-constructor/__init__.py:312
 msgid "Select directory"
@@ -164,31 +160,28 @@ msgid "Save"
 msgstr "Bewaren"
 
 #: data/iso-constructor.desktop.in.h:2
-msgid "Tool to build and maintain Debian isos"
-msgstr ""
+msgid "Tool to build and maintain Debian ISOs"
+msgstr "Tool om Debian ISO's te bouwen en te onderhouden"
 
 #. (itstool) path: action/message
 #: data/com.debian.pkexec.iso-constructor.policy:8
-#, fuzzy
 msgid "Authentication is required to run ISO Constructor"
-msgstr "Verificatie is vereist om SolydXK Constructor uit te voeren"
+msgstr "Verificatie is vereist om ISO Constructor uit te voeren"
 
 #: po/en/help.html%2Bhtml.body.h1:8-2
-#, fuzzy
 msgid "ISO Constructor Help"
-msgstr "SolydXK Constructor Help"
+msgstr "ISO Constructor Help"
 
 #: po/en/help.html%2Bhtml.body.div.p:11-9
-#, fuzzy
 msgid ""
 "ISO Constructor helps building your custom Debian ISO, and was originally "
 "created for maintaining SolydXK ISOs, but it might benefit those who want to "
 "build their custom Debian ISO."
 msgstr ""
 "195/5000\n"
-"SolydXK Constructor helpt bij het bouwen van uw aangepaste SolydXK ISO, en "
-"is uitsluitend gecreëerd voor het behoud van de huidige SolydXK ISO's, maar "
-"het kan degenen helpen die hun aangepaste SolydXK ISO willen bouwen."
+"ISO Constructor helpt bij het bouwen van uw aangepaste Debian ISO, en was "
+"oorspronkelijk gecreëerd voor het behoud van SolydXK ISO's, maar het kan "
+"degenen helpen die hun aangepaste Debian ISO willen bouwen."
 
 #: po/en/help.html%2Bhtml.body.div.h2:15-9
 msgid "Content"
@@ -211,9 +204,8 @@ msgid "Edit in terminal"
 msgstr "Bewerk in de terminal"
 
 #: po/en/help.html%2Bhtml.body.div.ol.li:21-13
-#, fuzzy
 msgid "Dist-upgrade distributions"
-msgstr "5. Upgrade distributies"
+msgstr "Dist-upgrade distributie"
 
 #: po/en/help.html%2Bhtml.body.div.ol.li:22-13
 msgid "Build ISOs"
@@ -224,9 +216,8 @@ msgid "Localize the ISOs"
 msgstr "Lokaliseer de ISO's"
 
 #: po/en/help.html%2Bhtml.body.div.ol.li:24-13
-#, fuzzy
 msgid "Use Debian live as base"
-msgstr "8. Gebruik Debian live als basis"
+msgstr "Gebruik Debian live als basis"
 
 #: po/en/help.html%2Bhtml.body.div.ol.li:25-13
 msgid "Important files"
@@ -237,9 +228,8 @@ msgid "1. Add distribution"
 msgstr "1. Distributie toevoegen"
 
 #: po/en/help.html%2Bhtml.body.div.p:29-9
-#, fuzzy
 msgid "Unpack an ISO"
-msgstr "Uitpakken en bewaren"
+msgstr "Een ISO Uitpakken"
 
 #: po/en/help.html%2Bhtml.body.div.p:30-9
 msgid ""
@@ -257,18 +247,16 @@ msgstr ""
 "ISO bestaat."
 
 #: po/en/help.html%2Bhtml.body.div.p:33-9
-#, fuzzy
 msgid "Add an existing directory"
 msgstr "Voeg een bestaande map toe"
 
 #: po/en/help.html%2Bhtml.body.div.p:34-9
-#, fuzzy
 msgid ""
 "If you previously unpacked an ISO, and removed the distribution from ISO "
 "Constructor's list, you can add the existing directory by unchecking the "
 "\"Create from ISO\" checkbox"
 msgstr ""
-"Als u eerder een ISO hebt uitgepakt en u heeft de distributie van SolydXK "
+"Als u eerder een ISO hebt uitgepakt en u heeft de distributie van ISO "
 "Constructor's lijst verwijderd, kunt u de bestaande map toevoegen door het "
 "selectievakje 'Maak van ISO' uit te vinken."
 
@@ -446,126 +434,46 @@ msgid "9. Important files"
 msgstr "9. Belangrijke bestanden"
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:81-13
-#, fuzzy
 msgid "~/.constructor/distributions.list: list with distribution directories."
-msgstr "~/.constructor/distros.list: hier worden de distributiemappen bewaard."
+msgstr ""
+"~/.constructor/distributions.list: hier worden de distributiemappen bewaard."
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:82-13
-#, fuzzy
 msgid ""
 "/usr/share/iso-constructor/grubgen.sh: generates boot/boot/grub/grub.cfg "
 "(with grub-template)."
 msgstr ""
-"/usr/lib/solydxk/constructor/files/grubgen.sh: genereert boot/boot/grub/grub."
-"cfg (met grub-template)."
+"/usr/share/iso-constructor/grubgen.sh: genereert boot/boot/grub/grub.cfg "
+"(met grub-template)."
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:83-13
-#, fuzzy
 msgid ""
 "/usr/share/iso-constructor/isolinuxgen.sh: generates boot/isolinux/isolinux."
 "cfg (with isolinux-template)."
 msgstr ""
-"/usr/lib/solydxk/constructor/files/isolinuxgen.sh: genereert boot/isolinux/"
-"isolinux.cfg (met isolinux-template)."
+"/usr/share/iso-constructor/isolinuxgen.sh: genereert boot/isolinux/isolinux."
+"cfg (met isolinux-template)."
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:84-13
-#, fuzzy
 msgid ""
 "/usr/share/iso-constructor/cleanup.sh: this script cleans up prior to "
 "building the ISO."
 msgstr ""
-"/usr/lib/solydxk/constructor/files/cleanup.sh: dit script ruimt op voordat "
-"de ISO gebouwd wordt."
+"/usr/share/iso-constructor/cleanup.sh: dit script ruimt op voordat de ISO "
+"gebouwd wordt."
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:85-13
-#, fuzzy
 msgid ""
 "/usr/share/iso-constructor/setlocale.sh: sets the locale of the ISO. Default "
 "is: en_US"
 msgstr ""
-"/usr/lib/solydxk/constructor/files/setlocale.sh: Stelt de taal van de ISO "
-"in. Standaard is: en_US"
+"/usr/share/iso-constructor/setlocale.sh: Stelt de taal van de ISO in. "
+"Standaard is: en_US"
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:86-13
-#, fuzzy
 msgid ""
 "/usr/share/iso-constructor/excludes: list with directories excluded from the "
 "ISO build."
 msgstr ""
-"/usr/lib/solydxk/constructor/files/excludes: lijst met mappen die zijn "
-"uitgesloten van de ISO-bouw."
-
-#, fuzzy
-#~| msgid "1. Add distribution"
-#~ msgid "<a href=\"#add\">Add distribution</a>"
-#~ msgstr "1. Distributie toevoegen"
-
-#, fuzzy
-#~| msgid "2. Remove distributions"
-#~ msgid "<a href=\"#remove\">Remove distributions</a>"
-#~ msgstr "2. Distributie verwijderen"
-
-#, fuzzy
-#~| msgid "2. Remove distributions"
-#~ msgid "<a href=\"#open\">Open directory</a>"
-#~ msgstr "2. Distributie verwijderen"
-
-#, fuzzy
-#~| msgid "4. Edit in terminal"
-#~ msgid "<a href=\"#edit\">Edit in terminal</a>"
-#~ msgstr "4. Bewerk in de terminal"
-
-#, fuzzy
-#~| msgid "Dist-upgrade distributions"
-#~ msgid "<a href=\"#upgrade\">Dist-upgrade distributions</a>"
-#~ msgstr "Dist-upgrade distributie"
-
-#, fuzzy
-#~| msgid "1. Add distribution"
-#~ msgid "<a href=\"#build\">Build ISOs</a>"
-#~ msgstr "1. Distributie toevoegen"
-
-#, fuzzy
-#~| msgid "Use Debian live as base"
-#~ msgid "<a href=\"#debian\">Use Debian live as base</a>"
-#~ msgstr "Gebruik Debian live als basis"
-
-#, fuzzy
-#~| msgid "4. Edit in terminal"
-#~ msgid "<a href=\"#files\">Important files</a>"
-#~ msgstr "4. Bewerk in de terminal"
-
-#, fuzzy
-#~| msgid "Unpack an ISO"
-#~ msgid "<strong>Unpack an ISO</strong>"
-#~ msgstr "Een ISO Uitpakken"
-
-#~ msgid ""
-#~ "/usr/lib/solydxk/constructor/files/isolinux/kde-splash.png/xfce-splash."
-#~ "png: isolinux splash files."
-#~ msgstr ""
-#~ "/usr/lib/solydxk/constructor/files/isolinux/kde-splash.png/xfce-splash."
-#~ "png: isolinux splash bestanden."
-
-#~ msgid "SolydXK Constructor"
-#~ msgstr "SolydXK Constructor"
-
-#~ msgid "Select SolydXK ISO"
-#~ msgstr "Selecteer SolydXK ISO"
-
-#~ msgid "ISO constructor for SolydXK"
-#~ msgstr "ISO constructor voor SolydXK"
-
-#~ msgid ""
-#~ "You can download SolydXK ISOs here: <a href=\"https://downloads.solydxk."
-#~ "com\" target=\"_blank\">https://downloads.solydxk.com</a>"
-#~ msgstr ""
-#~ "U kunt de SolydXK ISO's hier downloaden: <a href=\"https://downloads."
-#~ "solydxk.com\" target=\"_blank\">https://downloads.solydxk.com</a>"
-
-#~ msgid ""
-#~ "/usr/lib/solydxk/constructor/files/constructor.conf: configuration file "
-#~ "for SolydXK Constructor."
-#~ msgstr ""
-#~ "/usr/lib/solydxk/constructor/files/constructor.conf: configuratiebestand "
-#~ "voor  SolydXK Constructor."
+"/usr/share/iso-constructor/excludes: lijst met mappen die zijn uitgesloten "
+"van de ISO-bouw."

@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div id="background"></div>
-	<h1>ISO Constructor Help</h1>
+	<h1>Ajuda do ISO Constructor</h1>
 
 	<div class="main">	
         <p>ISO Constructor helps building your custom Debian ISO, and was originally
@@ -35,9 +35,9 @@ ISO.</p>
         <p>O botão para procurar o directório do desempacotado será disponível se o
 caminho para o ISO existir.</p>
         <p><strong>Add an existing directory</strong></p>
-        <p>If you previously unpacked an ISO, and removed the distribution from ISO
-Constructor's list, you can add the existing directory by unchecking the
-"Create from ISO" checkbox</p>
+        <p>Se você previamente desempacotou um ISO e removeu a distribuição da lista do
+ISO Constructor, você pode adicionar o directório existente desmarcando a
+caixa de selecção "Criar do ISO"</p>
         <img alt="" src="../link/addexistingdistrowindow.png" />
         <p>O botão Salvar está disponível se o caminho para o ISO e o directório dos
 descompactados existirem.</p>
@@ -101,17 +101,18 @@ configurar a distribuição a partir do zero. É muito trabalho, mas para um CE
 
         <a name="files"></a><h2>9. Ficheiros importantes</h2>
         <ul>
-            <li>~/.constructor/distributions.list: list with distribution directories.</li>
-            <li>/usr/share/iso-constructor/grubgen.sh: generates boot/boot/grub/grub.cfg
-(with grub-template).</li>
-            <li>/usr/share/iso-constructor/isolinuxgen.sh: generates
-boot/isolinux/isolinux.cfg (with isolinux-template).</li>
-            <li>/usr/share/iso-constructor/cleanup.sh: this script cleans up prior to
-building the ISO.</li>
-            <li>/usr/share/iso-constructor/setlocale.sh: sets the locale of the ISO. Default
-is: en_US</li>
-            <li>/usr/share/iso-constructor/excludes: list with directories excluded from the
-ISO build.</li>
+            <li>~/.constructor/distributions.list: aqui estão todos os directórios de
+distribuição salvos.</li>
+            <li>/usr/share/iso-constructor/grubgen.sh: gera boot/boot/grub/grub.cfg (com o
+grub-template).</li>
+            <li>/usr/share/iso-constructor/isolinuxgen.sh: gera boot/isolinux/isolinux.cfg
+(com o isolinux-template).</li>
+            <li>/usr/share/iso-constructor/cleanup.sh: este script primeiro limpa e depois
+cria o ISO.</li>
+            <li>/usr/share/iso-constructor/setlocale.sh: Define o local do ISO. Por defeito
+é: en_US</li>
+            <li>/usr/share/iso-constructor/excludes: lista com diretórios excluídos da
+compilação ISO.</li>
         </ul>
 	</div>
 </body>

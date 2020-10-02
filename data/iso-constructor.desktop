@@ -1,6 +1,14 @@
 [Desktop Entry]
 Name=ISO Constructor
-Comment=Tool to build and maintain Debian isos
+Name[ca]=ISO Constructor
+Name[de]=ISO Constructor
+Name[fr]=ISO Constructor
+Name[it]=ISO Constructor
+Name[lt]=ISO konstruktorius
+Name[nl]=ISO Constructor
+Name[pt]=ISO Constructor
+Comment=Tool to build and maintain Debian ISOs
+Comment[nl]=Tool om Debian ISO's te bouwen en te onderhouden
 Exec=iso-constructor
 Icon=iso-constructor
 Terminal=false

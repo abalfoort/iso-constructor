@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: solydxk-constructor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 14:20+0200\n"
+"POT-Creation-Date: 2020-10-02 15:57+0200\n"
 "PO-Revision-Date: 2017-04-25 18:41+0000\n"
 "Last-Translator: Arjen Balfoort <schoelje@solydxk.com>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/solydxk/solydxk-"
@@ -160,7 +160,7 @@ msgid "Save"
 msgstr "Lagre"
 
 #: data/iso-constructor.desktop.in.h:2
-msgid "Tool to build and maintain Debian isos"
+msgid "Tool to build and maintain Debian ISOs"
 msgstr ""
 
 #. (itstool) path: action/message

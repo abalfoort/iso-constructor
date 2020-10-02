@@ -1,19 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Arjen Balfoort <translations@solydxk.com>, 2017-2018
-# Moo, 2016-2020
+# Moo, 2020
+# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: solydxk-constructor\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 14:20+0200\n"
-"PO-Revision-Date: 2020-07-09 18:11+0000\n"
-"Last-Translator: Moo\n"
-"Language-Team: Lithuanian (http://www.transifex.com/solydxk/solydxk-"
-"constructor/language/lt/)\n"
+"POT-Creation-Date: 2020-10-02 16:14+0200\n"
+"PO-Revision-Date: 2020-10-02 13:14+0000\n"
+"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020\n"
+"Language-Team: Lithuanian (https://www.transifex.com/abalfoort/teams/54212/"
+"lt/)\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,9 +26,8 @@ msgstr ""
 "1 : n % 1 != 0 ? 2: 3);\n"
 
 #: iso-constructor/__init__.py:89 data/iso-constructor.desktop.in.h:1
-#, fuzzy
 msgid "ISO Constructor"
-msgstr "SolydXK konstruktoriaus žinynas"
+msgstr "ISO konstruktorius"
 
 #: iso-constructor/__init__.py:90
 msgid "Select all"
@@ -104,9 +106,8 @@ msgid "Working directory"
 msgstr "Darbinis katalogas"
 
 #: iso-constructor/__init__.py:304
-#, fuzzy
 msgid "Select ISO file"
-msgstr "Pažymėti visus"
+msgstr "Pasirinkite ISO"
 
 #: iso-constructor/__init__.py:312
 msgid "Select directory"
@@ -162,31 +163,24 @@ msgid "Save"
 msgstr "Įrašyti"
 
 #: data/iso-constructor.desktop.in.h:2
-msgid "Tool to build and maintain Debian isos"
+msgid "Tool to build and maintain Debian ISOs"
 msgstr ""
 
 #. (itstool) path: action/message
 #: data/com.debian.pkexec.iso-constructor.policy:8
-#, fuzzy
 msgid "Authentication is required to run ISO Constructor"
-msgstr "Norint paleisti SolydXK konstruktorių, reikia nustatyti tapatybę"
+msgstr "Norint paleisti ISO konstruktorių, reikia nustatyti tapatybę"
 
 #: po/en/help.html%2Bhtml.body.h1:8-2
-#, fuzzy
 msgid "ISO Constructor Help"
-msgstr "SolydXK konstruktoriaus žinynas"
+msgstr "ISO konstruktoriaus žinynas"
 
 #: po/en/help.html%2Bhtml.body.div.p:11-9
-#, fuzzy
 msgid ""
 "ISO Constructor helps building your custom Debian ISO, and was originally "
 "created for maintaining SolydXK ISOs, but it might benefit those who want to "
 "build their custom Debian ISO."
 msgstr ""
-"SolydXK konstruktorius padeda sukurti tinkintą SolydXK ISO atvaizdį ir buvo "
-"sukurtas išskirtinai esamų SolydXK ISO atvaizdžių priežiūrai, tačiau jis "
-"gali praversti ir tiems, kas nori sukurti savo asmeninį tinkintą SolydXK ISO "
-"atvaizdį."
 
 #: po/en/help.html%2Bhtml.body.div.h2:15-9
 msgid "Content"
@@ -209,9 +203,8 @@ msgid "Edit in terminal"
 msgstr "Redaguoti terminale"
 
 #: po/en/help.html%2Bhtml.body.div.ol.li:21-13
-#, fuzzy
 msgid "Dist-upgrade distributions"
-msgstr "5. Naujinti distribucijas"
+msgstr "\"Dist-upgrade\" distribucijas"
 
 #: po/en/help.html%2Bhtml.body.div.ol.li:22-13
 msgid "Build ISOs"
@@ -222,9 +215,8 @@ msgid "Localize the ISOs"
 msgstr "Lokalizuoti ISO atvaizdžius"
 
 #: po/en/help.html%2Bhtml.body.div.ol.li:24-13
-#, fuzzy
 msgid "Use Debian live as base"
-msgstr "8. Naudoti \"Debian live\" kaip pagrindą"
+msgstr "Naudoti \"Debian live\" kaip pagrindą"
 
 #: po/en/help.html%2Bhtml.body.div.ol.li:25-13
 msgid "Important files"
@@ -235,9 +227,8 @@ msgid "1. Add distribution"
 msgstr "1. Pridėti distribuciją"
 
 #: po/en/help.html%2Bhtml.body.div.p:29-9
-#, fuzzy
 msgid "Unpack an ISO"
-msgstr "Išpakuoti ir įrašyti"
+msgstr "Išpakuoti ISO"
 
 #: po/en/help.html%2Bhtml.body.div.p:30-9
 msgid ""
@@ -255,18 +246,16 @@ msgstr ""
 "naršyti išpakavimo katalogą."
 
 #: po/en/help.html%2Bhtml.body.div.p:33-9
-#, fuzzy
 msgid "Add an existing directory"
 msgstr "Pridėti esamą katalogą"
 
 #: po/en/help.html%2Bhtml.body.div.p:34-9
-#, fuzzy
 msgid ""
 "If you previously unpacked an ISO, and removed the distribution from ISO "
 "Constructor's list, you can add the existing directory by unchecking the "
 "\"Create from ISO\" checkbox"
 msgstr ""
-"Jeigu anksčiau išpakavote ISO ir pašalinote jį iš SolydXK konstruktoriaus "
+"Jeigu anksčiau išpakavote ISO ir pašalinote jį iš ISO konstruktoriaus "
 "sąrašo, galite pridėti esamą katalogą, panaikindami žymėjimą nuo \"Sukurti "
 "iš ISO\" žymimojo langelio."
 
@@ -445,128 +434,47 @@ msgid "9. Important files"
 msgstr "9. Svarbūs failai"
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:81-13
-#, fuzzy
 msgid "~/.constructor/distributions.list: list with distribution directories."
 msgstr ""
-"~/.constructor/distros.list: čia yra įrašomi visi distribucijos katalogai."
+"~/.constructor/distributions.list: čia yra įrašomi visi distribucijos "
+"katalogai."
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:82-13
-#, fuzzy
 msgid ""
 "/usr/share/iso-constructor/grubgen.sh: generates boot/boot/grub/grub.cfg "
 "(with grub-template)."
 msgstr ""
-"/usr/lib/solydxk/constructor/files/grubgen.sh: sugeneruoja boot/boot/grub/"
-"grub.cfg (su grub-template)."
+"/usr/share/iso-constructor/grubgen.sh: sugeneruoja boot/boot/grub/grub.cfg "
+"(su grub-template)."
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:83-13
-#, fuzzy
 msgid ""
 "/usr/share/iso-constructor/isolinuxgen.sh: generates boot/isolinux/isolinux."
 "cfg (with isolinux-template)."
 msgstr ""
-"/usr/lib/solydxk/constructor/files/isolinuxgen.sh: sugeneruoja boot/isolinux/"
+"/usr/share/iso-constructor/isolinuxgen.sh: sugeneruoja boot/isolinux/"
 "isolinux.cfg (su isolinux-template)."
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:84-13
-#, fuzzy
 msgid ""
 "/usr/share/iso-constructor/cleanup.sh: this script cleans up prior to "
 "building the ISO."
 msgstr ""
-"/usr/lib/solydxk/constructor/files/cleanup.sh: šis scenarijus prieš kuriant "
-"ISO atlieka išvalymą."
+"/usr/share/iso-constructor/cleanup.sh: šis scenarijus prieš kuriant ISO "
+"atlieka išvalymą."
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:85-13
-#, fuzzy
 msgid ""
 "/usr/share/iso-constructor/setlocale.sh: sets the locale of the ISO. Default "
 "is: en_US"
 msgstr ""
-"/usr/lib/solydxk/constructor/files/setlocale.sh: nustato ISO atvaizdžio "
-"lokalę. Numatytoji yra: en_US"
+"/usr/share/iso-constructor/setlocale.sh: nustato ISO atvaizdžio lokalę. "
+"Numatytoji yra: en_US"
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:86-13
-#, fuzzy
 msgid ""
 "/usr/share/iso-constructor/excludes: list with directories excluded from the "
 "ISO build."
 msgstr ""
-"/usr/lib/solydxk/constructor/files/excludes: sąrašas su katalogai, "
-"išbrauktais iš ISO darinio."
-
-#, fuzzy
-#~| msgid "1. Add distribution"
-#~ msgid "<a href=\"#add\">Add distribution</a>"
-#~ msgstr "1. Pridėti distribuciją"
-
-#, fuzzy
-#~| msgid "2. Remove distributions"
-#~ msgid "<a href=\"#remove\">Remove distributions</a>"
-#~ msgstr "2. Šalinti distribucijas"
-
-#, fuzzy
-#~| msgid "2. Remove distributions"
-#~ msgid "<a href=\"#open\">Open directory</a>"
-#~ msgstr "2. Šalinti distribucijas"
-
-#, fuzzy
-#~| msgid "4. Edit in terminal"
-#~ msgid "<a href=\"#edit\">Edit in terminal</a>"
-#~ msgstr "4. Redaguoti terminale"
-
-#, fuzzy
-#~| msgid "Dist-upgrade distributions"
-#~ msgid "<a href=\"#upgrade\">Dist-upgrade distributions</a>"
-#~ msgstr "\"Dist-upgrade\" distribucijas"
-
-#, fuzzy
-#~| msgid "1. Add distribution"
-#~ msgid "<a href=\"#build\">Build ISOs</a>"
-#~ msgstr "1. Pridėti distribuciją"
-
-#, fuzzy
-#~| msgid "Use Debian live as base"
-#~ msgid "<a href=\"#debian\">Use Debian live as base</a>"
-#~ msgstr "Naudoti \"Debian live\" kaip pagrindą"
-
-#, fuzzy
-#~| msgid "4. Edit in terminal"
-#~ msgid "<a href=\"#files\">Important files</a>"
-#~ msgstr "4. Redaguoti terminale"
-
-#, fuzzy
-#~| msgid "Unpack an ISO"
-#~ msgid "<strong>Unpack an ISO</strong>"
-#~ msgstr "Išpakuoti ISO"
-
-#~ msgid ""
-#~ "/usr/lib/solydxk/constructor/files/isolinux/kde-splash.png/xfce-splash."
-#~ "png: isolinux splash files."
-#~ msgstr ""
-#~ "/usr/lib/solydxk/constructor/files/isolinux/kde-splash.png/xfce-splash."
-#~ "png: isolinux prisistatymo lango failai."
-
-#~ msgid "SolydXK Constructor"
-#~ msgstr "SolydXK konstruktorius"
-
-#~ msgid "Select SolydXK ISO"
-#~ msgstr "Pasirinkite SolydXK ISO"
-
-#~ msgid "ISO constructor for SolydXK"
-#~ msgstr "ISO konstruktorius, skirtas SolydXK"
-
-#~ msgid ""
-#~ "You can download SolydXK ISOs here: <a href=\"https://downloads.solydxk."
-#~ "com\" target=\"_blank\">https://downloads.solydxk.com</a>"
-#~ msgstr ""
-#~ "Jūs galite atsisiųsti SolydXK ISO atvaizdžius čia: <a href=\"https://"
-#~ "downloads.solydxk.com\" target=\"_blank\">https://downloads.solydxk.com</"
-#~ "a>"
-
-#~ msgid ""
-#~ "/usr/lib/solydxk/constructor/files/constructor.conf: configuration file "
-#~ "for SolydXK Constructor."
-#~ msgstr ""
-#~ "/usr/lib/solydxk/constructor/files/constructor.conf: SolydXK "
-#~ "konstruktoriaus konfigūracijos failas."
+"/usr/share/iso-constructor/excludes: sąrašas su katalogai, išbrauktais iš "
+"ISO darinio."

@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div id="background"></div>
-	<h1>ISO Constructor Help</h1>
+	<h1>ISO konstruktoriaus žinynas</h1>
 
 	<div class="main">	
         <p>ISO Constructor helps building your custom Debian ISO, and was originally
@@ -35,9 +35,9 @@ išpakuosite ISO.</p>
         <p>Jeigu yra nurodytas kelias į ISO, tuomet tampa prieinamas mygtukas, skirtas
 naršyti išpakavimo katalogą.</p>
         <p><strong>Add an existing directory</strong></p>
-        <p>If you previously unpacked an ISO, and removed the distribution from ISO
-Constructor's list, you can add the existing directory by unchecking the
-"Create from ISO" checkbox</p>
+        <p>Jeigu anksčiau išpakavote ISO ir pašalinote jį iš ISO konstruktoriaus
+sąrašo, galite pridėti esamą katalogą, panaikindami žymėjimą nuo "Sukurti iš
+ISO" žymimojo langelio.</p>
         <img alt="" src="../link/addexistingdistrowindow.png" />
         <p>Jeigu yra nurodytas kelias į ISO ir išpakavimo katalogą, tuomet tampa
 prieinamas mygtukas "Įrašyti".</p>
@@ -101,17 +101,18 @@ sukonfigūruoti distribuciją nuo nulio. Tai yra daug darbo, tačiau CE
 
         <a name="files"></a><h2>9. Svarbūs failai</h2>
         <ul>
-            <li>~/.constructor/distributions.list: list with distribution directories.</li>
-            <li>/usr/share/iso-constructor/grubgen.sh: generates boot/boot/grub/grub.cfg
-(with grub-template).</li>
-            <li>/usr/share/iso-constructor/isolinuxgen.sh: generates
-boot/isolinux/isolinux.cfg (with isolinux-template).</li>
-            <li>/usr/share/iso-constructor/cleanup.sh: this script cleans up prior to
-building the ISO.</li>
-            <li>/usr/share/iso-constructor/setlocale.sh: sets the locale of the ISO. Default
-is: en_US</li>
-            <li>/usr/share/iso-constructor/excludes: list with directories excluded from the
-ISO build.</li>
+            <li>~/.constructor/distributions.list: čia yra įrašomi visi distribucijos
+katalogai.</li>
+            <li>/usr/share/iso-constructor/grubgen.sh: sugeneruoja boot/boot/grub/grub.cfg
+(su grub-template).</li>
+            <li>/usr/share/iso-constructor/isolinuxgen.sh: sugeneruoja
+boot/isolinux/isolinux.cfg (su isolinux-template).</li>
+            <li>/usr/share/iso-constructor/cleanup.sh: šis scenarijus prieš kuriant ISO
+atlieka išvalymą.</li>
+            <li>/usr/share/iso-constructor/setlocale.sh: nustato ISO atvaizdžio
+lokalę. Numatytoji yra: en_US</li>
+            <li>/usr/share/iso-constructor/excludes: sąrašas su katalogai, išbrauktais iš
+ISO darinio.</li>
         </ul>
 	</div>
 </body>

@@ -1,18 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Franco Frolloni <franco@frolloni.eu>, 2017,2019
+# Franco Frolloni <franco@frolloni.eu>, 2020
+# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: solydxk-constructor\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 14:20+0200\n"
-"PO-Revision-Date: 2020-07-09 12:41+0000\n"
-"Last-Translator: Arjen Balfoort <translations@solydxk.com>\n"
-"Language-Team: Italian (http://www.transifex.com/solydxk/solydxk-constructor/"
-"language/it/)\n"
+"POT-Creation-Date: 2020-10-02 16:14+0200\n"
+"PO-Revision-Date: 2020-10-02 13:14+0000\n"
+"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020\n"
+"Language-Team: Italian (https://www.transifex.com/abalfoort/teams/54212/"
+"it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,9 +24,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: iso-constructor/__init__.py:89 data/iso-constructor.desktop.in.h:1
-#, fuzzy
 msgid "ISO Constructor"
-msgstr "Aiuto di SolydXK Constructor"
+msgstr "ISO Constructor"
 
 #: iso-constructor/__init__.py:90
 msgid "Select all"
@@ -85,9 +88,8 @@ msgid "Services detected"
 msgstr ""
 
 #: iso-constructor/__init__.py:188
-#, fuzzy
 msgid "Upgrade done"
-msgstr "Aggiorna"
+msgstr ""
 
 #: iso-constructor/__init__.py:263
 msgid "Select"
@@ -102,9 +104,8 @@ msgid "Working directory"
 msgstr "Cartella di lavoro"
 
 #: iso-constructor/__init__.py:304
-#, fuzzy
 msgid "Select ISO file"
-msgstr "Seleziona tutto"
+msgstr "Seleziona l'ISO"
 
 #: iso-constructor/__init__.py:312
 msgid "Select directory"
@@ -160,30 +161,24 @@ msgid "Save"
 msgstr "Salva"
 
 #: data/iso-constructor.desktop.in.h:2
-msgid "Tool to build and maintain Debian isos"
+msgid "Tool to build and maintain Debian ISOs"
 msgstr ""
 
 #. (itstool) path: action/message
 #: data/com.debian.pkexec.iso-constructor.policy:8
-#, fuzzy
 msgid "Authentication is required to run ISO Constructor"
-msgstr "Autenticazione necessaria per lanciare SolydXK Constructor"
+msgstr "Autenticazione necessaria per lanciare ISO Constructor"
 
 #: po/en/help.html%2Bhtml.body.h1:8-2
-#, fuzzy
 msgid "ISO Constructor Help"
-msgstr "Aiuto di SolydXK Constructor"
+msgstr "Aiuto di ISO Constructor"
 
 #: po/en/help.html%2Bhtml.body.div.p:11-9
-#, fuzzy
 msgid ""
 "ISO Constructor helps building your custom Debian ISO, and was originally "
 "created for maintaining SolydXK ISOs, but it might benefit those who want to "
 "build their custom Debian ISO."
 msgstr ""
-"SolydXK Constructor aiuta a creare le tue ISO di SolyXK personalizzate, ed è "
-"stato unicamente pensato per mantenere le ISO correnti di SolydXK, ma "
-"potrebbe favorire chi vuole creare ISO personalizzate di SolydXK."
 
 #: po/en/help.html%2Bhtml.body.div.h2:15-9
 msgid "Content"
@@ -206,7 +201,6 @@ msgid "Edit in terminal"
 msgstr "Modifica nel terminale"
 
 #: po/en/help.html%2Bhtml.body.div.ol.li:21-13
-#, fuzzy
 msgid "Dist-upgrade distributions"
 msgstr "Aggiorna le distribuzioni"
 
@@ -219,9 +213,8 @@ msgid "Localize the ISOs"
 msgstr "Localizza le ISO"
 
 #: po/en/help.html%2Bhtml.body.div.ol.li:24-13
-#, fuzzy
 msgid "Use Debian live as base"
-msgstr "8. Usa Debian live come base"
+msgstr "Usa Debian live come base"
 
 #: po/en/help.html%2Bhtml.body.div.ol.li:25-13
 msgid "Important files"
@@ -232,9 +225,8 @@ msgid "1. Add distribution"
 msgstr "1. Aggiungi distribuzione"
 
 #: po/en/help.html%2Bhtml.body.div.p:29-9
-#, fuzzy
 msgid "Unpack an ISO"
-msgstr "Scompatta e Salva"
+msgstr "Scompatta una ISO"
 
 #: po/en/help.html%2Bhtml.body.div.p:30-9
 msgid ""
@@ -250,19 +242,17 @@ msgstr ""
 "il percorso all'ISO esiste."
 
 #: po/en/help.html%2Bhtml.body.div.p:33-9
-#, fuzzy
 msgid "Add an existing directory"
 msgstr "Aggiungi una directory esistente"
 
 #: po/en/help.html%2Bhtml.body.div.p:34-9
-#, fuzzy
 msgid ""
 "If you previously unpacked an ISO, and removed the distribution from ISO "
 "Constructor's list, you can add the existing directory by unchecking the "
 "\"Create from ISO\" checkbox"
 msgstr ""
 "Se hai precedentemente spacchettato una ISO e rimosso la distribuzione "
-"dall'elenco di SolydXK Constructor puoi aggiungere la directory esistente "
+"dall'elenco di ISO Constructor puoi aggiungere la directory esistente "
 "deselezionando la casella \"Crea da ISO\"."
 
 #: po/en/help.html%2Bhtml.body.div.p:36-9
@@ -305,9 +295,8 @@ msgid ""
 msgstr ""
 
 #: po/en/help.html%2Bhtml.body.div.h2:49-31
-#, fuzzy
 msgid "5. Upgrade distributions"
-msgstr "1. Aggiungi distribuzione"
+msgstr ""
 
 #: po/en/help.html%2Bhtml.body.div.p:50-9
 msgid ""
@@ -428,10 +417,9 @@ msgid "9. Important files"
 msgstr "9. File importanti"
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:81-13
-#, fuzzy
 msgid "~/.constructor/distributions.list: list with distribution directories."
 msgstr ""
-"~/.constructor/distros.list: vi si trovano tutte le directory della "
+"~/.constructor/distributions.list: vi si trovano tutte le directory della "
 "distribuaione salvate."
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:82-13
@@ -447,89 +435,23 @@ msgid ""
 msgstr ""
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:84-13
-#, fuzzy
 msgid ""
 "/usr/share/iso-constructor/cleanup.sh: this script cleans up prior to "
 "building the ISO."
 msgstr ""
-"/usr/lib/solydxk/constructor/files/trackers: questo script fa pulizia prima "
-"di creare l'ISO."
+"/usr/share/iso-constructor/trackers: questo script fa pulizia prima di "
+"creare l'ISO."
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:85-13
-#, fuzzy
 msgid ""
 "/usr/share/iso-constructor/setlocale.sh: sets the locale of the ISO. Default "
 "is: en_US"
 msgstr ""
-"/usr/lib/solydxk/constructor/files/setlocale.sh: imposta la localizzazione "
-"della ISO. Predefinita è en_US"
+"/usr/share/iso-constructor/setlocale.sh: imposta la localizzazione della "
+"ISO. Predefinita è en_US"
 
 #: po/en/help.html%2Bhtml.body.div.ul.li:86-13
-#, fuzzy
 msgid ""
 "/usr/share/iso-constructor/excludes: list with directories excluded from the "
 "ISO build."
 msgstr ""
-"/usr/lib/solydxk/constructor/files/setlocale.sh: imposta la localizzazione "
-"della ISO. Predefinita è en_US"
-
-#, fuzzy
-#~| msgid "1. Add distribution"
-#~ msgid "<a href=\"#add\">Add distribution</a>"
-#~ msgstr "1. Aggiungi distribuzione"
-
-#, fuzzy
-#~| msgid "2. Remove distributions"
-#~ msgid "<a href=\"#remove\">Remove distributions</a>"
-#~ msgstr "2. Rimuovi distribuzioni"
-
-#, fuzzy
-#~| msgid "2. Remove distributions"
-#~ msgid "<a href=\"#open\">Open directory</a>"
-#~ msgstr "2. Rimuovi distribuzioni"
-
-#, fuzzy
-#~| msgid "4. Edit in terminal"
-#~ msgid "<a href=\"#edit\">Edit in terminal</a>"
-#~ msgstr "4. Modifica nel terminale"
-
-#, fuzzy
-#~| msgid "1. Add distribution"
-#~ msgid "<a href=\"#upgrade\">Dist-upgrade distributions</a>"
-#~ msgstr "1. Aggiungi distribuzione"
-
-#, fuzzy
-#~| msgid "1. Add distribution"
-#~ msgid "<a href=\"#build\">Build ISOs</a>"
-#~ msgstr "1. Aggiungi distribuzione"
-
-#, fuzzy
-#~| msgid "Use Debian live as base"
-#~ msgid "<a href=\"#debian\">Use Debian live as base</a>"
-#~ msgstr "Usa Debian live come base"
-
-#, fuzzy
-#~| msgid "4. Edit in terminal"
-#~ msgid "<a href=\"#files\">Important files</a>"
-#~ msgstr "4. Modifica nel terminale"
-
-#, fuzzy
-#~| msgid "Unpack an ISO"
-#~ msgid "<strong>Unpack an ISO</strong>"
-#~ msgstr "Scompatta una ISO"
-
-#~ msgid "SolydXK Constructor"
-#~ msgstr "SolydXK Constructor"
-
-#~ msgid "Select SolydXK ISO"
-#~ msgstr "Seleziona l'ISO Di SolydXK"
-
-#~ msgid "ISO constructor for SolydXK"
-#~ msgstr "ISO constructor di SolydXK"
-
-#~ msgid ""
-#~ "You can download SolydXK ISOs here: <a href=\"https://downloads.solydxk."
-#~ "com\" target=\"_blank\">https://downloads.solydxk.com</a>"
-#~ msgstr ""
-#~ "Puoi scaricare le ISO di SolydXK da qui:<a href=\"https://downloads."
-#~ "solydxk.com\" target=\"_blank\">https://downloads.solydxk.com</a>"

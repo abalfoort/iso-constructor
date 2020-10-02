@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div id="background"></div>
-	<h1>ISO Constructor Help</h1>
+	<h1>Ajuda del Constructor de ISO</h1>
 
 	<div class="main">	
         <p>ISO Constructor helps building your custom Debian ISO, and was originally
@@ -35,9 +35,9 @@ desempaquetar-hi l'ISO.</p>
         <p>El botó per navegar pel directori de desempaquetat apareix i hi hi camí fins
 a l'ISO.</p>
         <p><strong>Add an existing directory</strong></p>
-        <p>If you previously unpacked an ISO, and removed the distribution from ISO
-Constructor's list, you can add the existing directory by unchecking the
-"Create from ISO" checkbox</p>
+        <p>Si heu desempaquetat un ISO abans, i eliminat la distribució de la llista de
+ISO Constructor, podeu afegir el directori existent desmarcant la casella de
+"Crear des d'ISO". </p>
         <img alt="" src="../link/addexistingdistrowindow.png" />
         <p>El botó Desa apareix només si hi ha el camí vers l'ISO i existeix el
 directori de desempaquetat.</p>
@@ -102,17 +102,18 @@ pena per una CE (Community Edition).</p>
 
         <a name="files"></a><h2>9. Fitxers importants</h2>
         <ul>
-            <li>~/.constructor/distributions.list: list with distribution directories.</li>
-            <li>/usr/share/iso-constructor/grubgen.sh: generates boot/boot/grub/grub.cfg
-(with grub-template).</li>
-            <li>/usr/share/iso-constructor/isolinuxgen.sh: generates
-boot/isolinux/isolinux.cfg (with isolinux-template).</li>
-            <li>/usr/share/iso-constructor/cleanup.sh: this script cleans up prior to
-building the ISO.</li>
-            <li>/usr/share/iso-constructor/setlocale.sh: sets the locale of the ISO. Default
-is: en_US</li>
-            <li>/usr/share/iso-constructor/excludes: list with directories excluded from the
-ISO build.</li>
+            <li>~/.constructor/distributions.list: aquí es desen tots els directoris de
+distribució.</li>
+            <li>/usr/share/iso-constructor/grubgen.sh: genera boot/boot/grub/grub.cfg (amb
+grub-template).</li>
+            <li>/usr/share/iso-constructor/isolinuxgen.sh: genera boot/isolinux/isolinux.cfg
+(amb isolinux-template).</li>
+            <li>/usr/share/iso-constructor/cleanup.sh: Aquest script fa la neteja abans de
+construir l'ISO.</li>
+            <li>/usr/share/iso-constructor/setlocale.sh: configura el locale de la
+lISO. Per omissió és: en_US</li>
+            <li>/usr/share/iso-constructor/excludes: llista amb els directoris exclosos de
+la construcció de la ISO.</li>
         </ul>
 	</div>
 </body>
