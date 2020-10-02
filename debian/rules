@@ -45,6 +45,7 @@ override_dh_builddeb:
 	dh_builddeb
 	# Cleanup build directory when done
 	rm -rf ./debian/$(source)
+	rm -rf ./debian/solydxk-constructor
 
 update:
 	# Push pot file to Transifex
