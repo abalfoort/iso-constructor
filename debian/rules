@@ -32,10 +32,8 @@ override_dh_auto_clean:
 	# Save new version in version.py
 	sed -i "s/^\(__version__\s*=\s*\).*\$$/\1'$(shell dpkg-parsechangelog -S Version)'/" version.py
 	# Cleanup first
-	rm -rf ./po/mo ./po/pot ./.pybuild ./build
-	mkdir ./po/mo ./po/pot
-	# Clean HTML
-	po4a --rm-translations po4a.cfg
+	rm -rf ./po/mo  ./po/pot ./.pybuild ./build
+	mkdir ./po/mo  ./po/pot
 
 override_dh_auto_install: update $(patsubst %.po,%.mo,$(wildcard ./po/*.po))
 	# Set destination directory when co-building a transition package
@@ -90,7 +88,7 @@ update:
 	done && echo "Desktop files scanned for translations"
 
 	# Create pot files from html files
-	@ html2po -i ./po/en -o ./po/pot -P --duplicates=merge && echo "HTML pot files created"
+	#@ html2po -i ./po/en -o ./po/pot -P --duplicates=merge && echo "HTML pot files created"
 
 	# Get strings from policy files
 	@ for POLICY in $(policyfiles); do \
@@ -121,12 +119,12 @@ update:
 	done && echo "Desktop files updated with new translations"
 
 	# Translate HTML files
-	@ po4a po4a.cfg
+	#@ po4a po4a.cfg
 
 	# Do not ship incomplete html translations
-	@ NRNEEDED=$(shell ls ./po/en | wc -l); \
-	for D in $(shell echo ./po/translated/*); do \
-		if [ $$NRNEEDED -gt `ls $${D} | wc -l` ]; then \
-			rm -rvf "$${D}"; \
-		fi; \
-	done && echo "HTML files scanned for translations"
+	#@ NRNEEDED=$(shell ls ./po/en | wc -l); \
+	#for D in $(shell echo ./po/translated/*); do \
+	#	if [ $$NRNEEDED -gt `ls $${D} | wc -l` ]; then \
+	#		rm -rvf "$${D}"; \
+	#	fi; \
+	#done && echo "HTML files scanned for translations"

@@ -21,6 +21,7 @@ class Terminal(Vte.Terminal):
         self.connect('contents-changed', self.on_contents_changed)
 
         # Properties
+        self.pause_logging = False
         self.log_file = None
         self.enable_copy_paste = True
         self.set_scroll_on_output(True)
@@ -55,11 +56,12 @@ class Terminal(Vte.Terminal):
             None                                  #callback data
             )
            
-    def feed(self, command, wait_until_done=False):
+    def feed(self, command, wait_until_done=False, disable_scrolling=True, pause_logging=False):
         if self._cmd_is_running:
             return
         self._cancellable.reset()
         self.grab_focus()
+        self.pause_logging = pause_logging
         command += '\n'
         self.feed_child(command.encode())
 
@@ -78,8 +80,9 @@ class Terminal(Vte.Terminal):
             # So, disable scrolling while running the command
             parent_is_sensitive = False
             try:
-                parent_is_sensitive = self.get_parent().get_sensitive()
-                self.get_parent().set_sensitive(False)
+                if disable_scrolling:
+                    parent_is_sensitive = self.get_parent().get_sensitive()
+                    self.get_parent().set_sensitive(False)
             except:
                 pass
             # First, wait until the last character is not a prompt sign
@@ -93,6 +96,10 @@ class Terminal(Vte.Terminal):
             if parent_is_sensitive: self.get_parent().set_sensitive(True)
             # Command is done
             self._cmd_is_running = False
+        
+        # Reset pause on logging
+        self.pause_logging = False
+
         
     def cancel(self):
         self._cancellable.cancel()
@@ -108,7 +115,7 @@ class Terminal(Vte.Terminal):
         
     def on_contents_changed(self, terminal):
         # Log the content of the terminal
-        if self.log_file != None:
+        if self.log_file and not self.pause_logging:
             column, row = self.get_cursor_position()
             if self._last_row != row:
                 text = self.get_text_range(self._last_row, 0, row, -1)[0]

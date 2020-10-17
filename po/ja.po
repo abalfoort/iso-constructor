@@ -1,79 +1,80 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# ふうせん Fu-sen. | BALLOON a.k.a. Fu-sen., 2017
+# ふうせん Fu-sen. | BALLOON a.k.a. Fu-sen., 2020
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: solydxk-constructor\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 07:16+0200\n"
-"PO-Revision-Date: 2017-04-25 18:41+0000\n"
-"Last-Translator: Arjen Balfoort <schoelje@solydxk.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/solydxk/solydxk-"
-"constructor/language/ja/)\n"
+"POT-Creation-Date: 2020-10-17 21:49+0200\n"
+"PO-Revision-Date: 2020-10-02 13:14+0000\n"
+"Last-Translator: ふうせん Fu-sen. | BALLOON a.k.a. Fu-sen., 2020\n"
+"Language-Team: Japanese (https://www.transifex.com/abalfoort/teams/54212/"
+"ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: iso-constructor/__init__.py:85 data/iso-constructor.desktop.in.h:1
-#, fuzzy
-msgid "ISO Constructor"
-msgstr "SolydXK Constructor"
-
-#: iso-constructor/__init__.py:86
-msgid "Select all"
-msgstr "すべて選択"
-
-#: iso-constructor/__init__.py:87
-msgid "Add"
-msgstr "追加"
-
-#: iso-constructor/__init__.py:88
-msgid "View log file"
-msgstr ""
-
-#: iso-constructor/__init__.py:89
+#: iso-constructor/__init__.py:85
 msgid "Remove"
 msgstr "削除"
 
-#: iso-constructor/__init__.py:90
+#: iso-constructor/__init__.py:86 data/iso-constructor.desktop.in.h:1
+msgid "ISO Constructor"
+msgstr ""
+
+#: iso-constructor/__init__.py:87
+msgid "Select all"
+msgstr "すべて選択"
+
+#: iso-constructor/__init__.py:88
+msgid "Add"
+msgstr "追加"
+
+#: iso-constructor/__init__.py:89
+msgid "View log file"
+msgstr ""
+
+#: iso-constructor/__init__.py:91
 msgid "Edit"
 msgstr "編集"
 
-#: iso-constructor/__init__.py:91
+#: iso-constructor/__init__.py:92
 msgid "Upgrade"
 msgstr "更新"
 
-#: iso-constructor/__init__.py:92
+#: iso-constructor/__init__.py:93
 msgid "Localize"
 msgstr "言語化"
 
-#: iso-constructor/__init__.py:93
+#: iso-constructor/__init__.py:94
 msgid "Build"
 msgstr "ビルド"
 
-#: iso-constructor/__init__.py:94
+#: iso-constructor/__init__.py:95
 msgid "Help"
 msgstr "ヘルプ"
 
-#: iso-constructor/__init__.py:97
-#, fuzzy
-msgid "Add Distribution"
-msgstr "ディストリビューション"
-
 #: iso-constructor/__init__.py:98
+msgid "Add Distribution"
+msgstr ""
+
+#: iso-constructor/__init__.py:99
 msgid "ISO"
 msgstr "ISO"
 
-#: iso-constructor/__init__.py:100
+#: iso-constructor/__init__.py:101
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: iso-constructor/__init__.py:137
+#: iso-constructor/__init__.py:138
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -81,29 +82,28 @@ msgstr ""
 "選択したディストリビューションをリストから削除してもよろしいですか？\n"
 "(ディレクトリとそのデータは削除されません)"
 
-#: iso-constructor/__init__.py:233
-#, fuzzy
+#: iso-constructor/__init__.py:242
 msgid "Select ISO file"
-msgstr "すべて選択"
+msgstr ""
 
-#: iso-constructor/__init__.py:241
+#: iso-constructor/__init__.py:250
 msgid "Select directory"
 msgstr "ディレクトリを選択"
 
-#: iso-constructor/__init__.py:251
+#: iso-constructor/__init__.py:260
 msgid "Save existing working directory"
 msgstr "既存の作業ディレクトリを保存"
 
-#: iso-constructor/__init__.py:253
+#: iso-constructor/__init__.py:262
 msgid "Unpack ISO and save"
 msgstr "ISO を展開・保存"
 
-#: iso-constructor/__init__.py:260
+#: iso-constructor/__init__.py:269
 #, python-format
 msgid "Could not create directory %(dir)s: exiting"
 msgstr "ディレクトリ %(dir)s を生成できません: 終了します"
 
-#: iso-constructor/__init__.py:267
+#: iso-constructor/__init__.py:276
 msgid ""
 "The path to the ISO file does not exist:\n"
 "{}"
@@ -111,7 +111,7 @@ msgstr ""
 "ISO ファイルへのパスが存在しません:\n"
 "{}"
 
-#: iso-constructor/__init__.py:272
+#: iso-constructor/__init__.py:281
 msgid ""
 "The destination directory is not empty.\n"
 "Are you sure you want to overwrite all data in {}?"
@@ -119,31 +119,31 @@ msgstr ""
 "先のディレクトリは空ではありません。\n"
 "{} の全データを上書きしてもよろしいですか？?"
 
-#: iso-constructor/__init__.py:329
+#: iso-constructor/__init__.py:338
 msgid "Unpack ISO to directory"
 msgstr "ISO の展開先ディレクトリ"
 
-#: iso-constructor/__init__.py:330
+#: iso-constructor/__init__.py:339
 msgid "Unpack & Save"
 msgstr "展開・保存"
 
-#: iso-constructor/__init__.py:338
+#: iso-constructor/__init__.py:347
 msgid "Work directory"
 msgstr "作業ディレクトリ"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:348
 msgid "Save"
 msgstr "保存"
 
-#: iso-constructor/__init__.py:346
+#: iso-constructor/__init__.py:355
 msgid "Select"
 msgstr "選択"
 
-#: iso-constructor/__init__.py:346
+#: iso-constructor/__init__.py:355
 msgid "Distribution"
 msgstr "ディストリビューション"
 
-#: iso-constructor/__init__.py:346
+#: iso-constructor/__init__.py:355
 msgid "Working directory"
 msgstr "作業ディレクトリ"
 
@@ -151,399 +151,7 @@ msgstr "作業ディレクトリ"
 msgid "Tool to build and maintain Debian ISOs"
 msgstr ""
 
-#: po/en/help.html%2Bhtml.body.h1:8-2
-#, fuzzy
-msgid "ISO Constructor Help"
-msgstr "SolydXK Constructor"
-
-#: po/en/help.html%2Bhtml.body.div.p:11-9
-msgid ""
-"ISO Constructor is a tool to build and maintain custom Debian Live ISOs."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.h2:13-9
-msgid "Content"
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ol.li:15-13
-#, fuzzy
-msgid "Add distribution"
-msgstr "ディストリビューション"
-
-#: po/en/help.html%2Bhtml.body.div.ol.li:16-13
-#, fuzzy
-msgid "Remove distributions"
-msgstr "ディストリビューション"
-
-#: po/en/help.html%2Bhtml.body.div.ol.li:17-13
-#, fuzzy
-msgid "Edit distributions"
-msgstr "ディストリビューション"
-
-#: po/en/help.html%2Bhtml.body.div.ol.li:18-13
-#, fuzzy
-msgid "Dist-upgrade distributions"
-msgstr "ディストリビューション"
-
-#: po/en/help.html%2Bhtml.body.div.ol.li:19-13
-#, fuzzy
-msgid "Localize the ISOs"
-msgstr "言語化"
-
-#: po/en/help.html%2Bhtml.body.div.ol.li:20-13
-#, fuzzy
-msgid "Build ISOs"
-msgstr "ビルド"
-
-#: po/en/help.html%2Bhtml.body.div.ol.li:21-13
-msgid "Important files"
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.h2:24-27
-#, fuzzy
-msgid "1. Add distribution"
-msgstr "ディストリビューション"
-
-#: po/en/help.html%2Bhtml.body.div.p:25-9
-#, fuzzy
-msgid "Unpack an ISO"
-msgstr "展開・保存"
-
-#: po/en/help.html%2Bhtml.body.div.p:26-9
-msgid ""
-"Browse for the downloaded ISO, and select a directory to unpack the ISO to."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.p:28-9
-msgid ""
-"The button to browse for the unpack directory comes available if the path to "
-"the ISO exists."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.p:29-9
-#, fuzzy
-msgid "Add an existing directory"
-msgstr "既存の作業ディレクトリを保存"
-
-#: po/en/help.html%2Bhtml.body.div.p:30-9
-msgid ""
-"If you previously unpacked an ISO, and removed the distribution from ISO "
-"Constructor's list, you can add the existing directory by unchecking the "
-"\"Create from ISO\" checkbox."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.p:32-9
-msgid ""
-"The Save button comes available if both the path to the ISO, and the unpack "
-"directory exist."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.h2:34-30
-#, fuzzy
-msgid "2. Remove distributions"
-msgstr "ディストリビューション"
-
-#: po/en/help.html%2Bhtml.body.div.p:35-9
-msgid ""
-"This will only remove the selected distributions. The distribution "
-"directory, and its contents will NOT be deleted."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.h2:37-28
-#, fuzzy
-msgid "3. Edit distributions"
-msgstr "ディストリビューション"
-
-#: po/en/help.html%2Bhtml.body.div.p:38-9
-msgid ""
-"The embedded terminal will start a chroot session where you can run any "
-"commands you wish to customize your distribution."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.p:39-9
-msgid "To exit the chroot session, hit Ctrl-D (enter), or type: exit (enter)."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.h2:41-31
-#, fuzzy
-msgid "4. Upgrade distributions"
-msgstr "ディストリビューション"
-
-#: po/en/help.html%2Bhtml.body.div.p:42-9
-msgid ""
-"Simply runs \"apt-get dist-upgrade\" but taking into account that some "
-"services need to be handled before and after the upgrade."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.h2:44-32
-#, fuzzy
-msgid "5. Localize the ISOs"
-msgstr "言語化"
-
-#: po/en/help.html%2Bhtml.body.div.p:45-9
-msgid ""
-"ISO Constructor by default generates a boot menu where the user can select "
-"their own locale when starting a live session."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.p:46-9
-msgid ""
-"When you wish to localize the distribution to a specific locale you can use "
-"this option."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ol.li.p:48-17
-msgid "Set the desired locale."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ol.li.p:49-17
-msgid "Set the default locale."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ol.li.p:50-17
-msgid "Set the time zone."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.p:52-9
-msgid "The following actions are automated:"
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:54-13
-msgid "Change the live configuration if available."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:55-13
-msgid ""
-"When needed, install packages for KDE, Firefox, Thunderbird, LibreOffice and "
-"other localization packages."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.p:57-9
-msgid ""
-"Do not forget to translate the Grub and Isolinux menu. See the note below on "
-"editing the Grub and Isolinux templates."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.h2:59-29
-#, fuzzy
-msgid "6. Build ISOs"
-msgstr "ビルド"
-
-#: po/en/help.html%2Bhtml.body.div.p:60-9
-msgid "This consists of these steps:"
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:62-13
-msgid "Download offline packages if needed."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:63-13
-msgid "Install firmware drivers."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:64-13
-msgid "Cleanup the system: remove orphaned and unavailable packages."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:65-13
-msgid "Build a bootable system from root."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:66-13
-msgid "Configure Grub and Isolinux.*"
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:67-13
-msgid "Build the ISO and generate a sha256 file."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.p:69-9
-msgid ""
-"* To customize the Grub and Isolinux boot menus you can create and edit the "
-"templates in ~/.iso-constructor/:"
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.p.pre:70-12
-msgid "cp /usr/share/iso-constructor/grub-template ~/.iso-constructor/"
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.p.pre:71-12
-msgid "cp /usr/share/iso-constructor/isolinux-template ~/.iso-constructor/"
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.h2:73-29
-msgid "7. Important files"
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:75-13
-msgid "~/.constructor/distributions.list: list with distribution directories."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:76-13
-msgid "~/.constructor/iso-constructor.log: log file."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:77-13
-msgid "~/.constructor/grub-template (optional): custom Grub template."
-msgstr ""
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:78-13
-msgid "~/.constructor/isolinux-template (optional): custom Isolinux template."
-msgstr ""
-
 #. (itstool) path: action/message
 #: data/org.debian.pkexec.iso-constructor.policy:8
 msgid "Authentication is required to run ISO Constructor"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a href=\"#add\">Add distribution</a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a href=\"#remove\">Remove distributions</a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a href=\"#edit\">Edit distributions</a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a href=\"#upgrade\">Dist-upgrade distributions</a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a href=\"#localize\">Localize the ISOs</a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a href=\"#build\">Build ISOs</a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a href=\"#files\">Important files</a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a name=\"add\"></a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~| msgid "Unpack & Save"
-#~ msgid "<strong>Unpack an ISO</strong>"
-#~ msgstr "展開・保存"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a name=\"remove\"></a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a name=\"edit\"></a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a name=\"upgrade\"></a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a name=\"localize\"></a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a name=\"build\"></a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a name=\"files\"></a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~ msgid "Open distribution directory"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~ msgid "Edit in terminal"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~ msgid "3. Open directory"
-#~ msgstr "ディレクトリを選択"
-
-#, fuzzy
-#~ msgid "4. Edit in terminal"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~ msgid "Open directory"
-#~ msgstr "ディレクトリを選択"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a href=\"#edit\">Edit in terminal</a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a name=\"open\"></a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~ msgid "Upgrade done"
-#~ msgstr "更新"
-
-#~ msgid "Services detected"
-#~ msgstr "サービスが検出されました"
-
-#~ msgid "Version"
-#~ msgstr "バージョン"
-
-#~ msgid "Existing working directory added"
-#~ msgstr "既存の作業ディレクトリが追加されました"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a name=\"debian\"></a>"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~ msgid "SolydXK Constructor"
-#~ msgstr "SolydXK Constructor"
-
-#~ msgid "Select SolydXK ISO"
-#~ msgstr "SolydXK ISO を選択"
-
-#~ msgid "ISO constructor for SolydXK"
-#~ msgstr "ISO constructor for SolydXK"
-
-#, fuzzy
-#~ msgid "Icon=solydxk-constructor"
-#~ msgstr "SolydXK Constructor"
-
-#, fuzzy
-#~| msgid "Unpack & Save"
-#~ msgid "<strong>Note</strong>"
-#~ msgstr "展開・保存"
-
-#, fuzzy
-#~| msgid "Distribution"
-#~ msgid "<a name=\"upgrade\"></a>5. Dist-upgrade distributions"
-#~ msgstr "ディストリビューション"
-
-#, fuzzy
-#~ msgctxt "en/help.html html.body.h1:10"
-#~ msgid "SolydXK Constructor Help"
-#~ msgstr "SolydXK Constructor"

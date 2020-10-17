@@ -5,9 +5,7 @@ Maintainer: Arjen Balfoort <arjenbalfoort@solydxk.com>
 Build-Depends: debhelper-compat (= 12)
   , dh-python
   , python3-all
-  , intltool
   , itstool
-  , po4a
   , transifex-client
   , translate-toolkit
 Standards-Version: 4.5.0
@@ -31,6 +29,7 @@ Depends: ${misc:Depends}, ${python3:Depends}
   , mtools
   , uni2ascii
   , grub-efi-amd64-bin
+  , sensible-utils
 Conflicts: solydxk-constructor (<= 3.7.3)
 Replaces: solydxk-constructor (<= 3.7.3)
 Description: Create custom Debian Live ISOs

@@ -82,11 +82,12 @@ class Constructor(object):
         self.chkFromIso = go('chkFromIso')
 
         # Main window translations
+        self.remove_text = _("Remove")
         self.window.set_title(_("ISO Constructor"))
         self.chkSelectAll.set_label(_("Select all"))
         self.btnAdd.set_tooltip_text(_("Add"))
         self.btnLog.set_tooltip_text(_("View log file"))
-        self.btnRemove.set_tooltip_text(_("Remove"))
+        self.btnRemove.set_tooltip_text(self.remove_text)
         self.btnEdit.set_tooltip_text(_("Edit"))
         self.btnUpgrade.set_tooltip_text(_("Upgrade"))
         self.btnLocalize.set_tooltip_text(_("Localize"))
@@ -133,7 +134,7 @@ class Constructor(object):
     def on_btnRemove_clicked(self, widget):
         selected = self.tvHandlerDistros.getToggledValues(toggleColNr=0, valueColNr=2)
         for path in selected:
-            answer = QuestionDialog(self.btnRemove.get_label().replace('_', ''),
+            answer = QuestionDialog(self.remove_text,
                                   _("Are you sure you want to remove the selected distribution from the list?\n" \
                                   "(This will not remove the directory and its data)"))
             if answer:
@@ -149,7 +150,7 @@ class Constructor(object):
 
             # Edit the distribution in a chroot session
             command =  'iso-constructor -e "{path}"'.format(path=path)
-            self.terminal.feed(command)
+            self.terminal.feed(command=command)
             
             # Check for flag file (created by chrootScript) and wait
             flag = '{path}/root/.tmp'.format(path=path)
@@ -166,7 +167,7 @@ class Constructor(object):
             
             # Upgrade the distribtution
             command =  'iso-constructor -u "{path}"'.format(path=path)
-            self.terminal.feed(command, True)
+            self.terminal.feed(command=command, wait_until_done=True)
         self.enable_gui_elements(True)
 
     def on_btnLocalize_clicked(self, widget):
@@ -177,7 +178,7 @@ class Constructor(object):
             
             # Localize the distribution
             command = 'iso-constructor -l "{path}"'.format(path=path)
-            self.terminal.feed(command)
+            self.terminal.feed(command=command)
             
             # Check for flag file (created by chrootScript) and wait
             flag = '{path}/root/.tmp'.format(path=path)
@@ -197,7 +198,7 @@ class Constructor(object):
                 
                 # Build the ISO
                 command = 'iso-constructor -b "{path}"'.format(path=path)
-                self.terminal.feed(command, True)
+                self.terminal.feed(command=command, wait_until_done=True)
         self.enable_gui_elements(True)
 
     def on_chkSelectAll_toggled(self, widget):
@@ -207,10 +208,18 @@ class Constructor(object):
         self.tvHandlerDistros.treeviewToggleRows(toggleColNrList=[0])
 
     def on_btnHelp_clicked(self, widget):
-        system("bash {sharedir}/open-as-user {html}".format(sharedir=self.shareDir, html=self.help))
+        self.enable_gui_elements(False)
+        command = 'man iso-constructor'
+        self.terminal.feed(command=command, wait_until_done=True, disable_scrolling=False, pause_logging=True)
+        self.enable_gui_elements(True)
+        #system("bash {sharedir}/open-as-user {html}".format(sharedir=self.shareDir, html=self.help))
            
     def on_btnLog_clicked(self, widget):
-        system("bash {sharedir}/open-as-user {log}".format(sharedir=self.shareDir, log=self.log_file))
+        self.enable_gui_elements(False)
+        command = 'sensible-editor {log}'.format(log=self.log_file)
+        self.terminal.feed(command=command, wait_until_done=True, disable_scrolling=False, pause_logging=True)
+        self.enable_gui_elements(True)
+        #system("bash {sharedir}/open-as-user {log}".format(sharedir=self.shareDir, log=self.log_file))
     
     def on_constructorWindow_destroy(self, widget):
         # Close the app
@@ -280,7 +289,7 @@ class Constructor(object):
                 
                 # Start unpacking the ISO
                 command = 'iso-constructor -U "{iso}" "{target}"'.format(iso=self.iso, target=self.dir)
-                self.terminal.feed(command, True)
+                self.terminal.feed(command=command, wait_until_done=True)
                 
                 self.enable_gui_elements(True)
             else:
@@ -382,7 +391,7 @@ class Constructor(object):
             self.btnUpgrade.set_sensitive(False)
             self.btnLocalize.set_sensitive(False)
             self.btnDir.set_sensitive(False)
-            #self.btnHelp.set_sensitive(False)
+            self.btnHelp.set_sensitive(False)
         else:
             self.terminal.set_input_enabled(False)
             self.chkSelectAll.set_sensitive(True)
@@ -395,7 +404,7 @@ class Constructor(object):
             self.btnUpgrade.set_sensitive(True)
             self.btnLocalize.set_sensitive(True)
             self.btnDir.set_sensitive(True)
-            #self.btnHelp.set_sensitive(True)
+            self.btnHelp.set_sensitive(True)
 
     def save_dist_file(self, distroPath, addDistro=True):
         newCont = []

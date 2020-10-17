@@ -1,6 +1,2 @@
 data/files/*           usr/share/iso-constructor/
 data/buttons         usr/share/iso-constructor/
-po/mo/*                usr/share/locale/
-po/link                   usr/share/iso-constructor/html/
-po/en                     usr/share/iso-constructor/html/
-po/translated/*     usr/share/iso-constructor/html/
