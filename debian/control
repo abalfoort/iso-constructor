@@ -33,8 +33,8 @@ Depends: ${misc:Depends}, ${python3:Depends}
   , grub-efi-amd64-bin
 Conflicts: solydxk-constructor (<= 3.7.3)
 Replaces: solydxk-constructor (<= 3.7.3)
-Description: Create custom Debian ISO files
- Tool to build and maintain Debian ISO files.
+Description: Create custom Debian Live ISOs
+ Tool to build and maintain custom Debian Live ISOs.
 
 Package: solydxk-constructor
 Architecture: all

@@ -8,23 +8,17 @@
 	<h1>ISO Constructor Help</h1>
 
 	<div class="main">	
-        <p>195/5000
-ISO Constructor helpt bij het bouwen van uw aangepaste Debian ISO, en was
-oorspronkelijk gecreëerd voor het behoud van SolydXK ISO's, maar het kan
-degenen helpen die hun aangepaste Debian ISO willen bouwen.</p>
-        
-        <p><img alt="" src="../link/mainwindow.png" /></p>
+        <p>ISO Constructor is een tool om Debian Live ISO's te bouwen en te
+onderhouden.</p>
 
         <h2>Inhoud</h2>
         <ol>
             <li><a href="#add">Add distribution</a></li>
             <li><a href="#remove">Remove distributions</a></li>
-            <li><a href="#open">Open directory</a></li>
-            <li><a href="#edit">Edit in terminal</a></li>
+            <li><a href="#edit">Edit distributions</a></li>
             <li><a href="#upgrade">Dist-upgrade distributions</a></li>
-            <li><a href="#build">Build ISOs</a></li>
             <li><a href="#localize">Localize the ISOs</a></li>
-            <li><a href="#debian">Use Debian live as base</a></li>
+            <li><a href="#build">Build ISOs</a></li>
             <li><a href="#files">Important files</a></li>
         </ol>
 
@@ -46,74 +40,57 @@ ISO bestaat.</p>
         <a name="remove"></a><h2>2. Distributie verwijderen</h2>
         <p>Dit verwijdert alleen de geselecteerde distributies. De distributie map, en
 de inhoud ervan, worden NIET verwijderd.</p>
-        <img alt="" src="../link/removedistro.png" />
 
-        <a name="open"></a><h2>3. Open map</h2>
-        <p>Opent de geselecteerde map in het standaard bestandsbeheer programma.</p>
+        <a name="edit"></a><h2>3. Distributies bewerken</h2>
+        <p>De ingebedde terminal zal een chroot-sessie starten waar u alle commando's
+kunt uitvoeren die u wenst om uw distributie aan te passen.</p>
+        <p>Om de chroot-sessie af te sluiten, druk op Ctrl-D (enter), of typ: exit
+(enter).</p>
 
-        <a name="edit"></a><h2>4. Bewerk in de terminal</h2>
-        <p>Open een chrooted terminal en begin met het installeren (en verwijderen) van
-alle benodigde pakketten. Het is makkelijker om de configuratie in de
-hoofdmap van de distributie te wijzigen, en niet via deze terminal.</p>
-        <img alt="" src="../link/terminal.png" />
-
-        <a name="upgrade"></a><h2>5. Upgrade distributies</h2>
+        <a name="upgrade"></a><h2>4. Distributies upgraden</h2>
         <p>Voert "apt-get dist-upgrade" uit maar houdt er rekening mee dat sommige
 services voor en na de upgrade moeten worden afgehandeld.</p>
-        
-        <a name="build"></a><h2>6. Bouw ISO's</h2>
-        <p>Dit bestaat uit de volgende stappen:</p>
-        <ul>
-            <li>Download offline pakketten (/lib/live/mount/medium/offline).</li>
-            <li>Installeer alle firmware drivers.</li>
-            <li>Verwijder verweesde en niet-beschikbare pakketten (inclusief de oude
-kernel).</li>
-            <li>Configureer het systeem.</li>
-        </ul>
-        <p>Het bouwproces kan lang duren. Als u het proces moet stoppen voordat het
-eindigt, kunt u een terminal openen en het volgende uitvoeren:</p>
-        <div class="code">sudo killall mksquashfs</div>
-        <p>U dient dat te herhalen als u meer dan één distributie in de lijst
-geselecteerd heeft.</p>
-        
-        <a name="localize"></a><h2>7. Lokaliseer de ISO's</h2>
-        <p>Dit zal uw ISO lokaliseren door de taal en tijdzone in te stellen en bestaat
-uit 6 verschillende stappen:</p>
+
+        <a name="localize"></a><h2>5. Lokaliseer de ISO's</h2>
+        <p>ISO Constructor genereert standaard een opstartmenu waarbij de gebruiker
+zijn eigen taal kan selecteren bij het starten van een live sessie.</p>
+        <p>Wanneer u de distributie wilt lokaliseren naar een specifieke taal kunt u
+deze optie gebruiken.</p>
         <ol>
             <li><p>Stel de gewenste taal in.</p><img alt="" src="../link/configurelocales1.png" /></li>
             <li><p>Stel de default taal in.</p><img alt="" src="../link/configurelocales2.png" /></li>
             <li><p>Stel de tijdzone in.</p><img alt="" src="../link/configuretimezone1.png" /> <img alt="" src="../link/configuretimezone2.png" /></li>
-            <li>Verander de live configuratie (/etc/live/config.conf).</li>
-            <li>Upgrade (apt-get dist-upgrade).</li>
-            <li>Indien nodig installeer pakketten voor KDE, Firefox, Thunderbird,
-LibreOffice en andere lokalisatiepakketten. Controleer het script
-setlocale.sh voor taal specifieke pakketten.</li>
         </ol>
-        <p>Vergeet niet boot/boot/grub/grub.cfg en boot/isolinux/isolinux.cfg van de
-ISO te vertalen.</p>
+        <p>De volgende acties zijn geautomatiseerd:</p>
+        <ul>
+            <li>Wijzig de live configuratie indien beschikbaar.</li>
+            <li>Indien nodig installeer pakketten voor KDE, Firefox, Thunderbird,
+LibreOffice en andere lokalisatiepakketten.</li>
+        </ul>
+        <p>Vergeet niet het Grub- en Isolinuxmenu te vertalen. Zie de opmerking
+hieronder over het bewerken van de Grub en Isolinux templates.</p>
+        
+        <a name="build"></a><h2>6. Bouw ISO's</h2>
+        <p>Dit bestaat uit de volgende stappen:</p>
+        <ul>
+            <li>Wanneer nodig, download offline pakketten.</li>
+            <li>Installeer firmware drivers.</li>
+            <li>Schoon het systeem op: verwijder verweesde en niet-beschikbare pakketten.</li>
+            <li>Bouw een systeem van root dat kan starten.</li>
+            <li>Configureer Grub en Isolinux. *</li>
+            <li>Bouw de ISO and genereer een sha256 bestand.</li>
+        </ul>
+        <p>* Om de Grub en Isolinux boot menu's aan te passen, kunt u de templates
+maken en aanpassen in ~/.iso-constructor/:</p>
+        <p><pre>cp /usr/share/iso-constructor/grub-template ~/.iso-constructor/</pre></p>
+        <p><pre>cp /usr/share/iso-constructor/isolinux-template ~/.iso-constructor/</pre></p>
 
-        <a name="debian"></a><h2>8. Gebruik Debian live als basis</h2>
-        <p>U kunt zelfs een Debian Live DVD gebruiken als basis: <a
-href="http://www.debian.org/CD/live" target="_blank">
-http://www.debian.org/CD/live </a> Als u Debian gebruikt, heeft u de map
-"isolinux" (met inhoud) nodig om de map "isolinux" te vervangen in de Debian
-uitpak-map. Daarna dient u de distributie vanaf het begin te
-configureren. Het is veel werk, maar voor een CE (Community Edition) is het
-de moeite waard.</p>
-
-        <a name="files"></a><h2>9. Belangrijke bestanden</h2>
+        <a name="files"></a><h2>7. Belangrijke bestanden</h2>
         <ul>
             <li>~/.constructor/distributions.list: hier worden de distributiemappen bewaard.</li>
-            <li>/usr/share/iso-constructor/grubgen.sh: genereert boot/boot/grub/grub.cfg
-(met grub-template).</li>
-            <li>/usr/share/iso-constructor/isolinuxgen.sh: genereert
-boot/isolinux/isolinux.cfg (met isolinux-template).</li>
-            <li>/usr/share/iso-constructor/cleanup.sh: dit script ruimt op voordat de ISO
-gebouwd wordt.</li>
-            <li>/usr/share/iso-constructor/setlocale.sh: Stelt de taal van de ISO
-in. Standaard is: en_US</li>
-            <li>/usr/share/iso-constructor/excludes: lijst met mappen die zijn uitgesloten
-van de ISO-bouw.</li>
+            <li>~/.constructor/iso-constructor.log: log bestand.</li>
+            <li>~/.constructor/grub-template (optioneel): aangepaste Grub template.</li>
+            <li>~/.constructor/isolinux-template (optioneel): aangepaste Isolinux template.</li>
         </ul>
 	</div>
 </body>

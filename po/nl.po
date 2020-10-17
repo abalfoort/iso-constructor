@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 16:14+0200\n"
+"POT-Creation-Date: 2020-10-17 07:18+0200\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/abalfoort/teams/54212/nl/)\n"
@@ -21,59 +21,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: iso-constructor/__init__.py:89 data/iso-constructor.desktop.in.h:1
+#: iso-constructor/__init__.py:85 data/iso-constructor.desktop.in.h:1
 msgid "ISO Constructor"
 msgstr "ISO Constructor"
 
-#: iso-constructor/__init__.py:90
+#: iso-constructor/__init__.py:86
 msgid "Select all"
 msgstr "Selecteer alles"
 
-#: iso-constructor/__init__.py:91
+#: iso-constructor/__init__.py:87
 msgid "Add"
 msgstr "Toevoegen"
 
-#: iso-constructor/__init__.py:92
+#: iso-constructor/__init__.py:88
+msgid "View log file"
+msgstr "Logbestand bekijken"
+
+#: iso-constructor/__init__.py:89
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: iso-constructor/__init__.py:93
+#: iso-constructor/__init__.py:90
 msgid "Edit"
 msgstr "Bewerken"
 
-#: iso-constructor/__init__.py:94
+#: iso-constructor/__init__.py:91
 msgid "Upgrade"
 msgstr "Upgrade"
 
-#: iso-constructor/__init__.py:95
+#: iso-constructor/__init__.py:92
 msgid "Localize"
 msgstr "Lokaliseer"
 
-#: iso-constructor/__init__.py:96
+#: iso-constructor/__init__.py:93
 msgid "Build"
 msgstr "Bouwen"
 
-#: iso-constructor/__init__.py:97
+#: iso-constructor/__init__.py:94
 msgid "Help"
 msgstr "Help"
 
-#: iso-constructor/__init__.py:100
+#: iso-constructor/__init__.py:97
 msgid "Add Distribution"
 msgstr "Distributie toevoegen"
 
-#: iso-constructor/__init__.py:101
+#: iso-constructor/__init__.py:98
 msgid "ISO"
 msgstr "ISO"
 
-#: iso-constructor/__init__.py:103
+#: iso-constructor/__init__.py:100
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: iso-constructor/__init__.py:125
-msgid "Version"
-msgstr "Versie"
-
-#: iso-constructor/__init__.py:144
+#: iso-constructor/__init__.py:137
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -82,48 +82,28 @@ msgstr ""
 "verwijderen?\n"
 "(Dit zal de map met gegevens NIET verwijderen)"
 
-#: iso-constructor/__init__.py:166
-msgid "Services detected"
-msgstr "Services gededecteerd"
-
-#: iso-constructor/__init__.py:188
-msgid "Upgrade done"
-msgstr "Upgrade voltooid"
-
-#: iso-constructor/__init__.py:263
-msgid "Select"
-msgstr "Selecteer"
-
-#: iso-constructor/__init__.py:263
-msgid "Distribution"
-msgstr "Distributie"
-
-#: iso-constructor/__init__.py:263
-msgid "Working directory"
-msgstr "Werkdirectory"
-
-#: iso-constructor/__init__.py:304
+#: iso-constructor/__init__.py:233
 msgid "Select ISO file"
 msgstr "Selecteer ISO bestand"
 
-#: iso-constructor/__init__.py:312
+#: iso-constructor/__init__.py:241
 msgid "Select directory"
 msgstr "Selecteer map"
 
-#: iso-constructor/__init__.py:322
+#: iso-constructor/__init__.py:251
 msgid "Save existing working directory"
 msgstr "Bewaar bestaande werkmap"
 
-#: iso-constructor/__init__.py:324
+#: iso-constructor/__init__.py:253
 msgid "Unpack ISO and save"
 msgstr "ISO uitpakken en bewaren"
 
-#: iso-constructor/__init__.py:330
+#: iso-constructor/__init__.py:260
 #, python-format
 msgid "Could not create directory %(dir)s: exiting"
 msgstr "Kon map %(dir)s niet maken: verlaten"
 
-#: iso-constructor/__init__.py:335
+#: iso-constructor/__init__.py:267
 msgid ""
 "The path to the ISO file does not exist:\n"
 "{}"
@@ -131,7 +111,7 @@ msgstr ""
 "Het pad naar het ISO bestand bestaat niet:\n"
 "{}"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:272
 msgid ""
 "The destination directory is not empty.\n"
 "Are you sure you want to overwrite all data in {}?"
@@ -139,34 +119,37 @@ msgstr ""
 "De doeldirectory is niet leeg.\n"
 "Weet u zeker dat u alle data in {} wilt overschrijven?"
 
-#: iso-constructor/__init__.py:353
-msgid "Existing working directory added"
-msgstr "Bestaande werkmap toegevoegd"
-
-#: iso-constructor/__init__.py:394
+#: iso-constructor/__init__.py:329
 msgid "Unpack ISO to directory"
 msgstr "ISO uitpakken naar map"
 
-#: iso-constructor/__init__.py:395
+#: iso-constructor/__init__.py:330
 msgid "Unpack & Save"
 msgstr "Uitpakken en bewaren"
 
-#: iso-constructor/__init__.py:403
+#: iso-constructor/__init__.py:338
 msgid "Work directory"
 msgstr "Werkmap"
 
-#: iso-constructor/__init__.py:404
+#: iso-constructor/__init__.py:339
 msgid "Save"
 msgstr "Bewaren"
+
+#: iso-constructor/__init__.py:346
+msgid "Select"
+msgstr "Selecteer"
+
+#: iso-constructor/__init__.py:346
+msgid "Distribution"
+msgstr "Distributie"
+
+#: iso-constructor/__init__.py:346
+msgid "Working directory"
+msgstr "Werkdirectory"
 
 #: data/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"
 msgstr "Tool om Debian ISO's te bouwen en te onderhouden"
-
-#. (itstool) path: action/message
-#: data/com.debian.pkexec.iso-constructor.policy:8
-msgid "Authentication is required to run ISO Constructor"
-msgstr "Verificatie is vereist om ISO Constructor uit te voeren"
 
 #: po/en/help.html%2Bhtml.body.h1:8-2
 msgid "ISO Constructor Help"
@@ -174,71 +157,58 @@ msgstr "ISO Constructor Help"
 
 #: po/en/help.html%2Bhtml.body.div.p:11-9
 msgid ""
-"ISO Constructor helps building your custom Debian ISO, and was originally "
-"created for maintaining SolydXK ISOs, but it might benefit those who want to "
-"build their custom Debian ISO."
+"ISO Constructor is a tool to build and maintain custom Debian Live ISOs."
 msgstr ""
-"195/5000\n"
-"ISO Constructor helpt bij het bouwen van uw aangepaste Debian ISO, en was "
-"oorspronkelijk gecreëerd voor het behoud van SolydXK ISO's, maar het kan "
-"degenen helpen die hun aangepaste Debian ISO willen bouwen."
+"ISO Constructor is een tool om Debian Live ISO's te bouwen en te onderhouden."
 
-#: po/en/help.html%2Bhtml.body.div.h2:15-9
+#: po/en/help.html%2Bhtml.body.div.h2:13-9
 msgid "Content"
 msgstr "Inhoud"
 
-#: po/en/help.html%2Bhtml.body.div.ol.li:17-13
+#: po/en/help.html%2Bhtml.body.div.ol.li:15-13
 msgid "Add distribution"
 msgstr "Distributie toevoegen"
 
-#: po/en/help.html%2Bhtml.body.div.ol.li:18-13
+#: po/en/help.html%2Bhtml.body.div.ol.li:16-13
 msgid "Remove distributions"
 msgstr "Distributie verwijderen"
 
-#: po/en/help.html%2Bhtml.body.div.ol.li:19-13
-msgid "Open directory"
-msgstr "Open map"
+#: po/en/help.html%2Bhtml.body.div.ol.li:17-13
+msgid "Edit distributions"
+msgstr "Distributies bewerken"
 
-#: po/en/help.html%2Bhtml.body.div.ol.li:20-13
-msgid "Edit in terminal"
-msgstr "Bewerk in de terminal"
-
-#: po/en/help.html%2Bhtml.body.div.ol.li:21-13
+#: po/en/help.html%2Bhtml.body.div.ol.li:18-13
 msgid "Dist-upgrade distributions"
 msgstr "Dist-upgrade distributie"
 
-#: po/en/help.html%2Bhtml.body.div.ol.li:22-13
-msgid "Build ISOs"
-msgstr "Bouw ISO's"
-
-#: po/en/help.html%2Bhtml.body.div.ol.li:23-13
+#: po/en/help.html%2Bhtml.body.div.ol.li:19-13
 msgid "Localize the ISOs"
 msgstr "Lokaliseer de ISO's"
 
-#: po/en/help.html%2Bhtml.body.div.ol.li:24-13
-msgid "Use Debian live as base"
-msgstr "Gebruik Debian live als basis"
+#: po/en/help.html%2Bhtml.body.div.ol.li:20-13
+msgid "Build ISOs"
+msgstr "Bouw ISO's"
 
-#: po/en/help.html%2Bhtml.body.div.ol.li:25-13
+#: po/en/help.html%2Bhtml.body.div.ol.li:21-13
 msgid "Important files"
 msgstr "Belangrijke bestanden"
 
-#: po/en/help.html%2Bhtml.body.div.h2:28-27
+#: po/en/help.html%2Bhtml.body.div.h2:24-27
 msgid "1. Add distribution"
 msgstr "1. Distributie toevoegen"
 
-#: po/en/help.html%2Bhtml.body.div.p:29-9
+#: po/en/help.html%2Bhtml.body.div.p:25-9
 msgid "Unpack an ISO"
 msgstr "Een ISO Uitpakken"
 
-#: po/en/help.html%2Bhtml.body.div.p:30-9
+#: po/en/help.html%2Bhtml.body.div.p:26-9
 msgid ""
 "Browse for the downloaded ISO, and select a directory to unpack the ISO to."
 msgstr ""
 "Blader naar de gedownloade ISO, en selecteer een map om de ISO naar uit te "
 "pakken."
 
-#: po/en/help.html%2Bhtml.body.div.p:32-9
+#: po/en/help.html%2Bhtml.body.div.p:28-9
 msgid ""
 "The button to browse for the unpack directory comes available if the path to "
 "the ISO exists."
@@ -246,21 +216,21 @@ msgstr ""
 "De knop om naar de map uit te pakken komt beschikbaar als het pad naar de "
 "ISO bestaat."
 
-#: po/en/help.html%2Bhtml.body.div.p:33-9
+#: po/en/help.html%2Bhtml.body.div.p:29-9
 msgid "Add an existing directory"
 msgstr "Voeg een bestaande map toe"
 
-#: po/en/help.html%2Bhtml.body.div.p:34-9
+#: po/en/help.html%2Bhtml.body.div.p:30-9
 msgid ""
 "If you previously unpacked an ISO, and removed the distribution from ISO "
 "Constructor's list, you can add the existing directory by unchecking the "
-"\"Create from ISO\" checkbox"
+"\"Create from ISO\" checkbox."
 msgstr ""
 "Als u eerder een ISO hebt uitgepakt en u heeft de distributie van ISO "
 "Constructor's lijst verwijderd, kunt u de bestaande map toevoegen door het "
 "selectievakje 'Maak van ISO' uit te vinken."
 
-#: po/en/help.html%2Bhtml.body.div.p:36-9
+#: po/en/help.html%2Bhtml.body.div.p:32-9
 msgid ""
 "The Save button comes available if both the path to the ISO, and the unpack "
 "directory exist."
@@ -268,11 +238,11 @@ msgstr ""
 "De knop om naar de map uit te pakken komt beschikbaar als het pad naar de "
 "ISO bestaat."
 
-#: po/en/help.html%2Bhtml.body.div.h2:38-30
+#: po/en/help.html%2Bhtml.body.div.h2:34-30
 msgid "2. Remove distributions"
 msgstr "2. Distributie verwijderen"
 
-#: po/en/help.html%2Bhtml.body.div.p:39-9
+#: po/en/help.html%2Bhtml.body.div.p:35-9
 msgid ""
 "This will only remove the selected distributions. The distribution "
 "directory, and its contents will NOT be deleted."
@@ -280,33 +250,29 @@ msgstr ""
 "Dit verwijdert alleen de geselecteerde distributies. De distributie map, en "
 "de inhoud ervan, worden NIET verwijderd."
 
-#: po/en/help.html%2Bhtml.body.div.h2:42-28
-msgid "3. Open directory"
-msgstr "3. Open map"
+#: po/en/help.html%2Bhtml.body.div.h2:37-28
+msgid "3. Edit distributions"
+msgstr "3. Distributies bewerken"
 
-#: po/en/help.html%2Bhtml.body.div.p:43-9
-msgid "Opens the selected working directory in the default file manager."
-msgstr "Opent de geselecteerde map in het standaard bestandsbeheer programma."
-
-#: po/en/help.html%2Bhtml.body.div.h2:45-28
-msgid "4. Edit in terminal"
-msgstr "4. Bewerk in de terminal"
-
-#: po/en/help.html%2Bhtml.body.div.p:46-9
+#: po/en/help.html%2Bhtml.body.div.p:38-9
 msgid ""
-"Open a chrooted terminal, and start installing (and removing) all the "
-"packages you need. It's easier to change configuration in the distribution's "
-"root directory, and not through this terminal."
+"The embedded terminal will start a chroot session where you can run any "
+"commands you wish to customize your distribution."
 msgstr ""
-"Open een chrooted terminal en begin met het installeren (en verwijderen) van "
-"alle benodigde pakketten. Het is makkelijker om de configuratie in de "
-"hoofdmap van de distributie te wijzigen, en niet via deze terminal."
+"De ingebedde terminal zal een chroot-sessie starten waar u alle commando's "
+"kunt uitvoeren die u wenst om uw distributie aan te passen."
 
-#: po/en/help.html%2Bhtml.body.div.h2:49-31
-msgid "5. Upgrade distributions"
-msgstr "5. Upgrade distributies"
+#: po/en/help.html%2Bhtml.body.div.p:39-9
+msgid "To exit the chroot session, hit Ctrl-D (enter), or type: exit (enter)."
+msgstr ""
+"Om de chroot-sessie af te sluiten, druk op Ctrl-D (enter), of typ: exit "
+"(enter)."
 
-#: po/en/help.html%2Bhtml.body.div.p:50-9
+#: po/en/help.html%2Bhtml.body.div.h2:41-31
+msgid "4. Upgrade distributions"
+msgstr "4. Distributies upgraden"
+
+#: po/en/help.html%2Bhtml.body.div.p:42-9
 msgid ""
 "Simply runs \"apt-get dist-upgrade\" but taking into account that some "
 "services need to be handled before and after the upgrade."
@@ -314,166 +280,134 @@ msgstr ""
 "Voert \"apt-get dist-upgrade\" uit maar houdt er rekening mee dat sommige "
 "services voor en na de upgrade moeten worden afgehandeld."
 
-#: po/en/help.html%2Bhtml.body.div.h2:52-29
-msgid "6. Build ISOs"
-msgstr "6. Bouw ISO's"
+#: po/en/help.html%2Bhtml.body.div.h2:44-32
+msgid "5. Localize the ISOs"
+msgstr "5. Lokaliseer de ISO's"
 
-#: po/en/help.html%2Bhtml.body.div.p:53-9
-msgid "This consists of these steps:"
-msgstr "Dit bestaat uit de volgende stappen:"
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:55-13
-msgid "Download offline packages (/lib/live/mount/medium/offline)."
-msgstr "Download offline pakketten (/lib/live/mount/medium/offline)."
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:56-13
-msgid "Install all firmware drivers."
-msgstr "Installeer alle firmware drivers."
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:57-13
-msgid "Remove orphaned and unavailable packages (including the old kernel)."
-msgstr ""
-"Verwijder verweesde en niet-beschikbare pakketten (inclusief de oude kernel)."
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:58-13
-msgid "Configure the system."
-msgstr "Configureer het systeem."
-
-#: po/en/help.html%2Bhtml.body.div.p:60-9
+#: po/en/help.html%2Bhtml.body.div.p:45-9
 msgid ""
-"The building process can take a long time. If you need to quit the process "
-"before it ends, you can open a terminal and run:"
+"ISO Constructor by default generates a boot menu where the user can select "
+"their own locale when starting a live session."
 msgstr ""
-"Het bouwproces kan lang duren. Als u het proces moet stoppen voordat het "
-"eindigt, kunt u een terminal openen en het volgende uitvoeren:"
+"ISO Constructor genereert standaard een opstartmenu waarbij de gebruiker "
+"zijn eigen taal kan selecteren bij het starten van een live sessie."
 
-#: po/en/help.html%2Bhtml.body.div.div:61-9
-msgid "sudo killall mksquashfs"
-msgstr "sudo killall mksquashfs"
-
-#: po/en/help.html%2Bhtml.body.div.p:62-9
+#: po/en/help.html%2Bhtml.body.div.p:46-9
 msgid ""
-"You need to repeat that if you have more than one distribution selected in "
-"the list."
+"When you wish to localize the distribution to a specific locale you can use "
+"this option."
 msgstr ""
-"U dient dat te herhalen als u meer dan één distributie in de lijst "
-"geselecteerd heeft."
+"Wanneer u de distributie wilt lokaliseren naar een specifieke taal kunt u "
+"deze optie gebruiken."
 
-#: po/en/help.html%2Bhtml.body.div.h2:64-32
-msgid "7. Localize the ISOs"
-msgstr "7. Lokaliseer de ISO's"
-
-#: po/en/help.html%2Bhtml.body.div.p:65-9
-msgid ""
-"This will localize your ISO, setting language and time zone and consists of "
-"6 different steps:"
-msgstr ""
-"Dit zal uw ISO lokaliseren door de taal en tijdzone in te stellen en bestaat "
-"uit 6 verschillende stappen:"
-
-#: po/en/help.html%2Bhtml.body.div.ol.li.p:67-17
+#: po/en/help.html%2Bhtml.body.div.ol.li.p:48-17
 msgid "Set the desired locale."
 msgstr "Stel de gewenste taal in."
 
-#: po/en/help.html%2Bhtml.body.div.ol.li.p:68-17
+#: po/en/help.html%2Bhtml.body.div.ol.li.p:49-17
 msgid "Set the default locale."
 msgstr "Stel de default taal in."
 
-#: po/en/help.html%2Bhtml.body.div.ol.li.p:69-17
+#: po/en/help.html%2Bhtml.body.div.ol.li.p:50-17
 msgid "Set the time zone."
 msgstr "Stel de tijdzone in."
 
-#: po/en/help.html%2Bhtml.body.div.ol.li:70-13
-msgid "Change the live configuration (/etc/live/config.conf)."
-msgstr "Verander de live configuratie (/etc/live/config.conf)."
+#: po/en/help.html%2Bhtml.body.div.p:52-9
+msgid "The following actions are automated:"
+msgstr "De volgende acties zijn geautomatiseerd:"
 
-#: po/en/help.html%2Bhtml.body.div.ol.li:71-13
-msgid "Upgrade (apt-get dist-upgrade)."
-msgstr "Upgrade (apt-get dist-upgrade)."
+#: po/en/help.html%2Bhtml.body.div.ul.li:54-13
+msgid "Change the live configuration if available."
+msgstr "Wijzig de live configuratie indien beschikbaar."
 
-#: po/en/help.html%2Bhtml.body.div.ol.li:72-13
+#: po/en/help.html%2Bhtml.body.div.ul.li:55-13
 msgid ""
 "When needed, install packages for KDE, Firefox, Thunderbird, LibreOffice and "
-"other localization packages. Check the setlocale.sh script for locale "
-"specific packages."
+"other localization packages."
 msgstr ""
 "Indien nodig installeer pakketten voor KDE, Firefox, Thunderbird, "
-"LibreOffice en andere lokalisatiepakketten. Controleer het script setlocale."
-"sh voor taal specifieke pakketten."
+"LibreOffice en andere lokalisatiepakketten."
 
-#: po/en/help.html%2Bhtml.body.div.p:74-9
+#: po/en/help.html%2Bhtml.body.div.p:57-9
 msgid ""
-"Do not forget to translate boot/boot/grub/grub.cfg and boot/isolinux/"
-"isolinux.cfg of the ISO."
+"Do not forget to translate the Grub and Isolinux menu. See the note below on "
+"editing the Grub and Isolinux templates."
 msgstr ""
-"Vergeet niet boot/boot/grub/grub.cfg en boot/isolinux/isolinux.cfg van de "
-"ISO te vertalen."
+"Vergeet niet het Grub- en Isolinuxmenu te vertalen. Zie de opmerking "
+"hieronder over het bewerken van de Grub en Isolinux templates."
 
-#: po/en/help.html%2Bhtml.body.div.h2:76-30
-msgid "8. Use Debian live as base"
-msgstr "8. Gebruik Debian live als basis"
+#: po/en/help.html%2Bhtml.body.div.h2:59-29
+msgid "6. Build ISOs"
+msgstr "6. Bouw ISO's"
 
-#: po/en/help.html%2Bhtml.body.div.p:77-9
+#: po/en/help.html%2Bhtml.body.div.p:60-9
+msgid "This consists of these steps:"
+msgstr "Dit bestaat uit de volgende stappen:"
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:62-13
+msgid "Download offline packages if needed."
+msgstr "Wanneer nodig, download offline pakketten."
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:63-13
+msgid "Install firmware drivers."
+msgstr "Installeer firmware drivers."
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:64-13
+msgid "Cleanup the system: remove orphaned and unavailable packages."
+msgstr ""
+"Schoon het systeem op: verwijder verweesde en niet-beschikbare pakketten."
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:65-13
+msgid "Build a bootable system from root."
+msgstr "Bouw een systeem van root dat kan starten."
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:66-13
+msgid "Configure Grub and Isolinux.*"
+msgstr "Configureer Grub en Isolinux. *"
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:67-13
+msgid "Build the ISO and generate a sha256 file."
+msgstr "Bouw de ISO and genereer een sha256 bestand."
+
+#: po/en/help.html%2Bhtml.body.div.p:69-9
 msgid ""
-"You can even use a Debian Live DVD as a base: <a href=\"http://www.debian."
-"org/CD/live\" target=\"_blank\">http://www.debian.org/CD/live</a> If you use "
-"Debian, you'll need the \"isolinux\" directory (and its contents) to replace "
-"the \"isolinux\" directory in the Debian unpack directory. After that you'll "
-"need to configure the distribution from scratch. It's a lot of work, but for "
-"a CE (Community Edition) well worth it."
+"* To customize the Grub and Isolinux boot menus you can create and edit the "
+"templates in ~/.iso-constructor/:"
 msgstr ""
-"U kunt zelfs een Debian Live DVD gebruiken als basis: <a href=\"http://www."
-"debian.org/CD/live\" target=\"_blank\"> http://www.debian.org/CD/live </a> "
-"Als u Debian gebruikt, heeft u de map \"isolinux\" (met inhoud) nodig om de "
-"map \"isolinux\" te vervangen in de Debian uitpak-map. Daarna dient u de "
-"distributie vanaf het begin te configureren. Het is veel werk, maar voor een "
-"CE (Community Edition) is het de moeite waard."
+"* Om de Grub en Isolinux boot menu's aan te passen, kunt u de templates "
+"maken en aanpassen in ~/.iso-constructor/:"
 
-#: po/en/help.html%2Bhtml.body.div.h2:79-29
-msgid "9. Important files"
-msgstr "9. Belangrijke bestanden"
+#: po/en/help.html%2Bhtml.body.div.p.pre:70-12
+msgid "cp /usr/share/iso-constructor/grub-template ~/.iso-constructor/"
+msgstr "cp /usr/share/iso-constructor/grub-template ~/.iso-constructor/"
 
-#: po/en/help.html%2Bhtml.body.div.ul.li:81-13
+#: po/en/help.html%2Bhtml.body.div.p.pre:71-12
+msgid "cp /usr/share/iso-constructor/isolinux-template ~/.iso-constructor/"
+msgstr "cp /usr/share/iso-constructor/isolinux-template ~/.iso-constructor/"
+
+#: po/en/help.html%2Bhtml.body.div.h2:73-29
+msgid "7. Important files"
+msgstr "7. Belangrijke bestanden"
+
+#: po/en/help.html%2Bhtml.body.div.ul.li:75-13
 msgid "~/.constructor/distributions.list: list with distribution directories."
 msgstr ""
 "~/.constructor/distributions.list: hier worden de distributiemappen bewaard."
 
-#: po/en/help.html%2Bhtml.body.div.ul.li:82-13
-msgid ""
-"/usr/share/iso-constructor/grubgen.sh: generates boot/boot/grub/grub.cfg "
-"(with grub-template)."
-msgstr ""
-"/usr/share/iso-constructor/grubgen.sh: genereert boot/boot/grub/grub.cfg "
-"(met grub-template)."
+#: po/en/help.html%2Bhtml.body.div.ul.li:76-13
+msgid "~/.constructor/iso-constructor.log: log file."
+msgstr "~/.constructor/iso-constructor.log: log bestand."
 
-#: po/en/help.html%2Bhtml.body.div.ul.li:83-13
-msgid ""
-"/usr/share/iso-constructor/isolinuxgen.sh: generates boot/isolinux/isolinux."
-"cfg (with isolinux-template)."
-msgstr ""
-"/usr/share/iso-constructor/isolinuxgen.sh: genereert boot/isolinux/isolinux."
-"cfg (met isolinux-template)."
+#: po/en/help.html%2Bhtml.body.div.ul.li:77-13
+msgid "~/.constructor/grub-template (optional): custom Grub template."
+msgstr "~/.constructor/grub-template (optioneel): aangepaste Grub template."
 
-#: po/en/help.html%2Bhtml.body.div.ul.li:84-13
-msgid ""
-"/usr/share/iso-constructor/cleanup.sh: this script cleans up prior to "
-"building the ISO."
+#: po/en/help.html%2Bhtml.body.div.ul.li:78-13
+msgid "~/.constructor/isolinux-template (optional): custom Isolinux template."
 msgstr ""
-"/usr/share/iso-constructor/cleanup.sh: dit script ruimt op voordat de ISO "
-"gebouwd wordt."
+"~/.constructor/isolinux-template (optioneel): aangepaste Isolinux template."
 
-#: po/en/help.html%2Bhtml.body.div.ul.li:85-13
-msgid ""
-"/usr/share/iso-constructor/setlocale.sh: sets the locale of the ISO. Default "
-"is: en_US"
-msgstr ""
-"/usr/share/iso-constructor/setlocale.sh: Stelt de taal van de ISO in. "
-"Standaard is: en_US"
-
-#: po/en/help.html%2Bhtml.body.div.ul.li:86-13
-msgid ""
-"/usr/share/iso-constructor/excludes: list with directories excluded from the "
-"ISO build."
-msgstr ""
-"/usr/share/iso-constructor/excludes: lijst met mappen die zijn uitgesloten "
-"van de ISO-bouw."
+#. (itstool) path: action/message
+#: data/org.debian.pkexec.iso-constructor.policy:8
+msgid "Authentication is required to run ISO Constructor"
+msgstr "Verificatie is vereist om ISO Constructor uit te voeren"

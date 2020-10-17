@@ -32,7 +32,7 @@ override_dh_auto_clean:
 	# Save new version in version.py
 	sed -i "s/^\(__version__\s*=\s*\).*\$$/\1'$(shell dpkg-parsechangelog -S Version)'/" version.py
 	# Cleanup first
-	rm -rf ./po/mo ./po/pot
+	rm -rf ./po/mo ./po/pot ./.pybuild ./build
 	mkdir ./po/mo ./po/pot
 	# Clean HTML
 	po4a --rm-translations po4a.cfg

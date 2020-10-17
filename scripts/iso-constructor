@@ -1,16 +1,106 @@
 #!/bin/bash
 
-# Check if GUI is already started
-if ! pgrep -f python3.*iso-constructor &>/dev/null; then
-    if [ -t 1 ]; then
-        # Already in terminal
+if [ -z "$1" ] || [ "$1" == '-v' ] || [ "$1" == '--verbose' ]; then
+    # Check if GUI is already started
+    if ! pgrep -f 'python3 '.*iso-constructor &>/dev/null; then
         pkexec iso-constructor-pkexec $@
-    else
-        # Start in terminal
-        TERM=$(which x-terminal-emulator)
-        if [ -z $TERM ]; then
-            TERM=$(which xterm)
-        fi
-        eval "$TERM -e \"pkexec iso-constructor-pkexec $@\""
     fi
+    exit 0
+fi
+
+function usage() {
+    printf "
+ISO constructor Help
+Usage: iso-constructor [OPTIONS] [DISTRIBUTION_PATH]
+
+DISTRIBUTION_PATH contains the unpacked distribution with a boot and root directory.
+
+-b                      Build the distribution.
+-e                      Edit the distribution.
+-h                      This help screen.
+-l                       Localize the distribution.
+-u                      Update the distribution.
+-U [iso_path]   Unpack ISO
+
+No parameters           Start the GUI
+-v                      Starts GUI with verbose output
+"
+}
+
+# Set some variables
+BUILD=false
+EDIT=false
+LOCALIZE=false
+UPGRADE=false
+
+# Get parameters
+while getopts 'beluU:' OPT; do
+    case $OPT in
+        b)
+            # Build distribution
+            BUILD=true
+            ;;
+        e)
+            # Edit distribution
+            EDIT=true
+            ;;
+        l)
+            # Localize distribution
+            LOCALIZE=true
+            ;;
+        u)
+            # Upgrade distribution
+            UPGRADE=true
+            ;;
+        U)
+            # Unpack ISO
+            ISO=$OPTARG
+            ;;
+        h)
+            # Help
+            usage
+            exit 0
+            ;;
+        *)
+            usage
+            exit 1
+            ;;
+    esac
+done
+# Get required positional argument
+shift $(( OPTIND - 1 ))
+DISTPATH=${1?$( echo 'Missing distribution path.' )}
+
+# Path to chroot script
+CHROOT='/usr/share/iso-constructor/chroot-dir.sh'
+
+if [ ! -z "$ISO" ]; then
+    if [ ! -e "$ISO" ]; then
+        echo "$ISO does not exist - exiting"
+        exit 3
+    fi
+    eval "sudo bash /usr/share/iso-constructor/unpack.sh \"$ISO\" \"$DISTPATH\""
+fi
+
+# Check that it is a valid distribution path
+if [ ! -d "$DISTPATH/boot" ] && [ ! -d "$DISTPATH/root" ]; then
+    echo "$DISTPATH is not a valid distribution path - exiting"
+    exit 2
+fi
+
+if $EDIT; then
+    eval "sudo bash $CHROOT \"$DISTPATH/root\""
+fi
+
+if $UPGRADE; then
+    sudo cp '/usr/share/iso-constructor/upgrade.sh' "$DISTPATH/root/"
+    eval "sudo bash $CHROOT \"$DISTPATH/root\" \"bash /upgrade.sh; rm /upgrade.sh\""
+fi
+
+if $LOCALIZE; then
+    eval "sudo bash /usr/share/iso-constructor/localize.sh \"$DISTPATH\""
+fi
+
+if $BUILD; then
+    eval "sudo bash /usr/share/iso-constructor/build.sh \"$DISTPATH\""
 fi

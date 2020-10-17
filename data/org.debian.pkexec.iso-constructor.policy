@@ -4,7 +4,7 @@
  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
 <policyconfig>
 
-  <action id="com.debian.pkexec.iso-constructor">
+  <action id="org.debian.pkexec.iso-constructor">
     <message gettext-domain="iso-constructor">Authentication is required to run ISO Constructor</message>
     <icon_name>iso-constructor</icon_name>
     <defaults>
@@ -17,4 +17,3 @@
   </action>
 
 </policyconfig>
-

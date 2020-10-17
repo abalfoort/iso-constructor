@@ -27,28 +27,29 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">buttons/localize.svg</property>
   </object>
-  <object class="GtkImage" id="img_open">
+  <object class="GtkImage" id="img_log">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">buttons/open.svg</property>
-  </object>
-  <object class="GtkImage" id="img_reload">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">buttons/reload.svg</property>
+    <property name="pixbuf">buttons/log.svg</property>
   </object>
   <object class="GtkImage" id="img_remove">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">buttons/remove.svg</property>
   </object>
+  <object class="GtkImage" id="img_upgrade">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">buttons/upgrade.svg</property>
+  </object>
   <object class="GtkWindow" id="constructorWindow">
-    <property name="width_request">550</property>
-    <property name="height_request">350</property>
+    <property name="width_request">750</property>
+    <property name="height_request">500</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">ISO Constructor</property>
     <property name="window_position">mouse</property>
     <property name="icon_name">iso-constructor</property>
+    <property name="has_resize_grip">True</property>
     <signal name="destroy" handler="on_constructorWindow_destroy" swapped="no"/>
     <child type="titlebar">
       <placeholder/>
@@ -71,9 +72,7 @@
               <object class="GtkToolButton" id="btnAdd">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Add</property>
-                <property name="use_underline">True</property>
-                <property name="icon_widget">img_add</property>
+                <property name="label_widget">img_add</property>
                 <signal name="clicked" handler="on_btnAdd_clicked" swapped="no"/>
               </object>
               <packing>
@@ -85,47 +84,8 @@
               <object class="GtkToolButton" id="btnRemove">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Remove</property>
-                <property name="use_underline">True</property>
-                <property name="icon_widget">img_remove</property>
+                <property name="label_widget">img_remove</property>
                 <signal name="clicked" handler="on_btnRemove_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="homogeneous">True</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSeparatorToolItem" id="sep1">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="homogeneous">True</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkToolButton" id="btnOpenDir">
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Open dir</property>
-                <property name="use_underline">True</property>
-                <property name="icon_widget">img_open</property>
-                <signal name="clicked" handler="on_btnOpenDir_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="homogeneous">True</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkToolButton" id="btnEdit">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Terminal</property>
-                <property name="use_underline">True</property>
-                <property name="icon_widget">img_edit</property>
-                <signal name="clicked" handler="on_btnEdit_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -143,12 +103,22 @@
               </packing>
             </child>
             <child>
+              <object class="GtkToolButton" id="btnEdit">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label_widget">img_edit</property>
+                <signal name="clicked" handler="on_btnEdit_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkToolButton" id="btnUpgrade">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Upgrade</property>
-                <property name="use_underline">True</property>
-                <property name="icon_widget">img_reload</property>
+                <property name="label_widget">img_upgrade</property>
                 <signal name="clicked" handler="on_btnUpgrade_clicked" swapped="no"/>
               </object>
               <packing>
@@ -157,13 +127,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="btnBuildIso">
+              <object class="GtkToolButton" id="btnLocalize">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Build</property>
-                <property name="use_underline">True</property>
-                <property name="icon_widget">img_build</property>
-                <signal name="clicked" handler="on_btnBuildIso_clicked" swapped="no"/>
+                <property name="label_widget">img_localize</property>
+                <signal name="clicked" handler="on_btnLocalize_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -181,13 +149,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="btnLocalize">
+              <object class="GtkToolButton" id="btnBuildIso">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Localize</property>
-                <property name="use_underline">True</property>
-                <property name="icon_widget">img_localize</property>
-                <signal name="clicked" handler="on_btnLocalize_clicked" swapped="no"/>
+                <property name="label_widget">img_build</property>
+                <signal name="clicked" handler="on_btnBuildIso_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -195,9 +161,24 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSeparatorToolItem" id="sep4">
+              <object class="GtkToolItem" id="sep4">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="btnLog">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label_widget">img_log</property>
+                <signal name="clicked" handler="on_btnLog_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -208,9 +189,7 @@
               <object class="GtkToolButton" id="btnHelp">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Help</property>
-                <property name="use_underline">True</property>
-                <property name="icon_widget">img_help</property>
+                <property name="label_widget">img_help</property>
                 <signal name="clicked" handler="on_btnHelp_clicked" swapped="no"/>
               </object>
               <packing>
@@ -247,20 +226,52 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow1">
+              <object class="GtkViewport">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-                <property name="shadow_type">in</property>
+                <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkTreeView" id="tvDistros">
+                  <object class="GtkPaned">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="headers_visible">False</property>
-                    <signal name="row-activated" handler="on_tvDistros_row_activated" swapped="no"/>
-                    <child internal-child="selection">
-                      <object class="GtkTreeSelection" id="treeview-selection"/>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkScrolledWindow" id="scrolledwindow1">
+                        <property name="height_request">150</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="shadow_type">in</property>
+                        <child>
+                          <object class="GtkTreeView" id="tvDistros">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="headers_visible">False</property>
+                            <signal name="row-activated" handler="on_tvDistros_row_activated" swapped="no"/>
+                            <child internal-child="selection">
+                              <object class="GtkTreeSelection"/>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="resize">False</property>
+                        <property name="shrink">True</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScrolledWindow" id="swTve">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="shadow_type">in</property>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="resize">True</property>
+                        <property name="shrink">True</property>
+                      </packing>
                     </child>
                   </object>
                 </child>
@@ -273,22 +284,9 @@
             </child>
           </object>
           <packing>
-            <property name="expand">False</property>
+            <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkStatusbar" id="statusbar">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="orientation">vertical</property>
-            <property name="spacing">2</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
           </packing>
         </child>
       </object>
@@ -301,6 +299,7 @@
     <property name="modal">True</property>
     <property name="window_position">center-on-parent</property>
     <property name="destroy_with_parent">True</property>
+    <property name="urgency_hint">True</property>
     <property name="transient_for">constructorWindow</property>
     <signal name="delete-event" handler="on_addDistroWindow_delete_event" swapped="no"/>
     <child type="titlebar">
@@ -514,5 +513,9 @@
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkTextBuffer" id="txbOutputBuffer">
+    <property name="text" translatable="yes">ISO Constructor Log
+</property>
   </object>
 </interface>

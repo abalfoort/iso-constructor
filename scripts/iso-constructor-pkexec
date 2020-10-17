@@ -7,7 +7,7 @@ ARGS=$@
 DEBUG='-OO'
 for ARG in "$ARGS"; do
   case $ARG in
-    -d|--debug)
+    -v)
       DEBUG='-Wd'
       ;;
     *)

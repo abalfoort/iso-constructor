@@ -4,12 +4,18 @@
 # Depends upon uni2ascii
 
 # Set variables
-FILESDIR='/usr/lib/iso-constructor'
-GRUBTEMPLATE="$FILESDIR/grub-template"
+SHAREDIR='/usr/share/iso-constructor'
+USERDIR="/home/$(logname)/.iso-constructor"
+GRUBTEMPLATE="$SHAREDIR/grub-template"
+if [ -f "$USERDIR/grub-template" ]; then
+    GRUBTEMPLATE="$USERDIR/grub-template"
+fi
 GRUB='boot/grub/grub.cfg'
 LARRAY=()
 ROOTDIR=$1
 TITLE=$(egrep 'DISTRIB_DESCRIPTION|PRETTY_NAME' ../root/etc/*release | head -n 1 | cut -d'=' -f 2  | tr -d '"')
+
+echo '> Start creating grub boot configuration'
 
 # Get installed kernels and generate menus
 VMLINUZFILES=$(ls live/vmlinuz* | sort)
@@ -43,17 +49,17 @@ sed -i "s|\[MENUPLUS\]|$MENUPLUS|" "$GRUB"
 
 # Get grub font
 BOOTFONT=$(ls boot/grub/*.pf2 | head -n 1)
-if [ -z $BOOTFONT ]; then
+if [ -z "$BOOTFONT" ]; then
     UNIFONT=$(ls ../root/boot/grub/*.pf2 | head -n 1)
     cp "$UNIFONT" boot/grub/
     BOOTFONT=$(ls boot/grub/*.pf2 | head -n 1)
 fi
-sed -i "s|\[BOOTFONT\]|$BOOTFONT|" "$GRUB"
+sed -i "s|\[BOOTFONT\]|/$BOOTFONT|" "$GRUB"
 
 # Get theme
-ROOTTHEME=( ../root/boot/grub/themes/*/theme.txt )
+ROOTTHEME=$(find ../root/boot/grub/themes -name "theme.txt" 2>/dev/null)
 THEME=''
-if [ ! -z $ROOTTHEME ]; then
+if [ ! -z "$ROOTTHEME" ]; then
     # Copy the theme to boot directory
     RTDN=$(dirname $ROOTTHEME)
     THEMENAME=${RTDN##*/}
@@ -69,7 +75,7 @@ if [ ! -z $ROOTTHEME ]; then
     THEME="$THEME\n    export theme"
     # Copy flags
     mkdir -p "boot/grub/themes/$THEMENAME/icons/"
-    cp -r "$FILESDIR/flags" "boot/grub/themes/$THEMENAME/icons/"
+    cp -r "$SHAREDIR/flags" "boot/grub/themes/$THEMENAME/icons/"
 fi
 sed -i "s|\[THEME\]|$THEME|" "$GRUB"
 
@@ -88,7 +94,7 @@ else
             #LNAME=$(egrep '^language' "$LPATH" | grep -oP '(?<=").*?(?=")')
             
             # Add to array if language name was found
-            if [ "$LNAME" != '' ]; then
+            if [ ! -z "$LNAME" ]; then
                 LARRAY+=("$LNAME|$LOCALE")
             fi
         fi

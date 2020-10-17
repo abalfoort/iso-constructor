@@ -14,9 +14,9 @@ SCRIPTS=['scripts/iso-constructor', 'scripts/iso-constructor-pkexec']
 DATA_FILES=[
     ('share/man/man1', ['man/iso-constructor.1']),
     ('share/applications', ['data/iso-constructor.desktop']),
+    ('share/iso-constructor', ['data/iso-constructor.glade']),
     ('share/icons/hicolor/scalable/apps', ['data/iso-constructor.svg']),
-    ('share/iso-constructor', ['data/iso-constructor.glade', 'data/done.wav']),
-    ('share/polkit-1/actions', ['data/com.debian.pkexec.iso-constructor.policy'])
+    ('share/polkit-1/actions', ['data/org.debian.pkexec.iso-constructor.policy'])
 ]
 
 # Load the package's version.py module as a dictionary.

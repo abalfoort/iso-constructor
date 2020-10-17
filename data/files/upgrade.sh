@@ -6,7 +6,7 @@ export DEBIAN_FRONTEND=noninteractive
 APT="yes '' | apt-get -y -o DPkg::options::=--force-confdef -o DPkg::options::=--force-confold" 
 
 # Check for old debian release
-. /etc/lsb-release
+DISTRIB_RELEASE=$(egrep '^DISTRIB_RELEASE|^VERSION_ID|^VERSION' /etc/*release | head -n 1 | cut -d'=' -f 2  | tr -d '"')
 if [ "$DISTRIB_RELEASE" -lt 8 ]; then
     APT='apt-get --force-yes'
 fi
@@ -24,3 +24,6 @@ apt-get update
 start_stop_services start
 eval $APT dist-upgrade
 start_stop_services stop
+
+echo
+echo 'Upgrade finished'

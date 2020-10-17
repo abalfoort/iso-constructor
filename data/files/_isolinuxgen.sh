@@ -4,11 +4,18 @@
 # Depends upon uni2ascii
 
 # Set variables
-ISOLINUXTEMPLATE='/usr/lib/iso-constructor/files/isolinux-template'
+SHAREDIR='/usr/share/iso-constructor'
+USERDIR="/home/$(logname)/.iso-constructor"
+ISOLINUXTEMPLATE="$SHAREDIR/isolinux-template"
+if [ -f "$USERDIR/isolinux-template" ]; then
+    ISOLINUXTEMPLATE="$USERDIR/isolinux-template"
+fi
 ISOLINUX='isolinux/isolinux.cfg'
 LARRAY=()
 ROOTDIR=$1
 TITLE=$(egrep 'DISTRIB_DESCRIPTION|PRETTY_NAME' ../root/etc/*release | head -n 1 | cut -d'=' -f 2  | tr -d '"')
+
+echo '> Start creating isolinux boot configuration'
 
 # Get installed kernels and generate menus
 VMLINUZFILES=$(ls live/vmlinuz* | sort)
@@ -56,7 +63,7 @@ else
             LNAME=$(egrep '^language' "$LPATH" | grep -oP '(?<=").*?(?=")')
             
             # Add to array if language name was found
-            if [ "$LNAME" != '' ]; then
+            if [ ! -z "$LNAME" ]; then
                 LARRAY+=("$LNAME|$LOCALE")
             fi
         fi

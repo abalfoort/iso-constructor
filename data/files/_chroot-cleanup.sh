@@ -6,7 +6,7 @@ export DEBIAN_FRONTEND=noninteractive
 APT="yes '' | apt-get -y -o DPkg::options::=--force-confdef -o DPkg::options::=--force-confold" 
 
 # Check for old debian release
-. /etc/lsb-release
+DISTRIB_RELEASE=$(egrep '^DISTRIB_RELEASE|^VERSION_ID|^VERSION' /etc/*release | head -n 1 | cut -d'=' -f 2  | tr -d '"')
 if [ "$DISTRIB_RELEASE" -lt 8 ]; then
     APT='apt-get --force-yes'
 fi
@@ -31,78 +31,85 @@ if which gconftool-2 >/dev/null; then
     gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --type string --set /apps/blueman/transfer/browse_command 'thunar --browser obex://[%d]'
 fi
 
-echo '> Download offline packages'
-if [ -d offline ]; then
-    rm -r offline
-fi
-mkdir offline
-cd offline
-[ "$(dpkg --print-architecture)" == "amd64" ] && F=i386 || F=amd64
-DEPS=$(LANG=C apt-cache depends $OFFLINEPCKS | sed -r '/.+:'$F'|Breaks:|Conflicts:|Enhances:|Provides:|Replaces:|Suggests|Recommends|PreDepends:.+/d; s/^ .*: //')
-for DEP in $DEPS; do
-    SKIP=false
-    for SPCK in $SKIPOFFLINEPCKS; do
-        if [ "$DEP" == "$SPCK" ]; then
-            SKIP=true
-            break
-        fi
-    done
-    if ! $SKIP; then
-        if [ "${DEP: -4}" != '-dbg' ] && [ "${DEP: -4}" != '-dev' ]; then
-            if [ $(LANG=C dpkg-query -W -f='${Status}' $DEP 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
-                apt-get download $DEP 2>/dev/null
+if [ -e /usr/bin/live-installer-3 ]; then
+    echo '> Download offline packages for live-installer-3'
+    if [ -d offline ]; then
+        rm -r offline
+    fi
+    mkdir offline
+    cd offline
+    [ "$(dpkg --print-architecture)" == "amd64" ] && F=i386 || F=amd64
+    DEPS=$(LANG=C apt-cache depends $OFFLINEPCKS | sed -r '/.+:'$F'|Breaks:|Conflicts:|Enhances:|Provides:|Replaces:|Suggests|Recommends|PreDepends:.+/d; s/^ .*: //')
+    for DEP in $DEPS; do
+        SKIP=false
+        for SPCK in $SKIPOFFLINEPCKS; do
+            if [ "$DEP" == "$SPCK" ]; then
+                SKIP=true
+                break
+            fi
+        done
+        if ! $SKIP; then
+            if [ "${DEP: -4}" != '-dbg' ] && [ "${DEP: -4}" != '-dev' ]; then
+                if [ $(LANG=C dpkg-query -W -f='${Status}' $DEP 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
+                    apt-get download $DEP 2>/dev/null
+                fi
             fi
         fi
-    fi
-done
-cd ../
+    done
+    cd ../
+fi
 
 echo '> Make sure all firmware drivers are installed but do not install from backports'
-FIRMWARE=$(aptitude search ^firmware | grep ^p | egrep -v 'adi|ralink|-dl|-doc|-dbgsym|micropython|qcom-media' | awk '{print $2}')
-for F in $FIRMWARE; do
-    STABLE=$(apt-cache policy $F | grep 500 2>/dev/null)
-    if [ "$STABLE" != "" ]; then
-        eval $APT install $F
+FIRMWARE=$(dpkg-query -W -f='${binary:Package} ${db:Status-Status} ${Version}\n' 'firmware*'  | grep not-installed | egrep -v 'micropython|-dl|-doc|-dbgsym')
+while IFS= read -r F; do
+    #echo "        $F: $(echo "$F" | wc -w)"
+    if [ "$(echo "$F" | wc -w)" -eq 3 ]; then
+        F=$(echo "$F" | awk '{print $1}')
+        if [ ! -z "$(apt-cache policy $F | grep 500 2>/dev/null)" ]; then
+            eval $APT install $F
+        fi
     fi
-done
+done <<< "$FIRMWARE"
 
 echo '> Cleanup'
 apt-get clean
 eval $APT autoremove
-aptitude -y purge ~c
 
 # Remove old kernel and headers
 VERSION=$(ls -al / | grep -e "\svmlinuz\s" | cut -d'/' -f2 | cut -d'-' -f2,3)
-if [ "$VERSION" != "" ]; then
-    OLDKERNEL=$(aptitude search linux-image-[0-9] linux-headers-[0-9] | grep ^i | grep -v "$VERSION" | egrep -v "[a-z]-486|[a-z]-686|[a-z]-586" | cut -d' ' -f 3)
-    if [ "$OLDKERNEL" != "" ]; then
+if [ ! -z "$VERSION" ]; then
+    OLDKERNEL=$(dpkg-query -W -f='${db:Status-Abbrev} ${binary:Package}\n' 'linux-image-[0-9]*' 'linux-headers-[0-9]*' | grep ^i | grep -v "$VERSION" | egrep -v "[a-z]-486|[a-z]-686|[a-z]-586" | awk '{print $2}')
+    if [ ! -z "$OLDKERNEL" ]; then
         echo "> Remove old kernel packages:\n$OLDKERNEL"
         eval $APT purge $OLDKERNEL
-        KBCNT=$(aptitude search linux-kbuild | grep ^i | wc -l)
+        KBCNT=$(dpkg-query -W -f='${db:Status-Abbrev} ${binary:Package}\n' 'linux-kbuild*' | grep ^i | wc -l)
         if [ $KBCNT -gt 1 ]; then
-            eval $APT purge $(aptitude search linux-kbuild | grep ^i | egrep -v ${VERSION%-*} | cut -d' ' -f 3 | head -n 1)
+            eval $APT purge $(dpkg-query -W -f='${db:Status-Abbrev} ${binary:Package}\n' 'linux-kbuild*' | grep ^i | egrep -v ${VERSION%-*} | awk '{print $2}')
         fi
     fi
 fi
 
 echo '> Remove unavailable packages only when not manually held back'
-for PCK in $(env LANG=C apt-show-versions | grep 'available' | cut -d':' -f1); do
-    REMOVE=true
-    for HELDPCK in $(env LANG=C dpkg --get-selections | grep hold$ | awk '{print $1}'); do
-        if [ $PCK == $HELDPCK ]; then
-            REMOVE=false
-        fi
-    done
-    if $REMOVE; then
-        if [[ "$NOTORPHAN" =~ "$PCK" ]] || [ "$NOTORPHAN" == '*' ]; then
-            echo "Not available but keep installed: $PCK"
-        else
-            eval $APT purge $PCK
+for PCK in $(env LANG=C apt list --installed 2>/dev/null | grep installed,local | cut -d'/' -f 1); do
+    # Check if the locally installed packages are not available in a repository
+    if [ -z "$(apt-cache show $PCK | grep -i filename)" ]; then
+        REMOVE=true
+        for HELDPCK in $(env LANG=C dpkg --get-selections | grep hold$ | awk '{print $1}'); do
+            if [ "$PCK" == "$HELDPCK" ]; then
+                REMOVE=false
+            fi
+        done
+        if $REMOVE; then
+            if [[ "$NOTORPHAN" =~ "$PCK" ]] || [ "$NOTORPHAN" == '*' ]; then
+                echo "Not available but keep installed: $PCK"
+            else
+                eval $APT purge $PCK
+            fi
         fi
     fi
 done
 
-if [ "$NOTORPHAN" != '*' ]; then
+if [ "$NOTORPHAN" != '*' ] && [ ! -z "$(which deborphan)" ]; then
     echo '> Removing orphaned packages, except the ones listed in NOTORPHAN'
     Exclude=${NOTORPHAN//,/\/d;/}
     Orphaned=$(deborphan | sed '/'$Exclude'/d')
@@ -133,7 +140,7 @@ CONF='/etc/lightdm/lightdm.conf'
 XSESSION='/etc/lightdm/Xsession'
 if [ -e "$CONF" ]; then
     for F in $(find etc/live/ -type f -name "*.conf"); do source "$F"; done
-    if [ ! -z $LIVE_HOSTNAME ]; then
+    if [ ! -z "$LIVE_HOSTNAME" ]; then
         sed -i -r -e "s|^#.*autologin-user=.*\$|autologin-user=$LIVE_HOSTNAME|" \
                       -e "s|^#.*autologin-user-timeout=.*\$|autologin-user-timeout=0|" \
                       "$CONF"
@@ -179,40 +186,28 @@ if [ -e $PB ]; then
     $PB --update-cache
 fi
 
-echo '> Setup the firewall'
-/usr/sbin/ufw --force reset
-rm /etc/ufw/*.rules.* 2>/dev/null
-rm /lib/ufw/*.rules.* 2>/dev/null
-/usr/sbin/ufw default deny incoming
-/usr/sbin/ufw default allow outgoing
-/usr/sbin/ufw allow to any app CIFS
-/usr/sbin/ufw allow from any app CIFS
-/usr/sbin/ufw allow to any app CUPS
-/usr/sbin/ufw allow from any app CUPS
-/usr/sbin/ufw enable
+UFW=$(which ufw)
+if [ ! -z "$UFW" ]; then
+    echo '> Setup the firewall'
+    eval $UFW --force reset
+    rm /etc/ufw/*.rules.* 2>/dev/null
+    rm /lib/ufw/*.rules.* 2>/dev/null
+    eval $UFW default deny incoming
+    eval $UFW default allow outgoing
+    eval $UFW allow to any app CIFS 2>/dev/null
+    eval $UFW allow from any app CIFS 2>/dev/null
+    eval $UFW allow to any app CUPS 2>/dev/null
+    eval $UFW allow from any app CUPS 2>/dev/null
+    eval $UFW enable
+fi
 
-echo '> Change Mozilla distribution.ini'
-. /etc/default/locale
-LOCALE=$(echo $LANG | cut -d'.' -f 1)
-if [ "$LOCALE" == 'en_US' ]; then
-    LOCALE=''
-fi
-MOZLAN=$(echo $LOCALE | sed 's/_/-/')
-INI='/usr/lib/firefox-esr/distribution/distribution.ini'
-if [ -f "$INI" ]; then
-    sed -i "s/^intl.locale.requested.*/intl.locale.requested=\"$LOCALE\"/" "$INI"
-    sed -i "s/^spellchecker.dictionary.*/spellchecker.dictionary=\"$MOZLAN\"/" "$INI"
-fi
-INI='/usr/lib/firefox/distribution/distribution.ini'
-if [ -f "$INI" ]; then
-    sed -i "s/^intl.locale.requested.*/intl.locale.requested=\"$LOCALE\"/" "$INI"
-    sed -i "s/^spellchecker.dictionary.*/spellchecker.dictionary=\"$MOZLAN\"/" "$INI"
-fi
-INI='/usr/lib/thunderbird/distribution/distribution.ini'
-if [ -f "$INI" ]; then
-    sed -i "s/^intl.locale.requested.*/intl.locale.requested=\"$LOCALE\"/" "$INI"
-    sed -i "s/^spellchecker.dictionary.*/spellchecker.dictionary=\"$MOZLAN\"/" "$INI"
-fi
+# Cleanup root history
+rm /root/.nano_history 2>/dev/null
+rm /root/.bash_history 2>/dev/null
+rm /root/.wget-hsts 2>/dev/null
+rm /root/.aptitude 2>/dev/null
+rm /root/.nano 2>/dev/null
+rm /root/.cache 2>/dev/null
 
 echo '> Cleanup temporary files'
 rm -rf /media/*
@@ -244,6 +239,9 @@ rm -rf /boot/grub/grub.cfg
 
 echo '> Remove deb files left from development'
 find / -maxdepth 1 -name "*.deb" -delete
+
+echo '> Remove /etc/resolv.conf'
+rm -f /etc/resolv.conf
 
 # Removing redundant kernel module structure(s) from /lib/modules (if any)
 VersionPlusArch=$(ls -l /vmlinuz | sed 's/.*\/vmlinuz-\(.*\)/\1/')

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    configure|upgrade|update|reconfigure)
+      # To read from logdir it needs the x flag
+      for SH in $(ls /usr/share/iso-constructor/*.sh); do
+          chmod +x "$SH"
+      done
+    ;;
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+    triggered)
+    ;;
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

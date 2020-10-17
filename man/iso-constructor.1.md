@@ -9,39 +9,54 @@ date: September 2020
 
 # NAME
 
-iso-constructor - Tool to build and maintain Debian isos
+iso-constructor - Tool to build and maintain custom Debian Live ISOs.
 
 # SYNOPSIS
 
-**iso-constructor** \[**-d**|**--debug**]
+Usage: iso-constructor [OPTIONS] [DISTRIBUTION_PATH]
+
+DISTRIBUTION_PATH contains the unpacked distribution with a boot and root directory.
 
 # DESCRIPTION
 
-Tool to build and maintain Debian isos.
-ISO Constructor opens in a terminal where you can follow the building output.
+Without parameters the GUI is started.
 
--d, --debug
-:   Prints debug information.
+Options for terminal use (no GUI):
+
+-b
+:   Build the distribution
+
+-e
+:   Edit the distribution
+
+-l
+:   Localize the distribution
+
+-u
+:   Upgrade the distribution
+
+-U
+:   Unpack the ISO
+
+Options for the GUI (all other parameters will be ignored):
+
+-v
+:   Prints debug information while running the GUI.
+
 
 # Files
 
 ~/.iso-constructor/distributions.list
 :   List with distribution directories
 
-/usr/share/iso-constructor/grubgen.sh
-:   Generates boot/boot/grub/grub.cfg (with grub-template).
+~/.constructor/iso-constructor.log
+:   Log file.
 
-/usr/share/iso-constructor/isolinuxgen.sh
-:   Generates boot/isolinux/isolinux.cfg (with isolinux-template).
+~/.constructor/grub-template (optional)
+:   Custom template for grub.cfg. Use /usr/share/iso-constructor/grub-template as base.
 
-/usr/share/iso-constructor/cleanup.sh
-:   This script cleans up prior to building the ISO.
-
-/usr/share/iso-constructor/setlocale.sh
-:   Sets the locale of the ISO. Default is: en_US.
-
-/usr/share/iso-constructor/excludes
-:   List with directories excluded from the ISO build.
+~/.constructor/isolinux-template (optional)
+:   Custom template for isolinux.cfg. Use /usr/share/iso-constructor/isolinux-template as base.
 
 # Author
 
@@ -51,4 +66,6 @@ Written by Arjen Balfoort
 
 https://gitlab.com/abalfoort/iso-indicator/-/issues
 
+# TRANSLATIONS
 
+https://www.transifex.com/abalfoort/iso-constructor
