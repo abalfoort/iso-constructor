@@ -9,6 +9,7 @@ USERDIR="/home/$(logname)/.iso-constructor"
 ISOLINUXTEMPLATE="$SHAREDIR/isolinux-template"
 if [ -f "$USERDIR/isolinux-template" ]; then
     ISOLINUXTEMPLATE="$USERDIR/isolinux-template"
+    echo "> Using custom Isolinux template: $ISOLINUXTEMPLATE"
 fi
 ISOLINUX='isolinux/isolinux.cfg'
 LARRAY=()

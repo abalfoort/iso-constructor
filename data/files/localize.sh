@@ -11,7 +11,7 @@ fi
 
 # Chroot into distribution root directory and set the locale
 cp -v "$SHAREDIR/_chroot-locale.sh" "$DISTPATH/root/"
-$SHAREDIR/chroot-dir.sh "$DISTPATH/root" "bash -c /_chroot-locale.sh; rm /_chroot-locale.sh"
+$SHAREDIR/chroot-dir.sh "$DISTPATH/root" "bash /_chroot-locale.sh; rm /_chroot-locale.sh"
 
 # Copy Grub locale files to ISO boot directory and configure grub.cfg
 GRUBDIR="$DISTPATH/boot/boot/grub/"

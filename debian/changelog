@@ -1,3 +1,9 @@
+iso-constructor (3.7.7) stable; urgency=low
+
+  * Use keep-packages file to list packages not in repository
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 19 Oct 2020 09:01:53 +0200
+
 iso-constructor (3.7.6) stable; urgency=low
 
   * Remove help.html files and use man

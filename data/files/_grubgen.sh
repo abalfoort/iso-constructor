@@ -9,6 +9,7 @@ USERDIR="/home/$(logname)/.iso-constructor"
 GRUBTEMPLATE="$SHAREDIR/grub-template"
 if [ -f "$USERDIR/grub-template" ]; then
     GRUBTEMPLATE="$USERDIR/grub-template"
+    echo "> Using custom Grub template: $GRUBTEMPLATE"
 fi
 GRUB='boot/grub/grub.cfg'
 LARRAY=()

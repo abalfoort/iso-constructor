@@ -52,6 +52,12 @@ ISO Constructor by default generates a boot menu where the user can select their
 ## Build ISOs
 Builds the ISO and creates a sha256 file.
 
+If you installed packages that are not in the repository but you want to keep installed you can edit the keep-packages file:
+
+cp -v /usr/share/iso-constructor/keep-packages ~/.iso-constructor/
+
+Note: to keep all packages you can simply write an asterisk (*) in the keep-packages file.
+
 # GRUB AND ISOLINUX
 
 To customize/translate the Grub and Isolinux boot menus you can create and edit the templates in ~/.iso-constructor/:
@@ -67,6 +73,9 @@ cp -v /usr/share/iso-constructor/isolinux-template ~/.iso-constructor/
 
 ~/.constructor/iso-constructor.log
 :   Log file.
+
+~/.constructor/keep-packages (optional)
+:   List of packages not in repository. Use /usr/share/iso-constructor/keep-packages as base.
 
 ~/.constructor/grub-template (optional)
 :   Custom template for grub.cfg. Use /usr/share/iso-constructor/grub-template as base.

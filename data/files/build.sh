@@ -20,8 +20,16 @@ if [ -z "$ISOHDPFX" ]; then
 fi
 
 # Chroot into distribution root directory and cleanup first
+USERDIR="/home/$(logname)/.iso-constructor"
+# Packages that deborphan must NOT treat as orphans - comma separated list
+# Set to '*' to keep everything
+KEEPPACKAGES=$(cat "$SHAREDIR/keep-packages" | sed -z 's/\n/,/g;s/,$//;s/ //')
+if [ -f "$USERDIR/keep-packages" ]; then
+    KEEPPACKAGES=$(cat "$USERDIR/keep-packages" | sed -z 's/\n/,/g;s/,$//;s/ //')
+    echo "> Using custom keep-packages file: $USERDIR/keep-packages"
+fi
 cp -v "$SHAREDIR/_chroot-cleanup.sh" "$DISTPATH/root/"
-bash $SHAREDIR/chroot-dir.sh "$DISTPATH/root" "bash -c /_chroot-cleanup.sh; rm /_chroot-cleanup.sh"
+bash $SHAREDIR/chroot-dir.sh "$DISTPATH/root" "bash /_chroot-cleanup.sh \"$KEEPPACKAGES\"; rm /_chroot-cleanup.sh"
 echo
 
 # Move offline packages for live-installer-3

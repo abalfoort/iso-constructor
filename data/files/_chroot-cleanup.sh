@@ -1,5 +1,7 @@
 #!/bin/bash
 
+KEEPPACKAGES=$1
+
 # Make this script unattended
 # https://debian-handbook.info/browse/stable/sect.automatic-upgrades.html
 export DEBIAN_FRONTEND=noninteractive
@@ -11,13 +13,9 @@ if [ "$DISTRIB_RELEASE" -lt 8 ]; then
     APT='apt-get --force-yes'
 fi
 
-# Offline packages
+# Offline packages for live-installer-3
 OFFLINEPCKS="grub-efi efivar broadcom-sta-dkms"
 SKIPOFFLINEPCKS='grub-efi'
-
-# Packages that deborphan must NOT treat as orphans - comma separated list
-# Set to '*' to keep everything
-NOTORPHAN='baloo,virtualbox-guest-x11,virtualbox-guest-dkms,virtualbox-guest-utils'
 
 if [ -e /usr/share/mime/packages/kde.xml ]; then
     echo '> Remove fake mime types in KDE'
@@ -100,7 +98,7 @@ for PCK in $(env LANG=C apt list --installed 2>/dev/null | grep installed,local 
             fi
         done
         if $REMOVE; then
-            if [[ "$NOTORPHAN" =~ "$PCK" ]] || [ "$NOTORPHAN" == '*' ]; then
+            if [[ "$KEEPPACKAGES" =~ "$PCK" ]] || [ "$KEEPPACKAGES" == '*' ]; then
                 echo "Not available but keep installed: $PCK"
             else
                 eval $APT purge $PCK
@@ -109,9 +107,9 @@ for PCK in $(env LANG=C apt list --installed 2>/dev/null | grep installed,local 
     fi
 done
 
-if [ "$NOTORPHAN" != '*' ] && [ ! -z "$(which deborphan)" ]; then
-    echo '> Removing orphaned packages, except the ones listed in NOTORPHAN'
-    Exclude=${NOTORPHAN//,/\/d;/}
+if [ "$KEEPPACKAGES" != '*' ] && [ ! -z "$(which deborphan)" ]; then
+    echo '> Removing orphaned packages, except the ones listed in KEEPPACKAGES'
+    Exclude=${KEEPPACKAGES//,/\/d;/}
     Orphaned=$(deborphan | sed '/'$Exclude'/d')
     while [ "$Orphaned" ]; do
         eval $APT purge $Orphaned
@@ -169,11 +167,6 @@ fi
 if which updatedb >/dev/null; then
     echo '> Update database for mlocate'
     updatedb
-fi
-
-if which geoipupdate >/dev/null; then
-    echo '> Update GeoIP database'
-    geoipupdate -v
 fi
 
 # Update pixbuf cache

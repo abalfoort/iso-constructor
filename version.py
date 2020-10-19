@@ -1,5 +1,5 @@
 __title__ = 'iso-creator'
-__version__ = '3.7.6'
+__version__ = '3.7.7'
 __author__ = 'Arjen Balfoort'
 __author_email__ = 'arjenbalfoort@solydxk.com'
 __maintainer__ = 'Arjen Balfoort'
