@@ -71,6 +71,10 @@ pcmciautils-udeb
 live-installer
 EOF
 
+# Copy system boot files (initrd, vmlinuz, etc) to live directory 
+rm -r "$DISTPATH/boot/live/"*
+cp -vf "$DISTPATH/root/boot/"* "$DISTPATH/boot/live/" 2>/dev/null
+
 # Generate grub.cfg / isolinux.cfg
 cp "$SHAREDIR/_grubgen.sh" "$DISTPATH/boot/"
 cp "$SHAREDIR/_isolinuxgen.sh" "$DISTPATH/boot/"
@@ -78,10 +82,6 @@ cd "$DISTPATH/boot"
 bash _grubgen.sh
 bash _isolinuxgen.sh
 rm *.sh
-
-# Copy system boot files (initrd, vmlinuz, etc) to live directory 
-rm -r "$DISTPATH/boot/live/"*
-cp -vf "$DISTPATH/root/boot/"* "$DISTPATH/boot/live/" 2>/dev/null
 
 # check for custom mksquashfs (for multi-threading, new features, etc.)
 if [ -z "$MKSQUASHFS" ] || [ "$MKSQUASHFS" == 'mksquashfs' ]; then
