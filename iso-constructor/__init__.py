@@ -291,9 +291,12 @@ class Constructor(object):
                 command = 'iso-constructor -U "{iso}" "{target}"'.format(iso=self.iso, target=self.dir)
                 self.terminal.feed(command=command, wait_until_done=True)
                 
+                self.save_dist_file(self.dir)
+                self.fill_tv_dists()
+                
                 self.enable_gui_elements(True)
             else:
-                self.save_dist_file(self.dir, True)
+                self.save_dist_file(self.dir)
                 self.fill_tv_dists()
                 self.log('> Added existing working directory {dir}'.format(dir=self.dir))
 
