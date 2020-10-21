@@ -1,6 +1,7 @@
 iso-constructor (3.7.7) stable; urgency=low
 
   * Use keep-packages file to list packages not in repository
+  * Copy system boot files BEFORE you create grub.cfg and isolinux.cfg
 
  -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 19 Oct 2020 09:01:53 +0200
 
