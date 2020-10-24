@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 21:49+0200\n"
+"POT-Creation-Date: 2020-10-24 19:20+0200\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Tony Albers, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/abalfoort/teams/54212/da/)\n"
@@ -40,7 +40,7 @@ msgstr "Tilføj"
 
 #: iso-constructor/__init__.py:89
 msgid "View log file"
-msgstr ""
+msgstr "Vis logfil"
 
 #: iso-constructor/__init__.py:91
 msgid "Edit"
@@ -119,39 +119,39 @@ msgstr ""
 "Destinationsmappen er ikke tom.\n"
 "Er du sikker på at du vil overskrive alle data i {}?"
 
-#: iso-constructor/__init__.py:338
+#: iso-constructor/__init__.py:341
 msgid "Unpack ISO to directory"
 msgstr "Udpak ISO til mappe"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:342
 msgid "Unpack & Save"
 msgstr "Udpak og gem"
 
-#: iso-constructor/__init__.py:347
+#: iso-constructor/__init__.py:350
 msgid "Work directory"
 msgstr "Arbejdsmappe"
 
-#: iso-constructor/__init__.py:348
+#: iso-constructor/__init__.py:351
 msgid "Save"
 msgstr "Gem"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Select"
 msgstr "Vælg"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Distribution"
 msgstr "Distribution"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Working directory"
 msgstr "Arbejdsmappe"
 
 #: data/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"
-msgstr ""
+msgstr "Et værktøj til at fremstille og vedligeholde Debian ISO-filer"
 
 #. (itstool) path: action/message
 #: data/org.debian.pkexec.iso-constructor.policy:8
 msgid "Authentication is required to run ISO Constructor"
-msgstr "Godkendelse er påkrævet for at kunne køre ISO-Konstruktøren"
+msgstr "Autentificering er påkrævet for at kunne køre ISO-Konstruktøren"

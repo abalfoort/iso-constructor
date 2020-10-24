@@ -11,6 +11,7 @@ Name[nl]=ISO Constructor
 Name[pt]=ISO Constructor
 Comment=Tool to build and maintain Debian ISOs
 Comment[ca]=Eina per a crear i mantenir ISOs Debian
+Comment[da]=Et værktøj til at fremstille og vedligeholde Debian ISO-filer
 Comment[de]=Werkzeug zur Erstellung und Pflege von Debian-ISO-Dateien
 Comment[es_ES]=Herramienta para construir y mantener ISOs de Debian
 Comment[it]=Strumento per costruire e mantenere ISO Debian

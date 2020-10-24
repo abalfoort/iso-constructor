@@ -1,3 +1,9 @@
+iso-constructor (3.7.8) stable; urgency=low
+
+  * Updated translation: da
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 24 Oct 2020 19:20:01 +0200
+
 iso-constructor (3.7.7) stable; urgency=low
 
   * Use keep-packages file to list packages not in repository
