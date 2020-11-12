@@ -7,15 +7,16 @@
 # Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020
 # anechampenois <analogic@zaclys.net>, 2020
 # Kyodev, 2020
+# Gaïus Baltar <ichbin1199@gmail.com>, 2020
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 21:49+0200\n"
+"POT-Creation-Date: 2020-10-28 08:32+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
-"Last-Translator: Kyodev, 2020\n"
+"Last-Translator: Gaïus Baltar <ichbin1199@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/abalfoort/teams/54212/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -27,10 +28,6 @@ msgstr ""
 msgid "Remove"
 msgstr "Retirer"
 
-#: iso-constructor/__init__.py:86 data/iso-constructor.desktop.in.h:1
-msgid "ISO Constructor"
-msgstr "ISO Constructor"
-
 #: iso-constructor/__init__.py:87
 msgid "Select all"
 msgstr "Tout sélectionner"
@@ -41,7 +38,7 @@ msgstr "Ajouter"
 
 #: iso-constructor/__init__.py:89
 msgid "View log file"
-msgstr ""
+msgstr "Voir le fichier de journalisation"
 
 #: iso-constructor/__init__.py:91
 msgid "Edit"
@@ -121,37 +118,41 @@ msgstr ""
 "Le répertoire cible n'est pas vide.\n"
 "Etes-vous certain de vouloir écraser les données contenues dans {}?"
 
-#: iso-constructor/__init__.py:338
+#: iso-constructor/__init__.py:341
 msgid "Unpack ISO to directory"
 msgstr "Décompresser l'ISO dans le répertoire"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:342
 msgid "Unpack & Save"
 msgstr "Décompresser et enregistrer"
 
-#: iso-constructor/__init__.py:347
+#: iso-constructor/__init__.py:350
 msgid "Work directory"
 msgstr "Répertoire de travail"
 
-#: iso-constructor/__init__.py:348
+#: iso-constructor/__init__.py:351
 msgid "Save"
 msgstr "Enregistrer"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Select"
 msgstr "Choisir"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Distribution"
 msgstr "Distribution"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Working directory"
 msgstr "Répertoire de travail"
 
+#: data/iso-constructor.desktop.in.h:1
+msgid "ISO Constructor"
+msgstr "ISO Constructor"
+
 #: data/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"
-msgstr ""
+msgstr "Outil de construction et de maintenance des ISOs Debian"
 
 #. (itstool) path: action/message
 #: data/org.debian.pkexec.iso-constructor.policy:8
