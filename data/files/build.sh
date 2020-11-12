@@ -32,18 +32,18 @@ cp -v "$SHAREDIR/_chroot-cleanup.sh" "$DISTPATH/root/"
 bash $SHAREDIR/chroot-dir.sh "$DISTPATH/root" "bash /_chroot-cleanup.sh \"$KEEPPACKAGES\"; rm /_chroot-cleanup.sh"
 echo
 
-# Move offline packages for live-installer-3
-if [ -d "$DISTPATH/root/offline" ]; then
-    rm -r "$DISTPATH/boot/offline" 2>/dev/null
-    mv "$DISTPATH/root/offline" "$DISTPATH/boot/offline"
-fi
-
 # Global variables
 ARCH=$(file "$DISTPATH/root/bin/ls" | egrep -oh 'x86-64|i386' | head -n 1 | tr - _)
+case $ARCH in
+    i386|i686) DEBARCH="i386" ;;
+    x86_64) DEBARCH="amd64" ;;
+esac
 DESCRIPTION=$(egrep '^DISTRIB_DESCRIPTION|^PRETTY_NAME' "$DISTPATH/root/etc/"*release | head -n 1 | cut -d'=' -f 2  | sed s'/(.*)//g;s/gnu//I;s/linux//I;s/bit//I;s/[/"\-]//g;s/ \+/ /g')
 VOLID=$(echo $DESCRIPTION | tr ' ' '_'  | tr '[:lower:]' '[:upper:]')
 CODENAME=$(egrep '^DISTRIB_CODENAME|^VERSION_CODENAME' "$DISTPATH/root/etc/"*release | head -n 1 | cut -d'=' -f 2  | tr -d ' "_\-')
 CODENAME=${CODENAME^^}
+DISTRIBID=$(egrep '^DISTRIB_ID|^ID' "$DISTPATH/root/etc/"*release | head -n 1 | cut -d'=' -f 2  | tr -d ' "')
+DISTRIBVERSION=$(egrep '^DISTRIB_RELEASE|^VERSION_ID|^VERSION' "$DISTPATH/root/etc/"*release | head -n 1 | cut -d'=' -f 2  | tr -d ' "')
 SHORTDATE=$(date +"%Y%m")
 ISODATE=$(date +"%FT%T")
 ISOFILENAME=$(echo $DESCRIPTION | tr ' ' '_' | cut -d'-' -f 1 | tr '[:upper:]' '[:lower:]')"_$SHORTDATE"
@@ -52,6 +52,67 @@ if [ ! -z "$LOCALIZED" ]; then
     ISOFILENAME="$ISOFILENAME_$LOCALIZED"
 fi
 ISOFILENAME="$ISOFILENAME.iso"
+DEBRELEASE=$(grep -oP '(?<=/debian )\w+(?= )' "$DISTPATH/root/etc/apt/sources.list")
+
+# Update offline packages
+if [ -d "$DISTPATH/boot/offline" ]; then
+    cd "$DISTPATH/boot"
+    # Download packages
+    DEBS=$(find offline -name "*.deb")
+    for DEB in $DEBS; do
+        DEBPATH=${DEB%/*}
+        DEBNAME=${DEB##*/}
+        PCKNAME=${DEBNAME%%_*}
+        # Copy resolv.conf
+        if [ -d "$DISTPATH/root/etc" ] && [ -f "/etc/resolv.conf" ]; then
+            cp -f "/etc/resolv.conf" "$DISTPATH/root/etc"
+        fi
+        # Download package
+        chroot "$DISTPATH/root" apt-get download $PCKNAME
+        # Remove resolv.conf
+        rm -f "$DISTPATH/root/etc/resolv.conf"
+        # Remove old deb
+        rm -v "$DEBPATH/$PCKNAME"*.deb
+        # Get downloaded deb
+        mv -v "$DISTPATH/root/"*.deb "$DEBPATH"
+    done
+elif [ -d "$DISTPATH/boot/pool" ]; then
+    cd "$DISTPATH/boot"
+    # Download packages
+    DEBS=$(find pool -name "*.deb")
+    for DEB in $DEBS; do
+        DEBPATH=${DEB%/*}
+        DEBNAME=${DEB##*/}
+        PCKNAME=${DEBNAME%%_*}
+        if [ -d "$DISTPATH/root/etc" ] && [ -f "/etc/resolv.conf" ]; then
+            cp -f "/etc/resolv.conf" "$DISTPATH/root/etc"
+        fi
+        chroot "$DISTPATH/root" apt-get download $PCKNAME
+        rm -f "$DISTPATH/root/etc/resolv.conf"
+        rm -v "$DEBPATH/$PCKNAME"*.deb
+        mv -v "$DISTPATH/root/"*.deb "$DEBPATH"
+    done
+    # Create configuration for dists files
+    CONFDEB='Dir { ArchiveDir "."; }; TreeDefault { Directory "pool/"; };'
+    COMPONENTS=$(ls pool)
+    for COMP in $COMPONENTS; do
+        mkdir -p "dists/$DEBRELEASE/$COMP/binary-$DEBARCH"
+        CONFDEB="$CONFDEB BinDirectory \"pool/$COMP\" { Packages \"dists/$DEBRELEASE/$COMP/binary-$DEBARCH/Packages\"; };"
+    done
+    CONFDEB="$CONFDEB Default { Packages { Extensions \".deb\"; }; }; "
+    echo "$CONFDEB" | tee config-deb
+    # Create dists files
+    apt-ftparchive generate config-deb
+    rm config-deb
+    # Remove Release file
+    rm -f "dists/$DEBRELEASE/Release"
+    # Update Release file
+    #-o APT::FTPArchive::Release::Suite=$DEBRELEASE
+    OPTIONS="-o APT::FTPArchive::Release::Origin=Debian -o APT::FTPArchive::Release::Label=Debian -o APT::FTPArchive::Release::Codename=$DEBRELEASE -o APT::FTPArchive::Release::Architectures=$DEBARCH -o APT::FTPArchive::Release::Components=$COMPONENTS -o APT::FTPArchive::Release::Description=$COMPONENTS"
+    apt-ftparchive $OPTIONS release "dists/$DEBRELEASE" >> "dists/$DEBRELEASE/Release"
+    # Update md5sum.txt
+    md5sum `find ! -name "md5sum.txt" ! -path "./isolinux/*" -follow -type f` > md5sum.txt
+fi
 
 # Create disk info directories/files
 mkdir -p "$DISTPATH/boot/live"

@@ -13,10 +13,6 @@ if [ "$DISTRIB_RELEASE" -lt 8 ]; then
     APT='apt-get --force-yes'
 fi
 
-# Offline packages for live-installer-3
-OFFLINEPCKS="grub-efi efivar broadcom-sta-dkms"
-SKIPOFFLINEPCKS='grub-efi'
-
 if [ -e /usr/share/mime/packages/kde.xml ]; then
     echo '> Remove fake mime types in KDE'
     sed -i -e /\<.*fake.*\>/,/^$/d /usr/share/mime/packages/kde.xml
@@ -27,34 +23,6 @@ if which gconftool-2 >/dev/null; then
     gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --type bool --set /apps/gksu/sudo-mode true
     gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --type bool --set /apps/gksu/display-no-pass-info false
     gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --type string --set /apps/blueman/transfer/browse_command 'thunar --browser obex://[%d]'
-fi
-
-if [ -e /usr/bin/live-installer-3 ]; then
-    echo '> Download offline packages for live-installer-3'
-    if [ -d offline ]; then
-        rm -r offline
-    fi
-    mkdir offline
-    cd offline
-    [ "$(dpkg --print-architecture)" == "amd64" ] && F=i386 || F=amd64
-    DEPS=$(LANG=C apt-cache depends $OFFLINEPCKS | sed -r '/.+:'$F'|Breaks:|Conflicts:|Enhances:|Provides:|Replaces:|Suggests|Recommends|PreDepends:.+/d; s/^ .*: //')
-    for DEP in $DEPS; do
-        SKIP=false
-        for SPCK in $SKIPOFFLINEPCKS; do
-            if [ "$DEP" == "$SPCK" ]; then
-                SKIP=true
-                break
-            fi
-        done
-        if ! $SKIP; then
-            if [ "${DEP: -4}" != '-dbg' ] && [ "${DEP: -4}" != '-dev' ]; then
-                if [ $(LANG=C dpkg-query -W -f='${Status}' $DEP 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
-                    apt-get download $DEP 2>/dev/null
-                fi
-            fi
-        fi
-    done
-    cd ../
 fi
 
 echo '> Make sure all firmware drivers are installed but do not install from backports'
@@ -138,8 +106,8 @@ CONF='/etc/lightdm/lightdm.conf'
 XSESSION='/etc/lightdm/Xsession'
 if [ -e "$CONF" ]; then
     for F in $(find etc/live/ -type f -name "*.conf"); do source "$F"; done
-    if [ ! -z "$LIVE_HOSTNAME" ]; then
-        sed -i -r -e "s|^#.*autologin-user=.*\$|autologin-user=$LIVE_HOSTNAME|" \
+    if [ ! -z "$LIVE_USERNAME" ]; then
+        sed -i -r -e "s|^#.*autologin-user=.*\$|autologin-user=$LIVE_USERNAME|" \
                       -e "s|^#.*autologin-user-timeout=.*\$|autologin-user-timeout=0|" \
                       "$CONF"
     fi
