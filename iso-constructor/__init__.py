@@ -83,7 +83,7 @@ class Constructor(object):
 
         # Main window translations
         self.remove_text = _("Remove")
-        self.window.set_title(_("ISO Constructor"))
+        self.window.set_title("ISO Constructor")
         self.chkSelectAll.set_label(_("Select all"))
         self.btnAdd.set_tooltip_text(_("Add"))
         self.btnLog.set_tooltip_text(_("View log file"))
