@@ -30,15 +30,16 @@ Depends: ${misc:Depends}, ${python3:Depends}
   , uni2ascii
   , grub-efi-amd64-bin
   , sensible-utils
+  , apt-utils
 Conflicts: solydxk-constructor (<= 3.7.3)
 Replaces: solydxk-constructor (<= 3.7.3)
 Description: Create custom Debian Live ISOs
  Tool to build and maintain custom Debian Live ISOs.
 
-Package: solydxk-constructor
-Architecture: all
-Section: oldlibs
-Depends: iso-constructor, ${misc:Depends}
-Description: transitional package
- This is a transitional package. It can safely be removed.
+#Package: solydxk-constructor
+#Architecture: all
+#Section: oldlibs
+#Depends: iso-constructor, ${misc:Depends}
+#Description: transitional package
+# This is a transitional package. It can safely be removed.
 

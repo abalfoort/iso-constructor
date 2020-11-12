@@ -1,0 +1,3 @@
+# Only meant to be run by iso-constructor, so its scripts wouldn't have manpages
+iso-constructor: no-manual-page
+

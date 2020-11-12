@@ -1,3 +1,21 @@
+iso-constructor (3.8.1) stable; urgency=low
+
+  * Update repository during build
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 11 Nov 2020 15:26:28 +0100
+
+iso-constructor (3.8.0) stable; urgency=low
+
+  * Updated translation: it
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 02 Nov 2020 11:43:01 +0100
+
+iso-constructor (3.7.9) stable; urgency=low
+
+  * Updated translation: fr
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 28 Oct 2020 08:32:12 +0100
+
 iso-constructor (3.7.8) stable; urgency=low
 
   * Updated translation: da
