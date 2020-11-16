@@ -78,20 +78,32 @@ if [ -d "$DISTPATH/boot/offline" ]; then
     done
 elif [ -d "$DISTPATH/boot/pool" ]; then
     cd "$DISTPATH/boot"
-    # Download packages
+    # Save system's apt information in a file
+    echo "> Apt lists:"
+    ls "$DISTPATH/root/var/lib/apt/lists/"*"debian"*"$DEBRELEASE"*"${DEBARCH}_Packages"
+    cat $(ls "$DISTPATH/root/var/lib/apt/lists/"*"debian"*"$DEBRELEASE"*"${DEBARCH}_Packages") > apt.lst
+    # Update deb files (not udeb)
     DEBS=$(find pool -name "*.deb")
     for DEB in $DEBS; do
         DEBPATH=${DEB%/*}
         DEBNAME=${DEB##*/}
         PCKNAME=${DEBNAME%%_*}
-        if [ -d "$DISTPATH/root/etc" ] && [ -f "/etc/resolv.conf" ]; then
-            cp -f "/etc/resolv.conf" "$DISTPATH/root/etc"
+        # Get package version information
+        DEBVERSION=$(dpkg-deb -I $DEB | grep -i version: | awk '{print $2}')
+        NEWDEBVERSION=$(sed -n "/Package:\s*${PCKNAME}$/I,/\/*${PCKNAME}_/p" apt.lst | grep -i version: | awk '{print $2}')
+        echo "> Check $PCKNAME versions: $DEBVERSION > $NEWDEBVERSION"
+        if [ ! -z "$DEBVERSION" ] && [ ! -z "$NEWDEBVERSION" ] && [ "$DEBVERSION" != "$NEWDEBVERSION" ]; then
+            # Download new package
+            if [ -d "$DISTPATH/root/etc" ] && [ -f "/etc/resolv.conf" ]; then
+                cp -f "/etc/resolv.conf" "$DISTPATH/root/etc"
+            fi
+            chroot "$DISTPATH/root" apt-get download $PCKNAME
+            rm -f "$DISTPATH/root/etc/resolv.conf"
+            rm -v "$DEBPATH/${PCKNAME}_"*.deb
+            mv -v "$DISTPATH/root/"*.deb "$DEBPATH"
         fi
-        chroot "$DISTPATH/root" apt-get download $PCKNAME
-        rm -f "$DISTPATH/root/etc/resolv.conf"
-        rm -v "$DEBPATH/$PCKNAME"*.deb
-        mv -v "$DISTPATH/root/"*.deb "$DEBPATH"
     done
+    rm -f apt.lst
     # Create configuration for dists files
     CONFDEB='Dir { ArchiveDir "."; }; TreeDefault { Directory "pool/"; };'
     COMPONENTS=$(ls pool)
@@ -99,7 +111,7 @@ elif [ -d "$DISTPATH/boot/pool" ]; then
         mkdir -p "dists/$DEBRELEASE/$COMP/binary-$DEBARCH"
         CONFDEB="$CONFDEB BinDirectory \"pool/$COMP\" { Packages \"dists/$DEBRELEASE/$COMP/binary-$DEBARCH/Packages\"; };"
     done
-    CONFDEB="$CONFDEB Default { Packages { Extensions \".deb\"; }; }; "
+    CONFDEB="$CONFDEB Default { Packages { Extensions \".deb .udeb\"; }; }; "
     echo "$CONFDEB" | tee config-deb
     # Create dists files
     apt-ftparchive generate config-deb
@@ -107,8 +119,7 @@ elif [ -d "$DISTPATH/boot/pool" ]; then
     # Remove Release file
     rm -f "dists/$DEBRELEASE/Release"
     # Update Release file
-    #-o APT::FTPArchive::Release::Suite=$DEBRELEASE
-    OPTIONS="-o APT::FTPArchive::Release::Origin=Debian -o APT::FTPArchive::Release::Label=Debian -o APT::FTPArchive::Release::Codename=$DEBRELEASE -o APT::FTPArchive::Release::Architectures=$DEBARCH -o APT::FTPArchive::Release::Components=$COMPONENTS -o APT::FTPArchive::Release::Description=$COMPONENTS"
+    OPTIONS="-o APT::FTPArchive::Release::Origin=Debian -o APT::FTPArchive::Release::Label=Debian -o APT::FTPArchive::Release::Codename=$DEBRELEASE -o APT::FTPArchive::Release::Architectures=$DEBARCH -o APT::FTPArchive::Release::Components=$(echo $COMPONENTS | tr ' ' ',') -o APT::FTPArchive::Release::Suite=stable"
     apt-ftparchive $OPTIONS release "dists/$DEBRELEASE" >> "dists/$DEBRELEASE/Release"
     # Update md5sum.txt
     md5sum `find ! -name "md5sum.txt" ! -path "./isolinux/*" -follow -type f` > md5sum.txt

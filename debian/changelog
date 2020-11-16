@@ -1,3 +1,15 @@
+iso-constructor (3.8.3) stable; urgency=low
+
+  * Fix bug not checking correctly for available new debs
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 15 Nov 2020 11:37:27 +0100
+
+iso-constructor (3.8.2) stable; urgency=low
+
+  * Generate d-i menus if boot/d-i exists
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 13 Nov 2020 14:22:52 +0100
+
 iso-constructor (3.8.1) stable; urgency=low
 
   * Update repository during build
