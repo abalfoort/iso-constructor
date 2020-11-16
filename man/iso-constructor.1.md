@@ -66,6 +66,12 @@ cp -v /usr/share/iso-constructor/keep-packages ~/.iso-constructor/
 
 Note: to keep all packages you can simply write an asterisk (*) in the keep-packages file.
 
+# REPOSITORY
+
+You can create a pool directory structure as in the live Debian ISOs. Any .deb are updated automatically during build. Release information in the dists directory is generated during build.
+
+Note: ISO Constructor is not able to update the .udeb packages. These need to be updated manually.
+
 # GRUB AND ISOLINUX
 
 To customize/translate the Grub and Isolinux boot menus you can create and edit the templates in ~/.iso-constructor/:
