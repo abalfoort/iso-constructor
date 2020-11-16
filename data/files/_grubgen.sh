@@ -118,12 +118,31 @@ else
     
     # Build the menu
     if [ ! -z "$LOCALES" ]; then
-        LOCALES="submenu \"Start $TITLE with Localisation Support\" {$LOCALES}"
+        LOCALES="submenu \"Start $TITLE with Localisation Support\" {$LOCALES\n}"
+    fi
+fi
+
+# Debian Installer
+if [ -d "d-i" ]; then
+    if [ -f "d-i/gtk/vmlinuz" ]; then
+        DEBINSTALLER="$DEBINSTALLER\n    menuentry \"Graphical Debian Installer\" {\n        linux  /d-i/gtk/vmlinuz append video=vesa:ywrap,mtrr vga=788 \"\$\{loopback\}\"\n        initrd /d-i/gtk/initrd.gz\n    }"
+    fi
+    if [ -f "d-i/vmlinuz" ]; then
+        DEBINSTALLER="$DEBINSTALLER\n    menuentry \"Debian Installer\" {\n        linux  /d-i/vmlinuz  \"\$\{loopback\}\"\n        initrd /d-i/initrd.gz\n    }"
+    fi
+    if [ -f "d-i/gtk/vmlinuz" ]; then
+        DEBINSTALLER="$DEBINSTALLER\n    menuentry \"Debian Installer with Speech Synthesis\" {\n        linux  /d-i/gtk/vmlinuz speakup.synth=soft \"\$\{loopback\}\"\n        initrd /d-i/gtk/initrd.gz\n    }"
+    fi
+    
+    # Build the menu
+    if [ ! -z "$DEBINSTALLER" ]; then
+        DEBINSTALLER="submenu \"Debian Installer\" {$DEBINSTALLER\n}"
     fi
 fi
 
 # Update grub.cfg
 sed -i "s|\[LOCALES\]|$LOCALES\n|" "$GRUB"
+sed -i "s|\[DEBINSTALLER\]|$DEBINSTALLER\n|" "$GRUB"
 sed -i "s|\[VMLINUZ\]|$VMLINUZDEFAULT|" "$GRUB"
 sed -i "s|\[INITRD\]|$INITRDDEFAULT|" "$GRUB"
 

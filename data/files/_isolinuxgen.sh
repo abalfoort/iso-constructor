@@ -93,8 +93,27 @@ else
     fi
 fi
 
+# Debian Installer
+if [ -d "d-i" ]; then
+    if [ -f "d-i/gtk/vmlinuz" ]; then
+        DEBINSTALLER="LABEL digui\n            MENU LABEL Graphical Debian Installer\n            KERNEL /d-i/gtk/vmlinuz\n            APPEND initrd=/d-i/gtk/initrd.gz append video=vesa:ywrap,mtrr vga=788"
+    fi
+    if [ -f "d-i/vmlinuz" ]; then
+        DEBINSTALLER="$DEBINSTALLER\n        LABEL dinorm\n            MENU LABEL Debian Installer\n            KERNEL /d-i/vmlinuz\n            APPEND initrd=/d-i/initrd.gz"
+    fi
+    if [ -f "d-i/gtk/vmlinuz" ]; then
+        DEBINSTALLER="$DEBINSTALLER\n        LABEL disynth\n            MENU LABEL Debian Installer with Speech Synthesis\n            KERNEL /d-i/gtk/vmlinuz\n            APPEND initrd=/d-i/gtk/initrd.gz speakup.synth=soft"
+    fi
+    
+    # Build the menu
+    if [ ! -z "$DEBINSTALLER" ]; then
+        DEBINSTALLER="MENU BEGIN debinstaller\n    MENU TITLE Debian Installer\n        $DEBINSTALLER\n        LABEL back\n            MENU LABEL ^Back...\n            MENU exit\nMENU end"
+    fi
+fi
+
 # Update isolinux.cfg
 sed -i "s|\[LOCALES\]|$LOCALES|" "$ISOLINUX"
+sed -i "s|\[DEBINSTALLER\]|$DEBINSTALLER|" "$ISOLINUX"
 sed -i "s|\[VMLINUZ\]|$VMLINUZDEFAULT|" "$ISOLINUX"
 sed -i "s|\[INITRD\]|$INITRDDEFAULT|" "$ISOLINUX"
 

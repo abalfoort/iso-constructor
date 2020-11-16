@@ -19,6 +19,8 @@ MENU COLOR cmdline 0 #ffffffff #00000000 none
 
 [LOCALES]
 
+[DEBINSTALLER]
+
 MENU BEGIN advanced
 MENU TITLE Advanced options
     LABEL xforcevesa

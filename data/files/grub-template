@@ -34,6 +34,8 @@ fi
 
 [LOCALES]
 
+[DEBINSTALLER]
+
 submenu "Advanced options" {
     menuentry "Start [TITLE] (safe)" {
         linux   [VMLINUZ] boot=live components memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal
