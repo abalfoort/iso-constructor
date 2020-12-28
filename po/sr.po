@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 21:49+0200\n"
+"POT-Creation-Date: 2020-12-28 13:38+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Slobodan Simić <slsimic@gmail.com>, 2020\n"
 "Language-Team: Serbian (https://www.transifex.com/abalfoort/teams/54212/"
@@ -27,10 +27,6 @@ msgstr ""
 msgid "Remove"
 msgstr "Уклони"
 
-#: iso-constructor/__init__.py:86 data/iso-constructor.desktop.in.h:1
-msgid "ISO Constructor"
-msgstr ""
-
 #: iso-constructor/__init__.py:87
 msgid "Select all"
 msgstr "изабери све"
@@ -41,7 +37,7 @@ msgstr "Додај"
 
 #: iso-constructor/__init__.py:89
 msgid "View log file"
-msgstr ""
+msgstr "Погледај фајл дневника"
 
 #: iso-constructor/__init__.py:91
 msgid "Edit"
@@ -85,7 +81,7 @@ msgstr ""
 
 #: iso-constructor/__init__.py:242
 msgid "Select ISO file"
-msgstr ""
+msgstr "Изабери ИСО фајл"
 
 #: iso-constructor/__init__.py:250
 msgid "Select directory"
@@ -120,39 +116,43 @@ msgstr ""
 "Одредишни директоријум није празан.\n"
 "Заиста желите да пребришете податке у {}?"
 
-#: iso-constructor/__init__.py:338
+#: iso-constructor/__init__.py:341
 msgid "Unpack ISO to directory"
 msgstr "Распакуј ИСО у директоријум"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:342
 msgid "Unpack & Save"
 msgstr "Распакуј и сачувај"
 
-#: iso-constructor/__init__.py:347
+#: iso-constructor/__init__.py:350
 msgid "Work directory"
 msgstr "Радни директоријум"
 
-#: iso-constructor/__init__.py:348
+#: iso-constructor/__init__.py:351
 msgid "Save"
 msgstr "Сачувај"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Select"
 msgstr "избор"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Distribution"
 msgstr "дистрибуција"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Working directory"
 msgstr "радни директоријум"
 
+#: data/iso-constructor.desktop.in.h:1
+msgid "ISO Constructor"
+msgstr "ИСО конструктор"
+
 #: data/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"
-msgstr ""
+msgstr "Алат за прављење и одржавање Дебијанових ИСО одраза"
 
 #. (itstool) path: action/message
 #: data/org.debian.pkexec.iso-constructor.policy:8
 msgid "Authentication is required to run ISO Constructor"
-msgstr ""
+msgstr "Аутентификација је неопходна за покретање ИСО конструктора"
