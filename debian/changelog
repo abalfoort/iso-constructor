@@ -1,3 +1,9 @@
+iso-constructor (3.8.4) stable; urgency=low
+
+  * Fix creating efi.img
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 28 Dec 2020 13:38:25 +0100
+
 iso-constructor (3.8.3) stable; urgency=low
 
   * Fix bug not checking correctly for available new debs
