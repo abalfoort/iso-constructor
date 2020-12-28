@@ -218,6 +218,17 @@ if [ -f "$DISTPATH/boot/EFI/boot/$GRUBEFI.efi" ]; then
     CMD="mkdosfs -F 12 -n \"$CODENAME\" -C \"$DISTPATH/boot/boot/grub/efi.img\" 2048"
     echo $CMD
     eval $CMD
+    EFIMNT="/mnt/efi"
+    mkdir -p $EFIMNT
+    CMD="mount -o loop \"$DISTPATH/boot/boot/grub/efi.img\" $EFIMNT"
+    echo $CMD
+    eval $CMD
+    mkdir -p "$EFIMNT/EFI/boot"
+    CMD="cp -a \"$DISTPATH/boot/EFI/boot/$GRUBEFI.efi\" \"$EFIMNT/EFI/boot\""
+    echo $CMD
+    eval $CMD
+    umount -f $EFIMNT
+    rm -r $EFIMNT
 fi
 
 # remove existing iso
