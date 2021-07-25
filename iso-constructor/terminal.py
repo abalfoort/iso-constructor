@@ -42,19 +42,33 @@ class Terminal(Vte.Terminal):
         self.create_child()
             
     def create_child(self):
-        self.spawn_async(
-            Vte.PtyFlags.DEFAULT,                 #pty flags
-            environ['HOME'],                      #working directory
-            ["/bin/bash"],                        #argmument vector
-            [],                                   #list with environment variables
-            GLib.SpawnFlags.DO_NOT_REAP_CHILD,    #spawn flags
-            None,                                 #setup function
-            None,                                 #child_setup data (gpointer)
-            -1,                                   #timeout
-            self._cancellable,                    #cancellable
-            None,                                 #callback
-            None                                  #callback data
-            )
+        try:
+            # Use async from version 0.48
+            self.spawn_async(
+                Vte.PtyFlags.DEFAULT,                 #pty flags
+                environ['HOME'],                      #working directory
+                ["/bin/bash"],                        #argmument vector
+                [],                                   #list with environment variables
+                GLib.SpawnFlags.DO_NOT_REAP_CHILD,    #spawn flags
+                None,                                 #child_setup function
+                None,                                 #child_setup data (gpointer)
+                -1,                                   #timeout
+                self._cancellable,                    #cancellable
+                None,                                 #callback
+                None                                  #callback data
+                )
+        except:
+            # TODO: self._cancellable errors out: Cancellable initialisation not supported
+            self.spawn_sync(
+                Vte.PtyFlags.DEFAULT,                 #pty flags
+                environ['HOME'],                      #working directory
+                ["/bin/bash"],                        #argmument vector
+                [],                                   #list with environment variables
+                GLib.SpawnFlags.DO_NOT_REAP_CHILD,    #spawn flags
+                None,                                 #child_setup function
+                None,                                 #child_setup data (gpointer)
+                None                                  #cancellable
+                )
            
     def feed(self, command, wait_until_done=False, disable_scrolling=True, pause_logging=False):
         if self._cmd_is_running:
@@ -112,6 +126,10 @@ class Terminal(Vte.Terminal):
             ii = ii - 1
         text = text[ii]
         return text
+    
+    def get_vte_version(self):
+        # Return tuple of vte version
+        return Vte.get_major_version(), Vte.get_minor_version(), Vte.get_micro_version()
         
     def on_contents_changed(self, terminal):
         # Log the content of the terminal
