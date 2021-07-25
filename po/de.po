@@ -5,17 +5,17 @@
 #
 # Translators:
 # Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020
-# pitfd, 2020
 # ilu lu, 2020
+# pitfd, 2021
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 21:49+0200\n"
+"POT-Creation-Date: 2021-04-13 18:02+0200\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
-"Last-Translator: ilu lu, 2020\n"
+"Last-Translator: pitfd, 2021\n"
 "Language-Team: German (https://www.transifex.com/abalfoort/teams/54212/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -27,10 +27,6 @@ msgstr ""
 msgid "Remove"
 msgstr "Entfernen"
 
-#: iso-constructor/__init__.py:86 data/iso-constructor.desktop.in.h:1
-msgid "ISO Constructor"
-msgstr "ISO Constructor"
-
 #: iso-constructor/__init__.py:87
 msgid "Select all"
 msgstr "Alle auswählen"
@@ -41,7 +37,7 @@ msgstr "Hinzufügen"
 
 #: iso-constructor/__init__.py:89
 msgid "View log file"
-msgstr ""
+msgstr "Logdatei anzeigen"
 
 #: iso-constructor/__init__.py:91
 msgid "Edit"
@@ -121,33 +117,37 @@ msgstr ""
 "Das Zielverzeichnis ist nicht leer.\n"
 "Sind Sie sicher, alle Daten zu überschreiben {}?"
 
-#: iso-constructor/__init__.py:338
+#: iso-constructor/__init__.py:341
 msgid "Unpack ISO to directory"
 msgstr "ISO-Datei in das Verzeichnis entpacken"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:342
 msgid "Unpack & Save"
 msgstr "Entpacken & Sichern"
 
-#: iso-constructor/__init__.py:347
+#: iso-constructor/__init__.py:350
 msgid "Work directory"
 msgstr "Arbeitsverzeichnis"
 
-#: iso-constructor/__init__.py:348
+#: iso-constructor/__init__.py:351
 msgid "Save"
 msgstr "Sichern"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Select"
 msgstr "Auswählen"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Distribution"
 msgstr "Distribution"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Working directory"
 msgstr "Arbeitsverzeichnis"
+
+#: data/iso-constructor.desktop.in.h:1
+msgid "ISO Constructor"
+msgstr "ISO Constructor"
 
 #: data/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"

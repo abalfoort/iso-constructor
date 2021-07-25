@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 21:51+0200\n"
+"POT-Creation-Date: 2020-10-28 08:32+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Vibo Lavida <vibo@firemail.cc>, 2020\n"
 "Language-Team: Spanish (Spain) (https://www.transifex.com/abalfoort/"
@@ -25,10 +25,6 @@ msgstr ""
 #: iso-constructor/__init__.py:85
 msgid "Remove"
 msgstr "Eliminar"
-
-#: iso-constructor/__init__.py:86 data/iso-constructor.desktop.in.h:1
-msgid "ISO Constructor"
-msgstr "ISO Constructor"
 
 #: iso-constructor/__init__.py:87
 msgid "Select all"
@@ -119,33 +115,37 @@ msgstr ""
 "El directorio de destino no está vacío.\n"
 "¿Está seguro de que desea sobrescribir todos los datos en {}?"
 
-#: iso-constructor/__init__.py:338
+#: iso-constructor/__init__.py:341
 msgid "Unpack ISO to directory"
 msgstr "Desempaquetar ISO en el directorio"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:342
 msgid "Unpack & Save"
 msgstr "Desempaquetar y guardar"
 
-#: iso-constructor/__init__.py:347
+#: iso-constructor/__init__.py:350
 msgid "Work directory"
-msgstr ""
+msgstr "Directorio de trabajo"
 
-#: iso-constructor/__init__.py:348
+#: iso-constructor/__init__.py:351
 msgid "Save"
 msgstr "Guardar"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Select"
 msgstr "Seleccionar"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Distribution"
 msgstr "Distribución"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Working directory"
 msgstr "Directorio de trabajo"
+
+#: data/iso-constructor.desktop.in.h:1
+msgid "ISO Constructor"
+msgstr "ISO Constructor"
 
 #: data/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"

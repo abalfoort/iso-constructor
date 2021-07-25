@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-24 19:20+0200\n"
+"POT-Creation-Date: 2020-10-28 08:32+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Tony Albers, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/abalfoort/teams/54212/da/)\n"
@@ -25,10 +25,6 @@ msgstr ""
 #: iso-constructor/__init__.py:85
 msgid "Remove"
 msgstr "Fjern"
-
-#: iso-constructor/__init__.py:86 data/iso-constructor.desktop.in.h:1
-msgid "ISO Constructor"
-msgstr "ISO-Konstruktør"
 
 #: iso-constructor/__init__.py:87
 msgid "Select all"
@@ -146,6 +142,10 @@ msgstr "Distribution"
 #: iso-constructor/__init__.py:358
 msgid "Working directory"
 msgstr "Arbejdsmappe"
+
+#: data/iso-constructor.desktop.in.h:1
+msgid "ISO Constructor"
+msgstr "ISO-Konstruktør"
 
 #: data/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"

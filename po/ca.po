@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Eduard Selma <selma@tinet.cat>, 2020
 # Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020
+# Eduard Selma <selma@tinet.cat>, 2021
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 21:49+0200\n"
+"POT-Creation-Date: 2021-04-14 08:37+0200\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
-"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020\n"
+"Last-Translator: Eduard Selma <selma@tinet.cat>, 2021\n"
 "Language-Team: Catalan (https://www.transifex.com/abalfoort/teams/54212/"
 "ca/)\n"
 "Language: ca\n"
@@ -27,10 +27,6 @@ msgstr ""
 msgid "Remove"
 msgstr "Elimina"
 
-#: iso-constructor/__init__.py:86 data/iso-constructor.desktop.in.h:1
-msgid "ISO Constructor"
-msgstr "ISO Constructor"
-
 #: iso-constructor/__init__.py:87
 msgid "Select all"
 msgstr "Selecciona'ls tots"
@@ -41,7 +37,7 @@ msgstr "Afegeix"
 
 #: iso-constructor/__init__.py:89
 msgid "View log file"
-msgstr ""
+msgstr "Veure el fitxer de registre"
 
 #: iso-constructor/__init__.py:91
 msgid "Edit"
@@ -120,33 +116,37 @@ msgstr ""
 "El directori de destinació no està`buit.\n"
 "Esteu segurs que voleu sobreescriure les dades a {}?"
 
-#: iso-constructor/__init__.py:338
+#: iso-constructor/__init__.py:341
 msgid "Unpack ISO to directory"
 msgstr "Desempaquetant l'ISO al directori"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:342
 msgid "Unpack & Save"
 msgstr "Desempaqueta i Desa"
 
-#: iso-constructor/__init__.py:347
+#: iso-constructor/__init__.py:350
 msgid "Work directory"
 msgstr "Directori de treball"
 
-#: iso-constructor/__init__.py:348
+#: iso-constructor/__init__.py:351
 msgid "Save"
 msgstr "Desa"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Select"
 msgstr "Selecciona"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Distribution"
 msgstr "Distribució"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Working directory"
 msgstr "Directori de treball"
+
+#: data/iso-constructor.desktop.in.h:1
+msgid "ISO Constructor"
+msgstr "ISO Constructor"
 
 #: data/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"

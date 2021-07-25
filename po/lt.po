@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Moo, 2020
 # Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020
+# Moo, 2020
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 21:49+0200\n"
+"POT-Creation-Date: 2020-11-02 11:43+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
-"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020\n"
+"Last-Translator: Moo, 2020\n"
 "Language-Team: Lithuanian (https://www.transifex.com/abalfoort/teams/54212/"
 "lt/)\n"
 "Language: lt\n"
@@ -29,10 +29,6 @@ msgstr ""
 msgid "Remove"
 msgstr "Šalinti"
 
-#: iso-constructor/__init__.py:86 data/iso-constructor.desktop.in.h:1
-msgid "ISO Constructor"
-msgstr "ISO konstruktorius"
-
 #: iso-constructor/__init__.py:87
 msgid "Select all"
 msgstr "Pažymėti visus"
@@ -43,7 +39,7 @@ msgstr "Pridėti"
 
 #: iso-constructor/__init__.py:89
 msgid "View log file"
-msgstr ""
+msgstr "Rodyti žurnalo failą"
 
 #: iso-constructor/__init__.py:91
 msgid "Edit"
@@ -122,33 +118,37 @@ msgstr ""
 "Paskirties katalogas nėra tuščias.\n"
 "Ar tikrai norite perrašyti visus duomenis, kurie yra {}?"
 
-#: iso-constructor/__init__.py:338
+#: iso-constructor/__init__.py:341
 msgid "Unpack ISO to directory"
 msgstr "Išpakuoti ISO į katalogą"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:342
 msgid "Unpack & Save"
 msgstr "Išpakuoti ir įrašyti"
 
-#: iso-constructor/__init__.py:347
+#: iso-constructor/__init__.py:350
 msgid "Work directory"
 msgstr "Darbo katalogas"
 
-#: iso-constructor/__init__.py:348
+#: iso-constructor/__init__.py:351
 msgid "Save"
 msgstr "Įrašyti"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Select"
 msgstr "Pasirinkti"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Distribution"
 msgstr "Distribucija"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Working directory"
 msgstr "Darbinis katalogas"
+
+#: data/iso-constructor.desktop.in.h:1
+msgid "ISO Constructor"
+msgstr "ISO konstruktorius"
 
 #: data/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"

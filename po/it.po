@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 21:49+0200\n"
+"POT-Creation-Date: 2020-11-02 11:43+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Franco Frolloni <franco@frolloni.eu>, 2020\n"
 "Language-Team: Italian (https://www.transifex.com/abalfoort/teams/54212/"
@@ -27,10 +27,6 @@ msgstr ""
 msgid "Remove"
 msgstr "Rimuovi"
 
-#: iso-constructor/__init__.py:86 data/iso-constructor.desktop.in.h:1
-msgid "ISO Constructor"
-msgstr "ISO Constructor"
-
 #: iso-constructor/__init__.py:87
 msgid "Select all"
 msgstr "Seleziona tutto"
@@ -41,7 +37,7 @@ msgstr "Aggiungi"
 
 #: iso-constructor/__init__.py:89
 msgid "View log file"
-msgstr ""
+msgstr "Visualizza il file di log"
 
 #: iso-constructor/__init__.py:91
 msgid "Edit"
@@ -120,33 +116,37 @@ msgstr ""
 "La cartella di destinazione non è vuota\n"
 "Sei sicuro di voler sovrascrivere tutti i dati in {}?"
 
-#: iso-constructor/__init__.py:338
+#: iso-constructor/__init__.py:341
 msgid "Unpack ISO to directory"
 msgstr "Scompatta l'ISO nella directory"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:342
 msgid "Unpack & Save"
 msgstr "Scompatta e Salva"
 
-#: iso-constructor/__init__.py:347
+#: iso-constructor/__init__.py:350
 msgid "Work directory"
 msgstr "Cartela di lavoro"
 
-#: iso-constructor/__init__.py:348
+#: iso-constructor/__init__.py:351
 msgid "Save"
 msgstr "Salva"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Select"
 msgstr "Seleziona"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Distribution"
 msgstr "Distribuzione"
 
-#: iso-constructor/__init__.py:355
+#: iso-constructor/__init__.py:358
 msgid "Working directory"
 msgstr "Cartella di lavoro"
+
+#: data/iso-constructor.desktop.in.h:1
+msgid "ISO Constructor"
+msgstr "ISO Constructor"
 
 #: data/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"
