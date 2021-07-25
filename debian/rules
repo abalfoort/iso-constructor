@@ -43,12 +43,9 @@ override_dh_builddeb:
 	dh_builddeb
 	# Cleanup build directory when done
 	rm -rf ./debian/$(source)
-	rm -rf ./debian/solydxk-constructor
+	rm -rf ./debian/iso-constructor
 
 update:
-	# Push pot file to Transifex
-	tx push -s
-
 	# Get translations from Transifex
 	tx pull -a
 
@@ -128,3 +125,6 @@ update:
 	#		rm -rvf "$${D}"; \
 	#	fi; \
 	#done && echo "HTML files scanned for translations"
+	
+	# Push pot file to Transifex
+	tx push -s
