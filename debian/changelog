@@ -1,3 +1,21 @@
+iso-constructor (3.8.7) stable; urgency=low
+
+  * Fix bug not starting on Buster
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 16 Apr 2021 10:10:12 +0200
+
+iso-constructor (3.8.6) stable; urgency=low
+
+  * Updated translation: ca
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 14 Apr 2021 08:37:20 +0200
+
+iso-constructor (3.8.5) stable; urgency=low
+
+  * Updated translation: de
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 13 Apr 2021 18:02:40 +0200
+
 iso-constructor (3.8.4) stable; urgency=low
 
   * Fix creating efi.img
