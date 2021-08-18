@@ -52,7 +52,7 @@ if [ ! -z "$LOCALIZED" ]; then
     ISOFILENAME="$ISOFILENAME_$LOCALIZED"
 fi
 ISOFILENAME="$ISOFILENAME.iso"
-DEBRELEASE=$(grep -oP '(?<=/debian )\w+(?= )' "$DISTPATH/root/etc/apt/sources.list")
+DEBRELEASE=$(grep -oP '(?<=/debian )\w+(?= )' "$DISTPATH/root/etc/apt/sources.list" | head -n 1)
 
 # Update offline packages
 if [ -d "$DISTPATH/boot/offline" ]; then
