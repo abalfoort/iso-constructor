@@ -13,46 +13,59 @@ if ! $(ls ${TARGET}{/run,/sys,/proc,/dev} >/dev/null 2>&1); then
     exit 2
 fi
 
-if [ -d "${TARGET}/etc/" ] && [ -f "/etc/resolv.conf" ]; then
-    cp -f "/etc/resolv.conf" "${TARGET}/etc/"
+TMP=$(mktemp)
+trap 'rm -f ${TMP}' EXIT
+chmod u+x "${TMP}"
+
+set -e
+
+# Create bash to mount temporary API filesystems
+cat > "${TMP}"  <<END
+#!/bin/bash
+set -e
+: Entered private mount namespace
+mount -t devtmpfs devtmpfs ${TARGET}/dev
+mount -t devpts devpts ${TARGET}/dev/pts
+mount -t proc proc ${TARGET}/proc
+mount -t sysfs sysfs ${TARGET}/sys
+mount -t none -o bind /run ${TARGET}/run
+if [ -d /sys/firmware/efi/efivars ] && 
+   [ -d ${TARGET}/sys/firmware/efi/efivars ]; then
+    mount -t efivarfs efivarfs ${TARGET}/sys/firmware/efi/efivars
+fi
+if [ -h ${TARGET}/dev/shm ]; then mkdir -p ${TARGET}$(readlink ${TARGET}/dev/shm); fi
+if [ -h ${TARGET}/var/lock ]; then mkdir -p ${TARGET}$(readlink ${TARGET}/var/lock); fi
+export LANGUAGE=C
+export LANG=C
+export LC_ALL=C
+END
+
+# Enable networking in chroot environment
+if [ -f "/etc/resolv.conf" ]; then
+    if [ -f "${TARGET}/etc/resolv.conf" ]; then
+        mv -f "${TARGET}/etc/resolv.conf" "${TARGET}/etc/resolv.conf.bak"
+    fi
+    cp -f "/etc/resolv.conf" "${TARGET}/etc/resolv.conf"
 fi
 
-# Make nodes and bind directories
-{
-    mount -vt devtmpfs devtmpfs ${TARGET}/dev
-    mount -vt devpts devpts ${TARGET}/dev/pts
-    mount -vt proc proc ${TARGET}/proc
-    mount -vt sysfs sysfs ${TARGET}/sys
-    mount -vt tmpfs tmpfs ${TARGET}/run
-    if [ -d /sys/firmware/efi/efivars ] && 
-    [ -d ${TARGET}/sys/firmware/efi/efivars ]; then
-        mount -vt efivarfs efivarfs ${TARGET}/sys/firmware/efi/efivars
-    fi
-    if [ -h ${TARGET}/dev/shm ]; then mkdir -pv ${TARGET}/$(readlink ${TARGET}/dev/shm); fi
-    if [ -h ${TARGET}/var/lock ]; then mkdir -pv ${TARGET}/$(readlink ${TARGET}/var/lock); fi
-} &> /dev/null
-
-# Chroot into dir
 echo
 echo "Chroot: ${TARGET}"
-if [ ! -z "${COMMANDS}" ]; then
-    echo "Commands: ${COMMANDS}"
-    COMMANDS="-c \"${COMMANDS}\""
-else
+if [ -z "${COMMANDS}" ]; then
     echo 'Run your commands and exit with Ctrl-D when done.'
+    echo
+    echo chroot "${TARGET}" >> "$TMP"
+else
+    echo "Commands: ${COMMANDS}"
+    echo
+    echo chroot "${TARGET}" "${COMMANDS}" >> "$TMP"
 fi
-echo
 
-eval "chroot \"${TARGET}\" /usr/bin/env -i \
-    HOME=/root \
-    TERM=\"$TERM\" \
-    PS1=\"\\[$(tput rev)\\](chroot):\w#\\[$(tput sgr0)\\] \" \
-    PATH=/bin:/usr/bin:/sbin:/usr/sbin \
-    /bin/bash --noprofile --login +h \
-    ${COMMANDS}"
+# Run program in new namespaces
+unshare -m -- "${TMP}"
+
+if [ -f "${TARGET}/etc/resolv.conf.bak" ]; then
+    mv -f "${TARGET}/etc/resolv.conf.bak" "${TARGET}/etc/resolv.conf"
+fi
 
 # Remove flag
 rm -f "${TARGET}/.tmp"
-   
-# Unmount when done
-umount -v ${TARGET}/{run,sys/firmware/efi/efivars,sys,proc,dev/pts,dev} &> /dev/null
