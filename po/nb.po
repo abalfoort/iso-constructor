@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-28 08:32+0100\n"
+"POT-Creation-Date: 2021-08-31 16:26+0200\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Anders Dalen <anders@andersdalen.no>, 2020\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/abalfoort/"
@@ -22,55 +22,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: iso-constructor/__init__.py:85
+#: iso-constructor/__init__.py:84
 msgid "Remove"
 msgstr "Fjern"
 
-#: iso-constructor/__init__.py:87
+#: iso-constructor/__init__.py:86
 msgid "Select all"
 msgstr "Velg alt"
 
-#: iso-constructor/__init__.py:88
+#: iso-constructor/__init__.py:87
 msgid "Add"
 msgstr "Legg til"
 
-#: iso-constructor/__init__.py:89
+#: iso-constructor/__init__.py:88
 msgid "View log file"
 msgstr ""
 
-#: iso-constructor/__init__.py:91
+#: iso-constructor/__init__.py:90
 msgid "Edit"
 msgstr "Rediger"
 
-#: iso-constructor/__init__.py:92
+#: iso-constructor/__init__.py:91
 msgid "Upgrade"
 msgstr "Oppgrader"
 
-#: iso-constructor/__init__.py:93
-msgid "Localize"
-msgstr "Språktillpass"
-
-#: iso-constructor/__init__.py:94
+#: iso-constructor/__init__.py:92
 msgid "Build"
 msgstr "Bygg"
 
-#: iso-constructor/__init__.py:95
+#: iso-constructor/__init__.py:93
 msgid "Help"
 msgstr "Hjelp"
 
-#: iso-constructor/__init__.py:98
+#: iso-constructor/__init__.py:96
 msgid "Add Distribution"
 msgstr ""
 
-#: iso-constructor/__init__.py:99
+#: iso-constructor/__init__.py:97
 msgid "ISO"
 msgstr "ISO"
 
-#: iso-constructor/__init__.py:101
+#: iso-constructor/__init__.py:99
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: iso-constructor/__init__.py:138
+#: iso-constructor/__init__.py:136
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -78,28 +74,28 @@ msgstr ""
 "Er du sikker på at du ønsker å fjerne den valgte distribusjonen fra lista?\n"
 "(dette vil ikke fjerne katalogen og dataene)"
 
-#: iso-constructor/__init__.py:242
+#: iso-constructor/__init__.py:223
 msgid "Select ISO file"
 msgstr ""
 
-#: iso-constructor/__init__.py:250
+#: iso-constructor/__init__.py:231
 msgid "Select directory"
 msgstr "Velg katalog"
 
-#: iso-constructor/__init__.py:260
+#: iso-constructor/__init__.py:241
 msgid "Save existing working directory"
 msgstr "Lagre gjeldende arbeidskatalog"
 
-#: iso-constructor/__init__.py:262
+#: iso-constructor/__init__.py:243
 msgid "Unpack ISO and save"
 msgstr "Pakk ut ISO og lagre"
 
-#: iso-constructor/__init__.py:269
+#: iso-constructor/__init__.py:250
 #, python-format
 msgid "Could not create directory %(dir)s: exiting"
 msgstr "Kunne ikke opprette katalog %(dir)s: avslutter"
 
-#: iso-constructor/__init__.py:276
+#: iso-constructor/__init__.py:257
 msgid ""
 "The path to the ISO file does not exist:\n"
 "{}"
@@ -107,7 +103,7 @@ msgstr ""
 "Adressen till ISO-filen eksisterer ikke:\n"
 "{}"
 
-#: iso-constructor/__init__.py:281
+#: iso-constructor/__init__.py:262
 msgid ""
 "The destination directory is not empty.\n"
 "Are you sure you want to overwrite all data in {}?"
@@ -115,31 +111,31 @@ msgstr ""
 "Målkatalogen er ikke tom.\n"
 "Er du sikker på at du ønsker å skrive over alle data i {}?"
 
-#: iso-constructor/__init__.py:341
+#: iso-constructor/__init__.py:322
 msgid "Unpack ISO to directory"
 msgstr "Pakk ut ISO til katalog"
 
-#: iso-constructor/__init__.py:342
+#: iso-constructor/__init__.py:323
 msgid "Unpack & Save"
 msgstr "Pakk ut og lagre"
 
-#: iso-constructor/__init__.py:350
+#: iso-constructor/__init__.py:331
 msgid "Work directory"
 msgstr "Arbeidskatalog"
 
-#: iso-constructor/__init__.py:351
+#: iso-constructor/__init__.py:332
 msgid "Save"
 msgstr "Lagre"
 
-#: iso-constructor/__init__.py:358
+#: iso-constructor/__init__.py:339
 msgid "Select"
 msgstr "Velg"
 
-#: iso-constructor/__init__.py:358
+#: iso-constructor/__init__.py:339
 msgid "Distribution"
 msgstr "Distribusjon"
 
-#: iso-constructor/__init__.py:358
+#: iso-constructor/__init__.py:339
 msgid "Working directory"
 msgstr "Arbeidskatalog"
 
@@ -155,3 +151,6 @@ msgstr ""
 #: data/org.debian.pkexec.iso-constructor.policy:8
 msgid "Authentication is required to run ISO Constructor"
 msgstr ""
+
+#~ msgid "Localize"
+#~ msgstr "Språktillpass"

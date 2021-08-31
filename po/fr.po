@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-28 08:32+0100\n"
+"POT-Creation-Date: 2021-08-31 16:26+0200\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Gaïus Baltar <ichbin1199@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/abalfoort/teams/54212/fr/)\n"
@@ -24,55 +24,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: iso-constructor/__init__.py:85
+#: iso-constructor/__init__.py:84
 msgid "Remove"
 msgstr "Retirer"
 
-#: iso-constructor/__init__.py:87
+#: iso-constructor/__init__.py:86
 msgid "Select all"
 msgstr "Tout sélectionner"
 
-#: iso-constructor/__init__.py:88
+#: iso-constructor/__init__.py:87
 msgid "Add"
 msgstr "Ajouter"
 
-#: iso-constructor/__init__.py:89
+#: iso-constructor/__init__.py:88
 msgid "View log file"
 msgstr "Voir le fichier de journalisation"
 
-#: iso-constructor/__init__.py:91
+#: iso-constructor/__init__.py:90
 msgid "Edit"
 msgstr "Éditer"
 
-#: iso-constructor/__init__.py:92
+#: iso-constructor/__init__.py:91
 msgid "Upgrade"
 msgstr "Mettre à jour"
 
-#: iso-constructor/__init__.py:93
-msgid "Localize"
-msgstr "Traduire"
-
-#: iso-constructor/__init__.py:94
+#: iso-constructor/__init__.py:92
 msgid "Build"
 msgstr "Construire"
 
-#: iso-constructor/__init__.py:95
+#: iso-constructor/__init__.py:93
 msgid "Help"
 msgstr "Aide"
 
-#: iso-constructor/__init__.py:98
+#: iso-constructor/__init__.py:96
 msgid "Add Distribution"
 msgstr "Ajouter une distribution"
 
-#: iso-constructor/__init__.py:99
+#: iso-constructor/__init__.py:97
 msgid "ISO"
 msgstr "ISO"
 
-#: iso-constructor/__init__.py:101
+#: iso-constructor/__init__.py:99
 msgid "Cancel"
 msgstr "Annuler"
 
-#: iso-constructor/__init__.py:138
+#: iso-constructor/__init__.py:136
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -81,28 +77,28 @@ msgstr ""
 "liste?\n"
 "(Cela n'effacera pas le répertoire ni les données qu'il contient)"
 
-#: iso-constructor/__init__.py:242
+#: iso-constructor/__init__.py:223
 msgid "Select ISO file"
 msgstr "Choisir l'ISO"
 
-#: iso-constructor/__init__.py:250
+#: iso-constructor/__init__.py:231
 msgid "Select directory"
 msgstr "Choisir le répertoire"
 
-#: iso-constructor/__init__.py:260
+#: iso-constructor/__init__.py:241
 msgid "Save existing working directory"
 msgstr "Enregistrer le répertoire de travail existant"
 
-#: iso-constructor/__init__.py:262
+#: iso-constructor/__init__.py:243
 msgid "Unpack ISO and save"
 msgstr "Dépaqueter l'ISO et enregistrer"
 
-#: iso-constructor/__init__.py:269
+#: iso-constructor/__init__.py:250
 #, python-format
 msgid "Could not create directory %(dir)s: exiting"
 msgstr "Impossible de créer le répertoire %(dir)s: arrêt du programme"
 
-#: iso-constructor/__init__.py:276
+#: iso-constructor/__init__.py:257
 msgid ""
 "The path to the ISO file does not exist:\n"
 "{}"
@@ -110,7 +106,7 @@ msgstr ""
 "Le chemin vers le fichier ISO n'existe pas:\n"
 "{}"
 
-#: iso-constructor/__init__.py:281
+#: iso-constructor/__init__.py:262
 msgid ""
 "The destination directory is not empty.\n"
 "Are you sure you want to overwrite all data in {}?"
@@ -118,31 +114,31 @@ msgstr ""
 "Le répertoire cible n'est pas vide.\n"
 "Etes-vous certain de vouloir écraser les données contenues dans {}?"
 
-#: iso-constructor/__init__.py:341
+#: iso-constructor/__init__.py:322
 msgid "Unpack ISO to directory"
 msgstr "Décompresser l'ISO dans le répertoire"
 
-#: iso-constructor/__init__.py:342
+#: iso-constructor/__init__.py:323
 msgid "Unpack & Save"
 msgstr "Décompresser et enregistrer"
 
-#: iso-constructor/__init__.py:350
+#: iso-constructor/__init__.py:331
 msgid "Work directory"
 msgstr "Répertoire de travail"
 
-#: iso-constructor/__init__.py:351
+#: iso-constructor/__init__.py:332
 msgid "Save"
 msgstr "Enregistrer"
 
-#: iso-constructor/__init__.py:358
+#: iso-constructor/__init__.py:339
 msgid "Select"
 msgstr "Choisir"
 
-#: iso-constructor/__init__.py:358
+#: iso-constructor/__init__.py:339
 msgid "Distribution"
 msgstr "Distribution"
 
-#: iso-constructor/__init__.py:358
+#: iso-constructor/__init__.py:339
 msgid "Working directory"
 msgstr "Répertoire de travail"
 
@@ -158,3 +154,6 @@ msgstr "Outil de construction et de maintenance des ISOs Debian"
 #: data/org.debian.pkexec.iso-constructor.policy:8
 msgid "Authentication is required to run ISO Constructor"
 msgstr "l'authentification est nécessaire pour exécuter ISO Constructor"
+
+#~ msgid "Localize"
+#~ msgstr "Traduire"
