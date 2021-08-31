@@ -29,9 +29,6 @@ Options for terminal use (no GUI):
 -e
 :   Edit the distribution
 
--l
-:   Localize the distribution
-
 -u
 :   Upgrade the distribution
 
@@ -51,11 +48,11 @@ Here you can either unpack an ISO to a new work directory or select an exsiting 
 ## Remove distribution
 When removing a distribution the work directory will NOT be removed.
 
+## Edit distribution
+Creates a chrooted environment where you can change the system.
+
 ## Upgrade distribution
 Simply runs "apt-get dist-upgrade" but taking into account that some services need to be handled before and after the upgrade.
-
-## Localize the ISOs
-ISO Constructor by default generates a boot menu where the user can select their own locale when starting a live session. This will localize your live system permanently to your selected locale. Do not forget to translate the Grub and Isolinux menu. See the section below on editing the Grub and Isolinux templates.
 
 ## Build ISOs
 Builds the ISO and creates a sha256 file.

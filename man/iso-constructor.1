@@ -23,9 +23,6 @@ Build the distribution
 -e
 Edit the distribution
 .TP
--l
-Localize the distribution
-.TP
 -u
 Upgrade the distribution
 .TP
@@ -44,17 +41,13 @@ exsiting previously removed work directory.
 .SS Remove distribution
 .PP
 When removing a distribution the work directory will NOT be removed.
+.SS Edit distribution
+.PP
+Creates a chrooted environment where you can change the system.
 .SS Upgrade distribution
 .PP
 Simply runs \[lq]apt-get dist-upgrade\[rq] but taking into account that
 some services need to be handled before and after the upgrade.
-.SS Localize the ISOs
-.PP
-ISO Constructor by default generates a boot menu where the user can
-select their own locale when starting a live session.
-This will localize your live system permanently to your selected locale.
-Do not forget to translate the Grub and Isolinux menu.
-See the section below on editing the Grub and Isolinux templates.
 .SS Build ISOs
 .PP
 Builds the ISO and creates a sha256 file.
