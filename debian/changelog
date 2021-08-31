@@ -1,3 +1,17 @@
+iso-constructor (3.9.1) stable; urgency=low
+
+  * Remove localizing ISO (not longer supported)
+  * Fix perl locales warnings in chroot
+  * Fix upgrade.sh not removed after upgrade
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 31 Aug 2021 16:20:37 +0200
+
+iso-constructor (3.9.0) stable; urgency=low
+
+  * chroot: run in separate name space
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 31 Aug 2021 09:28:06 +0200
+
 iso-constructor (3.8.9) stable; urgency=low
 
   * Include /sys/firmware/efi/efivars in chroot mounts
