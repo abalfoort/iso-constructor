@@ -18,7 +18,6 @@ DISTRIBUTION_PATH contains the unpacked distribution with a boot and root direct
 -b                      Build the distribution.
 -e                      Edit the distribution.
 -h                      This help screen.
--l                       Localize the distribution.
 -u                      Update the distribution.
 -U [iso_path]   Unpack ISO
 
@@ -34,7 +33,7 @@ LOCALIZE=false
 UPGRADE=false
 
 # Get parameters
-while getopts 'beluU:' OPT; do
+while getopts 'beuU:' OPT; do
     case $OPT in
         b)
             # Build distribution
@@ -43,10 +42,6 @@ while getopts 'beluU:' OPT; do
         e)
             # Edit distribution
             EDIT=true
-            ;;
-        l)
-            # Localize distribution
-            LOCALIZE=true
             ;;
         u)
             # Upgrade distribution
@@ -94,11 +89,8 @@ fi
 
 if $UPGRADE; then
     sudo cp '/usr/share/iso-constructor/upgrade.sh' "$DISTPATH/root/"
-    eval "sudo bash $CHROOT \"$DISTPATH/root\" \"bash /upgrade.sh; rm /upgrade.sh\""
-fi
-
-if $LOCALIZE; then
-    eval "sudo bash /usr/share/iso-constructor/localize.sh \"$DISTPATH\""
+    eval "sudo bash $CHROOT \"$DISTPATH/root\" \"bash /upgrade.sh\""
+    sudo rm -f "$DISTPATH/root/upgrade.sh"
 fi
 
 if $BUILD; then

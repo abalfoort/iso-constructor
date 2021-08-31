@@ -66,7 +66,6 @@ class Constructor(object):
         self.btnRemove = go('btnRemove')
         self.btnEdit = go('btnEdit')
         self.btnUpgrade = go('btnUpgrade')
-        self.btnLocalize = go('btnLocalize')
         self.btnBuildIso = go('btnBuildIso')
 
         # Add iso window objects
@@ -90,7 +89,6 @@ class Constructor(object):
         self.btnRemove.set_tooltip_text(self.remove_text)
         self.btnEdit.set_tooltip_text(_("Edit"))
         self.btnUpgrade.set_tooltip_text(_("Upgrade"))
-        self.btnLocalize.set_tooltip_text(_("Localize"))
         self.btnBuildIso.set_tooltip_text(_("Build"))
         self.btnHelp.set_tooltip_text(_("Help"))
 
@@ -168,23 +166,6 @@ class Constructor(object):
             # Upgrade the distribtution
             command =  'iso-constructor -u "{path}"'.format(path=path)
             self.terminal.feed(command=command, wait_until_done=True)
-        self.enable_gui_elements(True)
-
-    def on_btnLocalize_clicked(self, widget):
-        self.enable_gui_elements(False)
-        selected = self.tvHandlerDistros.getToggledValues(toggleColNr=0, valueColNr=2)
-        for path in selected:
-            self.log('> Start localizing {path}'.format(path=path))
-            
-            # Localize the distribution
-            command = 'iso-constructor -l "{path}"'.format(path=path)
-            self.terminal.feed(command=command)
-            
-            # Check for flag file (created by chrootScript) and wait
-            flag = '{path}/root/.tmp'.format(path=path)
-            with open(flag, 'w') as f:
-                f.write('')
-            self.check_chroot(flag_fle=flag)
         self.enable_gui_elements(True)
 
     def on_btnBuildIso_clicked(self, widget):
@@ -392,7 +373,6 @@ class Constructor(object):
             self.btnEdit.set_sensitive(False)
             self.btnRemove.set_sensitive(False)
             self.btnUpgrade.set_sensitive(False)
-            self.btnLocalize.set_sensitive(False)
             self.btnDir.set_sensitive(False)
             self.btnHelp.set_sensitive(False)
         else:
@@ -405,7 +385,6 @@ class Constructor(object):
             self.btnEdit.set_sensitive(True)
             self.btnRemove.set_sensitive(True)
             self.btnUpgrade.set_sensitive(True)
-            self.btnLocalize.set_sensitive(True)
             self.btnDir.set_sensitive(True)
             self.btnHelp.set_sensitive(True)
 
