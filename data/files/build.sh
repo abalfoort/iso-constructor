@@ -29,7 +29,8 @@ if [ -f "$USERDIR/keep-packages" ]; then
     echo "> Using custom keep-packages file: $USERDIR/keep-packages"
 fi
 cp -v "$SHAREDIR/_chroot-cleanup.sh" "$DISTPATH/root/"
-bash $SHAREDIR/chroot-dir.sh "$DISTPATH/root" "bash /_chroot-cleanup.sh \"$KEEPPACKAGES\"; rm /_chroot-cleanup.sh"
+bash $SHAREDIR/chroot-dir.sh "$DISTPATH/root" "bash /_chroot-cleanup.sh \"$KEEPPACKAGES\""
+rm -f "$DISTPATH/root/_chroot-cleanup.sh"
 echo
 
 # Global variables
