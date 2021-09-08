@@ -66,6 +66,3 @@ unshare -m -- "${TMP}"
 if [ -f "${TARGET}/etc/resolv.conf.bak" ]; then
     mv -f "${TARGET}/etc/resolv.conf.bak" "${TARGET}/etc/resolv.conf"
 fi
-
-# Remove flag
-rm -f "${TARGET}/.tmp"

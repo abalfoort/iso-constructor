@@ -1,3 +1,9 @@
+iso-constructor (3.9.2) stable; urgency=low
+
+  * Editing: Check for pid and not pid file
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 07 Sep 2021 11:22:48 +0200
+
 iso-constructor (3.9.1) stable; urgency=low
 
   * Remove localizing ISO (not longer supported)

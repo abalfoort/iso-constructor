@@ -19,7 +19,8 @@ from .terminal import Terminal
 from .dialogs import MessageDialog, ErrorDialog, SelectFileDialog, \
                      SelectDirectoryDialog, QuestionDialog
 from .utils import get_user_home, get_logged_user, \
-                   get_package_version, get_lsb_release_info
+                   get_package_version, get_lsb_release_info, \
+                   getoutput
 
 # i18n: http://docs.python.org/3/library/gettext.html
 import gettext
@@ -150,11 +151,12 @@ class Constructor(object):
             command =  'iso-constructor -e "{path}"'.format(path=path)
             self.terminal.feed(command=command)
             
-            # Check for flag file (created by chrootScript) and wait
-            flag = '{path}/root/.tmp'.format(path=path)
-            with open(flag, 'w') as f:
-                f.write('')
-            self.check_chroot(flag_fle=flag)
+            # Check if chrooted and wait until user is done
+            cmd = 'pgrep -f "chroot-dir.sh {path}"'.format(path=path)
+            while getoutput(cmd):
+                # Update the parent window
+                while Gtk.events_pending():
+                    Gtk.main_iteration()
         self.enable_gui_elements(True)
             
     def on_btnUpgrade_clicked(self, widget):
@@ -412,13 +414,6 @@ class Constructor(object):
         if self.log_file and text:
             with open(self.log_file, 'a') as f:
                 f.write(text + '\n')
-
-    def check_chroot(self, flag_fle):
-        while exists(flag_fle):
-            # Update the parent window
-            while Gtk.events_pending():
-                Gtk.main_iteration()
-            time.sleep(0.1)
 
     def get_language_dir(self):
         # First test if full locale directory exists, e.g. html/pt_BR,
