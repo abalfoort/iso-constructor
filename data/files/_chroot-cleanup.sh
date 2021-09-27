@@ -39,7 +39,7 @@ done <<< "$FIRMWARE"
 
 echo '> Cleanup'
 apt-get clean
-eval $APT autoremove
+eval $APT --purge autoremove
 
 # Remove old kernel and headers
 VERSION=$(ls -al / | grep -e "\svmlinuz\s" | cut -d'/' -f2 | cut -d'-' -f2,3)
@@ -149,7 +149,7 @@ fi
 
 UFW=$(which ufw)
 if [ ! -z "$UFW" ]; then
-    echo '> Setup the firewall'
+    echo '> Setup ufw'
     eval $UFW --force reset
     rm /etc/ufw/*.rules.* 2>/dev/null
     rm /lib/ufw/*.rules.* 2>/dev/null
@@ -159,7 +159,38 @@ if [ ! -z "$UFW" ]; then
     eval $UFW allow from any app CIFS 2>/dev/null
     eval $UFW allow to any app CUPS 2>/dev/null
     eval $UFW allow from any app CUPS 2>/dev/null
+    # msdn port
+    eval $UFW allow 5353/udp 2>/dev/null
+    eval $UFW allow out 5353/udp 2>/dev/null
     eval $UFW enable
+fi
+
+FWD='/etc/firewalld/zones/public.xml'
+if [ -d /etc/firewalld/zones/ ]; then
+    echo '> Setup firewalld'
+    if [ -f "$FWD" ]; then
+        if ! grep -q mdns "$FWD"; then
+            # Allow mDNS (ping, etc)
+            sed -i '/\/zone/i <service name="mdns"\/>' "$FWD" 
+        fi
+        if ! grep -q ipp "$FWD"; then
+            # Allow CUPS
+            sed -i '/\/zone/i <service name="ipp"\/>' "$FWD" 
+        fi
+    else
+        # Create initial file
+        cat > "$FWD" << EOF
+<?xml version="1.0" encoding="utf-8"?>
+<zone>
+  <short>Public</short>
+  <description>For use in public areas.</description>
+  <service name="ssh"/>
+  <service name="dhcpv6-client"/>
+  <service name="mdns"/>
+  <service name="ipp"/>
+</zone>
+EOF
+    fi
 fi
 
 # Cleanup root history
