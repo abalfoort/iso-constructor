@@ -26,7 +26,6 @@ Depends: ${misc:Depends}, ${python3:Depends}
   , gconf2
   , xorriso
   , dosfstools
-  , mtools
   , uni2ascii
   , grub-efi-amd64-bin
   , sensible-utils
