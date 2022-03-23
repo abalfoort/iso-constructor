@@ -65,13 +65,18 @@ if [ -d "$DISTPATH/boot/offline" ]; then
         DEBNAME=${DEB##*/}
         PCKNAME=${DEBNAME%%_*}
         # Copy resolv.conf
-        if [ -d "$DISTPATH/root/etc" ] && [ -f "/etc/resolv.conf" ]; then
-            cp -f "/etc/resolv.conf" "$DISTPATH/root/etc"
+        if [ ! -L "$DISTPATH/root/etc/resolv.conf" ] && [ -e "/etc/resolv.conf" ]; then
+            if [ -f "$DISTPATH/root/etc/resolv.conf" ]; then
+                mv -f "$DISTPATH/root/etc/resolv.conf" "$DISTPATH/root/etc/resolv.conf.bak"
+            fi
+            cat "/etc/resolv.conf" > "$DISTPATH/root/etc/resolv.conf"
         fi
         # Download package
         chroot "$DISTPATH/root" apt-get download $PCKNAME
-        # Remove resolv.conf
-        rm -f "$DISTPATH/root/etc/resolv.conf"
+        # Replace resolv.conf
+        if [ -f "$DISTPATH/root/etc/resolv.conf.bak" ]; then
+            mv -f "$DISTPATH/root/etc/resolv.conf.bak" "$DISTPATH/root/etc/resolv.conf"
+        fi
         # Remove old deb
         rm -v "$DEBPATH/$PCKNAME"*.deb
         # Get downloaded deb
@@ -95,11 +100,16 @@ elif [ -d "$DISTPATH/boot/pool" ]; then
         echo "> Check $PCKNAME versions: $DEBVERSION > $NEWDEBVERSION"
         if [ ! -z "$DEBVERSION" ] && [ ! -z "$NEWDEBVERSION" ] && [ "$DEBVERSION" != "$NEWDEBVERSION" ]; then
             # Download new package
-            if [ -d "$DISTPATH/root/etc" ] && [ -f "/etc/resolv.conf" ]; then
-                cp -f "/etc/resolv.conf" "$DISTPATH/root/etc"
+            if [ ! -L "$DISTPATH/root/etc/resolv.conf" ] && [ -e "/etc/resolv.conf" ]; then
+                if [ -f "$DISTPATH/root/etc/resolv.conf" ]; then
+                    mv -f "$DISTPATH/root/etc/resolv.conf" "$DISTPATH/root/etc/resolv.conf.bak"
+                fi
+                cat "/etc/resolv.conf" > "$DISTPATH/root/etc/resolv.conf"
             fi
             chroot "$DISTPATH/root" apt-get download $PCKNAME
-            rm -f "$DISTPATH/root/etc/resolv.conf"
+            if [ -f "$DISTPATH/root/etc/resolv.conf.bak" ]; then
+                mv -f "$DISTPATH/root/etc/resolv.conf.bak" "$DISTPATH/root/etc/resolv.conf"
+            fi
             rm -v "$DEBPATH/${PCKNAME}_"*.deb
             mv -v "$DISTPATH/root/"*.deb "$DEBPATH"
         fi

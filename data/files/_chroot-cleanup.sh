@@ -232,8 +232,10 @@ rm -rf /boot/grub/grub.cfg
 echo '> Remove deb files left from development'
 find / -maxdepth 1 -name "*.deb" -delete
 
-echo '> Remove /etc/resolv.conf'
-rm -f /etc/resolv.conf
+if [ -e "/etc/resolv.conf" ] && [ ! -L "/etc/resolv.conf" ]; then
+    echo '> Remove /etc/resolv.conf'
+    rm -f /etc/resolv.conf
+fi
 
 # Removing redundant kernel module structure(s) from /lib/modules (if any)
 VersionPlusArch=$(ls -l /vmlinuz | sed 's/.*\/vmlinuz-\(.*\)/\1/')

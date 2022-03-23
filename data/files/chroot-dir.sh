@@ -41,11 +41,11 @@ export LC_ALL=C
 END
 
 # Enable networking in chroot environment
-if [ -f "/etc/resolv.conf" ]; then
+if [ ! -L "${TARGET}/etc/resolv.conf" ] && [ -e "/etc/resolv.conf" ]; then
     if [ -f "${TARGET}/etc/resolv.conf" ]; then
         mv -f "${TARGET}/etc/resolv.conf" "${TARGET}/etc/resolv.conf.bak"
     fi
-    cp -f "/etc/resolv.conf" "${TARGET}/etc/resolv.conf"
+    cat "/etc/resolv.conf" > "${TARGET}/etc/resolv.conf"
 fi
 
 echo
