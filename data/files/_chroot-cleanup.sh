@@ -26,7 +26,7 @@ if which gconftool-2 >/dev/null; then
 fi
 
 echo '> Make sure all firmware drivers are installed but do not install from backports'
-FIRMWARE=$(dpkg-query -W -f='${binary:Package} ${db:Status-Status} ${Version}\n' 'firmware*'  | grep not-installed | egrep -v 'micropython|-dl|-doc|-dbgsym')
+FIRMWARE=$(LANG=C dpkg-query -W -f='${binary:Package} ${db:Status-Status} ${Version} ${binary:Synopsis}\n' 'firmware*' | grep not-installed | grep -v 'no description')
 while IFS= read -r F; do
     #echo "        $F: $(echo "$F" | wc -w)"
     if [ "$(echo "$F" | wc -w)" -eq 3 ]; then
