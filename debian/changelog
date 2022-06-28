@@ -1,3 +1,15 @@
+iso-constructor (3.9.9) stable; urgency=low
+
+  * Updated translation: es_419 (latin america)
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 28 Jun 2022 12:02:02 +0200
+
+iso-constructor (3.9.8) stable; urgency=low
+
+  * Fix cleanup script: not installing missing firmware packages
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 16 Jun 2022 14:12:34 +0200
+
 iso-constructor (3.9.7) stable; urgency=low
 
   * Fix resolv.conf issues when resolvconf is installed
