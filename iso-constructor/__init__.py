@@ -24,8 +24,7 @@ from .utils import get_user_home, get_logged_user, \
 
 # i18n: http://docs.python.org/3/library/gettext.html
 import gettext
-from gettext import gettext as _
-gettext.textdomain('iso-constructor')
+_ = gettext.translation('iso-constructor', fallback=True).gettext
 
 
 # class for the main window
