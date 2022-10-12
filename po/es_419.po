@@ -6,15 +6,16 @@
 # Translators:
 # Juan Diego Sendra <sendradiego@gmail.com>, 2020
 # F A <jaw2pc@gmail.com>, 2022
+# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-28 12:02+0200\n"
+"POT-Creation-Date: 2022-10-12 09:33+0200\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
-"Last-Translator: F A <jaw2pc@gmail.com>, 2022\n"
+"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022\n"
 "Language-Team: Spanish (Latin America) (https://www.transifex.com/abalfoort/"
 "teams/54212/es_419/)\n"
 "Language: es_419\n"
@@ -68,7 +69,7 @@ msgstr "ISO"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: iso-constructor/__init__.py:136
+#: iso-constructor/__init__.py:144
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -76,68 +77,70 @@ msgstr ""
 "¿Está seguro de que desea eliminar la distribución seleccionada de la lista? "
 "(Esto no eliminará el directorio y sus datos)"
 
-#: iso-constructor/__init__.py:224
+#: iso-constructor/__init__.py:254
 msgid "Select ISO file"
 msgstr "Seleccionar archivo ISO"
 
-#: iso-constructor/__init__.py:232
+#: iso-constructor/__init__.py:268
 msgid "Select directory"
 msgstr "Seleccionar directorio"
 
-#: iso-constructor/__init__.py:242
+#: iso-constructor/__init__.py:283
 msgid "Save existing working directory"
 msgstr "Guarde el directorio de trabajo existente"
 
-#: iso-constructor/__init__.py:244
+#: iso-constructor/__init__.py:285
 msgid "Unpack ISO and save"
 msgstr "Desempaquetar ISO y guardar"
 
-#: iso-constructor/__init__.py:251
-#, python-format
-msgid "Could not create directory %(dir)s: exiting"
-msgstr "No se pudo crear el directorio %(dir)s: salir"
+#: iso-constructor/__init__.py:292
+#, python-brace-format
+msgid "Could not create directory {self.dir}: exiting"
+msgstr "No se pudo crear el directorio {self.dir}: salir"
 
-#: iso-constructor/__init__.py:258
+#: iso-constructor/__init__.py:299
+#, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
-"{}"
+"{self.iso}"
 msgstr ""
 "La ruta al archivo ISO no existe:\n"
-"{}"
+"{self.iso}"
 
-#: iso-constructor/__init__.py:263
+#: iso-constructor/__init__.py:304
+#, python-brace-format
 msgid ""
 "The destination directory is not empty.\n"
-"Are you sure you want to overwrite all data in {}?"
+"Are you sure you want to overwrite all data in {self.dir}?"
 msgstr ""
-"El directorio de destino no está vacío. \n"
-"¿Está seguro de que desea sobrescribir todos los datos en {}?"
+"El directorio de destino no está vacío.\n"
+"¿Está seguro de que desea sobrescribir todos los datos en {self.dir}?"
 
-#: iso-constructor/__init__.py:323
+#: iso-constructor/__init__.py:379
 msgid "Unpack ISO to directory"
 msgstr "Desempaquetar ISO en el directorio"
 
-#: iso-constructor/__init__.py:324
+#: iso-constructor/__init__.py:380
 msgid "Unpack & Save"
 msgstr "Desempaquetar y guardar"
 
-#: iso-constructor/__init__.py:332
+#: iso-constructor/__init__.py:388
 msgid "Work directory"
 msgstr "Directorio de trabajo"
 
-#: iso-constructor/__init__.py:333
+#: iso-constructor/__init__.py:389
 msgid "Save"
 msgstr "Guardar"
 
-#: iso-constructor/__init__.py:340
+#: iso-constructor/__init__.py:399
 msgid "Select"
 msgstr "Seleccionar"
 
-#: iso-constructor/__init__.py:340
+#: iso-constructor/__init__.py:399
 msgid "Distribution"
 msgstr "Distribución"
 
-#: iso-constructor/__init__.py:340
+#: iso-constructor/__init__.py:399
 msgid "Working directory"
 msgstr "Directorio de trabajo"
 

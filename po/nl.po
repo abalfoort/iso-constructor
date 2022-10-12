@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020
+# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-31 16:26+0200\n"
+"POT-Creation-Date: 2022-10-12 09:33+0200\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
-"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020\n"
+"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/abalfoort/teams/54212/nl/)\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgstr "ISO"
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: iso-constructor/__init__.py:136
+#: iso-constructor/__init__.py:144
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -74,68 +74,70 @@ msgstr ""
 "verwijderen?\n"
 "(Dit zal de map met gegevens NIET verwijderen)"
 
-#: iso-constructor/__init__.py:223
+#: iso-constructor/__init__.py:254
 msgid "Select ISO file"
 msgstr "Selecteer ISO bestand"
 
-#: iso-constructor/__init__.py:231
+#: iso-constructor/__init__.py:268
 msgid "Select directory"
 msgstr "Selecteer map"
 
-#: iso-constructor/__init__.py:241
+#: iso-constructor/__init__.py:283
 msgid "Save existing working directory"
 msgstr "Bewaar bestaande werkmap"
 
-#: iso-constructor/__init__.py:243
+#: iso-constructor/__init__.py:285
 msgid "Unpack ISO and save"
 msgstr "ISO uitpakken en bewaren"
 
-#: iso-constructor/__init__.py:250
-#, python-format
-msgid "Could not create directory %(dir)s: exiting"
-msgstr "Kon map %(dir)s niet maken: verlaten"
+#: iso-constructor/__init__.py:292
+#, python-brace-format
+msgid "Could not create directory {self.dir}: exiting"
+msgstr "Kon map {self.dir} niet maken: verlaten"
 
-#: iso-constructor/__init__.py:257
+#: iso-constructor/__init__.py:299
+#, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
-"{}"
+"{self.iso}"
 msgstr ""
 "Het pad naar het ISO bestand bestaat niet:\n"
-"{}"
+"{self.iso}"
 
-#: iso-constructor/__init__.py:262
+#: iso-constructor/__init__.py:304
+#, python-brace-format
 msgid ""
 "The destination directory is not empty.\n"
-"Are you sure you want to overwrite all data in {}?"
+"Are you sure you want to overwrite all data in {self.dir}?"
 msgstr ""
 "De doeldirectory is niet leeg.\n"
-"Weet u zeker dat u alle data in {} wilt overschrijven?"
+"Weet u zeker dat u alle data in {self.dir} wilt overschrijven?"
 
-#: iso-constructor/__init__.py:322
+#: iso-constructor/__init__.py:379
 msgid "Unpack ISO to directory"
 msgstr "ISO uitpakken naar map"
 
-#: iso-constructor/__init__.py:323
+#: iso-constructor/__init__.py:380
 msgid "Unpack & Save"
 msgstr "Uitpakken en bewaren"
 
-#: iso-constructor/__init__.py:331
+#: iso-constructor/__init__.py:388
 msgid "Work directory"
 msgstr "Werkmap"
 
-#: iso-constructor/__init__.py:332
+#: iso-constructor/__init__.py:389
 msgid "Save"
 msgstr "Bewaren"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:399
 msgid "Select"
 msgstr "Selecteer"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:399
 msgid "Distribution"
 msgstr "Distributie"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:399
 msgid "Working directory"
 msgstr "Werkdirectory"
 
@@ -151,6 +153,3 @@ msgstr "Tool om Debian ISO's te bouwen en te onderhouden"
 #: data/org.debian.pkexec.iso-constructor.policy:8
 msgid "Authentication is required to run ISO Constructor"
 msgstr "Verificatie is vereist om ISO Constructor uit te voeren"
-
-#~ msgid "Localize"
-#~ msgstr "Lokaliseer"

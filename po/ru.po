@@ -5,15 +5,16 @@
 #
 # Translators:
 # Михаил Ильинский <mail@milinsky.com>, 2020
+# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-31 16:26+0200\n"
+"POT-Creation-Date: 2022-10-12 09:33+0200\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
-"Last-Translator: Михаил Ильинский <mail@milinsky.com>, 2020\n"
+"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/abalfoort/teams/54212/"
 "ru/)\n"
 "Language: ru\n"
@@ -68,7 +69,7 @@ msgstr "ISO"
 msgid "Cancel"
 msgstr "Отмена"
 
-#: iso-constructor/__init__.py:136
+#: iso-constructor/__init__.py:144
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -76,74 +77,76 @@ msgstr ""
 "Вы уверены, что хотите удалить выбранный дистрибутив из списка?\n"
 "(Это не удалит каталог и его данные)"
 
-#: iso-constructor/__init__.py:223
+#: iso-constructor/__init__.py:254
 msgid "Select ISO file"
 msgstr ""
 
-#: iso-constructor/__init__.py:231
+#: iso-constructor/__init__.py:268
 msgid "Select directory"
 msgstr "Выберите директорию"
 
-#: iso-constructor/__init__.py:241
+#: iso-constructor/__init__.py:283
 msgid "Save existing working directory"
 msgstr "Сохранить существующий рабочий каталог"
 
-#: iso-constructor/__init__.py:243
+#: iso-constructor/__init__.py:285
 msgid "Unpack ISO and save"
 msgstr "Распаковать ISO и сохранить"
 
-#: iso-constructor/__init__.py:250
-#, python-format
-msgid "Could not create directory %(dir)s: exiting"
-msgstr "Не удалось создать каталог %(dir)s: выход"
+#: iso-constructor/__init__.py:292
+#, python-brace-format
+msgid "Could not create directory {self.dir}: exiting"
+msgstr "Не удалось создать каталог {self.dir}: выход"
 
-#: iso-constructor/__init__.py:257
+#: iso-constructor/__init__.py:299
+#, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
-"{}"
+"{self.iso}"
 msgstr ""
 "Путь к ISO-файл не существует\n"
-"{}"
+"{self.iso}"
 
-#: iso-constructor/__init__.py:262
+#: iso-constructor/__init__.py:304
+#, python-brace-format
 msgid ""
 "The destination directory is not empty.\n"
-"Are you sure you want to overwrite all data in {}?"
+"Are you sure you want to overwrite all data in {self.dir}?"
 msgstr ""
 "Целевой каталог не пуст.\n"
-"Вы уверены, что хотите перезаписать все данные в {}?"
+"Вы уверены, что хотите перезаписать все данные в {self.dir}?"
 
-#: iso-constructor/__init__.py:322
+#: iso-constructor/__init__.py:379
 msgid "Unpack ISO to directory"
 msgstr "Распаковать ISO в каталог"
 
-#: iso-constructor/__init__.py:323
+#: iso-constructor/__init__.py:380
 msgid "Unpack & Save"
 msgstr "Распаковать И Сохранить"
 
-#: iso-constructor/__init__.py:331
+#: iso-constructor/__init__.py:388
 msgid "Work directory"
 msgstr "Работа каталог"
 
-#: iso-constructor/__init__.py:332
+#: iso-constructor/__init__.py:389
 msgid "Save"
 msgstr "Сохранить"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:399
 msgid "Select"
 msgstr "Выбрать"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:399
 msgid "Distribution"
 msgstr "Дистрибутив"
 
-#: iso-constructor/__init__.py:339
+#: iso-constructor/__init__.py:399
 msgid "Working directory"
 msgstr "Рабочий каталог"
 
 #: data/iso-constructor.desktop.in.h:1
 msgid "ISO Constructor"
-msgstr ""
+msgstr "ISO Конструктор"
 
 #: data/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"
@@ -152,7 +155,4 @@ msgstr ""
 #. (itstool) path: action/message
 #: data/org.debian.pkexec.iso-constructor.policy:8
 msgid "Authentication is required to run ISO Constructor"
-msgstr ""
-
-#~ msgid "Localize"
-#~ msgstr "Локализовать"
+msgstr "Для запуска ISO Конструктора требуется аутентификация"

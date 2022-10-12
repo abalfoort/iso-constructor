@@ -1,2 +1,3 @@
-data/files/*           usr/share/iso-constructor/
-data/buttons         usr/share/iso-constructor/
+data/files/*    usr/share/iso-constructor/
+data/buttons    usr/share/iso-constructor/
+po/mo/*         usr/share/locale/
