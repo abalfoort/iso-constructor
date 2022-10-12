@@ -1,3 +1,16 @@
+iso-constructor (4.0.1) stable; urgency=low
+
+  * Cleanup code
+  * Updated translation: lt
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 11 Oct 2022 10:24:33 +0200
+
+iso-constructor (4.0.0) stable; urgency=low
+
+  * Updated translation: es
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 07 Oct 2022 19:11:50 +0200
+
 iso-constructor (3.9.9) stable; urgency=low
 
   * Updated translation: es_419 (latin america)

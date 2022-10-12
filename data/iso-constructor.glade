@@ -37,35 +37,34 @@
     <property name="can-focus">False</property>
     <property name="pixbuf">buttons/upgrade.svg</property>
   </object>
-  <object class="GtkWindow" id="constructorWindow">
+  <object class="GtkWindow" id="constructor_window">
     <property name="width-request">750</property>
     <property name="height-request">500</property>
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">ISO Constructor</property>
     <property name="window-position">mouse</property>
     <property name="icon-name">iso-constructor</property>
-    <property name="has-resize-grip">True</property>
-    <signal name="destroy" handler="on_constructorWindow_destroy" swapped="no"/>
+    <signal name="destroy" handler="on_constructor_window_destroy" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="margin-left">5</property>
-        <property name="margin-right">5</property>
+        <property name="margin-start">5</property>
+        <property name="margin-end">5</property>
         <property name="margin-top">5</property>
         <property name="margin-bottom">5</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkToolbar" id="tlbMain">
+          <object class="GtkToolbar" id="tlb_main">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="toolbar-style">both</property>
             <child>
-              <object class="GtkToolButton" id="btnAdd">
+              <object class="GtkToolButton" id="btn_add">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label-widget">img_add</property>
-                <signal name="clicked" handler="on_btnAdd_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_btn_add_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -73,11 +72,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="btnRemove">
+              <object class="GtkToolButton" id="btn_remove">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label-widget">img_remove</property>
-                <signal name="clicked" handler="on_btnRemove_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_btn_remove_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -95,11 +94,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="btnEdit">
+              <object class="GtkToolButton" id="btn_edit">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label-widget">img_edit</property>
-                <signal name="clicked" handler="on_btnEdit_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_btn_edit_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -107,11 +106,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="btnUpgrade">
+              <object class="GtkToolButton" id="btn_upgrade">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label-widget">img_upgrade</property>
-                <signal name="clicked" handler="on_btnUpgrade_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_btn_upgrade_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -119,11 +118,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="btnBuildIso">
+              <object class="GtkToolButton" id="btn_build_iso">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label-widget">img_build</property>
-                <signal name="clicked" handler="on_btnBuildIso_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_btn_build_iso_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -144,11 +143,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="btnLog">
+              <object class="GtkToolButton" id="btn_log">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label-widget">img_log</property>
-                <signal name="clicked" handler="on_btnLog_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_btn_log_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -156,11 +155,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="btnHelp">
+              <object class="GtkToolButton" id="btn_help">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label-widget">img_help</property>
-                <signal name="clicked" handler="on_btnHelp_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_btn_help_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -180,14 +179,14 @@
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkCheckButton" id="chkSelectAll">
+              <object class="GtkCheckButton" id="chk_select_all">
                 <property name="label" translatable="yes">Select all</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">False</property>
                 <property name="halign">start</property>
                 <property name="draw-indicator">True</property>
-                <signal name="toggled" handler="on_chkSelectAll_toggled" swapped="no"/>
+                <signal name="toggled" handler="on_chk_select_all_toggled" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -211,11 +210,11 @@
                         <property name="can-focus">True</property>
                         <property name="shadow-type">in</property>
                         <child>
-                          <object class="GtkTreeView" id="tvDistros">
+                          <object class="GtkTreeView" id="tv_distros">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="headers-visible">False</property>
-                            <signal name="row-activated" handler="on_tvDistros_row_activated" swapped="no"/>
+                            <signal name="row-activated" handler="on_tv_distros_row_activated" swapped="no"/>
                             <child internal-child="selection">
                               <object class="GtkTreeSelection"/>
                             </child>
@@ -228,7 +227,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkScrolledWindow" id="swTve">
+                      <object class="GtkScrolledWindow" id="sw_tve">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="hexpand">True</property>
@@ -262,7 +261,7 @@
       </object>
     </child>
   </object>
-  <object class="GtkWindow" id="addDistroWindow">
+  <object class="GtkWindow" id="add_distro_window">
     <property name="width-request">550</property>
     <property name="can-focus">False</property>
     <property name="resizable">False</property>
@@ -270,15 +269,15 @@
     <property name="window-position">center-on-parent</property>
     <property name="destroy-with-parent">True</property>
     <property name="urgency-hint">True</property>
-    <property name="transient-for">constructorWindow</property>
-    <signal name="delete-event" handler="on_addDistroWindow_delete_event" swapped="no"/>
+    <property name="transient-for">constructor_window</property>
+    <signal name="delete-event" handler="on_add_distro_window_delete_event" swapped="no"/>
     <child>
       <!-- n-columns=3 n-rows=4 -->
       <object class="GtkGrid" id="grid2">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="margin-left">5</property>
-        <property name="margin-right">5</property>
+        <property name="margin-start">5</property>
+        <property name="margin-end">5</property>
         <property name="margin-top">5</property>
         <property name="margin-bottom">5</property>
         <property name="row-spacing">2</property>
@@ -291,7 +290,7 @@
             <property name="spacing">2</property>
             <property name="homogeneous">True</property>
             <child>
-              <object class="GtkButton" id="btnCancel">
+              <object class="GtkButton" id="btn_cancel">
                 <property name="label" translatable="yes">_Cancel</property>
                 <property name="height-request">30</property>
                 <property name="visible">True</property>
@@ -299,7 +298,7 @@
                 <property name="receives-default">True</property>
                 <property name="margin-top">10</property>
                 <property name="use-underline">True</property>
-                <signal name="clicked" handler="on_btnCancel_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_btn_cancel_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -308,7 +307,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="btnSave">
+              <object class="GtkButton" id="btn_save">
                 <property name="label" translatable="yes">_Unpack &amp; Save</property>
                 <property name="height-request">30</property>
                 <property name="visible">True</property>
@@ -317,7 +316,7 @@
                 <property name="receives-default">True</property>
                 <property name="margin-top">10</property>
                 <property name="use-underline">True</property>
-                <signal name="clicked" handler="on_btnSave_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_btn_save_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -332,7 +331,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="lblDir">
+          <object class="GtkLabel" id="lbl_dir">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="halign">start</property>
@@ -344,7 +343,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="lblIso">
+          <object class="GtkLabel" id="lbl_iso">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="halign">start</property>
@@ -356,20 +355,20 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="boxDir">
+          <object class="GtkBox" id="box_dir">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="margin-left">5</property>
+            <property name="margin-start">5</property>
             <property name="hexpand">True</property>
             <property name="spacing">2</property>
             <child>
-              <object class="GtkEntry" id="txtDir">
+              <object class="GtkEntry" id="txt_dir">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can-focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="invisible-char">•</property>
-                <signal name="changed" handler="on_txtDir_changed" swapped="no"/>
+                <signal name="changed" handler="on_txt_dir_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -378,7 +377,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="btnDir">
+              <object class="GtkButton" id="btn_dir">
                 <property name="label" translatable="yes">...</property>
                 <property name="width-request">30</property>
                 <property name="height-request">30</property>
@@ -386,7 +385,7 @@
                 <property name="sensitive">False</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <signal name="clicked" handler="on_btnDir_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_btn_dir_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -401,19 +400,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="boxIso">
+          <object class="GtkBox" id="box_iso">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="margin-left">5</property>
+            <property name="margin-start">5</property>
             <property name="hexpand">True</property>
             <property name="spacing">2</property>
             <child>
-              <object class="GtkEntry" id="txtIso">
+              <object class="GtkEntry" id="txt_iso">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="invisible-char">•</property>
-                <signal name="changed" handler="on_txtIso_changed" swapped="no"/>
+                <signal name="changed" handler="on_txt_iso_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -422,14 +421,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="btnIso">
+              <object class="GtkButton" id="btn_iso">
                 <property name="label" translatable="yes">...</property>
                 <property name="width-request">30</property>
                 <property name="height-request">30</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <signal name="clicked" handler="on_btnIso_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_btn_iso_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -444,7 +443,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="lblFromIso">
+          <object class="GtkLabel" id="lbl_from_iso">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="halign">start</property>
@@ -456,12 +455,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkCheckButton" id="chkFromIso">
+          <object class="GtkCheckButton" id="chk_from_iso">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">False</property>
             <property name="draw-indicator">True</property>
-            <signal name="toggled" handler="on_chkFromIso_toggled" swapped="no"/>
+            <signal name="toggled" handler="on_chk_from_iso_toggled" swapped="no"/>
           </object>
           <packing>
             <property name="left-attach">1</property>
@@ -469,7 +468,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="lblSpan3">
+          <object class="GtkLabel" id="lbl_span3">
             <property name="width-request">150</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
@@ -494,7 +493,7 @@
       </object>
     </child>
   </object>
-  <object class="GtkTextBuffer" id="txbOutputBuffer">
+  <object class="GtkTextBuffer" id="txb_output_buffer">
     <property name="text" translatable="yes">ISO Constructor Log
 </property>
   </object>
