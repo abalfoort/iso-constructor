@@ -5,8 +5,7 @@ from os.path import exists
 # Make sure the right Gtk version is loaded
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, GLib, GdkPixbuf
-
+from gi.repository import GdkPixbuf, GLib, Gtk
 
 DIALOG_TYPES = {
     Gtk.MessageType.INFO: 'MessageDialog',
