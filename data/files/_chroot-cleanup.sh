@@ -26,16 +26,10 @@ if which gconftool-2 >/dev/null; then
 fi
 
 echo '> Make sure all firmware drivers are installed but do not install from backports'
-FIRMWARE=$(LANG=C dpkg-query -W -f='${binary:Package} ${db:Status-Status} ${Version} ${binary:Synopsis}\n' 'firmware*' | grep not-installed | grep -v 'no description')
-while IFS= read -r F; do
-    #echo "        $F: $(echo "$F" | wc -w)"
-    if [ "$(echo "$F" | wc -w)" -eq 3 ]; then
-        F=$(echo "$F" | awk '{print $1}')
-        if [ ! -z "$(apt-cache policy $F | grep 500 2>/dev/null)" ]; then
-            eval $APT install $F
-        fi
-    fi
-done <<< "$FIRMWARE"
+FIRMWARE=$(apt list --all-versions 2>/dev/null | grep -v -E 'backports|installed|micropython' | grep ^firmware | cut -d'/' -f 1)
+for F in $FIRMWARE; do
+    eval $APT install $F
+done
 
 echo '> Cleanup'
 apt-get clean
