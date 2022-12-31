@@ -1,3 +1,15 @@
+iso-constructor (4.0.3) stable; urgency=low
+
+  * Fix _chroot-cleanup.sh: firware packages were not installed
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 31 Dec 2022 11:48:49 +0100
+
+iso-constructor (4.0.2) stable; urgency=low
+
+  * Updated translation: pt. sr
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 27 Dec 2022 16:50:33 +0100
+
 iso-constructor (4.0.1) stable; urgency=low
 
   * Cleanup code
