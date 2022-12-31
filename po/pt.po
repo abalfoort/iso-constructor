@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Luis Filipe Teixeira <lufilte@gmail.com>, 2020
 # Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022
+# Luis Filipe Teixeira <lufilte@gmail.com>, 2022
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-12 09:33+0200\n"
+"POT-Creation-Date: 2022-12-27 16:50+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
-"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022\n"
+"Last-Translator: Luis Filipe Teixeira <lufilte@gmail.com>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/abalfoort/teams/54212/"
 "pt/)\n"
 "Language: pt\n"
@@ -46,7 +46,7 @@ msgstr "Editar"
 
 #: iso-constructor/__init__.py:91
 msgid "Upgrade"
-msgstr "Actualização"
+msgstr "Atualização"
 
 #: iso-constructor/__init__.py:92
 msgid "Build"
@@ -74,15 +74,15 @@ msgid ""
 "(This will not remove the directory and its data)"
 msgstr ""
 "Tem a certeza que deseja remover a distribuição selecionada da lista?\n"
-"(Isto não irá remover o directório e os dados)"
+"(Isto não irá remover o diretório e os dados)"
 
 #: iso-constructor/__init__.py:254
 msgid "Select ISO file"
-msgstr "Seleccionar o ficheiro ISO"
+msgstr "Selecionar o ficheiro ISO"
 
 #: iso-constructor/__init__.py:268
 msgid "Select directory"
-msgstr "Seleccionar o directório"
+msgstr "Selecionar o diretório"
 
 #: iso-constructor/__init__.py:283
 msgid "Save existing working directory"
@@ -95,7 +95,7 @@ msgstr "Desempacotar o ISO e salvar"
 #: iso-constructor/__init__.py:292
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
-msgstr "Não foi possível criar o directório de {self.dir}: a sair"
+msgstr "Não foi possível criar o diretório de {self.dir}: a sair"
 
 #: iso-constructor/__init__.py:299
 #, python-brace-format
@@ -112,12 +112,12 @@ msgid ""
 "The destination directory is not empty.\n"
 "Are you sure you want to overwrite all data in {self.dir}?"
 msgstr ""
-"O directório de destino não está vazio.\n"
+"O diretório de destino não está vazio.\n"
 "Tem a certeza que deseja substituir todos os dados em {self.dir}?"
 
 #: iso-constructor/__init__.py:379
 msgid "Unpack ISO to directory"
-msgstr "A desempacotar o ISO para o directório"
+msgstr "A desempacotar o ISO para o diretório"
 
 #: iso-constructor/__init__.py:380
 msgid "Unpack & Save"
@@ -125,7 +125,7 @@ msgstr "Desempacotar e salvar"
 
 #: iso-constructor/__init__.py:388
 msgid "Work directory"
-msgstr "Directório de trabalho"
+msgstr "Diretório de trabalho"
 
 #: iso-constructor/__init__.py:389
 msgid "Save"
@@ -133,7 +133,7 @@ msgstr "Salvar"
 
 #: iso-constructor/__init__.py:399
 msgid "Select"
-msgstr "Seleccionar"
+msgstr "Selecionar"
 
 #: iso-constructor/__init__.py:399
 msgid "Distribution"
@@ -141,7 +141,7 @@ msgstr "Distribuição"
 
 #: iso-constructor/__init__.py:399
 msgid "Working directory"
-msgstr "Directório de trabalho"
+msgstr "Diretório de trabalho"
 
 #: data/iso-constructor.desktop.in.h:1
 msgid "ISO Constructor"
@@ -149,7 +149,7 @@ msgstr "ISO Constructor"
 
 #: data/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"
-msgstr "Ferramenta para construir e manter os ISOs Debian"
+msgstr "Ferramenta para construir e manter ISOs de Debian"
 
 #. (itstool) path: action/message
 #: data/org.debian.pkexec.iso-constructor.policy:8
