@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-12 10:11+0200\n"
+"POT-Creation-Date: 2023-01-18 19:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,116 +17,120 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: iso-constructor/__init__.py:84
+#: iso-constructor/__init__.py:85
 msgid "Remove"
 msgstr ""
 
-#: iso-constructor/__init__.py:86
+#: iso-constructor/__init__.py:87
 msgid "Select all"
 msgstr ""
 
-#: iso-constructor/__init__.py:87
+#: iso-constructor/__init__.py:88
 msgid "Add"
 msgstr ""
 
-#: iso-constructor/__init__.py:88
+#: iso-constructor/__init__.py:89
 msgid "View log file"
 msgstr ""
 
-#: iso-constructor/__init__.py:90
+#: iso-constructor/__init__.py:91
 msgid "Edit"
 msgstr ""
 
-#: iso-constructor/__init__.py:91
+#: iso-constructor/__init__.py:92
 msgid "Upgrade"
 msgstr ""
 
-#: iso-constructor/__init__.py:92
+#: iso-constructor/__init__.py:93
 msgid "Build"
 msgstr ""
 
-#: iso-constructor/__init__.py:93
+#: iso-constructor/__init__.py:94
 msgid "Help"
 msgstr ""
 
-#: iso-constructor/__init__.py:96
+#: iso-constructor/__init__.py:95
+msgid "Test ISO"
+msgstr ""
+
+#: iso-constructor/__init__.py:98
 msgid "Add Distribution"
 msgstr ""
 
-#: iso-constructor/__init__.py:97
+#: iso-constructor/__init__.py:99
 msgid "ISO"
 msgstr ""
 
-#: iso-constructor/__init__.py:99
+#: iso-constructor/__init__.py:101
 msgid "Cancel"
 msgstr ""
 
-#: iso-constructor/__init__.py:144
+#: iso-constructor/__init__.py:156
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
 msgstr ""
 
-#: iso-constructor/__init__.py:254
+#: iso-constructor/__init__.py:283
 msgid "Select ISO file"
 msgstr ""
 
-#: iso-constructor/__init__.py:268
+#: iso-constructor/__init__.py:297
 msgid "Select directory"
 msgstr ""
 
-#: iso-constructor/__init__.py:283
+#: iso-constructor/__init__.py:312
 msgid "Save existing working directory"
 msgstr ""
 
-#: iso-constructor/__init__.py:285
+#: iso-constructor/__init__.py:314
 msgid "Unpack ISO and save"
 msgstr ""
 
-#: iso-constructor/__init__.py:292
+#: iso-constructor/__init__.py:321
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr ""
 
-#: iso-constructor/__init__.py:299
+#: iso-constructor/__init__.py:328
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
 "{self.iso}"
 msgstr ""
 
-#: iso-constructor/__init__.py:304
+#: iso-constructor/__init__.py:333
 #, python-brace-format
 msgid ""
 "The destination directory is not empty.\n"
 "Are you sure you want to overwrite all data in {self.dir}?"
 msgstr ""
 
-#: iso-constructor/__init__.py:379
+#: iso-constructor/__init__.py:408
 msgid "Unpack ISO to directory"
 msgstr ""
 
-#: iso-constructor/__init__.py:380
+#: iso-constructor/__init__.py:409
 msgid "Unpack & Save"
 msgstr ""
 
-#: iso-constructor/__init__.py:388
+#: iso-constructor/__init__.py:417
 msgid "Work directory"
 msgstr ""
 
-#: iso-constructor/__init__.py:389
+#: iso-constructor/__init__.py:418
 msgid "Save"
 msgstr ""
 
-#: iso-constructor/__init__.py:399
+#: iso-constructor/__init__.py:428
 msgid "Select"
 msgstr ""
 
-#: iso-constructor/__init__.py:399
+#: iso-constructor/__init__.py:428
 msgid "Distribution"
 msgstr ""
 
-#: iso-constructor/__init__.py:399
+#: iso-constructor/__init__.py:428
 msgid "Working directory"
 msgstr ""
 

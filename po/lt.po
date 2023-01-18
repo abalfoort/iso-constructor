@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Moo, 2022
 # Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022
+# Moo, 2023
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-12 09:33+0200\n"
+"POT-Creation-Date: 2023-01-18 19:01+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
-"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022\n"
+"Last-Translator: Moo, 2023\n"
 "Language-Team: Lithuanian (https://www.transifex.com/abalfoort/teams/54212/"
 "lt/)\n"
 "Language: lt\n"
@@ -25,51 +25,55 @@ msgstr ""
 "11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
 "1 : n % 1 != 0 ? 2: 3);\n"
 
-#: iso-constructor/__init__.py:84
+#: iso-constructor/__init__.py:85
 msgid "Remove"
 msgstr "Šalinti"
 
-#: iso-constructor/__init__.py:86
+#: iso-constructor/__init__.py:87
 msgid "Select all"
 msgstr "Pažymėti visus"
 
-#: iso-constructor/__init__.py:87
+#: iso-constructor/__init__.py:88
 msgid "Add"
 msgstr "Pridėti"
 
-#: iso-constructor/__init__.py:88
+#: iso-constructor/__init__.py:89
 msgid "View log file"
 msgstr "Rodyti žurnalo failą"
 
-#: iso-constructor/__init__.py:90
+#: iso-constructor/__init__.py:91
 msgid "Edit"
 msgstr "Keisti"
 
-#: iso-constructor/__init__.py:91
+#: iso-constructor/__init__.py:92
 msgid "Upgrade"
 msgstr "Naujinti"
 
-#: iso-constructor/__init__.py:92
+#: iso-constructor/__init__.py:93
 msgid "Build"
 msgstr "Sukurti"
 
-#: iso-constructor/__init__.py:93
+#: iso-constructor/__init__.py:94
 msgid "Help"
 msgstr "Žinynas"
 
-#: iso-constructor/__init__.py:96
+#: iso-constructor/__init__.py:95
+msgid "Test ISO"
+msgstr "Išbandyti ISO"
+
+#: iso-constructor/__init__.py:98
 msgid "Add Distribution"
 msgstr "Pridėti distribuciją"
 
-#: iso-constructor/__init__.py:97
+#: iso-constructor/__init__.py:99
 msgid "ISO"
 msgstr "ISO"
 
-#: iso-constructor/__init__.py:99
+#: iso-constructor/__init__.py:101
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: iso-constructor/__init__.py:144
+#: iso-constructor/__init__.py:156
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -77,28 +81,28 @@ msgstr ""
 "Ar tikrai norite pašalinti pasirinktą distribuciją iš sąrašo?\n"
 "(Tai nepašalins katalogo ir jame esančių duomenų)"
 
-#: iso-constructor/__init__.py:254
+#: iso-constructor/__init__.py:283
 msgid "Select ISO file"
 msgstr "Pasirinkite ISO"
 
-#: iso-constructor/__init__.py:268
+#: iso-constructor/__init__.py:297
 msgid "Select directory"
 msgstr "Pasirinkite katalogą"
 
-#: iso-constructor/__init__.py:283
+#: iso-constructor/__init__.py:312
 msgid "Save existing working directory"
 msgstr "Įrašyti esamą darbinį katalogą"
 
-#: iso-constructor/__init__.py:285
+#: iso-constructor/__init__.py:314
 msgid "Unpack ISO and save"
 msgstr "Išpakuoti ISO ir įrašyti"
 
-#: iso-constructor/__init__.py:292
+#: iso-constructor/__init__.py:321
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Nepavyko sukurti katalogo {self.dir}: išeinama"
 
-#: iso-constructor/__init__.py:299
+#: iso-constructor/__init__.py:328
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -107,7 +111,7 @@ msgstr ""
 "Kelio į ISO failą nėra:\n"
 "{self.iso}"
 
-#: iso-constructor/__init__.py:304
+#: iso-constructor/__init__.py:333
 #, python-brace-format
 msgid ""
 "The destination directory is not empty.\n"
@@ -116,31 +120,31 @@ msgstr ""
 "Paskirties katalogas nėra tuščias.\n"
 "Ar tikrai norite perrašyti visus duomenis, kurie yra {self.dir}?"
 
-#: iso-constructor/__init__.py:379
+#: iso-constructor/__init__.py:408
 msgid "Unpack ISO to directory"
 msgstr "Išpakuoti ISO į katalogą"
 
-#: iso-constructor/__init__.py:380
+#: iso-constructor/__init__.py:409
 msgid "Unpack & Save"
 msgstr "Išpakuoti ir įrašyti"
 
-#: iso-constructor/__init__.py:388
+#: iso-constructor/__init__.py:417
 msgid "Work directory"
 msgstr "Darbo katalogas"
 
-#: iso-constructor/__init__.py:389
+#: iso-constructor/__init__.py:418
 msgid "Save"
 msgstr "Įrašyti"
 
-#: iso-constructor/__init__.py:399
+#: iso-constructor/__init__.py:428
 msgid "Select"
 msgstr "Pasirinkti"
 
-#: iso-constructor/__init__.py:399
+#: iso-constructor/__init__.py:428
 msgid "Distribution"
 msgstr "Distribucija"
 
-#: iso-constructor/__init__.py:399
+#: iso-constructor/__init__.py:428
 msgid "Working directory"
 msgstr "Darbinis katalogas"
 
