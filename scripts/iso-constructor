@@ -18,8 +18,9 @@ DISTRIBUTION_PATH contains the unpacked distribution with a boot and root direct
 -b                      Build the distribution.
 -e                      Edit the distribution.
 -h                      This help screen.
+-t                      Test the ISO
 -u                      Update the distribution.
--U [iso_path]   Unpack ISO
+-U [iso_path]           Unpack ISO
 
 No parameters           Start the GUI
 -v                      Starts GUI with verbose output
@@ -31,9 +32,10 @@ BUILD=false
 EDIT=false
 LOCALIZE=false
 UPGRADE=false
+TESTISO=false
 
 # Get parameters
-while getopts 'beuU:' OPT; do
+while getopts 'betuU:' OPT; do
     case $OPT in
         b)
             # Build distribution
@@ -42,6 +44,10 @@ while getopts 'beuU:' OPT; do
         e)
             # Edit distribution
             EDIT=true
+            ;;
+        t)
+            # Test the ISO
+            TESTISO=true
             ;;
         u)
             # Upgrade distribution
@@ -85,6 +91,40 @@ fi
 
 if $EDIT; then
     eval "sudo bash $CHROOT \"$DISTPATH/root\""
+fi
+
+if $TESTISO; then
+    TISO=$(ls "$DISTPATH"/*.iso | head -n 1)
+
+    if [ -z "$TISO" ]; then
+        echo "No ISO found in $DISTPATH - exiting"
+        exit 3
+    fi
+    
+    if [ -z "$(which qemu-system-x86_64)" ]; then
+        echo "qemu-system-x86_64 not installed - exiting"
+        exit 4
+    fi
+    
+    OVMF=$(dpkg -S OVMF.fd | head -n 1 | cut -d' ' -f 2)
+    if [ -z "$OVMF" ]; then
+        echo "Cannot find OVMF.fd - exiting"
+        exit 5
+    fi
+    
+    # Get memory to use
+    MEM=2
+    MEMKB=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+    MEMGB=$(($MEMKB/1024/1024))
+    if [ $MEMGB -lt 4 ]; then
+        echo "Not enough RAM (at least 4GB) - exiting"
+        exit 6
+    fi
+    if [ $MEMGB -gt 8 ]; then
+        MEM=4
+    fi
+    
+    eval "qemu-system-x86_64 -m ${MEM}G -enable-kvm -bios $OVMF -cdrom \"$TISO\""
 fi
 
 if $UPGRADE; then

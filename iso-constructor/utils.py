@@ -13,9 +13,11 @@ def shell_exec_popen(command, kwargs={}):
                             stdout=subprocess.PIPE, **kwargs)
 
 
-def shell_exec(command):
+def shell_exec(command, wait=False):
     ''' Execute command in shell '''
     print(('Executing:', command))
+    if wait:
+        return subprocess.check_call(command, shell=True)
     return subprocess.call(command, shell=True)
 
 

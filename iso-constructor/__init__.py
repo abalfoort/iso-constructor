@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from os import makedirs, system, listdir, \
-               environ, rename, remove
+               environ, rename, remove, sysconf
 import operator
 from os.path import join, dirname, exists, isdir
 
@@ -22,7 +22,7 @@ from .dialogs import show_message_dialog, show_error_dialog, SelectFileDialog, \
                      SelectDirectoryDialog, show_question_dialog
 from .utils import get_user_home, get_logged_user, \
                    get_package_version, get_lsb_release_info, \
-                   getoutput
+                   getoutput, shell_exec
 
 
 class Constructor():
@@ -67,6 +67,7 @@ class Constructor():
         self.btn_edit = go('btn_edit')
         self.btn_upgrade = go('btn_upgrade')
         self.btn_buildiso = go('btn_build_iso')
+        self.btn_qemu = go('btn_qemu')
 
         # Add iso window objects
         self.window_adddistro = go('add_distro_window')
@@ -91,6 +92,7 @@ class Constructor():
         self.btn_upgrade.set_tooltip_text(_("Upgrade"))
         self.btn_buildiso.set_tooltip_text(_("Build"))
         self.btn_help.set_tooltip_text(_("Help"))
+        self.btn_qemu.set_tooltip_text(_("Test ISO"))
 
         # Add iso window translations
         self.window_adddistro.set_title(_("Add Distribution"))
@@ -123,6 +125,16 @@ class Constructor():
         # Connect the signals and show the window
         self.builder.connect_signals(self)
         self.window.show_all()
+
+        # Check if qemu is installed and show the qemu button if it is.
+        self.btn_qemu.set_visible(False)
+        qemu_ver = get_package_version('qemu-system-x86')
+        ovmf_ver = get_package_version('ovmf')
+        # Get RAM in GB
+        mem_bytes = sysconf('SC_PAGE_SIZE') * sysconf('SC_PHYS_PAGES')
+        mem_gib = int(mem_bytes/(1024.**3))
+        if qemu_ver and ovmf_ver and mem_gib >= 4:
+            self.btn_qemu.set_visible(True)
 
     # ===============================================
     # Main Window Functions
@@ -194,6 +206,23 @@ class Constructor():
 
                 # Build the ISO
                 self.terminal.feed(command=f'iso-constructor -b "{path}"', wait_until_done=True)
+        self.enable_gui_elements(True)
+
+    def on_btn_qemu_clicked(self, widget):
+        '''
+        Test ISOs from selected distribution(s) in Qemu.
+        '''
+        self.enable_gui_elements(False)
+        selected = self.tv_handlerdistros.get_toggled_values(toggle_col_nr=0, value_col_nr=2)
+        if selected:
+            # Loop through selected distributions
+            for path in selected:
+                for iso_path in listdir(path):
+                    if iso_path.endswith(".iso"):
+                        self.log(f'> Start testing ISO: {path}/{iso_path}')
+
+                        # Start qemu to test the selected ISO
+                        shell_exec(command=f'iso-constructor -t "{path}"', wait=True)
         self.enable_gui_elements(True)
 
     def on_chk_select_all_toggled(self, widget):
@@ -442,6 +471,7 @@ class Constructor():
             self.btn_edit.set_sensitive(False)
             self.btn_remove.set_sensitive(False)
             self.btn_upgrade.set_sensitive(False)
+            self.btn_qemu.set_sensitive(False)
             self.btn_dir.set_sensitive(False)
             self.btn_help.set_sensitive(False)
         else:
@@ -454,6 +484,7 @@ class Constructor():
             self.btn_edit.set_sensitive(True)
             self.btn_remove.set_sensitive(True)
             self.btn_upgrade.set_sensitive(True)
+            self.btn_qemu.set_sensitive(True)
             self.btn_dir.set_sensitive(True)
             self.btn_help.set_sensitive(True)
 

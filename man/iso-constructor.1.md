@@ -29,10 +29,16 @@ Options for terminal use (no GUI):
 -e
 :   Edit the distribution
 
+-h
+:   Help screen
+
+-t
+:   Test the ISO
+
 -u
 :   Upgrade the distribution
 
--U
+-U [iso_path]
 :   Unpack the ISO
 
 Options for the GUI (all other parameters will be ignored):
@@ -62,6 +68,10 @@ If you installed packages that are not in the repository but you want to keep in
 cp -v /usr/share/iso-constructor/keep-packages ~/.iso-constructor/
 
 Note: to keep all packages you can simply write an asterisk (*) in the keep-packages file.
+
+## Test ISOs in Qemu
+If you have these (recommended) packages installed, the Qemu test button will be available:
+:   qemu-utils, qemu-system-x86, qemu-system-gui, ovmf
 
 # REPOSITORY
 

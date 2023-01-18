@@ -23,10 +23,16 @@ Build the distribution
 -e
 Edit the distribution
 .TP
+-h
+Help screen
+.TP
+-t
+Test the ISO
+.TP
 -u
 Upgrade the distribution
 .TP
--U
+-U [iso_path]
 Unpack the ISO
 .PP
 Options for the GUI (all other parameters will be ignored):
@@ -59,6 +65,10 @@ cp -v /usr/share/iso-constructor/keep-packages \[ti]/.iso-constructor/
 .PP
 Note: to keep all packages you can simply write an asterisk (*) in the
 keep-packages file.
+.SS Test ISOs in Qemu
+.TP
+If you have these (recommended) packages installed, the Qemu test button will be available:
+qemu-utils, qemu-system-x86, qemu-system-gui, ovmf
 .SH REPOSITORY
 .PP
 You can create a pool directory structure as in the live Debian ISOs.
