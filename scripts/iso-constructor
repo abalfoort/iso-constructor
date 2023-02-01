@@ -18,7 +18,8 @@ DISTRIBUTION_PATH contains the unpacked distribution with a boot and root direct
 -b                      Build the distribution.
 -e                      Edit the distribution.
 -h                      This help screen.
--t                      Test the ISO
+-i                      Test Qemu image
+-t                      Test the ISO in Qemu
 -u                      Update the distribution.
 -U [iso_path]           Unpack ISO
 
@@ -35,7 +36,7 @@ UPGRADE=false
 TESTISO=false
 
 # Get parameters
-while getopts 'betuU:' OPT; do
+while getopts 'beituU:' OPT; do
     case $OPT in
         b)
             # Build distribution
@@ -45,8 +46,13 @@ while getopts 'betuU:' OPT; do
             # Edit distribution
             EDIT=true
             ;;
+        i)
+            # Test the Qemu image
+            sudo -u $(logname) /usr/share/iso-constructor/qemu-test.sh
+            exit 0
+            ;;
         t)
-            # Test the ISO
+            # Test the ISO in Qemu
             TESTISO=true
             ;;
         u)
@@ -94,37 +100,7 @@ if $EDIT; then
 fi
 
 if $TESTISO; then
-    TISO=$(ls "$DISTPATH"/*.iso | head -n 1)
-
-    if [ -z "$TISO" ]; then
-        echo "No ISO found in $DISTPATH - exiting"
-        exit 3
-    fi
-    
-    if [ -z "$(which qemu-system-x86_64)" ]; then
-        echo "qemu-system-x86_64 not installed - exiting"
-        exit 4
-    fi
-    
-    OVMF=$(dpkg -S OVMF.fd | head -n 1 | cut -d' ' -f 2)
-    if [ -z "$OVMF" ]; then
-        echo "Cannot find OVMF.fd - exiting"
-        exit 5
-    fi
-    
-    # Get memory to use
-    MEM=2
-    MEMKB=$(grep MemTotal /proc/meminfo | awk '{print $2}')
-    MEMGB=$(($MEMKB/1024/1024))
-    if [ $MEMGB -lt 4 ]; then
-        echo "Not enough RAM (at least 4GB) - exiting"
-        exit 6
-    fi
-    if [ $MEMGB -gt 8 ]; then
-        MEM=4
-    fi
-    
-    eval "qemu-system-x86_64 -m ${MEM}G -enable-kvm -bios $OVMF -cdrom \"$TISO\""
+    sudo -u $(logname) /usr/share/iso-constructor/qemu-test.sh "$DISTPATH"
 fi
 
 if $UPGRADE; then

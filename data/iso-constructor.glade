@@ -32,6 +32,11 @@
     <property name="can-focus">False</property>
     <property name="pixbuf">buttons/qemu.svg</property>
   </object>
+  <object class="GtkImage" id="img_qemu_img">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">buttons/build.svg</property>
+  </object>
   <object class="GtkImage" id="img_remove">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
@@ -43,8 +48,8 @@
     <property name="pixbuf">buttons/upgrade.svg</property>
   </object>
   <object class="GtkWindow" id="constructor_window">
-    <property name="width-request">750</property>
-    <property name="height-request">500</property>
+    <property name="width-request">1024</property>
+    <property name="height-request">768</property>
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">ISO Constructor</property>
     <property name="window-position">mouse</property>
@@ -158,6 +163,19 @@
               </packing>
             </child>
             <child>
+              <object class="GtkToolButton" id="btn_qemu_img">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="use-underline">True</property>
+                <property name="label-widget">img_qemu_img</property>
+                <signal name="clicked" handler="on_btn_qemu_img_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkToolItem" id="sep4">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
@@ -233,7 +251,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkScrolledWindow" id="scrolledwindow1">
-                        <property name="height-request">150</property>
+                        <property name="height-request">200</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="shadow-type">in</property>

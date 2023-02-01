@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
+from gi.repository import GdkPixbuf, GLib, Gtk
 from os.path import exists
 
 # Make sure the right Gtk version is loaded
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import GdkPixbuf, GLib, Gtk
 
 DIALOG_TYPES = {
     Gtk.MessageType.INFO: 'MessageDialog',
@@ -22,14 +22,16 @@ class Dialog(Gtk.MessageDialog):
     MessageDialog(_("My Title"), "Your message here")
     Use safe=False when calling from a thread
     '''
-    def __init__(self, message_type, buttons, title, text, text2=None, 
+
+    def __init__(self, message_type, buttons, title, text, text2=None,
                  parent=None, safe=True, icon=None):
-        parent = parent or next((w for w in Gtk.Window.list_toplevels() if w.get_title()), None)
-        Gtk.MessageDialog.__init__(self, 
-                                   parent=None, 
-                                   modal=True, 
-                                   destroy_with_parent=True, 
-                                   message_type=message_type, 
+        parent = parent or next(
+            (w for w in Gtk.Window.list_toplevels() if w.get_title()), None)
+        Gtk.MessageDialog.__init__(self,
+                                   parent=None,
+                                   modal=True,
+                                   destroy_with_parent=True,
+                                   message_type=message_type,
                                    buttons=buttons,
                                    text=text)
         self.set_position(Gtk.WindowPosition.CENTER)
@@ -44,7 +46,8 @@ class Dialog(Gtk.MessageDialog):
         self.set_markup(text)
         self.desc = text[:30] + ' ...' if len(text) > 30 else text
         self.dialog_type = DIALOG_TYPES[message_type]
-        if text2: self.format_secondary_markup(text2)
+        if text2:
+            self.format_secondary_markup(text2)
         self.safe = safe
         if not safe:
             self.connect('response', self._handle_clicked)
@@ -62,12 +65,17 @@ class Dialog(Gtk.MessageDialog):
         """ Show the dialog.
             Returns True if user response was confirmatory.
         """
-        #print(('Showing {0.dialog_type} ({0.desc})'.format(self)))
-        try: return self.run() in (Gtk.ResponseType.YES, Gtk.ResponseType.APPLY,
-                                   Gtk.ResponseType.OK, Gtk.ResponseType.ACCEPT)
+        # print(('Showing {0.dialog_type} ({0.desc})'.format(self)))
+        try:
+            return self.run() in (Gtk.ResponseType.YES,
+                                  Gtk.ResponseType.APPLY,
+                                  Gtk.ResponseType.OK,
+                                  Gtk.ResponseType.ACCEPT)
         finally:
             if self.safe:
                 self.destroy()
+                while Gtk.events_pending():
+                    Gtk.main_iteration()
             else:
                 return False
 
@@ -108,6 +116,7 @@ class CustomQuestionDialog(Gtk.Dialog):
        if (dialog.show()):
     CustomQuestionDialog can NOT be called from a working thread, only from main (UI) thread
     '''
+
     def __init__(self, title, my_object, width=500, height=300, parent=None):
         self.title = title
         self.my_object = my_object
@@ -148,6 +157,7 @@ class SelectFileDialog(object):
     e.g.: $ mimetype debian.iso
             debian.iso: application/x-cd-image
     '''
+
     def __init__(self, title, start_directory=None, parent=None, gtk_file_filter=None):
         self.title = title
         self.start_directory = start_directory
@@ -169,17 +179,19 @@ class SelectFileDialog(object):
         def image_preview_cb(dialog):
             filename = dialog.get_preview_filename()
             try:
-                pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(filename, 128, 128)
+                pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(
+                    filename, 128, 128)
                 image.set_from_pixbuf(pixbuf)
                 valid_preview = True
             except:
                 valid_preview = False
             dialog.set_preview_widget_active(valid_preview)
 
-        dialog = Gtk.FileChooserDialog(title=self.title, 
-                                       parent=self.parent, 
+        dialog = Gtk.FileChooserDialog(title=self.title,
+                                       parent=self.parent,
                                        action=Gtk.FileChooserAction.OPEN)
-        dialog.add_buttons(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
+        dialog.add_buttons(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+                           Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
         dialog.set_default_response(Gtk.ResponseType.OK)
         if self.start_directory is not None:
             dialog.set_current_folder(self.start_directory)
@@ -202,6 +214,7 @@ class SelectImageDialog(object):
     '''
     Dialog to select images from file.
     '''
+
     def __init__(self, title, start_directory=None, parent=None):
         self.title = title
         self.start_directory = start_directory
@@ -221,7 +234,8 @@ class SelectImageDialog(object):
         file_filter.add_pattern("*.gif")
         file_filter.add_pattern("*.tif")
         file_filter.add_pattern("*.xpm")
-        fdg = SelectFileDialog(self.title, self.start_directory, self.parent, file_filter)
+        fdg = SelectFileDialog(
+            self.title, self.start_directory, self.parent, file_filter)
         return fdg.show()
 
 
@@ -229,6 +243,7 @@ class SelectDirectoryDialog(object):
     '''
     Dialog to select a directory.
     '''
+
     def __init__(self, title, start_directory=None, parent=None):
         self.title = title
         self.start_directory = start_directory
@@ -239,10 +254,10 @@ class SelectDirectoryDialog(object):
         Show a File Chooser Dialog and limit to directories.
         '''
         directory = None
-        dialog = Gtk.FileChooserDialog(title=self.title, 
-                                       parent=self.parent, 
+        dialog = Gtk.FileChooserDialog(title=self.title,
+                                       parent=self.parent,
                                        action=Gtk.FileChooserAction.SELECT_FOLDER)
-        dialog.add_buttons(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, 
+        dialog.add_buttons(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
                            Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
         dialog.set_default_response(Gtk.ResponseType.OK)
         if self.start_directory is not None:
@@ -258,13 +273,15 @@ class InputDialog(Gtk.MessageDialog):
     '''
     Dialog to ask for user input.
     '''
-    def __init__(self, title, text, text2=None, parent=None, default_value='', is_password=False):
-        parent = parent or next((w for w in Gtk.Window.list_toplevels() if w.get_title()), None)
 
-        Gtk.MessageDialog.__init__(self, parent=parent, 
-                                   modal=True, 
-                                   destroy_with_parent=True, 
-                                   message_type=Gtk.MessageType.QUESTION, 
+    def __init__(self, title, text, text2=None, parent=None, default_value='', is_password=False):
+        parent = parent or next(
+            (w for w in Gtk.Window.list_toplevels() if w.get_title()), None)
+
+        Gtk.MessageDialog.__init__(self, parent=parent,
+                                   modal=True,
+                                   destroy_with_parent=True,
+                                   message_type=Gtk.MessageType.QUESTION,
                                    buttons=Gtk.ButtonsType.OK,
                                    text=text)
         self.set_position(Gtk.WindowPosition.CENTER)
@@ -272,7 +289,8 @@ class InputDialog(Gtk.MessageDialog):
             self.set_icon(parent.get_icon())
         self.set_title(title)
         self.set_markup(text)
-        if text2: self.format_secondary_markup(text2)
+        if text2:
+            self.format_secondary_markup(text2)
 
         # Add entry field
         entry = Gtk.Entry()

@@ -68,6 +68,7 @@ class Constructor():
         self.btn_upgrade = go('btn_upgrade')
         self.btn_buildiso = go('btn_build_iso')
         self.btn_qemu = go('btn_qemu')
+        self.btn_qemu_img = go('btn_qemu_img')
 
         # Add iso window objects
         self.window_adddistro = go('add_distro_window')
@@ -83,6 +84,9 @@ class Constructor():
 
         # Main window translations
         self.remove_text = _("Remove")
+        self.test_iso_text = _("Test ISO in Qemu")
+        self.test_qemo_text = _("Ctrl-Alt-F to exit full screen mode.")
+        self.test_img_text = _("Test Qemu image")
         self.window.set_title("ISO Constructor")
         self.chk_selectall.set_label(_("Select all"))
         self.btn_add.set_tooltip_text(_("Add"))
@@ -92,7 +96,8 @@ class Constructor():
         self.btn_upgrade.set_tooltip_text(_("Upgrade"))
         self.btn_buildiso.set_tooltip_text(_("Build"))
         self.btn_help.set_tooltip_text(_("Help"))
-        self.btn_qemu.set_tooltip_text(_("Test ISO"))
+        self.btn_qemu.set_tooltip_text(self.test_iso_text)
+        self.btn_qemu_img.set_tooltip_text(self.test_img_text)
 
         # Add iso window translations
         self.window_adddistro.set_title(_("Add Distribution"))
@@ -136,6 +141,11 @@ class Constructor():
         if qemu_ver and ovmf_ver and mem_gib >= 4:
             self.btn_qemu.set_visible(True)
 
+        self.btn_qemu_img.set_visible(False)
+        self.qemu_img = join(self.user_app_dir, "qemu.img")
+        if exists(self.qemu_img):
+            self.btn_qemu_img.set_visible(True)
+
     # ===============================================
     # Main Window Functions
     # ===============================================
@@ -151,70 +161,74 @@ class Constructor():
         Remove selected distribution(s).
         '''
         selected = self.tv_handlerdistros.get_toggled_values(toggle_col_nr=0, value_col_nr=2)
-        for path in selected:
-            answer = show_question_dialog(self.remove_text,
-                                  _("Are you sure you want to remove "
-                                    "the selected distribution from the list?\n"
-                                    "(This will not remove the directory and its data)"))
-            if answer:
-                self.save_dist_file(distro_path=path, add_distro=False)
-        self.fill_tv_dists()
+        if selected:
+            for path in selected:
+                answer = show_question_dialog(self.remove_text,
+                                            _("Are you sure you want to remove "
+                                            "the selected distribution from the list?\n"
+                                            "(This will not remove the directory and its data)"))
+                if answer:
+                    self.save_dist_file(distro_path=path, add_distro=False)
+            self.fill_tv_dists()
 
     def on_btn_edit_clicked(self, widget):
         '''
         Edit selected distribution(s)
         '''
-        self.enable_gui_elements(False)
         selected = self.tv_handlerdistros.get_toggled_values(toggle_col_nr=0, value_col_nr=2)
-        for path in selected:
+        if selected:
+            self.enable_gui_elements(False)
+            for path in selected:
+                self.log(f'> Start editing {path}')
 
-            self.log(f'> Start editing {path}')
+                # Edit the distribution in a chroot session
+                self.terminal.feed(command=f'iso-constructor -e "{path}"')
 
-            # Edit the distribution in a chroot session
-            self.terminal.feed(command=f'iso-constructor -e "{path}"')
-
-            # Check if chrooted and wait until user is done
-            while getoutput(f'pgrep -f "chroot-dir.sh {path}"'):
-                # Update the parent window
-                while Gtk.events_pending():
-                    Gtk.main_iteration()
-        self.enable_gui_elements(True)
+                # Check if chrooted and wait until user is done
+                while getoutput(f'pgrep -f "chroot-dir.sh {path}"'):
+                    # Update the parent window
+                    while Gtk.events_pending():
+                        Gtk.main_iteration()
+            self.enable_gui_elements(True)
 
     def on_btn_upgrade_clicked(self, widget):
         '''
         Apt upgrade selected distribution(s).
         '''
-        self.enable_gui_elements(False)
         selected = self.tv_handlerdistros.get_toggled_values(toggle_col_nr=0, value_col_nr=2)
-        for path in selected:
-            self.log(f'> Start upgrading {path}')
+        if selected:
+            self.enable_gui_elements(False)
+            for path in selected:
+                self.log(f'> Start upgrading {path}')
 
-            # Upgrade the distribtution
-            self.terminal.feed(command=f'iso-constructor -u "{path}"', wait_until_done=True)
-        self.enable_gui_elements(True)
+                # Upgrade the distribtution
+                self.terminal.feed(command=f'iso-constructor -u "{path}"', wait_until_done=True)
+            self.enable_gui_elements(True)
 
     def on_btn_build_iso_clicked(self, widget):
         '''
         Build ISOs from selected distribution(s).
         '''
-        self.enable_gui_elements(False)
         selected = self.tv_handlerdistros.get_toggled_values(toggle_col_nr=0, value_col_nr=2)
         if selected:
+            self.enable_gui_elements(False)
             # Loop through selected distributions
             for path in selected:
                 self.log(f'> Start building ISO in: {path}')
 
                 # Build the ISO
                 self.terminal.feed(command=f'iso-constructor -b "{path}"', wait_until_done=True)
-        self.enable_gui_elements(True)
+            self.enable_gui_elements(True)
 
     def on_btn_qemu_clicked(self, widget):
         '''
         Test ISOs from selected distribution(s) in Qemu.
         '''
-        self.enable_gui_elements(False)
         selected = self.tv_handlerdistros.get_toggled_values(toggle_col_nr=0, value_col_nr=2)
         if selected:
+            self.enable_gui_elements(False)
+            show_message_dialog(self.test_iso_text,
+                                f"\n{self.test_qemo_text}")
             # Loop through selected distributions
             for path in selected:
                 for iso_path in listdir(path):
@@ -223,7 +237,22 @@ class Constructor():
 
                         # Start qemu to test the selected ISO
                         shell_exec(command=f'iso-constructor -t "{path}"', wait=True)
-        self.enable_gui_elements(True)
+            self.enable_gui_elements(True)
+        
+        if exists(self.qemu_img):
+            self.btn_qemu_img.set_visible(True)
+
+    def on_btn_qemu_img_clicked(self, widget):
+        '''
+        Test installed image in Qemu.
+        '''
+        if exists(self.qemu_img):
+            self.enable_gui_elements(False)
+            show_message_dialog(self.test_img_text,
+                                f"\n{self.test_qemo_text}")
+            # Start qemu to test the selected ISO
+            shell_exec(command='iso-constructor -i')
+            self.enable_gui_elements(True)
 
     def on_chk_select_all_toggled(self, widget):
         '''
@@ -317,20 +346,19 @@ class Constructor():
             makedirs(self.dir)
 
         if not exists(self.dir):
-            show_error_dialog(title=title,
-                              text=_(f"Could not create directory {self.dir}: exiting"),
-                              parent=self.window)
+            show_error_dialog(title,
+                              _(f"Could not create directory {self.dir}: exiting"))
         else:
             self.window_adddistro.hide()
             if self.iso != "":
                 if not exists(self.iso):
-                    show_message_dialog(title=self.btn_save.get_label(),
-                                        text=_(f"The path to the ISO file does not exist:\n{self.iso}"),
-                                        parent=self.window)
+                    show_message_dialog(self.btn_save.get_label(),
+                                        _(f"The path to the ISO file does not exist:\n{self.iso}"))
                     return
                 if listdir(self.dir):
                     answer = show_question_dialog(self.btn_save.get_label(),
-                                          _(f"The destination directory is not empty.\nAre you sure you want to overwrite all data in {self.dir}?"))
+                                                 _(f"The destination directory is not empty.\n"
+                                                    "Are you sure you want to overwrite all data in {self.dir}?"))
                     if not answer:
                         return
 
@@ -472,6 +500,7 @@ class Constructor():
             self.btn_remove.set_sensitive(False)
             self.btn_upgrade.set_sensitive(False)
             self.btn_qemu.set_sensitive(False)
+            self.btn_qemu_img.set_sensitive(False)
             self.btn_dir.set_sensitive(False)
             self.btn_help.set_sensitive(False)
         else:
@@ -485,6 +514,7 @@ class Constructor():
             self.btn_remove.set_sensitive(True)
             self.btn_upgrade.set_sensitive(True)
             self.btn_qemu.set_sensitive(True)
+            self.btn_qemu_img.set_sensitive(True)
             self.btn_dir.set_sensitive(True)
             self.btn_help.set_sensitive(True)
 
