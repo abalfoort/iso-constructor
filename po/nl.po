@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-18 19:20+0100\n"
+"POT-Creation-Date: 2023-01-23 19:41+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2023\n"
 "Language-Team: Dutch (https://www.transifex.com/abalfoort/teams/54212/nl/)\n"
@@ -21,55 +21,64 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: iso-constructor/__init__.py:85
+#: iso-constructor/__init__.py:86
 msgid "Remove"
 msgstr "Verwijderen"
 
 #: iso-constructor/__init__.py:87
+#, fuzzy
+msgid "Test ISO in Qemu"
+msgstr "Test ISO"
+
+#: iso-constructor/__init__.py:88
+msgid "Ctrl-Alt-F to exit full screen mode."
+msgstr "Ctrl-Alt-F om volledig scherm te verlaten."
+
+#: iso-constructor/__init__.py:89
+msgid "Test Qemu image"
+msgstr ""
+
+#: iso-constructor/__init__.py:91
 msgid "Select all"
 msgstr "Selecteer alles"
 
-#: iso-constructor/__init__.py:88
+#: iso-constructor/__init__.py:92
 msgid "Add"
 msgstr "Toevoegen"
 
-#: iso-constructor/__init__.py:89
+#: iso-constructor/__init__.py:93
 msgid "View log file"
 msgstr "Logbestand bekijken"
 
-#: iso-constructor/__init__.py:91
+#: iso-constructor/__init__.py:95
 msgid "Edit"
 msgstr "Bewerken"
 
-#: iso-constructor/__init__.py:92
+#: iso-constructor/__init__.py:96
 msgid "Upgrade"
 msgstr "Upgrade"
 
-#: iso-constructor/__init__.py:93
+#: iso-constructor/__init__.py:97
 msgid "Build"
 msgstr "Bouwen"
 
-#: iso-constructor/__init__.py:94
+#: iso-constructor/__init__.py:98
 msgid "Help"
 msgstr "Help"
 
-#: iso-constructor/__init__.py:95
-msgid "Test ISO"
-msgstr "Test ISO"
-
-#: iso-constructor/__init__.py:98
+#: iso-constructor/__init__.py:103
 msgid "Add Distribution"
 msgstr "Distributie toevoegen"
 
-#: iso-constructor/__init__.py:99
+#: iso-constructor/__init__.py:104
 msgid "ISO"
 msgstr "ISO"
 
-#: iso-constructor/__init__.py:101
+#: iso-constructor/__init__.py:106
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: iso-constructor/__init__.py:156
+#: iso-constructor/__init__.py:167
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -78,28 +87,28 @@ msgstr ""
 "verwijderen?\n"
 "(Dit zal de map met gegevens NIET verwijderen)"
 
-#: iso-constructor/__init__.py:283
+#: iso-constructor/__init__.py:312
 msgid "Select ISO file"
 msgstr "Selecteer ISO bestand"
 
-#: iso-constructor/__init__.py:297
+#: iso-constructor/__init__.py:326
 msgid "Select directory"
 msgstr "Selecteer map"
 
-#: iso-constructor/__init__.py:312
+#: iso-constructor/__init__.py:341
 msgid "Save existing working directory"
 msgstr "Bewaar bestaande werkmap"
 
-#: iso-constructor/__init__.py:314
+#: iso-constructor/__init__.py:343
 msgid "Unpack ISO and save"
 msgstr "ISO uitpakken en bewaren"
 
-#: iso-constructor/__init__.py:321
+#: iso-constructor/__init__.py:350
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Kon map {self.dir} niet maken: verlaten"
 
-#: iso-constructor/__init__.py:328
+#: iso-constructor/__init__.py:356
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -108,7 +117,7 @@ msgstr ""
 "Het pad naar het ISO bestand bestaat niet:\n"
 "{self.iso}"
 
-#: iso-constructor/__init__.py:333
+#: iso-constructor/__init__.py:360
 #, python-brace-format
 msgid ""
 "The destination directory is not empty.\n"
@@ -117,31 +126,31 @@ msgstr ""
 "De doeldirectory is niet leeg.\n"
 "Weet u zeker dat u alle data in {self.dir} wilt overschrijven?"
 
-#: iso-constructor/__init__.py:408
+#: iso-constructor/__init__.py:436
 msgid "Unpack ISO to directory"
 msgstr "ISO uitpakken naar map"
 
-#: iso-constructor/__init__.py:409
+#: iso-constructor/__init__.py:437
 msgid "Unpack & Save"
 msgstr "Uitpakken en bewaren"
 
-#: iso-constructor/__init__.py:417
+#: iso-constructor/__init__.py:445
 msgid "Work directory"
 msgstr "Werkmap"
 
-#: iso-constructor/__init__.py:418
+#: iso-constructor/__init__.py:446
 msgid "Save"
 msgstr "Bewaren"
 
-#: iso-constructor/__init__.py:428
+#: iso-constructor/__init__.py:456
 msgid "Select"
 msgstr "Selecteer"
 
-#: iso-constructor/__init__.py:428
+#: iso-constructor/__init__.py:456
 msgid "Distribution"
 msgstr "Distributie"
 
-#: iso-constructor/__init__.py:428
+#: iso-constructor/__init__.py:456
 msgid "Working directory"
 msgstr "Werkdirectory"
 
