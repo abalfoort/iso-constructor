@@ -84,6 +84,8 @@ if [ -d "$DISTPATH/boot/offline" ]; then
     done
 elif [ -d "$DISTPATH/boot/pool" ]; then
     cd "$DISTPATH/boot"
+    # Fix _apt permission
+    chroot "$DISTPATH/root" chown -R _apt:root /var/lib/apt/lists
     # Save system's apt information in a file
     echo "> Apt lists:"
     ls "$DISTPATH/root/var/lib/apt/lists/"*"debian"*"$DEBRELEASE"*"${DEBARCH}_Packages"
@@ -96,7 +98,7 @@ elif [ -d "$DISTPATH/boot/pool" ]; then
         PCKNAME=${DEBNAME%%_*}
         # Get package version information
         DEBVERSION=$(dpkg-deb -I $DEB | grep -i version: | awk '{print $2}')
-        NEWDEBVERSION=$(sed -n "/Package:\s*${PCKNAME}$/I,/\/*${PCKNAME}_/p" apt.lst | grep -i version: | awk '{print $2}')
+        NEWDEBVERSION=$(sed -n "/Package:\s*${PCKNAME}$/I,/\/*${PCKNAME}_/p" apt.lst | grep -i version: | awk '{print $2}' | head -n 1)
         echo "> Check $PCKNAME versions: $DEBVERSION > $NEWDEBVERSION"
         if [ ! -z "$DEBVERSION" ] && [ ! -z "$NEWDEBVERSION" ] && [ "$DEBVERSION" != "$NEWDEBVERSION" ]; then
             # Download new package
@@ -257,7 +259,7 @@ done
 
 # build iso according to architecture
 cd "$DISTPATH"
-CMD="xorriso -outdev \"$ISOFILENAME\" -volid $VOLID -padding 0 -compliance no_emul_toc -map ./boot / -chmod 0755 / -- -boot_image isolinux dir=/isolinux  -boot_image isolinux system_area=$ISOHDPFX -boot_image any next -boot_image any efi_path=boot/grub/efi.img -boot_image isolinux partition_entry=gpt_basdat"
+CMD="xorriso -x -outdev \"$ISOFILENAME\" -volid $VOLID -padding 0 -compliance no_emul_toc -map ./boot / -chmod 0755 / -- -boot_image isolinux dir=/isolinux -boot_image isolinux system_area=$ISOHDPFX -boot_image any next -boot_image any efi_path=boot/grub/efi.img -boot_image isolinux partition_entry=gpt_basdat"
 echo $CMD
 eval $CMD
 
