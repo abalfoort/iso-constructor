@@ -1,3 +1,21 @@
+iso-constructor (4.0.6) stable; urgency=low
+
+  * Enlarge startup screen size
+  * Set qemu to full screen
+  * Updated translations: nl, lt
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 22 Jan 2023 17:31:17 +0100
+
+iso-constructor (4.0.5) stable; urgency=low
+
+  * Fix always downloading pool packages
+  * Let xorriso order parameters with -x
+  * Qemu: add audio devices if available
+  * Qemu: make vga resizable
+  * Qemu: add hd image if space is available
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 20 Jan 2023 10:02:32 +0100
+
 iso-constructor (4.0.4) stable; urgency=low
 
   * Add qemu test
