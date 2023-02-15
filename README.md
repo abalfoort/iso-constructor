@@ -20,13 +20,19 @@ Options for terminal use (no GUI):
 -e
 :   Edit the distribution
 
--l
-:   Localize the distribution
+-h
+:   Help screen
+
+-i
+:   Test Qemu image
+
+-t
+:   Test the ISO in Qemu
 
 -u
 :   Upgrade the distribution
 
--U
+-U [iso_path]
 :   Unpack the ISO
 
 Options for the GUI (all other parameters will be ignored):
