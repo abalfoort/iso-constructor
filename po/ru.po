@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-18 19:01+0100\n"
+"POT-Creation-Date: 2023-02-15 09:33+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/abalfoort/teams/54212/"
@@ -25,55 +25,63 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: iso-constructor/__init__.py:85
+#: iso-constructor/__init__.py:86
 msgid "Remove"
 msgstr "Удалить"
 
 #: iso-constructor/__init__.py:87
-msgid "Select all"
-msgstr "Выделить все"
+msgid "Test ISO in Qemu"
+msgstr ""
 
 #: iso-constructor/__init__.py:88
-msgid "Add"
-msgstr "Добавить"
+msgid "Ctrl-Alt-F to exit full screen mode."
+msgstr ""
 
 #: iso-constructor/__init__.py:89
-msgid "View log file"
+msgid "Test Qemu image"
 msgstr ""
 
 #: iso-constructor/__init__.py:91
+msgid "Select all"
+msgstr "Выделить все"
+
+#: iso-constructor/__init__.py:92
+msgid "Add"
+msgstr "Добавить"
+
+#: iso-constructor/__init__.py:93
+msgid "View log file"
+msgstr ""
+
+#: iso-constructor/__init__.py:95
 msgid "Edit"
 msgstr "Изменить"
 
-#: iso-constructor/__init__.py:92
+#: iso-constructor/__init__.py:96
 msgid "Upgrade"
 msgstr "Обновить"
 
-#: iso-constructor/__init__.py:93
+#: iso-constructor/__init__.py:97
 msgid "Build"
 msgstr "Собрать"
 
-#: iso-constructor/__init__.py:94
+#: iso-constructor/__init__.py:98
 msgid "Help"
 msgstr "Помощь"
 
-#: iso-constructor/__init__.py:95
-msgid "Test ISO"
-msgstr ""
-
-#: iso-constructor/__init__.py:98
+#: iso-constructor/__init__.py:103
 msgid "Add Distribution"
 msgstr "Добавить дистрибутив"
 
-#: iso-constructor/__init__.py:99
+#: iso-constructor/__init__.py:104
 msgid "ISO"
 msgstr "ISO"
 
-#: iso-constructor/__init__.py:101
+#: iso-constructor/__init__.py:106
 msgid "Cancel"
 msgstr "Отмена"
 
-#: iso-constructor/__init__.py:156
+#: iso-constructor/__init__.py:167
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -81,28 +89,28 @@ msgstr ""
 "Вы уверены, что хотите удалить выбранный дистрибутив из списка?\n"
 "(Это не удалит каталог и его данные)"
 
-#: iso-constructor/__init__.py:283
+#: iso-constructor/__init__.py:312
 msgid "Select ISO file"
 msgstr ""
 
-#: iso-constructor/__init__.py:297
+#: iso-constructor/__init__.py:326
 msgid "Select directory"
 msgstr "Выберите директорию"
 
-#: iso-constructor/__init__.py:312
+#: iso-constructor/__init__.py:341
 msgid "Save existing working directory"
 msgstr "Сохранить существующий рабочий каталог"
 
-#: iso-constructor/__init__.py:314
+#: iso-constructor/__init__.py:343
 msgid "Unpack ISO and save"
 msgstr "Распаковать ISO и сохранить"
 
-#: iso-constructor/__init__.py:321
+#: iso-constructor/__init__.py:350
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Не удалось создать каталог {self.dir}: выход"
 
-#: iso-constructor/__init__.py:328
+#: iso-constructor/__init__.py:356
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -111,7 +119,7 @@ msgstr ""
 "Путь к ISO-файл не существует\n"
 "{self.iso}"
 
-#: iso-constructor/__init__.py:333
+#: iso-constructor/__init__.py:360
 #, python-brace-format
 msgid ""
 "The destination directory is not empty.\n"
@@ -120,31 +128,31 @@ msgstr ""
 "Целевой каталог не пуст.\n"
 "Вы уверены, что хотите перезаписать все данные в {self.dir}?"
 
-#: iso-constructor/__init__.py:408
+#: iso-constructor/__init__.py:436
 msgid "Unpack ISO to directory"
 msgstr "Распаковать ISO в каталог"
 
-#: iso-constructor/__init__.py:409
+#: iso-constructor/__init__.py:437
 msgid "Unpack & Save"
 msgstr "Распаковать И Сохранить"
 
-#: iso-constructor/__init__.py:417
+#: iso-constructor/__init__.py:445
 msgid "Work directory"
 msgstr "Работа каталог"
 
-#: iso-constructor/__init__.py:418
+#: iso-constructor/__init__.py:446
 msgid "Save"
 msgstr "Сохранить"
 
-#: iso-constructor/__init__.py:428
+#: iso-constructor/__init__.py:456
 msgid "Select"
 msgstr "Выбрать"
 
-#: iso-constructor/__init__.py:428
+#: iso-constructor/__init__.py:456
 msgid "Distribution"
 msgstr "Дистрибутив"
 
-#: iso-constructor/__init__.py:428
+#: iso-constructor/__init__.py:456
 msgid "Working directory"
 msgstr "Рабочий каталог"
 

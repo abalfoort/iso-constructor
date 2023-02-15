@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-18 19:01+0100\n"
+"POT-Creation-Date: 2023-02-15 09:33+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/abalfoort/teams/54212/fr/)\n"
@@ -25,55 +25,63 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % "
 "1000000 == 0 ? 1 : 2;\n"
 
-#: iso-constructor/__init__.py:85
+#: iso-constructor/__init__.py:86
 msgid "Remove"
 msgstr "Retirer"
 
 #: iso-constructor/__init__.py:87
+msgid "Test ISO in Qemu"
+msgstr ""
+
+#: iso-constructor/__init__.py:88
+msgid "Ctrl-Alt-F to exit full screen mode."
+msgstr ""
+
+#: iso-constructor/__init__.py:89
+msgid "Test Qemu image"
+msgstr ""
+
+#: iso-constructor/__init__.py:91
 msgid "Select all"
 msgstr "Tout sélectionner"
 
-#: iso-constructor/__init__.py:88
+#: iso-constructor/__init__.py:92
 msgid "Add"
 msgstr "Ajouter"
 
-#: iso-constructor/__init__.py:89
+#: iso-constructor/__init__.py:93
 msgid "View log file"
 msgstr "Voir le fichier de journalisation"
 
-#: iso-constructor/__init__.py:91
+#: iso-constructor/__init__.py:95
 msgid "Edit"
 msgstr "Éditer"
 
-#: iso-constructor/__init__.py:92
+#: iso-constructor/__init__.py:96
 msgid "Upgrade"
 msgstr "Mettre à jour"
 
-#: iso-constructor/__init__.py:93
+#: iso-constructor/__init__.py:97
 msgid "Build"
 msgstr "Construire"
 
-#: iso-constructor/__init__.py:94
+#: iso-constructor/__init__.py:98
 msgid "Help"
 msgstr "Aide"
 
-#: iso-constructor/__init__.py:95
-msgid "Test ISO"
-msgstr ""
-
-#: iso-constructor/__init__.py:98
+#: iso-constructor/__init__.py:103
 msgid "Add Distribution"
 msgstr "Ajouter une distribution"
 
-#: iso-constructor/__init__.py:99
+#: iso-constructor/__init__.py:104
 msgid "ISO"
 msgstr "ISO"
 
-#: iso-constructor/__init__.py:101
+#: iso-constructor/__init__.py:106
 msgid "Cancel"
 msgstr "Annuler"
 
-#: iso-constructor/__init__.py:156
+#: iso-constructor/__init__.py:167
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -82,28 +90,28 @@ msgstr ""
 "liste?\n"
 "(Cela n'effacera pas le répertoire ni les données qu'il contient)"
 
-#: iso-constructor/__init__.py:283
+#: iso-constructor/__init__.py:312
 msgid "Select ISO file"
 msgstr "Choisir l'ISO"
 
-#: iso-constructor/__init__.py:297
+#: iso-constructor/__init__.py:326
 msgid "Select directory"
 msgstr "Choisir le répertoire"
 
-#: iso-constructor/__init__.py:312
+#: iso-constructor/__init__.py:341
 msgid "Save existing working directory"
 msgstr "Enregistrer le répertoire de travail existant"
 
-#: iso-constructor/__init__.py:314
+#: iso-constructor/__init__.py:343
 msgid "Unpack ISO and save"
 msgstr "Dépaqueter l'ISO et enregistrer"
 
-#: iso-constructor/__init__.py:321
+#: iso-constructor/__init__.py:350
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Impossible de créer le répertoire {self.dir}: arrêt du programme"
 
-#: iso-constructor/__init__.py:328
+#: iso-constructor/__init__.py:356
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -112,7 +120,7 @@ msgstr ""
 "Le chemin vers le fichier ISO n'existe pas:\n"
 "{self.iso}"
 
-#: iso-constructor/__init__.py:333
+#: iso-constructor/__init__.py:360
 #, python-brace-format
 msgid ""
 "The destination directory is not empty.\n"
@@ -121,31 +129,31 @@ msgstr ""
 "Le répertoire cible n'est pas vide.\n"
 "Etes-vous certain de vouloir écraser les données contenues dans {self.dir}?"
 
-#: iso-constructor/__init__.py:408
+#: iso-constructor/__init__.py:436
 msgid "Unpack ISO to directory"
 msgstr "Décompresser l'ISO dans le répertoire"
 
-#: iso-constructor/__init__.py:409
+#: iso-constructor/__init__.py:437
 msgid "Unpack & Save"
 msgstr "Décompresser et enregistrer"
 
-#: iso-constructor/__init__.py:417
+#: iso-constructor/__init__.py:445
 msgid "Work directory"
 msgstr "Répertoire de travail"
 
-#: iso-constructor/__init__.py:418
+#: iso-constructor/__init__.py:446
 msgid "Save"
 msgstr "Enregistrer"
 
-#: iso-constructor/__init__.py:428
+#: iso-constructor/__init__.py:456
 msgid "Select"
 msgstr "Choisir"
 
-#: iso-constructor/__init__.py:428
+#: iso-constructor/__init__.py:456
 msgid "Distribution"
 msgstr "Distribution"
 
-#: iso-constructor/__init__.py:428
+#: iso-constructor/__init__.py:456
 msgid "Working directory"
 msgstr "Répertoire de travail"
 

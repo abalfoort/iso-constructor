@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# BALLOON | FU-SEN, 2020
+# 🎈 BALLOON | FU-SEN, 2020
 # Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022
 #
 #, fuzzy
@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-18 19:01+0100\n"
+"POT-Creation-Date: 2023-02-15 09:33+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/abalfoort/teams/54212/"
@@ -23,55 +23,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: iso-constructor/__init__.py:85
+#: iso-constructor/__init__.py:86
 msgid "Remove"
 msgstr "削除"
 
 #: iso-constructor/__init__.py:87
-msgid "Select all"
-msgstr "すべて選択"
+msgid "Test ISO in Qemu"
+msgstr ""
 
 #: iso-constructor/__init__.py:88
-msgid "Add"
-msgstr "追加"
+msgid "Ctrl-Alt-F to exit full screen mode."
+msgstr ""
 
 #: iso-constructor/__init__.py:89
-msgid "View log file"
+msgid "Test Qemu image"
 msgstr ""
 
 #: iso-constructor/__init__.py:91
+msgid "Select all"
+msgstr "すべて選択"
+
+#: iso-constructor/__init__.py:92
+msgid "Add"
+msgstr "追加"
+
+#: iso-constructor/__init__.py:93
+msgid "View log file"
+msgstr ""
+
+#: iso-constructor/__init__.py:95
 msgid "Edit"
 msgstr "編集"
 
-#: iso-constructor/__init__.py:92
+#: iso-constructor/__init__.py:96
 msgid "Upgrade"
 msgstr "更新"
 
-#: iso-constructor/__init__.py:93
+#: iso-constructor/__init__.py:97
 msgid "Build"
 msgstr "ビルド"
 
-#: iso-constructor/__init__.py:94
+#: iso-constructor/__init__.py:98
 msgid "Help"
 msgstr "ヘルプ"
 
-#: iso-constructor/__init__.py:95
-msgid "Test ISO"
-msgstr ""
-
-#: iso-constructor/__init__.py:98
+#: iso-constructor/__init__.py:103
 msgid "Add Distribution"
 msgstr ""
 
-#: iso-constructor/__init__.py:99
+#: iso-constructor/__init__.py:104
 msgid "ISO"
 msgstr "ISO"
 
-#: iso-constructor/__init__.py:101
+#: iso-constructor/__init__.py:106
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: iso-constructor/__init__.py:156
+#: iso-constructor/__init__.py:167
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -79,28 +87,28 @@ msgstr ""
 "選択したディストリビューションをリストから削除してもよろしいですか？\n"
 "(ディレクトリとそのデータは削除されません)"
 
-#: iso-constructor/__init__.py:283
+#: iso-constructor/__init__.py:312
 msgid "Select ISO file"
 msgstr ""
 
-#: iso-constructor/__init__.py:297
+#: iso-constructor/__init__.py:326
 msgid "Select directory"
 msgstr "ディレクトリを選択"
 
-#: iso-constructor/__init__.py:312
+#: iso-constructor/__init__.py:341
 msgid "Save existing working directory"
 msgstr "既存の作業ディレクトリを保存"
 
-#: iso-constructor/__init__.py:314
+#: iso-constructor/__init__.py:343
 msgid "Unpack ISO and save"
 msgstr "ISO を展開・保存"
 
-#: iso-constructor/__init__.py:321
+#: iso-constructor/__init__.py:350
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "ディレクトリ {self.dir} を生成できません: 終了します"
 
-#: iso-constructor/__init__.py:328
+#: iso-constructor/__init__.py:356
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -109,7 +117,7 @@ msgstr ""
 "ISO ファイルへのパスが存在しません:\n"
 "{self.iso}"
 
-#: iso-constructor/__init__.py:333
+#: iso-constructor/__init__.py:360
 #, python-brace-format
 msgid ""
 "The destination directory is not empty.\n"
@@ -118,31 +126,31 @@ msgstr ""
 "先のディレクトリは空ではありません。\n"
 "{self.dir} の全データを上書きしてもよろしいですか？?"
 
-#: iso-constructor/__init__.py:408
+#: iso-constructor/__init__.py:436
 msgid "Unpack ISO to directory"
 msgstr "ISO の展開先ディレクトリ"
 
-#: iso-constructor/__init__.py:409
+#: iso-constructor/__init__.py:437
 msgid "Unpack & Save"
 msgstr "展開・保存"
 
-#: iso-constructor/__init__.py:417
+#: iso-constructor/__init__.py:445
 msgid "Work directory"
 msgstr "作業ディレクトリ"
 
-#: iso-constructor/__init__.py:418
+#: iso-constructor/__init__.py:446
 msgid "Save"
 msgstr "保存"
 
-#: iso-constructor/__init__.py:428
+#: iso-constructor/__init__.py:456
 msgid "Select"
 msgstr "選択"
 
-#: iso-constructor/__init__.py:428
+#: iso-constructor/__init__.py:456
 msgid "Distribution"
 msgstr "ディストリビューション"
 
-#: iso-constructor/__init__.py:428
+#: iso-constructor/__init__.py:456
 msgid "Working directory"
 msgstr "作業ディレクトリ"
 

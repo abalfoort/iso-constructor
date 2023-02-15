@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-23 19:41+0100\n"
+"POT-Creation-Date: 2023-02-15 09:55+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2023\n"
 "Language-Team: Dutch (https://www.transifex.com/abalfoort/teams/54212/nl/)\n"
@@ -26,9 +26,8 @@ msgid "Remove"
 msgstr "Verwijderen"
 
 #: iso-constructor/__init__.py:87
-#, fuzzy
 msgid "Test ISO in Qemu"
-msgstr "Test ISO"
+msgstr "Test ISO in Qemu"
 
 #: iso-constructor/__init__.py:88
 msgid "Ctrl-Alt-F to exit full screen mode."
@@ -36,7 +35,7 @@ msgstr "Ctrl-Alt-F om volledig scherm te verlaten."
 
 #: iso-constructor/__init__.py:89
 msgid "Test Qemu image"
-msgstr ""
+msgstr "Test Qemu image"
 
 #: iso-constructor/__init__.py:91
 msgid "Select all"
