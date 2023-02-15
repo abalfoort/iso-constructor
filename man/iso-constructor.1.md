@@ -32,8 +32,11 @@ Options for terminal use (no GUI):
 -h
 :   Help screen
 
+-i
+:   Test Qemu image
+
 -t
-:   Test the ISO
+:   Test the ISO in Qemu
 
 -u
 :   Upgrade the distribution
