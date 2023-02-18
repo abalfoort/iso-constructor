@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-15 09:33+0100\n"
+"POT-Creation-Date: 2023-02-17 17:09+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022\n"
 "Language-Team: Danish (https://www.transifex.com/abalfoort/teams/54212/da/)\n"
@@ -22,63 +22,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: iso-constructor/__init__.py:86
+#: iso-constructor/__init__.py:110
 msgid "Remove"
 msgstr "Fjern"
 
-#: iso-constructor/__init__.py:87
+#: iso-constructor/__init__.py:111
 msgid "Test ISO in Qemu"
 msgstr ""
 
-#: iso-constructor/__init__.py:88
+#: iso-constructor/__init__.py:112
 msgid "Ctrl-Alt-F to exit full screen mode."
 msgstr ""
 
-#: iso-constructor/__init__.py:89
+#: iso-constructor/__init__.py:113
 msgid "Test Qemu image"
 msgstr ""
 
-#: iso-constructor/__init__.py:91
+#: iso-constructor/__init__.py:115
 msgid "Select all"
 msgstr "Vælg alle"
 
-#: iso-constructor/__init__.py:92
+#: iso-constructor/__init__.py:116
 msgid "Add"
 msgstr "Tilføj"
 
-#: iso-constructor/__init__.py:93
+#: iso-constructor/__init__.py:117
 msgid "View log file"
 msgstr "Vis logfil"
 
-#: iso-constructor/__init__.py:95
+#: iso-constructor/__init__.py:119
 msgid "Edit"
 msgstr "Tilret"
 
-#: iso-constructor/__init__.py:96
+#: iso-constructor/__init__.py:120
 msgid "Upgrade"
 msgstr "Upgradér"
 
-#: iso-constructor/__init__.py:97
+#: iso-constructor/__init__.py:121
 msgid "Build"
 msgstr "Fremstil"
 
-#: iso-constructor/__init__.py:98
+#: iso-constructor/__init__.py:122
 msgid "Help"
 msgstr "Hjælp"
 
-#: iso-constructor/__init__.py:103
+#: iso-constructor/__init__.py:127
 msgid "Add Distribution"
 msgstr "Tilføj Distribution"
 
-#: iso-constructor/__init__.py:104
+#: iso-constructor/__init__.py:128
 msgid "ISO"
 msgstr "ISO"
 
-#: iso-constructor/__init__.py:106
+#: iso-constructor/__init__.py:130
 msgid "Cancel"
 msgstr "Annuller"
 
-#: iso-constructor/__init__.py:167
+#: iso-constructor/__init__.py:194
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -86,28 +86,28 @@ msgstr ""
 "Er du sikker på at du vil fjerne den valgte distribution fra listen?\n"
 "(Dette vil ikke fjerne mappen og dens data)"
 
-#: iso-constructor/__init__.py:312
+#: iso-constructor/__init__.py:350
 msgid "Select ISO file"
 msgstr "Vælg ISO"
 
-#: iso-constructor/__init__.py:326
+#: iso-constructor/__init__.py:364
 msgid "Select directory"
 msgstr "Vælg arbejdsmappe"
 
-#: iso-constructor/__init__.py:341
+#: iso-constructor/__init__.py:379
 msgid "Save existing working directory"
 msgstr "Gem eksisterende arbejdsmappe"
 
-#: iso-constructor/__init__.py:343
+#: iso-constructor/__init__.py:381
 msgid "Unpack ISO and save"
 msgstr "Udpak ISO og gem"
 
-#: iso-constructor/__init__.py:350
+#: iso-constructor/__init__.py:388
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Mappen {self.dir} kunne ikke oprettes. Programmet afsluttes"
 
-#: iso-constructor/__init__.py:356
+#: iso-constructor/__init__.py:394
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -116,7 +116,7 @@ msgstr ""
 "Stien til ISO filen findes ikke:\n"
 "{self.iso}"
 
-#: iso-constructor/__init__.py:360
+#: iso-constructor/__init__.py:398
 #, python-brace-format
 msgid ""
 "The destination directory is not empty.\n"
@@ -125,31 +125,31 @@ msgstr ""
 "Destinationsmappen er ikke tom.\n"
 "Er du sikker på at du vil overskrive alle data i {self.dir}?"
 
-#: iso-constructor/__init__.py:436
+#: iso-constructor/__init__.py:473
 msgid "Unpack ISO to directory"
 msgstr "Udpak ISO til mappe"
 
-#: iso-constructor/__init__.py:437
+#: iso-constructor/__init__.py:474
 msgid "Unpack & Save"
 msgstr "Udpak og gem"
 
-#: iso-constructor/__init__.py:445
+#: iso-constructor/__init__.py:482
 msgid "Work directory"
 msgstr "Arbejdsmappe"
 
-#: iso-constructor/__init__.py:446
+#: iso-constructor/__init__.py:483
 msgid "Save"
 msgstr "Gem"
 
-#: iso-constructor/__init__.py:456
+#: iso-constructor/__init__.py:494
 msgid "Select"
 msgstr "Vælg"
 
-#: iso-constructor/__init__.py:456
+#: iso-constructor/__init__.py:494
 msgid "Distribution"
 msgstr "Distribution"
 
-#: iso-constructor/__init__.py:456
+#: iso-constructor/__init__.py:494
 msgid "Working directory"
 msgstr "Arbejdsmappe"
 
