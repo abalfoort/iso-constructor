@@ -1,7 +1,8 @@
+""" Module to provide a functionalities to a treeview """
+
 #!/usr/bin/env python3
 
 import os
-# Make sure the right Gtk version is loaded
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GObject, GdkPixbuf
@@ -20,8 +21,8 @@ class TreeViewHandler(GObject.GObject):
 
     __gsignals__ = {
         'checkbox-toggled': (GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE,
-                            (GObject.TYPE_STRING, GObject.TYPE_INT, GObject.TYPE_BOOLEAN,))
-        }
+                             (GObject.TYPE_STRING, GObject.TYPE_INT, GObject.TYPE_BOOLEAN,))
+    }
 
     def __init__(self, tree_view, logger_object=None):
         GObject.GObject.__init__(self)
@@ -38,7 +39,7 @@ class TreeViewHandler(GObject.GObject):
     def fill_treeview(self, content_list, column_types_list, set_cursor=0,
                       set_cursor_weight=400, first_item_is_col_name=False,
                       append_to_existing=False, append_to_top=False, font_size=10000,
-                      fixed_img_height=None):
+                      fixed_img_height=None, columns_resizable=False):
         '''
         General function to fill a treeview
         Set set_cursor_weight to 400 if you don't want bold font
@@ -69,7 +70,8 @@ class TreeViewHandler(GObject.GObject):
                     msg = "Clear existing list store"
                     print(msg)
                     if self.log:
-                        self.log.write(msg, 'self.treeview.fill_treeview', 'debug')
+                        self.log.write(
+                            msg, 'self.treeview.fill_treeview', 'debug')
                     liststore.clear()
                     for col in self.treeview.get_columns():
                         self.treeview.remove_column(col)
@@ -81,7 +83,8 @@ class TreeViewHandler(GObject.GObject):
                         msg = f"First item is column name (multi-column list): {i_val}"
                         print(msg)
                         if self.log:
-                            self.log.write(msg, 'self.treeview.fill_treeview', 'debug')
+                            self.log.write(
+                                msg, 'self.treeview.fill_treeview', 'debug')
                         col_name_list.append(i_val)
                     else:
                         col_name_list.append('Column ' + str(i))
@@ -90,7 +93,8 @@ class TreeViewHandler(GObject.GObject):
                     msg = f"First item is column name (single-column list): {content_list[0][0]}"
                     print(msg)
                     if self.log:
-                        self.log.write(msg, 'self.treeview.fill_treeview', 'debug')
+                        self.log.write(
+                            msg, 'self.treeview.fill_treeview', 'debug')
                     col_name_list.append(content_list[0])
                 else:
                     col_name_list.append('Column 0')
@@ -108,7 +112,8 @@ class TreeViewHandler(GObject.GObject):
                     msg = "First item is column name: skip first item"
                     print(msg)
                     if self.log:
-                        self.log.write(msg, 'self.treeview.fill_treeview', 'debug')
+                        self.log.write(
+                            msg, 'self.treeview.fill_treeview', 'debug')
                     skip = True
 
                 if not skip:
@@ -133,9 +138,9 @@ class TreeViewHandler(GObject.GObject):
                             if str(column_types_list[j]) == 'GdkPixbuf.Pixbuf':
                                 if os.path.isfile(val):
                                     if fixed_img_height:
-                                        pb = GdkPixbuf.Pixbuf.new_from_file(val)
-                                        nw = pb.get_width() * (fixed_img_height / pb.get_height())
-                                        val = f'GdkPixbuf.Pixbuf.new_from_file("{val}").scale_simple({nw}, {fixed_img_height}, GdkPixbuf.InterpType.BILINEAR)'
+                                        pb_img = GdkPixbuf.Pixbuf.new_from_file(val)
+                                        pb_img_width = pb_img.get_width() * (fixed_img_height / pb_img.get_height())
+                                        val = f'GdkPixbuf.Pixbuf.new_from_file("{val}").scale_simple({pb_img_width}, {fixed_img_height}, GdkPixbuf.InterpType.BILINEAR)'
                                     else:
                                         val = f'GdkPixbuf.Pixbuf.new_from_file("{val}")'
                                 else:
@@ -146,20 +151,23 @@ class TreeViewHandler(GObject.GObject):
                         msg = f"Add data to list store: {dyn_list_store_append}"
                         print(msg)
                         if self.log:
-                            self.log.write(msg, 'self.treeview.fill_treeview', 'debug')
+                            self.log.write(
+                                msg, 'self.treeview.fill_treeview', 'debug')
                         eval(dyn_list_store_append)
                     else:
                         if append_to_top:
                             msg = f"Add data to top of list store: {str(i_val)}"
                             print(msg)
                             if self.log:
-                                self.log.write(msg, 'self.treeview.fill_treeview', 'debug')
+                                self.log.write(
+                                    msg, 'self.treeview.fill_treeview', 'debug')
                             liststore.insert(0, [i_val, weight, font_size])
                         else:
                             msg = f"Add data to bottom of list store: {str(i_val)}"
                             print(msg)
                             if self.log:
-                                self.log.write(msg, 'self.treeview.fill_treeview', 'debug')
+                                self.log.write(
+                                    msg, 'self.treeview.fill_treeview', 'debug')
                             liststore.append([i_val, weight, font_size])
 
             # Create columns
@@ -187,46 +195,55 @@ class TreeViewHandler(GObject.GObject):
                         # an object that renders a pixbuf into a Gtk.TreeView cell
                         renderer = 'Gtk.CellRendererPixbuf()'
                         attr = ', pixbuf=' + str(i)
-                    dyn_col = 'Gtk.TreeViewColumn("' + str(i_val) + '", ' + renderer + attr + ')'
+                    dyn_col = 'Gtk.TreeViewColumn("' + \
+                        str(i_val) + '", ' + renderer + attr + ')'
 
                     msg = f"Create column: {dyn_col}"
                     print(msg)
                     if self.log:
-                        self.log.write(msg, 'self.treeview.fill_treeview', 'debug')
+                        self.log.write(
+                            msg, 'self.treeview.fill_treeview', 'debug')
                     col = eval(dyn_col)
 
                     # Get the renderer of the column and add type specific properties
                     rend = col.get_cells()[0]
-                    #if str(column_types_list[i]) == 'str':
-                        # TODO: Right align text in column - add parameter to function
-                        #rend.set_property('xalign', 1.0)
+                    # if str(column_types_list[i]) == 'str':
+                    # TODO: Right align text in column - add parameter to function
+                    # rend.set_property('xalign', 1.0)
                     if str(column_types_list[i]) == 'bool':
                         # If checkbox column, add toggle function
                         msg = "Check box found: add toggle function"
                         print(msg)
                         if self.log:
-                            self.log.write(msg, 'self.treeview.fill_treeview', 'debug')
-                        rend.connect('toggled', self.tvchk_on_toggle, liststore, i)
+                            self.log.write(
+                                msg, 'self.treeview.fill_treeview', 'debug')
+                        rend.connect(
+                            'toggled', self.tvchk_on_toggle, liststore, i)
 
                     # Let the last colum fill the treeview
                     if i == len(col_name_list):
                         msg = f"Last column fills treeview: {i}"
                         print(msg)
                         if self.log:
-                            self.log.write(msg, 'self.treeview.fill_treeview', 'debug')
+                            self.log.write(
+                                msg, 'self.treeview.fill_treeview', 'debug')
                         col.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
+                    elif columns_resizable:
+                        col.set_resizable(True)
 
                     # Finally add the column
                     self.treeview.append_column(col)
                     msg = f"Column added: {col.get_title()}"
                     print(msg)
                     if self.log:
-                        self.log.write(msg, 'self.treeview.fill_treeview', 'debug')
+                        self.log.write(
+                            msg, 'self.treeview.fill_treeview', 'debug')
                 else:
                     msg = f"Column already exists: {col_found}"
                     print(msg)
                     if self.log:
-                        self.log.write(msg, 'self.treeview.fill_treeview', 'debug')
+                        self.log.write(
+                            msg, 'self.treeview.fill_treeview', 'debug')
 
             # Add liststore, set cursor and set the headers
             self.treeview.set_model(liststore)
@@ -234,13 +251,14 @@ class TreeViewHandler(GObject.GObject):
                 self.treeview.set_cursor(set_cursor)
             self.treeview.set_headers_visible(first_item_is_col_name)
             if self.log:
-                self.log.write("Add Liststore to Treeview", 'self.treeview.fill_treeview', 'debug')
+                self.log.write("Add Liststore to Treeview",
+                               'self.treeview.fill_treeview', 'debug')
 
             # Scroll to selected cursor
             selection = self.treeview.get_selection()
-            tm, tree_iter = selection.get_selected()
+            tree_model, tree_iter = selection.get_selected()
             if tree_iter:
-                path = tm.get_path(tree_iter)
+                path = tree_model.get_path(tree_iter)
                 self.treeview.scroll_to_cell(path)
                 msg = f"Scrolled to selected row: {set_cursor}"
                 print(msg)
@@ -280,8 +298,8 @@ class TreeViewHandler(GObject.GObject):
         if model is not None:
             for path in pathlist:
                 row = []
-                for n in range(0, cols_nr):
-                    row.append(model.get_value(model.get_iter(path), n))
+                for col_nr in range(0, cols_nr):
+                    row.append(model.get_value(model.get_iter(path), col_nr))
                 rows.append([path, row])
         return rows
 
@@ -311,25 +329,25 @@ class TreeViewHandler(GObject.GObject):
 
     def get_column_values(self, col_nr=0):
         ''' Return all the values in a given column. '''
-        cv = []
+        col_vals = []
         model = self.treeview.get_model()
         if model is not None:
             itr = model.get_iter_first()
             while itr is not None:
-                cv.append(model.get_value(itr, col_nr))
+                col_vals.append(model.get_value(itr, col_nr))
                 itr = model.iter_next(itr)
-        return cv
+        return col_vals
 
-    def get_row_count(self, startIter=None):
+    def get_row_count(self, start_iter=None):
         '''
         Return the number of rows counted from iter
         If iter is None, all rows are counted
         '''
-        nr = 0
+        row_nr = 0
         model = self.treeview.get_model()
         if model is not None:
-            nr = model.iter_n_children(startIter)
-        return nr
+            row_nr = model.iter_n_children(start_iter)
+        return row_nr
 
     def get_column_count(self):
         ''' Return the number of columns. '''
@@ -340,12 +358,12 @@ class TreeViewHandler(GObject.GObject):
         if row_nr is None:
             (model, path_list) = self.treeview.get_selection().get_selected_rows()
             for path in path_list:
-                it = model.get_iter(path)
-                model.remove(it)
+                tree_iter = model.get_iter(path)
+                model.remove(tree_iter)
         else:
             model = self.treeview.get_model()
-            it = model.get_iter(row_nr)
-            model.remove(it)
+            tree_iter = model.get_iter(row_nr)
+            model.remove(tree_iter)
 
     def add_row(self, row_list):
         ''' Add row list to treeview. '''
@@ -375,8 +393,8 @@ class TreeViewHandler(GObject.GObject):
         if model is not None:
             for path in path_list:
                 for col_nr in toggle_col_nr_list:
-                    it = model.get_iter(path)
-                    model[it][col_nr] = not model[it][col_nr]
+                    tree_iter = model.get_iter(path)
+                    model[tree_iter][col_nr] = not model[tree_iter][col_nr]
 
     def treeview_toggle_all(self, toggle_col_nr_list, toggle_value=False,
                             exclude_col_nr=-1, exclude_value=''):
@@ -400,34 +418,35 @@ class TreeViewHandler(GObject.GObject):
         ''' Check if list contains lists. '''
         return len(lst) == len([x for x in lst if isinstance(x, list)])
 
+
 # Register the class
 GObject.type_register(TreeViewHandler)
 
 
 # TODO - implement clickable image in TreeViewHandler
 # http://www.daa.com.au/pipermail/pygtk/2010-March/018355.html
-#class CellRendererPixbufXt(Gtk.CellRendererPixbuf):
-    #"""docstring for CellRendererPixbufXt"""
-    #__gproperties__ = {'active-state':
-                        #(GObject.TYPE_STRING, 'pixmap/active widget state',
-                        #'stock-icon name representing active widget state',
-                        #None, GObject.PARAM_READWRITE)}
-    #__gsignals__ = {'clicked':
-                        #(GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ()), }
-    #states = [None, Gtk.STOCK_APPLY, Gtk.STOCK_CANCEL]
+# class CellRendererPixbufXt(Gtk.CellRendererPixbuf):
+# """docstring for CellRendererPixbufXt"""
+# __gproperties__ = {'active-state':
+# (GObject.TYPE_STRING, 'pixmap/active widget state',
+# 'stock-icon name representing active widget state',
+# None, GObject.PARAM_READWRITE)}
+# __gsignals__ = {'clicked':
+# (GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ()), }
+# states = [None, Gtk.STOCK_APPLY, Gtk.STOCK_CANCEL]
 
-    #def __init__(self):
-        #Gtk.CellRendererPixbuf.__init__(self)
+# def __init__(self):
+# Gtk.CellRendererPixbuf.__init__(self)
 
-    #def do_get_property(self, property):
-        #"""docstring for do_get_property"""
-        #if property.name == 'active-state':
-            #return self.active_state
-        #else:
-            #raise AttributeError('unknown property %s' % property.name)
+# def do_get_property(self, property):
+# """docstring for do_get_property"""
+# if property.name == 'active-state':
+# return self.active_state
+# else:
+# raise AttributeError('unknown property %s' % property.name)
 
-    #def do_set_property(self, property, value):
-        #if property.name == 'active-state':
-            #self.active_state = value
-        #else:
-            #raise AttributeError('unknown property %s' % property.name)
+# def do_set_property(self, property, value):
+# if property.name == 'active-state':
+# self.active_state = value
+# else:
+# raise AttributeError('unknown property %s' % property.name)
