@@ -1,28 +1,26 @@
+""" Module providing initialization of the ISO Constructor application """
+
 #!/usr/bin/env python3
 
 from os import makedirs, system, listdir, \
-               environ, rename, remove, sysconf
-import operator
+    environ, remove, sysconf
 from os.path import join, dirname, exists, isdir
-
-# i18n: http://docs.python.org/3/library/gettext.html
 import gettext
-_ = gettext.translation('iso-constructor', fallback=True).gettext
-
-# Make sure the right versions are loaded
+from configparser import ConfigParser
 import gi
 gi.require_version('Gtk', '3.0')
-# from gi.repository import Gtk, GdkPixbuf, GObject, Pango, Gdk, Vte
 from gi.repository import Gtk
 
-# Local imports
-from .treeview import TreeViewHandler
-from .terminal import Terminal
-from .dialogs import show_message_dialog, show_error_dialog, SelectFileDialog, \
-                     SelectDirectoryDialog, show_question_dialog
 from .utils import get_user_home, get_logged_user, \
-                   get_package_version, get_lsb_release_info, \
-                   getoutput, shell_exec
+    get_package_version, getoutput, shell_exec, \
+    get_lsb_release_info
+from .dialogs import show_message_dialog, show_error_dialog, SelectFileDialog, \
+    SelectDirectoryDialog, show_question_dialog
+from .terminal import Terminal
+from .treeview import TreeViewHandler
+
+# i18n: http://docs.python.org/3/library/gettext.html
+_ = gettext.translation('iso-constructor', fallback=True).gettext
 
 
 class Constructor():
@@ -33,54 +31,80 @@ class Constructor():
         self.share_dir = '/usr/share/iso-constructor'
         self.chroot_script = join(self.share_dir, "chroot-dir.sh")
         self.user_app_dir = join(get_user_home(), ".iso-constructor")
-        self.distro_file = join(self.user_app_dir, "distributions.list")
         self.log_file = join(self.user_app_dir, 'iso-constructor.log')
+        self.conf_file = join(self.user_app_dir, 'iso-constructor.conf')
+
+        # Create the user's application directory if it doesn't exist
+        user_name = get_logged_user()
+        if not isdir(self.user_app_dir):
+            makedirs(self.user_app_dir)
+            system(f"chown -R {user_name}:{user_name} {self.user_app_dir}")
+
+        # Load window and widgets
+        self.builder = Gtk.Builder()
+        self.builder.add_from_file(
+            join(self.share_dir, 'iso-constructor.glade'))
+
+        # Main window object
+        builder_obj = self.builder.get_object
+        self.window = builder_obj('constructor_window')
+        self.dt_paned = builder_obj('dt_paned')
+
+        # Instantiate the ConfigParser
+        self.config = ConfigParser()
+
+        # Hold a list with distribution paths
+        self.distros = []
+
+        # Create conf file if it does not exist
+        if not exists(self.conf_file):
+            self.save_settings()
+            system(f"chown -R {user_name}:{user_name} {self.user_app_dir}")
+
+        # Old file with distro paths
+        distro_file = join(self.user_app_dir, "distributions.list")
+        if exists(distro_file):
+            with open(file=distro_file, mode='r', encoding='utf-8') as distro_fle:
+                self.distros = [distro.strip() for distro in distro_fle.readlines()]
+            self.save_distros()
+            remove(distro_file)
+
+        # Parse config file
+        self.config.read(self.conf_file)
+        self.distros = self.get_distros()
+
+        # Set saved sizes
+        window_width, window_height, distros_height = self.get_settings()
+        self.window.set_default_size(window_width, window_height)
+        self.dt_paned.set_position(distros_height)
 
         # Remove old log file
         if exists(self.log_file):
             remove(self.log_file)
 
-        # Create the user's application directory if it doesn't exist
-        if not isdir(self.user_app_dir):
-            old_dir = join(get_user_home(), ".constructor")
-            if exists(old_dir):
-                rename(old_dir, self.user_app_dir)
-                if exists(join(self.user_app_dir, 'distros.list')):
-                    rename(join(self.user_app_dir, 'distros.list'), self.distro_file)
-            else:
-                user_name = get_logged_user()
-                makedirs(self.user_app_dir)
-                system(f"chown -R {user_name}:{user_name} {self.user_app_dir}")
-
-        # Load window and widgets
-        self.builder = Gtk.Builder()
-        self.builder.add_from_file(join(self.share_dir, 'iso-constructor.glade'))
-
         # Main window objects
-        go = self.builder.get_object
-        self.window = go('constructor_window')
-        self.tv_distros = go('tv_distros')
-        self.btn_add = go('btn_add')
-        self.btn_log = go('btn_log')
-        self.chk_selectall = go('chk_select_all')
-        self.btn_remove = go('btn_remove')
-        self.btn_edit = go('btn_edit')
-        self.btn_upgrade = go('btn_upgrade')
-        self.btn_buildiso = go('btn_build_iso')
-        self.btn_qemu = go('btn_qemu')
-        self.btn_qemu_img = go('btn_qemu_img')
+        self.tv_distros = builder_obj('tv_distros')
+        self.btn_add = builder_obj('btn_add')
+        self.btn_log = builder_obj('btn_log')
+        self.chk_selectall = builder_obj('chk_select_all')
+        self.btn_remove = builder_obj('btn_remove')
+        self.btn_edit = builder_obj('btn_edit')
+        self.btn_upgrade = builder_obj('btn_upgrade')
+        self.btn_buildiso = builder_obj('btn_build_iso')
+        self.btn_qemu = builder_obj('btn_qemu')
+        self.btn_qemu_img = builder_obj('btn_qemu_img')
 
         # Add iso window objects
-        self.window_adddistro = go('add_distro_window')
-        self.txt_iso = go('txt_iso')
-        self.txt_dir = go('txt_dir')
-        self.btn_dir = go('btn_dir')
-        self.btn_save = go('btn_save')
-        self.btn_help = go('btn_help')
-        self.lbl_iso = go('lbl_iso')
-        self.box_iso = go('box_iso')
-        self.lbl_dir = go('lbl_dir')
-        self.chk_fromiso = go('chk_from_iso')
+        self.window_adddistro = builder_obj('add_distro_window')
+        self.txt_iso = builder_obj('txt_iso')
+        self.txt_dir = builder_obj('txt_dir')
+        self.btn_dir = builder_obj('btn_dir')
+        self.btn_save = builder_obj('btn_save')
+        self.btn_help = builder_obj('btn_help')
+        self.lbl_iso = builder_obj('lbl_iso')
+        self.box_iso = builder_obj('box_iso')
+        self.lbl_dir = builder_obj('lbl_dir')
+        self.chk_fromiso = builder_obj('chk_from_iso')
 
         # Main window translations
         self.remove_text = _("Remove")
@@ -102,13 +126,13 @@ class Constructor():
         # Add iso window translations
         self.window_adddistro.set_title(_("Add Distribution"))
         self.lbl_iso.set_text(_("ISO"))
-        go('lbl_from_iso').set_label("Create from ISO")
+        builder_obj('lbl_from_iso').set_label("Create from ISO")
         cancel = _("Cancel")
-        go('btn_cancel').set_label(f"_{cancel}")
+        builder_obj('btn_cancel').set_label(f"_{cancel}")
 
         # Terminal
         self.terminal = Terminal()
-        go('sw_tve').add(self.terminal)
+        builder_obj('sw_tve').add(self.terminal)
         self.terminal.log_file = self.log_file
         self.terminal.set_input_enabled(False)
 
@@ -118,18 +142,20 @@ class Constructor():
         self.html_dir = join(self.share_dir, "html")
         self.help = join(self.get_language_dir(), "help.html")
         self.chk_fromiso.set_active(True)
+        self.skip_select_all = False
 
         # Treeviews
         self.tv_handlerdistros = TreeViewHandler(self.tv_distros)
+        self.tv_handlerdistros.connect('checkbox-toggled', self.tv_dists_toggled)
         self.fill_tv_dists()
-
-        # Version information
-        ver = get_package_version('iso-constructor')
-        self.log(f'> ISO Constructor {ver}')
 
         # Connect the signals and show the window
         self.builder.connect_signals(self)
         self.window.show_all()
+
+        # Version information
+        ver = get_package_version('iso-constructor')
+        self.log(f'> ISO Constructor {ver}')
 
         # Check if qemu is installed and show the qemu button if it is.
         self.btn_qemu.set_visible(False)
@@ -160,22 +186,24 @@ class Constructor():
         '''
         Remove selected distribution(s).
         '''
-        selected = self.tv_handlerdistros.get_toggled_values(toggle_col_nr=0, value_col_nr=2)
+        selected = self.tv_handlerdistros.get_toggled_values(
+            toggle_col_nr=0, value_col_nr=2)
         if selected:
             for path in selected:
                 answer = show_question_dialog(self.remove_text,
-                                            _("Are you sure you want to remove "
-                                            "the selected distribution from the list?\n"
-                                            "(This will not remove the directory and its data)"))
+                                              _("Are you sure you want to remove "
+                                                "the selected distribution from the list?\n"
+                                                "(This will not remove the directory and its data)"))
                 if answer:
-                    self.save_dist_file(distro_path=path, add_distro=False)
+                    self.save_distro(distro_path=path, add_distro=False)
             self.fill_tv_dists()
 
     def on_btn_edit_clicked(self, widget):
         '''
         Edit selected distribution(s)
         '''
-        selected = self.tv_handlerdistros.get_toggled_values(toggle_col_nr=0, value_col_nr=2)
+        selected = self.tv_handlerdistros.get_toggled_values(
+            toggle_col_nr=0, value_col_nr=2)
         if selected:
             self.enable_gui_elements(False)
             for path in selected:
@@ -195,21 +223,24 @@ class Constructor():
         '''
         Apt upgrade selected distribution(s).
         '''
-        selected = self.tv_handlerdistros.get_toggled_values(toggle_col_nr=0, value_col_nr=2)
+        selected = self.tv_handlerdistros.get_toggled_values(
+            toggle_col_nr=0, value_col_nr=2)
         if selected:
             self.enable_gui_elements(False)
             for path in selected:
                 self.log(f'> Start upgrading {path}')
 
                 # Upgrade the distribtution
-                self.terminal.feed(command=f'iso-constructor -u "{path}"', wait_until_done=True)
+                self.terminal.feed(
+                    command=f'iso-constructor -u "{path}"', wait_until_done=True)
             self.enable_gui_elements(True)
 
     def on_btn_build_iso_clicked(self, widget):
         '''
         Build ISOs from selected distribution(s).
         '''
-        selected = self.tv_handlerdistros.get_toggled_values(toggle_col_nr=0, value_col_nr=2)
+        selected = self.tv_handlerdistros.get_toggled_values(
+            toggle_col_nr=0, value_col_nr=2)
         if selected:
             self.enable_gui_elements(False)
             # Loop through selected distributions
@@ -217,14 +248,16 @@ class Constructor():
                 self.log(f'> Start building ISO in: {path}')
 
                 # Build the ISO
-                self.terminal.feed(command=f'iso-constructor -b "{path}"', wait_until_done=True)
+                self.terminal.feed(
+                    command=f'iso-constructor -b "{path}"', wait_until_done=True)
             self.enable_gui_elements(True)
 
     def on_btn_qemu_clicked(self, widget):
         '''
         Test ISOs from selected distribution(s) in Qemu.
         '''
-        selected = self.tv_handlerdistros.get_toggled_values(toggle_col_nr=0, value_col_nr=2)
+        selected = self.tv_handlerdistros.get_toggled_values(
+            toggle_col_nr=0, value_col_nr=2)
         if selected:
             self.enable_gui_elements(False)
             show_message_dialog(self.test_iso_text,
@@ -236,9 +269,10 @@ class Constructor():
                         self.log(f'> Start testing ISO: {path}/{iso_path}')
 
                         # Start qemu to test the selected ISO
-                        shell_exec(command=f'iso-constructor -t "{path}"', wait=True)
+                        shell_exec(
+                            command=f'iso-constructor -t "{path}"', wait=True)
             self.enable_gui_elements(True)
-        
+
         if exists(self.qemu_img):
             self.btn_qemu_img.set_visible(True)
 
@@ -258,6 +292,8 @@ class Constructor():
         '''
         Select/Deselect all listed distributions.
         '''
+        if self.skip_select_all:
+            return
         self.tv_handlerdistros.treeview_toggle_all(toggle_col_nr_list=[0],
                                                    toggle_value=widget.get_active())
 
@@ -286,10 +322,12 @@ class Constructor():
                            disable_scrolling=False, pause_logging=True)
         self.enable_gui_elements(True)
 
+    def on_constructor_window_delete_event(self, widget, data):
+        ''' Save Settings '''
+        self.save_settings()
+
     def on_constructor_window_destroy(self, widget):
-        '''
-        Close the app
-        '''
+        ''' Close the app '''
         Gtk.main_quit()
 
     # ===============================================
@@ -324,8 +362,8 @@ class Constructor():
         if exists(self.txt_dir.get_text()):
             start_dir = self.txt_dir.get_text()
         dir_text = SelectDirectoryDialog(title=_('Select directory'),
-                                        start_directory=start_dir,
-                                        parent=self.window).show()
+                                         start_directory=start_dir,
+                                         parent=self.window).show()
         if dir_text is not None:
             self.txt_dir.set_text(dir_text)
 
@@ -357,8 +395,7 @@ class Constructor():
                     return
                 if listdir(self.dir):
                     answer = show_question_dialog(self.btn_save.get_label(),
-                                                 _(f"The destination directory is not empty.\n"
-                                                    "Are you sure you want to overwrite all data in {self.dir}?"))
+                                                  _(f"The destination directory is not empty.\nAre you sure you want to overwrite all data in {self.dir}?"))
                     if not answer:
                         return
 
@@ -370,12 +407,12 @@ class Constructor():
                 self.terminal.feed(command=f'iso-constructor -U "{self.iso}" "{self.dir}"',
                                    wait_until_done=True)
 
-                self.save_dist_file(self.dir)
+                self.save_distro(self.dir)
                 self.fill_tv_dists()
 
                 self.enable_gui_elements(True)
             else:
-                self.save_dist_file(self.dir)
+                self.save_distro(self.dir)
                 self.fill_tv_dists()
                 self.log(f'> Added existing working directory {self.dir}')
 
@@ -453,37 +490,36 @@ class Constructor():
         '''
         Fill the TreeView with distributions.
         '''
-        content_list = [[_("Select"), _("Distribution"), _("Working directory")]]
-        distros = self.get_dists()
-        for distro in distros:
-            select = False
-            for select_distro in select_distros:
-                if distro[0] == select_distro:
-                    select = True
-            content_list.append([select, distro[0], distro[1]])
-        self.tv_handlerdistros.fill_treeview(content_list=content_list,
-                                             column_types_list=['bool', 'str', 'str'],
-                                             first_item_is_col_name=True)
+        content_list = [
+            [_("Select"), _("Distribution"), _("Working directory")]]
 
-    def get_dists(self):
-        '''
-        Return a list with distributions,
-        filled from the save file.
-        '''
-        distros = []
-        if exists(self.distro_file):
-            with open(file=self.distro_file, mode='r', encoding='utf-8') as f:
-                lines = f.readlines()
-            for line in lines:
-                line = line.strip().rstrip('/')
-                print(line)
-                if exists(line):
-                    lsb_info = get_lsb_release_info(line + '/root')
-                    distros.append([lsb_info['name'], line])
-            # Sort on iso name
-            if distros:
-                distros = sorted(distros, key=operator.itemgetter(0))
-        return distros
+        for distro in self.distros:
+            select = False
+            lsb_info = get_lsb_release_info(distro + '/root')
+            for select_distro in select_distros:
+                if distro == select_distro or distro == lsb_info['name']:
+                    select = True
+            content_list.append([select, lsb_info['name'], distro])
+        self.tv_handlerdistros.fill_treeview(content_list=content_list,
+                                             column_types_list=[
+                                                 'bool', 'str', 'str'],
+                                             first_item_is_col_name=True,
+                                             columns_resizable=True)
+
+    def tv_dists_toggled(self, obj, path, col_nr, toggle_value, data=None):
+        ''' Callback function for toggled checkboxes in a treeview '''
+        if not toggle_value:
+            if self.chk_selectall.get_active():
+                self.skip_select_all = True
+                self.chk_selectall.set_active(False)
+                self.skip_select_all = False
+        else:
+            toggled_rows = len(self.tv_handlerdistros.get_toggled_values())
+            total_rows = self.tv_handlerdistros.get_row_count()
+            if toggled_rows == total_rows:
+                self.skip_select_all = True
+                self.chk_selectall.set_active(True)
+                self.skip_select_all = False
 
     def enable_gui_elements(self, enable):
         '''
@@ -518,36 +554,66 @@ class Constructor():
             self.btn_dir.set_sensitive(True)
             self.btn_help.set_sensitive(True)
 
-    def save_dist_file(self, distro_path, add_distro=True):
-        '''
-        Save distribution to the save file.
-        '''
-        new_cont = []
-        cfg = []
-        if exists(self.distro_file):
-            with open(file=self.distro_file, mode='r', encoding='utf-8') as f:
-                cfg = f.readlines()
-            for line in cfg:
-                line = line.strip()
-                if distro_path != line and exists(line):
-                    new_cont.append(line)
+    def get_distros(self):
+        ''' Get list with distributions '''
+        distros = self.config.get(
+            'DISTROS', 'distro_paths', fallback='').split(';')
+        for distro in distros:
+            if not exists(distro):
+                distros.remove(distro)
+        return distros
 
-        if add_distro:
-            new_cont.append(distro_path)
+    def save_distros(self):
+        ''' Save distributions to the config file '''
+        if 'DISTROS' not in self.config.sections():
+            self.config.add_section('DISTROS')
+        self.config.set('DISTROS', 'distro_paths', ';'.join(self.distros))
+        self.save_config()
 
-        with open(file=self.distro_file, mode='w', encoding='utf-8') as f:
-            f.write('\n'.join(new_cont))
+    def save_distro(self, distro_path, add_distro=True):
+        ''' Add or remove distro_path '''
+        distros = []
+        for distro in self.distros:
+            if distro != distro_path:
+                distros.append(distro)
+            else:
+                if add_distro:
+                    distros.append(distro_path)
+        self.distros = sorted(distros)
+        self.save_distros()
 
         self.iso = ""
         self.dir = ""
+
+    def get_settings(self):
+        ''' Get tupil with settings '''
+        return (self.config.getint('SETTINGS', 'window_width', fallback=600),
+                self.config.getint('SETTINGS', 'window_height', fallback=450),
+                self.config.getint('SETTINGS', 'distros_height', fallback=100))
+
+    def save_settings(self):
+        ''' Save settings '''
+        if 'SETTINGS' not in self.config.sections():
+            self.config.add_section('SETTINGS')
+        window_width, window_height = self.window.get_size()
+        distros_height = self.dt_paned.get_position()
+        self.config.set('SETTINGS', 'window_width', str(window_width))
+        self.config.set('SETTINGS', 'window_height', str(window_height))
+        self.config.set('SETTINGS', 'distros_height', str(distros_height))
+        self.save_config()
+
+    def save_config(self):
+        ''' Save the current config object to file '''
+        with open(file=self.conf_file, mode='w', encoding='utf-8') as conf_fle:
+            self.config.write(conf_fle)
 
     def log(self, text):
         '''
         Save text to the log file.
         '''
         if self.log_file and text:
-            with open(file=self.log_file, mode='a', encoding='utf-8') as f:
-                f.write(text + '\n')
+            with open(file=self.log_file, mode='a', encoding='utf-8') as log_fle:
+                log_fle.write(text + '\n')
 
     def get_language_dir(self):
         '''
