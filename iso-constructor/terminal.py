@@ -1,9 +1,9 @@
+""" Module to provide a Vte.Terminal object """
+
 #!/usr/bin/env python3
 
-from os import environ
 import time
-
-# Make sure the right versions are loaded
+from os import environ
 import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version('Vte', '2.91')
@@ -14,6 +14,7 @@ from gi.repository import Gtk, GLib, Vte, Gdk, Gio
 # Reference: https://lazka.github.io/pgi-docs/Vte-2.91/classes/Terminal.html
 class Terminal(Vte.Terminal):
     ''' Terminal class. '''
+
     def __init__(self):
         super().__init__()
 
@@ -33,12 +34,12 @@ class Terminal(Vte.Terminal):
         self._cmd_is_running = False
 
         # Colors
-        fg = Gdk.RGBA()
-        bg = Gdk.RGBA()
-        fg.parse('#ffffff')
-        bg.parse('#1c1f22')
-        self.set_color_foreground(fg)
-        self.set_color_background(bg)
+        fg_color = Gdk.RGBA()
+        bg_color = Gdk.RGBA()
+        fg_color.parse('#ffffff')
+        bg_color.parse('#1c1f22')
+        self.set_color_foreground(fg_color)
+        self.set_color_background(bg_color)
 
         # Create child
         self.create_child()
@@ -48,30 +49,30 @@ class Terminal(Vte.Terminal):
         try:
             # Use async from version 0.48
             self.spawn_async(
-                Vte.PtyFlags.DEFAULT,                 #pty flags
-                environ['HOME'],                      #working directory
-                ["/bin/bash"],                        #argmument vector
-                [],                                   #list with environment variables
-                GLib.SpawnFlags.DO_NOT_REAP_CHILD,    #spawn flags
-                None,                                 #child_setup function
-                None,                                 #child_setup data (gpointer)
-                -1,                                   #timeout
-                self._cancellable,                    #cancellable
-                None,                                 #callback
-                None                                  #callback data
-                )
+                Vte.PtyFlags.DEFAULT,  # pty flags
+                environ['HOME'],  # working directory
+                ["/bin/bash"],  # argmument vector
+                [],  # list with environment variables
+                GLib.SpawnFlags.DO_NOT_REAP_CHILD,  # spawn flags
+                None,  # child_setup function
+                None,  # child_setup data (gpointer)
+                -1,  # timeout
+                self._cancellable,  # cancellable
+                None,  # callback
+                None  # callback data
+            )
         except Exception:
             # TODO: self._cancellable errors out: Cancellable initialisation not supported
             self.spawn_sync(
-                Vte.PtyFlags.DEFAULT,                 #pty flags
-                environ['HOME'],                      #working directory
-                ["/bin/bash"],                        #argmument vector
-                [],                                   #list with environment variables
-                GLib.SpawnFlags.DO_NOT_REAP_CHILD,    #spawn flags
-                None,                                 #child_setup function
-                None,                                 #child_setup data (gpointer)
-                None                                  #cancellable
-                )
+                Vte.PtyFlags.DEFAULT,  # pty flags
+                environ['HOME'],  # working directory
+                ["/bin/bash"],  # argmument vector
+                [],  # list with environment variables
+                GLib.SpawnFlags.DO_NOT_REAP_CHILD,  # spawn flags
+                None,  # child_setup function
+                None,  # child_setup data (gpointer)
+                None  # cancellable
+            )
 
     def feed(self, command, wait_until_done=False, disable_scrolling=True, pause_logging=False):
         if self._cmd_is_running:
@@ -89,7 +90,7 @@ class Terminal(Vte.Terminal):
                 Gtk.main_iteration()
 
         # Unfortunately, there is no built-in way to notify the parent
-        # that a command has finished or to wait for the command 
+        # that a command has finished or to wait for the command
         # until it is finished.
         if wait_until_done:
             self._cmd_is_running = True
@@ -110,13 +111,13 @@ class Terminal(Vte.Terminal):
             while self.get_text(None, None)[0].strip()[-1:] not in '$#':
                 sleep()
             # Make the terminal scrollable again if it was at the start
-            if parent_is_sensitive: self.get_parent().set_sensitive(True)
+            if parent_is_sensitive:
+                self.get_parent().set_sensitive(True)
             # Command is done
             self._cmd_is_running = False
 
         # Reset pause on logging
         self.pause_logging = False
-
 
     def cancel(self):
         ''' Set terminal cancellable. '''
@@ -126,10 +127,10 @@ class Terminal(Vte.Terminal):
         ''' Get the last line in the terminal. '''
         text = self.get_text(None, None)[0].strip()
         text = text.split('\n')
-        ii = len(text) - 1
-        while text[ii] == '':
-            ii = ii - 1
-        text = text[ii]
+        i_pos = len(text) - 1
+        while text[i_pos] == '':
+            i_pos = i_pos - 1
+        text = text[i_pos]
         return text
 
     def get_vte_version(self):
@@ -144,14 +145,14 @@ class Terminal(Vte.Terminal):
                 text = self.get_text_range(self._last_row, 0, row, -1)[0]
                 text = text.strip()
                 self._last_row = row
-                with open(file=self.log_file, mode='a', encoding='utf-8') as f:
-                    f.write(text + '\n')
+                with open(file=self.log_file, mode='a', encoding='utf-8') as log_file:
+                    log_file.write(text + '\n')
 
     def on_key_press(self, widget, event):
         ''' Handle Ctrl-Shift-C and Ctrl-Shift-V. '''
         if self.enable_copy_paste:
-            ctrl = (event.state & Gdk.ModifierType.CONTROL_MASK)
-            shift = (event.state & Gdk.ModifierType.SHIFT_MASK)
+            ctrl = event.state & Gdk.ModifierType.CONTROL_MASK
+            shift = event.state & Gdk.ModifierType.SHIFT_MASK
             if ctrl and shift:
                 keyval = Gdk.keyval_to_upper(event.keyval)
                 if keyval == Gdk.KEY_C and self.get_has_selection():
