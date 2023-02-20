@@ -158,6 +158,7 @@ class Constructor():
         self.log(f'> ISO Constructor {ver}')
 
         # Check if qemu is installed and show the qemu button if it is.
+        self.show_qemu = False
         self.btn_qemu.set_visible(False)
         qemu_ver = get_package_version('qemu-system-x86')
         ovmf_ver = get_package_version('ovmf')
@@ -166,10 +167,11 @@ class Constructor():
         mem_gib = int(mem_bytes/(1024.**3))
         if qemu_ver and ovmf_ver and mem_gib >= 4:
             self.btn_qemu.set_visible(True)
+            self.show_qemu = True
 
         self.btn_qemu_img.set_visible(False)
-        self.qemu_img = join(self.user_app_dir, "qemu.img")
-        if exists(self.qemu_img):
+        self.qemu_img = join(self.user_app_dir, "qemu.qcow2")
+        if self.show_qemu and exists(self.qemu_img):
             self.btn_qemu_img.set_visible(True)
 
     # ===============================================
@@ -549,8 +551,10 @@ class Constructor():
             self.btn_edit.set_sensitive(True)
             self.btn_remove.set_sensitive(True)
             self.btn_upgrade.set_sensitive(True)
-            self.btn_qemu.set_sensitive(True)
-            self.btn_qemu_img.set_sensitive(True)
+            if self.show_qemu:
+                self.btn_qemu.set_sensitive(True)
+                if exists(self.qemu_img):
+                    self.btn_qemu_img.set_sensitive(True)
             self.btn_dir.set_sensitive(True)
             self.btn_help.set_sensitive(True)
 
@@ -572,14 +576,11 @@ class Constructor():
 
     def save_distro(self, distro_path, add_distro=True):
         ''' Add or remove distro_path '''
-        distros = []
-        for distro in self.distros:
-            if distro != distro_path:
-                distros.append(distro)
-            else:
-                if add_distro:
-                    distros.append(distro_path)
-        self.distros = sorted(distros)
+        if add_distro:
+            self.distros.append(distro_path)
+        else:
+            self.distros.remove(distro_path)
+        self.distros = sorted(self.distros)
         self.save_distros()
 
         self.iso = ""
