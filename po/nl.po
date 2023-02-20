@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 17:09+0100\n"
+"POT-Creation-Date: 2023-02-20 14:29+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2023\n"
 "Language-Team: Dutch (https://www.transifex.com/abalfoort/teams/54212/nl/)\n"
@@ -77,7 +77,7 @@ msgstr "ISO"
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: iso-constructor/__init__.py:194
+#: iso-constructor/__init__.py:196
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -86,28 +86,28 @@ msgstr ""
 "verwijderen?\n"
 "(Dit zal de map met gegevens NIET verwijderen)"
 
-#: iso-constructor/__init__.py:350
+#: iso-constructor/__init__.py:352
 msgid "Select ISO file"
 msgstr "Selecteer ISO bestand"
 
-#: iso-constructor/__init__.py:364
+#: iso-constructor/__init__.py:366
 msgid "Select directory"
 msgstr "Selecteer map"
 
-#: iso-constructor/__init__.py:379
+#: iso-constructor/__init__.py:381
 msgid "Save existing working directory"
 msgstr "Bewaar bestaande werkmap"
 
-#: iso-constructor/__init__.py:381
+#: iso-constructor/__init__.py:383
 msgid "Unpack ISO and save"
 msgstr "ISO uitpakken en bewaren"
 
-#: iso-constructor/__init__.py:388
+#: iso-constructor/__init__.py:390
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Kon map {self.dir} niet maken: verlaten"
 
-#: iso-constructor/__init__.py:394
+#: iso-constructor/__init__.py:396
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -116,7 +116,7 @@ msgstr ""
 "Het pad naar het ISO bestand bestaat niet:\n"
 "{self.iso}"
 
-#: iso-constructor/__init__.py:398
+#: iso-constructor/__init__.py:400
 #, python-brace-format
 msgid ""
 "The destination directory is not empty.\n"
@@ -125,31 +125,31 @@ msgstr ""
 "De doeldirectory is niet leeg.\n"
 "Weet u zeker dat u alle data in {self.dir} wilt overschrijven?"
 
-#: iso-constructor/__init__.py:473
+#: iso-constructor/__init__.py:475
 msgid "Unpack ISO to directory"
 msgstr "ISO uitpakken naar map"
 
-#: iso-constructor/__init__.py:474
+#: iso-constructor/__init__.py:476
 msgid "Unpack & Save"
 msgstr "Uitpakken en bewaren"
 
-#: iso-constructor/__init__.py:482
+#: iso-constructor/__init__.py:484
 msgid "Work directory"
 msgstr "Werkmap"
 
-#: iso-constructor/__init__.py:483
+#: iso-constructor/__init__.py:485
 msgid "Save"
 msgstr "Bewaren"
 
-#: iso-constructor/__init__.py:494
+#: iso-constructor/__init__.py:496
 msgid "Select"
 msgstr "Selecteer"
 
-#: iso-constructor/__init__.py:494
+#: iso-constructor/__init__.py:496
 msgid "Distribution"
 msgstr "Distributie"
 
-#: iso-constructor/__init__.py:494
+#: iso-constructor/__init__.py:496
 msgid "Working directory"
 msgstr "Werkdirectory"
 
