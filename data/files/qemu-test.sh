@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HDIMG="$HOME/.iso-constructor/qemu.img"
+HDQCOW="$HOME/.iso-constructor/qemu.qcow2"
 DISTPATH=$1
 
 if [ $UID -eq 0 ]; then
@@ -50,24 +50,29 @@ if [ ! -z "$AUDIODEV" ]; then
     fi
 fi
 
-# Create raw image
-if [ ! -e "$HDIMG" ]; then
+# Create image
+HDIMG="$HOME/.iso-constructor/qemu.img"
+if [ -e "$HDIMG" ]; then
+    qemu-img convert -f raw -O qcow2 "$HDIMG" "$HDQCOW"
+    rm "$HDIMG"
+fi
+if [ ! -e "$HDQCOW" ]; then
     # Check if 25G space available for 20G hd image
     AVAIL=$(df -k --output=avail "/tmp" | tail -n 1)
     if [ $AVAIL -gt 26214400 ]; then
-        qemu-img create -f raw $HDIMG 20G
+        qemu-img create -f qcow2 $HDQCOW 20G
     fi
 fi
-if [ -e "$HDIMG" ]; then
-    HD="-drive file=$HDIMG,format=raw,if=virtio"
+if [ -e "$HDQCOW" ]; then
+    HD="-drive file=\"$HDQCOW\",format=qcow2,media=disk,if=virtio"
 fi
 
 if [ ! -z "$TISO" ]; then
-    CDROM="-cdrom \"$TISO\""
+    CDROM="-drive file=\"$TISO\",media=cdrom,if=none,id=cdrom1 -device ide-cd,drive=cdrom1,id=ide-cd1,bootindex=-1"
 fi
 
 if [ -z "$HD" ] && [ -z "$CDROM" ]; then
-    echo "Cannot find ISO or $HDIMG"
+    echo "Cannot find ISO or $HDQCOW"
     exit 0
 fi
 
