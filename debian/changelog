@@ -1,3 +1,11 @@
+iso-constructor (4.0.9) stable; urgency=low
+
+  * Fix Qemu test not booting iso when bootable img is mounted
+  * Fix not able to add or remove distributions
+  * Use qcow2 image instead of raw (smaller size)
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 19 Feb 2023 19:53:43 +0100
+
 iso-constructor (4.0.8) stable; urgency=low
 
   * Save window size/distro paths to conf file
