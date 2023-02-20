@@ -40,7 +40,6 @@ Options for the GUI (all other parameters will be ignored):
 -v
 :   Prints debug information while running the GUI.
 
-
 # GUI
 
 ## Add distribution
@@ -49,11 +48,11 @@ Here you can either unpack an ISO to a new work directory or select an exsiting 
 ## Remove distribution
 When removing a distribution the work directory will NOT be removed.
 
+## Edit distribution
+Creates a chrooted environment where you can change the system.
+
 ## Upgrade distribution
 Simply runs "apt-get dist-upgrade" but taking into account that some services need to be handled before and after the upgrade.
-
-## Localize the ISOs
-ISO Constructor by default generates a boot menu where the user can select their own locale when starting a live session. This will localize your live system permanently to your selected locale. Do not forget to translate the Grub and Isolinux menu. See the section below on editing the Grub and Isolinux templates.
 
 ## Build ISOs
 Builds the ISO and creates a sha256 file.
@@ -64,6 +63,18 @@ cp -v /usr/share/iso-constructor/keep-packages ~/.iso-constructor/
 
 Note: to keep all packages you can simply write an asterisk (*) in the keep-packages file.
 
+## Test ISOs in Qemu
+If you have these (recommended) packages installed, the Qemu test button will be available:
+:   qemu-utils, qemu-system-x86, qemu-system-gui, ovmf
+
+Note: if you test ISO builds newer than your host system the ISO might not boot or there are erros. Upgrade qemu to the latest version (backports).
+
+# REPOSITORY
+
+You can create a pool directory structure as in the live Debian ISOs. Any .deb are updated automatically during build. Release information in the dists directory is generated during build.
+
+Note: ISO Constructor is not able to update the .udeb packages. These need to be updated manually.
+
 # GRUB AND ISOLINUX
 
 To customize/translate the Grub and Isolinux boot menus you can create and edit the templates in ~/.iso-constructor/:
@@ -72,21 +83,25 @@ cp -v /usr/share/iso-constructor/grub-template ~/.iso-constructor/
 
 cp -v /usr/share/iso-constructor/isolinux-template ~/.iso-constructor/
 
+
 # FILES
 
-~/.iso-constructor/distributions.list
-:   List with distribution directories
+~/.iso-constructor/iso-constructor.conf
+:   Configuration file
 
-~/.constructor/iso-constructor.log
+~/.iso-constructor/iso-constructor.log
 :   Log file.
 
-~/.constructor/keep-packages (optional)
+~/.iso-constructor/qemu.qcow2 (optional)
+:   When testing ISOs with Qemu, this file is generated.
+
+~/.iso-constructor/keep-packages (optional)
 :   List of packages not in repository. Use /usr/share/iso-constructor/keep-packages as base.
 
-~/.constructor/grub-template (optional)
+~/.iso-constructor/grub-template (optional)
 :   Custom template for grub.cfg. Use /usr/share/iso-constructor/grub-template as base.
 
-~/.constructor/isolinux-template (optional)
+~/.iso-constructor/isolinux-template (optional)
 :   Custom template for isolinux.cfg. Use /usr/share/iso-constructor/isolinux-template as base.
 
 # AUTHOR
@@ -95,7 +110,7 @@ Written by Arjen Balfoort
 
 # BUGS
 
-https://gitlab.com/abalfoort/iso-indicator/-/issues
+https://github.com/abalfoort/iso-constructor/issues
 
 # TRANSLATIONS
 

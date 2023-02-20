@@ -72,6 +72,10 @@ keep-packages file.
 .TP
 If you have these (recommended) packages installed, the Qemu test button will be available:
 qemu-utils, qemu-system-x86, qemu-system-gui, ovmf
+.PP
+Note: if you test ISO builds newer than your host system the ISO might
+not boot or there are erros.
+Upgrade qemu to the latest version (backports).
 .SH REPOSITORY
 .PP
 You can create a pool directory structure as in the live Debian ISOs.
@@ -91,21 +95,24 @@ cp -v /usr/share/iso-constructor/isolinux-template
 \[ti]/.iso-constructor/
 .SH FILES
 .TP
-\[ti]/.iso-constructor/distributions.list
-List with distribution directories
+\[ti]/.iso-constructor/iso-constructor.conf
+Configuration file
 .TP
-\[ti]/.constructor/iso-constructor.log
+\[ti]/.iso-constructor/iso-constructor.log
 Log file.
 .TP
-\[ti]/.constructor/keep-packages (optional)
+\[ti]/.iso-constructor/qemu.qcow2 (optional)
+When testing ISOs with Qemu, this file is generated.
+.TP
+\[ti]/.iso-constructor/keep-packages (optional)
 List of packages not in repository.
 Use /usr/share/iso-constructor/keep-packages as base.
 .TP
-\[ti]/.constructor/grub-template (optional)
+\[ti]/.iso-constructor/grub-template (optional)
 Custom template for grub.cfg.
 Use /usr/share/iso-constructor/grub-template as base.
 .TP
-\[ti]/.constructor/isolinux-template (optional)
+\[ti]/.iso-constructor/isolinux-template (optional)
 Custom template for isolinux.cfg.
 Use /usr/share/iso-constructor/isolinux-template as base.
 .SH AUTHOR
@@ -113,7 +120,7 @@ Use /usr/share/iso-constructor/isolinux-template as base.
 Written by Arjen Balfoort
 .SH BUGS
 .PP
-https://gitlab.com/abalfoort/iso-indicator/-/issues
+https://github.com/abalfoort/iso-constructor/issues
 .SH TRANSLATIONS
 .PP
 https://www.transifex.com/abalfoort/iso-constructor

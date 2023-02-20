@@ -76,6 +76,8 @@ Note: to keep all packages you can simply write an asterisk (*) in the keep-pack
 If you have these (recommended) packages installed, the Qemu test button will be available:
 :   qemu-utils, qemu-system-x86, qemu-system-gui, ovmf
 
+Note: if you test ISO builds newer than your host system the ISO might not boot or there are erros. Upgrade qemu to the latest version (backports).
+
 # REPOSITORY
 
 You can create a pool directory structure as in the live Debian ISOs. Any .deb are updated automatically during build. Release information in the dists directory is generated during build.
@@ -93,19 +95,22 @@ cp -v /usr/share/iso-constructor/isolinux-template ~/.iso-constructor/
 
 # FILES
 
-~/.iso-constructor/distributions.list
-:   List with distribution directories
+~/.iso-constructor/iso-constructor.conf
+:   Configuration file
 
-~/.constructor/iso-constructor.log
+~/.iso-constructor/iso-constructor.log
 :   Log file.
 
-~/.constructor/keep-packages (optional)
+~/.iso-constructor/qemu.qcow2 (optional)
+:   When testing ISOs with Qemu, this file is generated.
+
+~/.iso-constructor/keep-packages (optional)
 :   List of packages not in repository. Use /usr/share/iso-constructor/keep-packages as base.
 
-~/.constructor/grub-template (optional)
+~/.iso-constructor/grub-template (optional)
 :   Custom template for grub.cfg. Use /usr/share/iso-constructor/grub-template as base.
 
-~/.constructor/isolinux-template (optional)
+~/.iso-constructor/isolinux-template (optional)
 :   Custom template for isolinux.cfg. Use /usr/share/iso-constructor/isolinux-template as base.
 
 # AUTHOR
@@ -114,7 +119,7 @@ Written by Arjen Balfoort
 
 # BUGS
 
-https://gitlab.com/abalfoort/iso-indicator/-/issues
+https://github.com/abalfoort/iso-constructor/issues
 
 # TRANSLATIONS
 
