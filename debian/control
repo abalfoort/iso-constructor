@@ -1,7 +1,7 @@
 Source: iso-constructor
 Section: devel
 Priority: optional
-Maintainer: Arjen Balfoort <arjenbalfoort@solydxk.com>
+Maintainer: Arjen Balfoort <arjenbalfoort@hotmail.com>
 Build-Depends: debhelper-compat (= 12)
   , dh-python
   , python3-all

@@ -4,7 +4,7 @@ iso-constructor (4.0.9) stable; urgency=low
   * Fix not able to add or remove distributions
   * Use qcow2 image instead of raw (smaller size)
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 19 Feb 2023 19:53:43 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 19 Feb 2023 19:53:43 +0100
 
 iso-constructor (4.0.8) stable; urgency=low
 
@@ -12,13 +12,13 @@ iso-constructor (4.0.8) stable; urgency=low
   * Improve select all logic
   * Resizable columns
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 16 Feb 2023 18:34:14 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 16 Feb 2023 18:34:14 +0100
 
 iso-constructor (4.0.7) stable; urgency=low
 
   * Updated translation: pt
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 15 Feb 2023 08:57:37 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 15 Feb 2023 08:57:37 +0100
 
 iso-constructor (4.0.6) stable; urgency=low
 
@@ -26,7 +26,7 @@ iso-constructor (4.0.6) stable; urgency=low
   * Set qemu to full screen
   * Updated translations: nl, lt
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 22 Jan 2023 17:31:17 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 22 Jan 2023 17:31:17 +0100
 
 iso-constructor (4.0.5) stable; urgency=low
 
@@ -36,87 +36,87 @@ iso-constructor (4.0.5) stable; urgency=low
   * Qemu: make vga resizable
   * Qemu: add hd image if space is available
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 20 Jan 2023 10:02:32 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 20 Jan 2023 10:02:32 +0100
 
 iso-constructor (4.0.4) stable; urgency=low
 
   * Add qemu test
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 08 Jan 2023 14:02:15 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 08 Jan 2023 14:02:15 +0100
 
 iso-constructor (4.0.3) stable; urgency=low
 
   * Fix _chroot-cleanup.sh: firware packages were not installed
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 31 Dec 2022 11:48:49 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 31 Dec 2022 11:48:49 +0100
 
 iso-constructor (4.0.2) stable; urgency=low
 
   * Updated translation: pt. sr
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 27 Dec 2022 16:50:33 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 27 Dec 2022 16:50:33 +0100
 
 iso-constructor (4.0.1) stable; urgency=low
 
   * Cleanup code
   * Updated translation: lt
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 11 Oct 2022 10:24:33 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 11 Oct 2022 10:24:33 +0200
 
 iso-constructor (4.0.0) stable; urgency=low
 
   * Updated translation: es
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 07 Oct 2022 19:11:50 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 07 Oct 2022 19:11:50 +0200
 
 iso-constructor (3.9.9) stable; urgency=low
 
   * Updated translation: es_419 (latin america)
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 28 Jun 2022 12:02:02 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 28 Jun 2022 12:02:02 +0200
 
 iso-constructor (3.9.8) stable; urgency=low
 
   * Fix cleanup script: not installing missing firmware packages
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 16 Jun 2022 14:12:34 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 16 Jun 2022 14:12:34 +0200
 
 iso-constructor (3.9.7) stable; urgency=low
 
   * Fix resolv.conf issues when resolvconf is installed
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 23 Mar 2022 10:24:18 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 23 Mar 2022 10:24:18 +0100
 
 iso-constructor (3.9.6) stable; urgency=low
 
   * Remove mtool as a dependency
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 13 Mar 2022 17:32:28 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 13 Mar 2022 17:32:28 +0100
 
 iso-constructor (3.9.5) stable; urgency=low
 
   * Updated translation: tr
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 08 Oct 2021 09:24:15 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 08 Oct 2021 09:24:15 +0200
 
 iso-constructor (3.9.4) stable; urgency=low
 
   * Add firewalld service: ipp
   * _chroot-cleanup.sh: add --purge to autoremove command
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 11 Sep 2021 18:43:23 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 11 Sep 2021 18:43:23 +0200
 
 iso-constructor (3.9.3) stable; urgency=low
 
   * Add firewalld service: mdsn
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 08 Sep 2021 15:39:43 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 08 Sep 2021 15:39:43 +0200
 
 iso-constructor (3.9.2) stable; urgency=low
 
   * Editing: Check for pid and not pid file
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 07 Sep 2021 11:22:48 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 07 Sep 2021 11:22:48 +0200
 
 iso-constructor (3.9.1) stable; urgency=low
 
@@ -124,104 +124,104 @@ iso-constructor (3.9.1) stable; urgency=low
   * Fix perl locales warnings in chroot
   * Fix upgrade.sh not removed after upgrade
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 31 Aug 2021 16:20:37 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 31 Aug 2021 16:20:37 +0200
 
 iso-constructor (3.9.0) stable; urgency=low
 
   * chroot: run in separate name space
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 31 Aug 2021 09:28:06 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 31 Aug 2021 09:28:06 +0200
 
 iso-constructor (3.8.9) stable; urgency=low
 
   * Include /sys/firmware/efi/efivars in chroot mounts
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 16 Aug 2021 16:47:01 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 16 Aug 2021 16:47:01 +0200
 
 iso-constructor (3.8.8) stable; urgency=low
 
   * Fix build error when having multiple debian releases in sources.list
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 10 Aug 2021 15:25:36 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 10 Aug 2021 15:25:36 +0200
 
 iso-constructor (3.8.7) stable; urgency=low
 
   * Fix bug not starting on Buster
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 16 Apr 2021 10:10:12 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 16 Apr 2021 10:10:12 +0200
 
 iso-constructor (3.8.6) stable; urgency=low
 
   * Updated translation: ca
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 14 Apr 2021 08:37:20 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 14 Apr 2021 08:37:20 +0200
 
 iso-constructor (3.8.5) stable; urgency=low
 
   * Updated translation: de
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 13 Apr 2021 18:02:40 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 13 Apr 2021 18:02:40 +0200
 
 iso-constructor (3.8.4) stable; urgency=low
 
   * Fix creating efi.img
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 28 Dec 2020 13:38:25 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 28 Dec 2020 13:38:25 +0100
 
 iso-constructor (3.8.3) stable; urgency=low
 
   * Fix bug not checking correctly for available new debs
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 15 Nov 2020 11:37:27 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 15 Nov 2020 11:37:27 +0100
 
 iso-constructor (3.8.2) stable; urgency=low
 
   * Generate d-i menus if boot/d-i exists
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 13 Nov 2020 14:22:52 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 13 Nov 2020 14:22:52 +0100
 
 iso-constructor (3.8.1) stable; urgency=low
 
   * Update repository during build
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 11 Nov 2020 15:26:28 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 11 Nov 2020 15:26:28 +0100
 
 iso-constructor (3.8.0) stable; urgency=low
 
   * Updated translation: it
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 02 Nov 2020 11:43:01 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 02 Nov 2020 11:43:01 +0100
 
 iso-constructor (3.7.9) stable; urgency=low
 
   * Updated translation: fr
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 28 Oct 2020 08:32:12 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 28 Oct 2020 08:32:12 +0100
 
 iso-constructor (3.7.8) stable; urgency=low
 
   * Updated translation: da
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 24 Oct 2020 19:20:01 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 24 Oct 2020 19:20:01 +0200
 
 iso-constructor (3.7.7) stable; urgency=low
 
   * Use keep-packages file to list packages not in repository
   * Copy system boot files BEFORE you create grub.cfg and isolinux.cfg
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 19 Oct 2020 09:01:53 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 19 Oct 2020 09:01:53 +0200
 
 iso-constructor (3.7.6) stable; urgency=low
 
   * Remove help.html files and use man
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 17 Oct 2020 19:43:15 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 17 Oct 2020 19:43:15 +0200
 
 iso-constructor (3.7.5) stable; urgency=low
 
   * Fix bug not showing message boxes
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 17 Oct 2020 09:34:23 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 17 Oct 2020 09:34:23 +0200
 
 iso-constructor (3.7.4) stable; urgency=low
 
@@ -229,88 +229,88 @@ iso-constructor (3.7.4) stable; urgency=low
   * Remove torrent creation code (needed solydxk server data)
   * Implement Python packaging method
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 30 Sep 2020 08:27:34 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 30 Sep 2020 08:27:34 +0200
 
 iso-constructor (3.7.3) stable; urgency=low
 
   * Improve cleanup.sh
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 21 Sep 2020 15:26:44 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 21 Sep 2020 15:26:44 +0200
 
 iso-constructor (3.7.2) stable; urgency=low
 
   * Updated translation: pt
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 07 Aug 2020 10:18:40 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 07 Aug 2020 10:18:40 +0200
 
 iso-constructor (3.7.1) stable; urgency=low
 
   * Exlude firmware-qcom-media in cleanup.sh
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 27 Jul 2020 17:41:47 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 27 Jul 2020 17:41:47 +0200
 
 iso-constructor (3.7.0) stable; urgency=low
 
   * Skip isolinux/boot.cat for md5sum.txt
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 23 Jul 2020 15:10:59 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 23 Jul 2020 15:10:59 +0200
 
 iso-constructor (3.6.9) stable; urgency=low
 
   * Remove playing sound when action is done
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 09 Jul 2020 14:22:23 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 09 Jul 2020 14:22:23 +0200
 
 iso-constructor (3.6.8) stable; urgency=low
 
   * Fix loosing live user password when updating initramfs
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 08 Jul 2020 19:50:49 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 08 Jul 2020 19:50:49 +0200
 
 iso-constructor (3.6.7) stable; urgency=low
 
   * Fix "Could not find the program 'konsole'" error on Bullseye
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 05 Jul 2020 08:43:00 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 05 Jul 2020 08:43:00 +0200
 
 iso-constructor (3.6.6) stable; urgency=low
 
   * Move all system boot files to live directory
   * Check that /bin (lib*, sbin) are symlinks to /usr/*
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 27 Jun 2020 18:13:47 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 27 Jun 2020 18:13:47 +0200
 
 iso-constructor (3.6.5) stable; urgency=low
 
   * Enable CUPS ufw rule for printer sharing
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 15 Jun 2020 23:28:06 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 15 Jun 2020 23:28:06 +0200
 
 iso-constructor (3.6.4) stable; urgency=low
 
   * Fix bug not getting right amount of cpu cores
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 03 Jun 2020 11:53:59 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 03 Jun 2020 11:53:59 +0200
 
 iso-constructor (3.6.3) stable; urgency=low
 
   * Make chroot environment safe
   * Fix title of xterm
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 02 Jun 2020 13:12:20 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 02 Jun 2020 13:12:20 +0200
 
 iso-constructor (3.6.2) stable; urgency=low
 
   * Fix cleanup.sh not removing old kernel
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 10 May 2020 13:51:27 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 10 May 2020 13:51:27 +0200
 
 iso-constructor (3.6.1) stable; urgency=low
 
   * Fixed dialogs.py
   * Fix ResourceWarning: subprocess N is still running in execcmd.py
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 31 Jan 2020 08:37:30 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 31 Jan 2020 08:37:30 +0100
 
 iso-constructor (3.6.0) stable; urgency=low
 
@@ -318,99 +318,99 @@ iso-constructor (3.6.0) stable; urgency=low
   * Update GeoIP database in cleanup.sh
   * Enable debug mode in iso-constructor-pkexec
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 29 Jan 2020 18:38:52 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 29 Jan 2020 18:38:52 +0100
 
 iso-constructor (3.5.9) stable; urgency=low
 
   * Fix offline packages removed before moved to /boot/offline/
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 14 Dec 2019 17:14:33 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 14 Dec 2019 17:14:33 +0100
 
 iso-constructor (3.5.8) stable; urgency=low
 
   * Updated translation: pt
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 10 Nov 2019 10:50:55 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 10 Nov 2019 10:50:55 +0100
 
 iso-constructor (3.5.7) stable; urgency=low
 
   * Updated translation: da
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 08 Nov 2019 17:30:27 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 08 Nov 2019 17:30:27 +0100
 
 iso-constructor (3.5.6) stable; urgency=low
 
   * Remove creating alternatives for python
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 19 Sep 2019 13:34:52 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 19 Sep 2019 13:34:52 +0200
 
 iso-constructor (3.5.5) stable; urgency=low
 
   * Hide open dir button because of dolphin bug (crashes)
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 09 Sep 2019 13:00:40 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 09 Sep 2019 13:00:40 +0200
 
 iso-constructor (3.5.4) stable; urgency=low
 
   * Updated translation: ca
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 31 Aug 2019 21:25:43 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 31 Aug 2019 21:25:43 +0200
 
 iso-constructor (3.5.3) stable; urgency=low
 
   * Updated translation: de
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 29 Aug 2019 16:55:17 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 29 Aug 2019 16:55:17 +0200
 
 iso-constructor (3.5.2) stable; urgency=low
 
   * Named parameters for Gtk.MessageDialog
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 25 Aug 2019 15:10:11 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 25 Aug 2019 15:10:11 +0200
 
 iso-constructor (3.5.1) stable; urgency=low
 
   * Do not install micropython firmware
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 12 Aug 2019 12:16:26 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 12 Aug 2019 12:16:26 +0200
 
 iso-constructor (3.5.0) stable; urgency=low
 
   * Change icons to more generic names
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 07 Aug 2019 12:04:46 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 07 Aug 2019 12:04:46 +0200
 
 iso-constructor (3.4.9) stable; urgency=low
 
   * Updated translation: lt
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 07 Aug 2019 08:34:45 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 07 Aug 2019 08:34:45 +0200
 
 iso-constructor (3.4.8) stable; urgency=low
 
   * cleanup.sh: do not install firmware documentation
   * cleanup.sh: do not mark packages as manually installed
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 04 Aug 2019 10:32:45 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 04 Aug 2019 10:32:45 +0200
 
 iso-constructor (3.4.7) stable; urgency=low
 
   * Move upgrade action to upgrade.sh
   * Change unattended upgrade in cleanup.sh
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 31 Jul 2019 12:40:42 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 31 Jul 2019 12:40:42 +0200
 
 iso-constructor (3.4.6) stable; urgency=low
 
   * Support multiple kernels
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 29 Jul 2019 13:49:31 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 29 Jul 2019 13:49:31 +0200
 
 iso-constructor (3.4.5) stable; urgency=low
 
   * Updated help file
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 27 Jul 2019 11:59:08 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 27 Jul 2019 11:59:08 +0200
 
 iso-constructor (3.4.4) stable; urgency=low
 
@@ -419,58 +419,58 @@ iso-constructor (3.4.4) stable; urgency=low
   * Change keyboard layout for localized booting
   * Merge offline.sh, rmoldkernel.sh with cleanup.sh
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 20 Jul 2019 15:23:58 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 20 Jul 2019 15:23:58 +0200
 
 iso-constructor (3.4.3) stable; urgency=low
 
   * Check if already started
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 30 Jun 2019 15:48:18 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 30 Jun 2019 15:48:18 +0200
 
 iso-constructor (3.4.2) stable; urgency=low
 
   * Use hotkeys in grub.cfg
   * Increase font size for Grub menu
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 05 Jun 2019 23:07:32 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 05 Jun 2019 23:07:32 +0200
 
 iso-constructor (3.4.1) stable; urgency=low
 
   * Fix boot issues
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 29 May 2019 15:03:52 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 29 May 2019 15:03:52 +0200
 
 iso-constructor (3.4.0) stable; urgency=low
 
   * Fix dpkg-divert with localized output
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 28 May 2019 16:06:46 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 28 May 2019 16:06:46 +0200
 
 iso-constructor (3.3.9) stable; urgency=low
 
   * Change syslinux layout
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 27 May 2019 15:45:29 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 27 May 2019 15:45:29 +0200
 
 iso-constructor (3.3.8) stable; urgency=low
 
   * Remove default live-media-path=/live from isolinuxgen.sh
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 27 May 2019 09:03:34 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 27 May 2019 09:03:34 +0200
 
 iso-constructor (3.3.7) stable; urgency=low
 
   * Fix not able to legacy boot (syslinux)
   * Generate isolinux.cfg template when starting to build ISOs
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 26 May 2019 11:49:16 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 26 May 2019 11:49:16 +0200
 
 iso-constructor (3.3.6) stable; urgency=low
 
   * Fix cleanup.sh for solydxk-10
   * Updated translation: ca
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 25 May 2019 16:46:40 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 25 May 2019 16:46:40 +0200
 
 iso-constructor (3.3.5) stable; urgency=low
 
@@ -478,673 +478,673 @@ iso-constructor (3.3.5) stable; urgency=low
   * Include Grub2 themes for SolydXK
   * Generate grub.cfg template when starting to build ISOs
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 15 May 2019 16:08:56 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 15 May 2019 16:08:56 +0200
 
 iso-constructor (3.3.4) stable; urgency=low
 
   * Configure lightdm if /etc/lightdm/Xsession exists
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 02 May 2019 12:02:58 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 02 May 2019 12:02:58 +0200
 
 iso-constructor (3.3.3) stable; urgency=low
 
   * Add mksquash exclude file via excludes file
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 24 Apr 2019 10:18:14 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 24 Apr 2019 10:18:14 +0200
 
 iso-constructor (3.3.2) stable; urgency=low
 
   * Exclude firmware-microbit-micropython-dl from installing
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 14 Mar 2019 12:36:23 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 14 Mar 2019 12:36:23 +0100
 
 iso-constructor (3.3.1) stable; urgency=low
 
   * Use readlink in rmoldkernel.sh
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 24 Feb 2019 15:04:22 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 24 Feb 2019 15:04:22 +0100
 
 iso-constructor (3.3.0) stable; urgency=low
 
   * Localize Mozilla distribution.ini
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 17 Feb 2019 19:04:35 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 17 Feb 2019 19:04:35 +0100
 
 iso-constructor (3.2.9) stable; urgency=low
 
   * Added /var/cache directories to cleanup.sh
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 22 Jan 2019 09:08:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 22 Jan 2019 09:08:00 +0100
 
 iso-constructor (3.2.8) stable; urgency=low
 
   * Improve getting lsb-release info
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 13 Jan 2019 11:16:30 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 13 Jan 2019 11:16:30 +0100
 
 iso-constructor (3.2.7) stable; urgency=low
 
   * Use description for terminal title
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 10 Jan 2019 09:40:34 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 10 Jan 2019 09:40:34 +0100
 
 iso-constructor (3.2.6) stable; urgency=low
 
   * Remove .deb files left from development
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 25 Dec 2018 11:13:22 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 25 Dec 2018 11:13:22 +0100
 
 iso-constructor (3.2.5) stable; urgency=low
 
   * Remove sudo from all build scripts
   * Remove .dpkg-old files during cleanup
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 10 Sep 2018 21:37:45 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 10 Sep 2018 21:37:45 +0200
 
 iso-constructor (3.2.4) stable; urgency=low
 
   * Skip installing adi and ralink firmware during cleanup: dummy packages
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 10 Sep 2018 14:09:15 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 10 Sep 2018 14:09:15 +0200
 
 iso-constructor (3.2.3) stable; urgency=low
 
   * Cleanup backup files during build
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 27 Aug 2018 10:55:02 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 27 Aug 2018 10:55:02 +0200
 
 iso-constructor (3.2.2) stable; urgency=low
 
   * Use dpkg --compare-versions to compare package versions
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 09 Jul 2018 22:54:06 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 09 Jul 2018 22:54:06 +0200
 
 iso-constructor (3.2.1) stable; urgency=low
 
   * Use geoipupdate instead of geoip-database-contrib
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 09 Jul 2018 15:10:24 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 09 Jul 2018 15:10:24 +0200
 
 iso-constructor (3.2.0) stable; urgency=low
 
   * Remove unneeded functions in functions.py
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 03 Jul 2018 11:09:36 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 03 Jul 2018 11:09:36 +0200
 
 iso-constructor (3.1.9) stable; urgency=low
 
   * Remove support for old updatemanager
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 05 Jun 2018 20:13:05 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 05 Jun 2018 20:13:05 +0200
 
 iso-constructor (3.1.8) stable; urgency=low
 
   * URL check
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 01 Jun 2018 09:47:21 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 01 Jun 2018 09:47:21 +0200
 
 iso-constructor (3.1.7) stable; urgency=low
 
   * Added Danish translations
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 11 Apr 2018 10:47:25 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 11 Apr 2018 10:47:25 +0200
 
 iso-constructor (3.1.6) stable; urgency=low
 
   * Set locale settings for Firefox 59 and up
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 16 Mar 2018 08:59:30 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 16 Mar 2018 08:59:30 +0100
 
 iso-constructor (3.1.5) stable; urgency=low
 
   * Use pkexec for administrative privileges
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 12 Feb 2018 17:17:06 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 12 Feb 2018 17:17:06 +0100
 
 iso-constructor (3.1.4) stable; urgency=low
 
   * Get up-to-date list of trackers from the web
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 29 Jan 2018 12:18:17 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 29 Jan 2018 12:18:17 +0100
 
 iso-constructor (3.1.3) stable; urgency=low
 
   * Updated ca translation
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 14 Jan 2018 11:50:27 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 14 Jan 2018 11:50:27 +0100
 
 iso-constructor (3.1.2) stable; urgency=low
 
   * Set live keyboard layout
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 04 Jan 2018 21:47:37 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 04 Jan 2018 21:47:37 +0100
 
 iso-constructor (3.1.1) stable; urgency=low
 
   * Include localizing Lightning calendar
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 03 Jan 2018 16:59:47 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 03 Jan 2018 16:59:47 +0100
 
 iso-constructor (3.1.0) stable; urgency=low
 
   * Updated translations
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 01 Jan 2018 15:10:12 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 01 Jan 2018 15:10:12 +0100
 
 iso-constructor (3.0.9) stable; urgency=low
 
   * Set correct language in ISO boot/grub/grub.cfg when localizing
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 25 Dec 2017 16:09:46 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 25 Dec 2017 16:09:46 +0100
 
 iso-constructor (3.0.8) stable; urgency=low
 
   * Copy Grub locale files to ISO boot directory when localizing
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 24 Dec 2017 17:01:37 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 24 Dec 2017 17:01:37 +0100
 
 iso-constructor (3.0.7) stable; urgency=low
 
   * Remove wallpapers
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 11 Dec 2017 17:00:16 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 11 Dec 2017 17:00:16 +0100
 
 iso-constructor (3.0.6) stable; urgency=low
 
   * Improved rmoldkernel.sh
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 10 Oct 2017 08:44:27 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 10 Oct 2017 08:44:27 +0200
 
 iso-constructor (3.0.5) stable; urgency=low
 
   * Check for kdesu if kdesudo is not found
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 24 Sep 2017 13:06:04 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 24 Sep 2017 13:06:04 +0200
 
 iso-constructor (3.0.4) stable; urgency=low
 
   * Add prefix to grub-mkimage arguments
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 01 Sep 2017 09:02:12 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 01 Sep 2017 09:02:12 +0200
 
 iso-constructor (3.0.3) stable; urgency=low
 
   * Updated grub.mo copy routine
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 18 Jul 2017 08:26:45 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 18 Jul 2017 08:26:45 +0200
 
 iso-constructor (3.0.2) stable; urgency=low
 
   * Changed LANG= to GRUB_LANG= in setlocale.sh
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 17 Jul 2017 14:52:19 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 17 Jul 2017 14:52:19 +0200
 
 iso-constructor (3.0.1) stable; urgency=low
 
   * Make help file translatable
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 14 Jul 2017 11:20:47 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 14 Jul 2017 11:20:47 +0200
 
 iso-constructor (3.0.0) stable; urgency=low
 
   * Copy missing Grub2 translation files
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 13 Jul 2017 08:51:09 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 13 Jul 2017 08:51:09 +0200
 
 iso-constructor (2.9.9) stable; urgency=low
 
   * Localize Grub2 when needed
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 12 Jul 2017 17:31:41 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 12 Jul 2017 17:31:41 +0200
 
 iso-constructor (2.9.8) stable; urgency=low
 
   * Updated cleanup.sh
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 11 Jul 2017 08:45:00 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 11 Jul 2017 08:45:00 +0200
 
 iso-constructor (2.9.7) stable; urgency=low
 
   * Add MD5SUMS file for isolinux/grub integrity check
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 27 Jun 2017 18:29:36 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 27 Jun 2017 18:29:36 +0200
 
 iso-constructor (2.9.6) stable; urgency=low
 
   * Remove xksudo
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 24 Apr 2017 16:36:58 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 24 Apr 2017 16:36:58 +0200
 
 iso-constructor (2.9.5) stable; urgency=low
 
   * Remove .old symlinks in /
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 09 Apr 2017 20:14:01 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 09 Apr 2017 20:14:01 +0200
 
 iso-constructor (2.9.4) stable; urgency=low
 
   * Fix bug downloading all off-line packages even if the working path was not selected
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 20 Mar 2017 14:22:13 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 20 Mar 2017 14:22:13 +0100
 
 iso-constructor (2.9.3) stable; urgency=low
 
   * Implement xksudo
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 07 Mar 2017 19:12:56 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 07 Mar 2017 19:12:56 +0100
 
 iso-constructor (2.9.2) stable; urgency=low
 
   * Perserve environment variables
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 02 Mar 2017 11:41:38 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 02 Mar 2017 11:41:38 +0100
 
 iso-constructor (2.9.1) stable; urgency=low
 
   * Fix setting plymouth theme in cleanup.sh now that we have dark themes
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 20 Feb 2017 19:57:36 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 20 Feb 2017 19:57:36 +0100
 
 iso-constructor (2.9.0) stable; urgency=low
 
   * Implement SolydXK configuration path changes
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 06 Feb 2017 11:38:16 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 06 Feb 2017 11:38:16 +0100
 
 iso-constructor (2.8.9) stable; urgency=low
 
   * Fix offline.sh to download packages including missing dependencies
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 04 Feb 2017 18:47:02 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 04 Feb 2017 18:47:02 +0100
 
 iso-constructor (2.8.8) stable; urgency=low
 
   * Fix get_apt_force function
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 04 Feb 2017 11:49:33 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 04 Feb 2017 11:49:33 +0100
 
 iso-constructor (2.8.7) stable; urgency=low
 
   * Updated cleanup.sh for stretch
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 30 Jan 2017 17:24:22 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 30 Jan 2017 17:24:22 +0100
 
 iso-constructor (2.8.6) stable; urgency=low
 
   * cleanup.sh: check for the existance of /etc/grub.d/20_memtest86+
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 18 Nov 2016 19:41:27 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 18 Nov 2016 19:41:27 +0100
 
 iso-constructor (2.8.5) stable; urgency=low
 
   * Fix breakage with spaces in root folder path
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 11 Aug 2016 09:50:39 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 11 Aug 2016 09:50:39 +0200
 
 iso-constructor (2.8.4) stable; urgency=low
 
   * Using "ufw allow from any app CIFS"
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 21 Jul 2016 07:20:17 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 21 Jul 2016 07:20:17 +0200
 
 iso-constructor (2.8.3) stable; urgency=low
 
   * Change ufw rules for EE
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 17 Jul 2016 13:34:41 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 17 Jul 2016 13:34:41 +0200
 
 iso-constructor (2.8.2) stable; urgency=low
 
   * Make user.default the default user profile directory
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 07 Jul 2016 22:58:39 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 07 Jul 2016 22:58:39 +0200
 
 iso-constructor (2.8.1) stable; urgency=low
 
   * Use -volid instead of -V to id an ISO.
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 28 Jun 2016 19:51:30 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 28 Jun 2016 19:51:30 +0200
 
 iso-constructor (2.8.0) stable; urgency=low
 
   * Missing closing fi in cleanup.sh
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 28 Jun 2016 09:17:23 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 28 Jun 2016 09:17:23 +0200
 
 iso-constructor (2.7.9) stable; urgency=low
 
   * Fixed localization issues for Firefox/Thunderbird
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 16 Jun 2016 11:20:34 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 16 Jun 2016 11:20:34 +0200
 
 iso-constructor (2.7.8) stable; urgency=low
 
   * Fix upgrade button not upgrading
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 15 Jun 2016 21:02:14 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 15 Jun 2016 21:02:14 +0200
 
 iso-constructor (2.7.7) stable; urgency=low
 
   * Handle --force-yes for Stretch
   * Moved efi image creation to BuildIso class
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 08 Jun 2016 13:26:03 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 08 Jun 2016 13:26:03 +0200
 
 iso-constructor (2.7.6) stable; urgency=low
 
   * Use open-as-user to open files/directories
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 01 Jun 2016 17:20:48 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 01 Jun 2016 17:20:48 +0200
 
 iso-constructor (2.7.5) stable; urgency=low
 
   * Using xdg-open-as-user in solydxk-system to open files and directories
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 01 Jun 2016 14:08:55 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 01 Jun 2016 14:08:55 +0200
 
 iso-constructor (2.7.4) stable; urgency=low
 
   * Optimized xorriso parameters
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 01 Jun 2016 08:02:28 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 01 Jun 2016 08:02:28 +0200
 
 iso-constructor (2.7.3) stable; urgency=low
 
   * Help file not opening in Chromium
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 30 May 2016 13:08:04 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 30 May 2016 13:08:04 +0200
 
 iso-constructor (2.7.2) stable; urgency=low
 
   * Use xorriso instead of genisoimage
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 27 May 2016 16:06:17 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 27 May 2016 16:06:17 +0200
 
 iso-constructor (2.7.1) stable; urgency=low
 
   * Debugged cleanup script
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 02 May 2016 11:36:35 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 02 May 2016 11:36:35 +0200
 
 iso-constructor (2.7.0) stable; urgency=low
 
   * Save distros.list in user home directory
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 26 Apr 2016 22:17:19 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 26 Apr 2016 22:17:19 +0200
 
 iso-constructor (2.6.9) stable; urgency=low
 
   * Get mirrors list from server
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 26 Apr 2016 18:30:27 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 26 Apr 2016 18:30:27 +0200
 
 iso-constructor (2.6.8) stable; urgency=low
 
   * Updated background image for help file
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 29 Mar 2016 14:44:35 +0200
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 29 Mar 2016 14:44:35 +0200
 
 iso-constructor (2.6.7) stable; urgency=low
 
   * Set minimum-uid for Lightdm to 1000
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 24 Mar 2016 10:26:58 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 24 Mar 2016 10:26:58 +0100
 
 iso-constructor (2.6.6) stable; urgency=low
 
   * Added global gconf configuration
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 21 Mar 2016 10:44:19 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 21 Mar 2016 10:44:19 +0100
 
 iso-constructor (2.6.5) stable; urgency=low
 
   * Prefer xterm above x-terminal-emulator
   * Remove md5 and add sha256 file
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 24 Feb 2016 16:30:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 24 Feb 2016 16:30:00 +0100
 
 iso-constructor (2.6.3) stable; urgency=low
 
   * Supports solydx/k-logo-flat Plymouth themes
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 19 Jan 2016 16:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 19 Jan 2016 16:00:00 +0100
 
 iso-constructor (2.6.2) stable; urgency=low
 
   * Updated translations
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 18 Jan 2016 18:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 18 Jan 2016 18:00:00 +0100
 
 iso-constructor (2.6.1) stable; urgency=low
 
   * Resolve bug crashing on paths with spaces
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 31 Dec 2015 17:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 31 Dec 2015 17:00:00 +0100
 
 iso-constructor (2.6.0) stable; urgency=low
 
   * Updated translations
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 19 Dec 2015 11:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 19 Dec 2015 11:00:00 +0100
 
 iso-constructor (2.5.9) stable; urgency=low
 
   * Updated cleanup script: autostart UM with new UM version
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 23 Nov 2015 10:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 23 Nov 2015 10:00:00 +0100
 
 iso-constructor (2.5.8) stable; urgency=low
 
   * Updated translations
   * Disable localize button while building
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 03 Nov 2015 17:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 03 Nov 2015 17:00:00 +0100
 
 iso-constructor (2.5.6) stable; urgency=low
 
   * grub.cfg and loopback.cfg were not written correctly
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 22 Oct 2015 07:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 22 Oct 2015 07:00:00 +0100
 
 iso-constructor (2.5.5) stable; urgency=low
 
   * Added efibootmgr and efivar to the offline packages
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 07 Oct 2015 06:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 07 Oct 2015 06:00:00 +0100
 
 iso-constructor (2.5.4) stable; urgency=low
 
   * Solved bug not changing the date string of the ISO name in /boot/isolinux/isolinux.cfg
   * Change ISO name when localized
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 05 Sep 2015 21:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 05 Sep 2015 21:00:00 +0100
 
 iso-constructor (2.5.2) stable; urgency=low
 
   * Include LXQt as DE
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 25 Aug 2015 23:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 25 Aug 2015 23:00:00 +0100
 
 iso-constructor (2.5.0) stable; urgency=low
 
   * Added feature: localizing ISO
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 20 Jul 2015 15:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 20 Jul 2015 15:00:00 +0100
 
 iso-constructor (2.4.5) stable; urgency=low
 
   * Include release in naming
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 01 Jul 2015 16:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 01 Jul 2015 16:00:00 +0100
 
 iso-constructor (2.4.4) stable; urgency=low
 
   * Added /sys and /run mounts
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 25 Jun 2015 16:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 25 Jun 2015 16:00:00 +0100
 
 iso-constructor (2.4.2) stable; urgency=low
 
   * Improved localization handling
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 22 Jun 2015 12:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 22 Jun 2015 12:00:00 +0100
 
 iso-constructor (2.4.1) stable; urgency=low
 
   * Add update-geoip-database to the cleanup script
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 10 Jun 2015 09:30:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 10 Jun 2015 09:30:00 +0100
 
 iso-constructor (2.4.0) stable; urgency=low
 
   * Resolved issue inserting duplicate keys in LightDM configuration
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 17 May 2015 14:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 17 May 2015 14:00:00 +0100
 
 iso-constructor (2.3.9) stable; urgency=low
 
   * Adapt LightDM configuration in cleanup script
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 13 May 2015 10:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 13 May 2015 10:00:00 +0100
 
 iso-constructor (2.3.7) stable; urgency=low
 
   * Allow ufw to accept CIFS (samba)
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 07 May 2015 15:30:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 07 May 2015 15:30:00 +0100
 
 iso-constructor (2.3.6) stable; urgency=low
 
   * Fix gettext bug
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 29 Apr 2015 18:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 29 Apr 2015 18:00:00 +0100
 
 iso-constructor (2.3.5) stable; urgency=low
 
   * Changed ISO md5 file creation
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 26 Apr 2015 14:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 26 Apr 2015 14:00:00 +0100
 
 iso-constructor (2.3.4) stable; urgency=low
 
   * Improved cleanup.sh
   * Improved chrooting
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 16 Mar 2015 11:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 16 Mar 2015 11:00:00 +0100
 
 iso-constructor (2.3.3) stable; urgency=low
 
   * Prevent cleanup from removing packages that are not in the repository and were held back by the maintainer with "dpkg --set-selections"
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 10 Mar 2015 17:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 10 Mar 2015 17:00:00 +0100
 
 iso-constructor (2.3.2) stable; urgency=low
 
   * Removed HDT and memtest86 for Grub - not functioning
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 22 Feb 2015 10:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 22 Feb 2015 10:00:00 +0100
 
 iso-constructor (2.3.1) stable; urgency=low
 
   * Added Hardware Detection Tool (HDT)
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 18 Feb 2015 12:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 18 Feb 2015 12:00:00 +0100
 
 iso-constructor (2.2.9) stable; urgency=low
 
   * Re-added isolinux and syslinux-utils as dependencies
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 14 Feb 2015 09:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 14 Feb 2015 09:00:00 +0100
 
 iso-constructor (2.2.6) stable; urgency=low
 
   * Add memtest86+ as a dependency
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 13 Feb 2015 16:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 13 Feb 2015 16:00:00 +0100
 
 iso-constructor (2.2.5) stable; urgency=low
 
   * Force overwrite of new config files while upgrading
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 09 Feb 2015 12:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 09 Feb 2015 12:00:00 +0100
 
 iso-constructor (2.2.3) stable; urgency=low
 
   * Save current update version in updatemanager.hist
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 30 Jan 2015 20:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 30 Jan 2015 20:00:00 +0100
 
 iso-constructor (2.2.2) stable; urgency=low
 
   * Resolved bug unpacking previously selected ISO over existing working directory
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 13 Jan 2015 10:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 13 Jan 2015 10:00:00 +0100
 
 iso-constructor (2.2.1) stable; urgency=low
 
   * cleanup.sh: Remove unavailable packages
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 31 Dec 2014 22:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 31 Dec 2014 22:00:00 +0100
 
 iso-constructor (2.2.0) stable; urgency=low
 
   * Combined dist-upgrade with build EFI files and download offline packages
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 28 Dec 2014 12:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 28 Dec 2014 12:00:00 +0100
 
 iso-constructor (2.1.9) stable; urgency=low
 
   * Implement building EFI files for i386
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 30 Nov 2014 21:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 30 Nov 2014 21:00:00 +0100
 
 iso-constructor (2.1.8) stable; urgency=low
 
   * Limit processor use of mksquashfs to half of what is available
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 27 Nov 2014 19:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 27 Nov 2014 19:00:00 +0100
 
 iso-constructor (2.1.6) stable; urgency=low
 
   * EFI file creation added
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 24 Nov 2014 17:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 24 Nov 2014 17:00:00 +0100
 
 iso-constructor (2.1.5) stable; urgency=low
 
   * Include dependency intltool, po4a
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 19 Nov 2014 17:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 19 Nov 2014 17:00:00 +0100
 
 iso-constructor (2.1.3) stable; urgency=low
 
   * cleanup.sh: make solydxk the autologin user in LigthDM
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 22 Oct 2014 19:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 22 Oct 2014 19:00:00 +0100
 
 iso-constructor (2.1.2) stable; urgency=low
 
   * Added packages for better BIOS boot
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 10 Oct 2014 17:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 10 Oct 2014 17:00:00 +0100
 
 iso-constructor (2.1.1) stable; urgency=low
 
   * Changed icon to go with Evolvere theme
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 17 Sep 2014 18:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 17 Sep 2014 18:00:00 +0100
 
 iso-constructor (2.1.0) stable; urgency=low
 
   * Removed gnurra.com from webseeds file
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 02 Aug 2014 15:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 02 Aug 2014 15:00:00 +0100
 
 iso-constructor (2.0.9) stable; urgency=low
 
   * Download offline packages did not function properly
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 15 Jul 2014 11:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 15 Jul 2014 11:00:00 +0100
 
 iso-constructor (2.0.8) stable; urgency=low
 
@@ -1152,26 +1152,26 @@ iso-constructor (2.0.8) stable; urgency=low
   * Unpack ISO not enabling GUI when done.
   * Option to build ISO only.
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 07 Jun 2014 17:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 07 Jun 2014 17:00:00 +0100
 
 iso-constructor (2.0.5) stable; urgency=low
 
   * Include build for SolydX BE
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 15 May 2014 16:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 15 May 2014 16:00:00 +0100
 
 iso-constructor (2.0.4) stable; urgency=low
 
   * Adapted rmoldkernel.sh to replace dpkg with apt
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 01 May 2014 10:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 01 May 2014 10:00:00 +0100
 
 iso-constructor (2.0.3) stable; urgency=low
 
   * Run "modprobe loop" when starting
   * Added Gimp instructions in help file
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 09 Apr 2014 22:30:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 09 Apr 2014 22:30:00 +0100
 
 iso-constructor (2.0.2) stable; urgency=low
 
@@ -1180,13 +1180,13 @@ iso-constructor (2.0.2) stable; urgency=low
   * Changed initrd.lz to initrd.img
   * Replaced filesystem.manifest to filesystem.packages
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 16 Mar 2014 10:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 16 Mar 2014 10:00:00 +0100
 
 iso-constructor (1.9.8) stable; urgency=low
 
   * Minor bugs resolved
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 11 Feb 2014 18:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 11 Feb 2014 18:00:00 +0100
 
 iso-constructor (1.9.7) stable; urgency=low
 
@@ -1194,7 +1194,7 @@ iso-constructor (1.9.7) stable; urgency=low
   * Start/stop apache2, mysql before upgrade when installed (SolydK BO)
   * Minor bugs resolved
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 17 Jan 2014 18:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 17 Jan 2014 18:00:00 +0100
 
 iso-constructor (1.9.3) stable; urgency=low
 
@@ -1203,40 +1203,40 @@ iso-constructor (1.9.3) stable; urgency=low
   * Bash build ISO
   * Supports SolydXK and Debian live ISO's
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 07 Dec 2013 16:30:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 07 Dec 2013 16:30:00 +0100
 
 iso-constructor (1.0.5) stable; urgency=low
 
   * Handle custom resolv.conf
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 24 Oct 2013 17:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 24 Oct 2013 17:00:00 +0100
  
 iso-constructor (1.0.4) stable; urgency=low
 
   * Adapted for the new iso structure /boot/solydxk instead of /remaster/casper
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 31 Aug 2013 11:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 31 Aug 2013 11:00:00 +0100
 
 iso-constructor (1.0.3) stable; urgency=low
 
   * Stop interfering services before chroot terminal
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 17 May 2013 09:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Fri, 17 May 2013 09:00:00 +0100
 
 iso-constructor (1.0.2) stable; urgency=low
 
   * Delete root history before building
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 07 Apr 2013 10:00:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 07 Apr 2013 10:00:00 +0100
 
 iso-constructor (1.0.1) stable; urgency=low
 
   * Changed control file
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 05 Mar 2013 20:30:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 05 Mar 2013 20:30:00 +0100
 
 iso-constructor (1.0.0) stable; urgency=low
 
   * Adapted and repackaged for SolydXK
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 23 Jan 2013 08:38:00 +0100
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 23 Jan 2013 08:38:00 +0100
