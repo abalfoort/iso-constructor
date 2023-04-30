@@ -13,6 +13,10 @@ if [ "$DISTRIB_RELEASE" -lt 8 ]; then
     APT='apt-get --force-yes'
 fi
 
+# Reconfigure EE packages if they are installed
+dpkg-reconfigure solydkee-info 2>/dev/null
+dpkg-reconfigure solydxee-info 2>/dev/null
+
 if [ -e /usr/share/mime/packages/kde.xml ]; then
     echo '> Remove fake mime types in KDE'
     sed -i -e /\<.*fake.*\>/,/^$/d /usr/share/mime/packages/kde.xml
