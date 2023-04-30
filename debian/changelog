@@ -1,3 +1,15 @@
+iso-constructor (4.1.1) stable; urgency=low
+
+  * Updated translation: sr
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 30 Apr 2023 09:28:47 +0200
+
+iso-constructor (4.1.0) stable; urgency=low
+
+  * Reconfigure EE packages if they are installed
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 21 Mar 2023 11:54:34 +0100
+
 iso-constructor (4.0.9) stable; urgency=low
 
   * Fix Qemu test not booting iso when bootable img is mounted
