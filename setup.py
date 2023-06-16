@@ -15,7 +15,7 @@ DATA_FILES=[
     ('share/man/man1', ['man/iso-constructor.1']),
     ('share/applications', ['data/iso-constructor.desktop']),
     ('share/iso-constructor', ['data/iso-constructor.glade']),
-    ('share/icons/hicolor/scalable/apps', ['data/iso-constructor.svg']),
+    ('share/icons/hicolor/scalable/apps', ['data/isoconstructor.svg']),
     ('share/polkit-1/actions', ['data/org.debian.pkexec.iso-constructor.policy'])
 ]
 
