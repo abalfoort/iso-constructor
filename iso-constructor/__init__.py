@@ -420,8 +420,7 @@ class Constructor():
                     return
                 if listdir(self.dir):
                     answer = show_question_dialog(self.btn_save.get_label(),
-                                    _(f"The destination directory is not empty.\n"
-                                    f"Are you sure you want to overwrite all data in {self.dir}?"))
+                                                  _(f"The destination directory is not empty.\nAre you sure you want to overwrite all data in {self.dir}?"))
                     if not answer:
                         return
 
