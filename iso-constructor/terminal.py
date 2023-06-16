@@ -11,7 +11,7 @@ gi.require_version('Gdk', '3.0')
 from gi.repository import Gtk, GLib, Vte, Gdk, Gio
 
 
-# Reference: https://lazka.github.io/pgi-docs/Vte-2.91/classes/Terminal.html
+# Reference: https://lazka.github.io/pgi-docs/#Vte-3.91/classes/Terminal.html
 class Terminal(Vte.Terminal):
     ''' Terminal class. '''
 
@@ -46,48 +46,52 @@ class Terminal(Vte.Terminal):
 
     def create_child(self):
         ''' Create a terminal object. '''
-        try:
-            # Use async from version 0.48
-            self.spawn_async(
-                Vte.PtyFlags.DEFAULT,  # pty flags
-                environ['HOME'],  # working directory
-                ["/bin/bash"],  # argmument vector
-                [],  # list with environment variables
-                GLib.SpawnFlags.DO_NOT_REAP_CHILD,  # spawn flags
-                None,  # child_setup function
-                None,  # child_setup data (gpointer)
-                -1,  # timeout
-                self._cancellable,  # cancellable
-                None,  # callback
-                None  # callback data
-            )
-        except Exception:
-            # TODO: self._cancellable errors out: Cancellable initialisation not supported
-            self.spawn_sync(
-                Vte.PtyFlags.DEFAULT,  # pty flags
-                environ['HOME'],  # working directory
-                ["/bin/bash"],  # argmument vector
-                [],  # list with environment variables
-                GLib.SpawnFlags.DO_NOT_REAP_CHILD,  # spawn flags
-                None,  # child_setup function
-                None,  # child_setup data (gpointer)
-                None  # cancellable
-            )
+        # Use async from version 0.48
+        self.spawn_async(
+            Vte.PtyFlags.DEFAULT,  # pty flags
+            environ['HOME'],  # working directory
+            ["/bin/bash"],  # argmument vector
+            [],  # list with environment variables
+            GLib.SpawnFlags(Vte.SPAWN_NO_PARENT_ENVV),  # spawn flags
+            None,  # child_setup function
+            None,  # child_setup data (gpointer)
+            -1,  # timeout
+            self._cancellable,  # cancellable
+            None,  # callback
+            None  # callback data
+        )
 
-    def feed(self, command, wait_until_done=False, disable_scrolling=True, pause_logging=False):
+    
+
+    def terminal_feed(self, command, wait_until_done=False,
+                      disable_scrolling=True, pause_logging=False):
+        """Feed a command to the terminal
+
+        Args:
+            command (string): command to execute
+            wait_until_done (bool, optional): wait for the command to finish.
+                                              Defaults to False.
+            disable_scrolling (bool, optional): disable user scrolling while command is running.
+                                                Defaults to True.
+            pause_logging (bool, optional): pause logging while command is running.
+                                            Defaults to False.
+        """
         if self._cmd_is_running:
             return
-        self._cancellable.reset()
-        self.grab_focus()
-        self.pause_logging = pause_logging
-        command += '\n'
-        self.feed_child(command.encode())
 
         def sleep(seconds=0.1):
             time.sleep(seconds)
             # Update the parent window
             while Gtk.events_pending():
                 Gtk.main_iteration()
+
+        self._cancellable.reset()
+        self.grab_focus()
+        self.pause_logging = pause_logging
+        command += '\n'
+        self.feed_child(command.encode())
+        # We need to wait until the command is complete fed
+        sleep()
 
         # Unfortunately, there is no built-in way to notify the parent
         # that a command has finished or to wait for the command

@@ -2,6 +2,7 @@
 
 #!/usr/bin/env python3
 
+import time
 from os import makedirs, system, listdir, \
     environ, remove, sysconf
 from os.path import join, dirname, exists, isdir
@@ -11,13 +12,24 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-from .utils import get_user_home, get_logged_user, \
-    get_package_version, getoutput, shell_exec, \
-    get_lsb_release_info
-from .dialogs import show_message_dialog, show_error_dialog, SelectFileDialog, \
-    SelectDirectoryDialog, show_question_dialog
-from .terminal import Terminal
-from .treeview import TreeViewHandler
+try:
+    from .utils import get_user_home, get_logged_user, \
+                       get_package_version, getoutput, shell_exec, \
+                       get_lsb_release_info
+    from .dialogs import show_message_dialog, show_error_dialog, \
+                         SelectFileDialog, SelectDirectoryDialog, \
+                         show_question_dialog
+    from .terminal import Terminal
+    from .treeview import TreeViewHandler
+except ImportError:
+    from utils import get_user_home, get_logged_user, \
+                      get_package_version, getoutput, shell_exec, \
+                      get_lsb_release_info
+    from dialogs import show_message_dialog, show_error_dialog, \
+                        SelectFileDialog, SelectDirectoryDialog, \
+                        show_question_dialog
+    from terminal import Terminal
+    from treeview import TreeViewHandler
 
 # i18n: http://docs.python.org/3/library/gettext.html
 _ = gettext.translation('iso-constructor', fallback=True).gettext
@@ -193,12 +205,21 @@ class Constructor():
         if selected:
             for path in selected:
                 answer = show_question_dialog(self.remove_text,
-                                              _("Are you sure you want to remove "
-                                                "the selected distribution from the list?\n"
-                                                "(This will not remove the directory and its data)"))
+                                            _("Are you sure you want to remove "
+                                            "the selected distribution from the list?\n"
+                                            "(This will not remove the directory and its data)"))
                 if answer:
                     self.save_distro(distro_path=path, add_distro=False)
             self.fill_tv_dists()
+
+    def _is_path_chrooted(self, path):
+        pid = getoutput(f'pgrep -o -f "chroot-dir.sh {path}"')
+        if pid:
+            proc = join('/proc', pid[0])
+            if exists(proc):
+                return True
+            return False
+        return False
 
     def on_btn_edit_clicked(self, widget):
         '''
@@ -212,10 +233,10 @@ class Constructor():
                 self.log(f'> Start editing {path}')
 
                 # Edit the distribution in a chroot session
-                self.terminal.feed(command=f'iso-constructor -e "{path}"')
+                self.terminal.terminal_feed(command=f'iso-constructor -e "{path}"')
 
                 # Check if chrooted and wait until user is done
-                while getoutput(f'pgrep -f "chroot-dir.sh {path}"'):
+                while self._is_path_chrooted(path):
                     # Update the parent window
                     while Gtk.events_pending():
                         Gtk.main_iteration()
@@ -233,7 +254,7 @@ class Constructor():
                 self.log(f'> Start upgrading {path}')
 
                 # Upgrade the distribtution
-                self.terminal.feed(
+                self.terminal.terminal_feed(
                     command=f'iso-constructor -u "{path}"', wait_until_done=True)
             self.enable_gui_elements(True)
 
@@ -250,7 +271,7 @@ class Constructor():
                 self.log(f'> Start building ISO in: {path}')
 
                 # Build the ISO
-                self.terminal.feed(
+                self.terminal.terminal_feed(
                     command=f'iso-constructor -b "{path}"', wait_until_done=True)
             self.enable_gui_elements(True)
 
@@ -311,7 +332,7 @@ class Constructor():
         '''
         self.enable_gui_elements(False)
         command = 'man iso-constructor'
-        self.terminal.feed(command=command, wait_until_done=True,
+        self.terminal.terminal_feed(command=command, wait_until_done=True,
                            disable_scrolling=False, pause_logging=True)
         self.enable_gui_elements(True)
 
@@ -320,8 +341,10 @@ class Constructor():
         Show log file.
         '''
         self.enable_gui_elements(False)
-        self.terminal.feed(command=f'sensible-editor {self.log_file}', wait_until_done=True,
-                           disable_scrolling=False, pause_logging=True)
+        self.terminal.terminal_feed(command=f'sensible-editor {self.log_file}',
+                                    wait_until_done=True,
+                                    disable_scrolling=False,
+                                    pause_logging=True)
         self.enable_gui_elements(True)
 
     def on_constructor_window_delete_event(self, widget, data):
@@ -397,7 +420,8 @@ class Constructor():
                     return
                 if listdir(self.dir):
                     answer = show_question_dialog(self.btn_save.get_label(),
-                                                  _(f"The destination directory is not empty.\nAre you sure you want to overwrite all data in {self.dir}?"))
+                                    _(f"The destination directory is not empty.\n"
+                                    f"Are you sure you want to overwrite all data in {self.dir}?"))
                     if not answer:
                         return
 
@@ -406,7 +430,7 @@ class Constructor():
                 self.log(f'> Start unpacking {self.iso} to {self.dir}')
 
                 # Start unpacking the ISO
-                self.terminal.feed(command=f'iso-constructor -U "{self.iso}" "{self.dir}"',
+                self.terminal.terminal_feed(command=f'iso-constructor -U "{self.iso}" "{self.dir}"',
                                    wait_until_done=True)
 
                 self.save_distro(self.dir)
