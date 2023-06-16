@@ -1,3 +1,23 @@
+iso-constructor (4.1.5) stable; urgency=low
+
+  * Remove ssh from firewalld
+  * Rename icon because SolydK12 shows iso icon
+  * Fix vte crash while editing multiple distros
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 13 Jun 2023 10:13:15 +0200
+
+iso-constructor (4.1.4) stable; urgency=low
+
+  * Skip certain firmware packages
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 12 Jun 2023 09:42:59 +0200
+
+iso-constructor (4.1.3) stable; urgency=low
+
+  * Write info to boot/.disk/info
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 11 Jun 2023 20:22:32 +0200
+
 iso-constructor (4.1.2) stable; urgency=low
 
   * Updated translation: ca
