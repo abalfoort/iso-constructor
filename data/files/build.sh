@@ -3,6 +3,11 @@
 DISTPATH=$1
 SHAREDIR='/usr/share/iso-constructor'
 
+DESKTOPENV='kde'
+if [ -e /usr/bin/startxfce4 ]; then
+    DESKTOPENV='xfce'
+fi
+
 # Check before continue
 if [ -z "$DISTPATH" ] || [ ! -d "$DISTPATH/boot" ] || [ ! -d "$DISTPATH/root" ]; then
     echo 'Current path must contain root and boot directories - exiting'
@@ -143,6 +148,7 @@ mkdir -p "$DISTPATH/boot/live"
 mkdir -p "$DISTPATH/boot/.disk"
 touch "$DISTPATH/boot/.disk/base_installable"
 touch "$DISTPATH/boot/.disk/udeb_include"
+echo "$DESCRIPTION Live $(date +"%Y%m") $DESKTOPENV $ISODATE" > "$DISTPATH/boot/.disk/info"
 if [ ! -e "$DISTPATH/boot/.disk/base_components" ]; then
     echo 'main' > "$DISTPATH/boot/.disk/base_components"
 fi
