@@ -2,6 +2,8 @@
 
 KEEPPACKAGES=$1
 
+SKIPFIRMWARE='firmware-tomu firmware-nvidia-gsp firmware-nvidia-tesla-gsp firmware-siano firmware-samsung firmware-microbit-micropython firmware-microbit-micropython-doc firmware-ivtv'
+
 # Make this script unattended
 # https://debian-handbook.info/browse/stable/sect.automatic-upgrades.html
 export DEBIAN_FRONTEND=noninteractive
@@ -32,7 +34,9 @@ fi
 echo '> Make sure all firmware drivers are installed but do not install from backports'
 FIRMWARE=$(apt list --all-versions 2>/dev/null | grep -v -E 'backports|installed|micropython' | grep ^firmware | cut -d'/' -f 1)
 for F in $FIRMWARE; do
-    eval $APT install $F
+    if [[ ! "$SKIPFIRMWARE" =~ "$PCK" ]]; then
+        eval $APT install $F
+    fi
 done
 
 echo '> Cleanup'
@@ -175,6 +179,10 @@ if [ -d /etc/firewalld/zones/ ]; then
             # Allow CUPS
             sed -i '/\/zone/i <service name="ipp"\/>' "$FWD" 
         fi
+        if ! grep -q dhcpv6-client "$FWD"; then
+            # Allow dhcpv6
+            sed -i '/\/zone/i <service name="dhcpv6-client"\/>' "$FWD" 
+        fi
     else
         # Create initial file
         cat > "$FWD" << EOF
@@ -182,7 +190,6 @@ if [ -d /etc/firewalld/zones/ ]; then
 <zone>
   <short>Public</short>
   <description>For use in public areas.</description>
-  <service name="ssh"/>
   <service name="dhcpv6-client"/>
   <service name="mdns"/>
   <service name="ipp"/>
