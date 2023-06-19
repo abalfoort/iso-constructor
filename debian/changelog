@@ -1,3 +1,9 @@
+iso-constructor (4.1.6) stable; urgency=low
+
+  * Fix special characters in grub/isolinux localization menu
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 19 Jun 2023 08:24:05 +0200
+
 iso-constructor (4.1.5) stable; urgency=low
 
   * Remove ssh from firewalld
