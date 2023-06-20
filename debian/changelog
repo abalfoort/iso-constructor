@@ -1,3 +1,9 @@
+iso-constructor (4.1.7) stable; urgency=low
+
+  * Localization menu language names to lower case
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Tue, 20 Jun 2023 13:29:48 +0200
+
 iso-constructor (4.1.6) stable; urgency=low
 
   * Fix special characters in grub/isolinux localization menu
