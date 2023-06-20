@@ -226,7 +226,7 @@ echo '> Delete __pycache__ directories'
 find . -type d -name "__pycache__" -exec rm -r {} 2>/dev/null \;
 
 echo '> Cleanup backup files'
-find / \( -name "*.bak*" -o -name "*.dpkg" -o -name "*.dpkg-old" -o -name "*.dpkg-dist" -o -name "*.old" -o -name "*.tmp" \) -delete
+find / \( -name "*.bak*" -o -name "*.dpkg" -o -name "*.dpkg-old" -o -name "*.dpkg-dist" -o -name "*.old" -o -name "*.tmp" -o -name "*.ucf-dist" \) -delete
 
 echo '> Remove alternatives that do not link anywhere'
 find -L /etc/alternatives -type l -exec rm -v {} \;
