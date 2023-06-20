@@ -65,9 +65,9 @@ else
             # Or English language name instead:
             #LNAME=$(egrep '^language' "$LPATH" | grep -oP '(?<=").*?(?=")')
             
-            # Add to array if language name was found
+            # Add to array if language name was found (lower case)
             if [ ! -z "$LNAME" ]; then
-                LARRAY+=("$LNAME|$LOCALE")
+                LARRAY+=("${LNAME,,}|$LOCALE")
             fi
         fi
     done
