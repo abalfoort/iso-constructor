@@ -60,10 +60,10 @@ else
         if [ -e "$LPATH" ]; then
             # When unicode code points (e.g.: <U00F1>): 
             # apt install uni2ascii
-            LNAME=$(grep -E '^lang_name' "$LPATH" | grep -oP '(?<=").*?(?=")' | ascii2uni -a A -q)
+            #LNAME=$(grep -E '^lang_name' "$LPATH" | grep -oP '(?<=").*?(?=")' | ascii2uni -a A -q)
 
             # Or English language name instead:
-            #LNAME=$(egrep '^language' "$LPATH" | grep -oP '(?<=").*?(?=")')
+            LNAME=$(egrep '^language' "$LPATH" | grep -oP '(?<=").*?(?=")')
             
             # Add to array if language name was found (lower case)
             if [ ! -z "$LNAME" ]; then
