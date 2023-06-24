@@ -1,3 +1,10 @@
+iso-constructor (4.1.8) stable; urgency=low
+
+  * Fix ISO Grub config generation
+  * Change isolinux.cfg colors
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 22 Jun 2023 21:05:34 +0200
+
 iso-constructor (4.1.7) stable; urgency=low
 
   * Localization menu language names to lower case
