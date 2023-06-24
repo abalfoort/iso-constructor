@@ -58,15 +58,15 @@ fi
 sed -i "s|\[BOOTFONT\]|/$BOOTFONT|" "$GRUB"
 
 # Get theme
-ROOTTHEME=$(find ../root/boot/grub/themes -name "theme.txt" 2>/dev/null)
+ROOTTHEME=$(grep -E GRUB_THEME= ../root/etc/default/grub | cut -d'=' -f 2)
+RTDN=$(dirname $ROOTTHEME)
 THEME=''
-if [ ! -z "$ROOTTHEME" ]; then
+if [ -d "$RTDN" ]; then
     # Copy the theme to boot directory
-    RTDN=$(dirname $ROOTTHEME)
     THEMENAME=${RTDN##*/}
     if [ ! -d "boot/grub/themes/$THEMENAME" ]; then
-        mkdir -p boot/grub/themes/
-        cp -r "$RTDN" boot/grub/themes/
+        mkdir -p boot/grub/themes/$THEMENAME
+        cp -r "$RTDN/*" boot/grub/themes/
     fi
     # Configure theme
     for FONT in "boot/grub/themes/$THEMENAME/"*.pf2; do
