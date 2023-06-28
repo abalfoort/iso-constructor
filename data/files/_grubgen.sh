@@ -6,56 +6,49 @@
 # Set variables
 SHAREDIR='/usr/share/iso-constructor'
 USERDIR="/home/$(logname)/.iso-constructor"
-GRUBTEMPLATE="$SHAREDIR/grub-template"
-if [ -f "$USERDIR/grub-template" ]; then
-    GRUBTEMPLATE="$USERDIR/grub-template"
-    echo "> Using custom Grub template: $GRUBTEMPLATE"
-fi
-GRUB='boot/grub/grub.cfg'
+
+TMPLADVANCED="$SHAREDIR/grub-template-advanced"
+TMPLCONFIG="$SHAREDIR/grub-template-config"
+TMPLGRUB="$SHAREDIR/grub-template-grub"
+TMPLTHEME="$SHAREDIR/grub-template-theme"
+
+ADVANCEDCFG='boot/grub/advanced.cfg'
+CONFIGCFG='boot/grub/config.cfg'
+GRUBCFG='boot/grub/grub.cfg'
+THEMECFG='boot/grub/theme.cfg'
+LOCALESCFG='boot/grub/locales.cfg'
+FONT='boot/grub/unicode.pf2'
+LOOPBACK='boot/grub/loopback.cfg'
+
 LARRAY=()
 ROOTDIR=$1
 TITLE=$(egrep 'DISTRIB_DESCRIPTION|PRETTY_NAME' ../root/etc/*release | head -n 1 | cut -d'=' -f 2  | tr -d '"')
 
 echo '> Start creating grub boot configuration'
 
+mkdir -p boot/grub
+echo "source /boot/grub/grub.cfg" > "$LOOPBACK"
+cp -vf "$TMPLCONFIG" "$CONFIGCFG"
+
 # Get installed kernels and generate menus
-VMLINUZFILES=$(ls live/vmlinuz* | sort)
-for VMLINUZFLE in $VMLINUZFILES; do
-    VER=${VMLINUZFLE#*-}
-    [ ! -z "$VER" ] && VMLINUZVER="-${VER}"
-    INITRDFLE="live/initrd.img${VMLINUZVER}"
-    if [ -f "$INITRDFLE" ]; then
-        echo "KERNEL: $VMLINUZFLE - $INITRDFLE - $VER"
-        # Save paths to first vmlinuz/initrd.img for Advanced Options
-        if [ -z "$VMLINUZDEFAULT" ]; then
-            VMLINUZDEFAULT="/$VMLINUZFLE"
-            INITRDDEFAULT="/$INITRDFLE"
-            # Build menu string
-            MENU="menuentry \"Start $TITLE\" {\n    linux   /$VMLINUZFLE boot=live components quiet splash \"\$\{loopback\}\"\n    initrd  /$INITRDFLE\n}"
-        else
-            # Extra kernels
-            [ ! -z "$VER" ] && VERSTR=" (kernel ${VER%-*})"
-            MENUPLUS="$MENUPLUS\n    menuentry \"Start $TITLE$VERSTR\" {\n        linux   /$VMLINUZFLE boot=live components quiet splash \"\$\{loopback\}\"\n        initrd  /$INITRDFLE\n    }"
-        fi
-    fi
-done
-
-# Exit on failure
-[ -z "$MENU" ] && echo "ERROR: failed to generate grub.cfg" && exit 1
-
-# Use the template to generate grub.cfg
-sed "s|\[MENU\]|$MENU|" "$GRUBTEMPLATE" > "$GRUB"
-sed -i "s|\[TITLE\]|$TITLE|g" "$GRUB"
-sed -i "s|\[MENUPLUS\]|$MENUPLUS|" "$GRUB"
+VMLINUZFLE=$(ls live/vmlinuz* | head -n 1)
+VER=${VMLINUZFLE#*-}
+[ ! -z "$VER" ] && VMLINUZVER="-${VER}"
+INITRDFLE="live/initrd.img${VMLINUZVER}"
+if [ -f "$INITRDFLE" ]; then
+    echo "KERNEL: $VMLINUZFLE - $INITRDFLE - $VER"
+    sed "s|\[TITLE\]|$TITLE|" "$TMPLGRUB" > "$GRUBCFG"
+    sed -i "s|\[VMLINUZ\]|\/$VMLINUZFLE|" "$GRUBCFG"
+    sed -i "s|\[INITRD\]|\/$INITRDFLE|g" "$GRUBCFG"
+    sed "s|\[TITLE\]|$TITLE|" "$TMPLADVANCED" > "$ADVANCEDCFG"
+    sed -i "s|\[VMLINUZ\]|\/$VMLINUZFLE|" "$ADVANCEDCFG"
+    sed -i "s|\[INITRD\]|\/$INITRDFLE|g" "$ADVANCEDCFG"
+fi
 
 # Get grub font
-BOOTFONT=$(ls boot/grub/*.pf2 | head -n 1)
-if [ -z "$BOOTFONT" ]; then
-    UNIFONT=$(ls ../root/boot/grub/*.pf2 | head -n 1)
-    cp "$UNIFONT" boot/grub/
-    BOOTFONT=$(ls boot/grub/*.pf2 | head -n 1)
+if [ ! -e $FONT ] && [ -e ../root/usr/share/grub/unicode.pf2 ]; then
+    cp -vf ../root/usr/share/grub/unicode.pf2 $FONT
 fi
-sed -i "s|\[BOOTFONT\]|/$BOOTFONT|" "$GRUB"
 
 # Get theme
 ROOTTHEME=$(grep -E GRUB_THEME= ../root/etc/default/grub | cut -d'=' -f 2)
@@ -63,19 +56,16 @@ RTDN=$(dirname $ROOTTHEME)
 if [ -d "../root${RTDN}" ]; then
     # Copy the theme to boot directory
     THEMENAME=${RTDN##*/}
+    rm -rf boot/grub/themes
     mkdir -p boot/grub/themes
-    cp -r "../root${RTDN}" boot/grub/themes/
+    cp -vfr "../root${RTDN}" boot/grub/themes/
     # Configure theme
-    for FONT in "boot/grub/themes/$THEMENAME/"*.pf2; do
-        THEME="$THEME\n    loadfont /$FONT"
-    done
-    THEME="$THEME\n    set theme=/boot/grub/themes/$THEMENAME/theme.txt"
-    THEME="$THEME\n    export theme"
+    THEME="/boot/grub/themes/$THEMENAME/theme.txt"
     # Copy flags
     mkdir -p "boot/grub/themes/$THEMENAME/icons/"
-    cp -r "$SHAREDIR/flags" "boot/grub/themes/$THEMENAME/icons/"
+    cp -rf "$SHAREDIR/flags" "boot/grub/themes/$THEMENAME/icons/"
 fi
-sed -i "s|\[THEME\]|$THEME|" "$GRUB"
+sed "s|\[THEME\]|$THEME|" "$TMPLTHEME" > "$THEMECFG"
 
 # Check if supported languages file exists
 LSUP='/usr/share/i18n/SUPPORTED'
@@ -112,38 +102,14 @@ else
     for ITEM in ${SARRAY[@]}; do
         IFS='|' read -ra ADDR <<< "$ITEM"
         CNTR=${ADDR[1]#*_}
-        LOCALES="$LOCALES\n    menuentry \"${ADDR[0]} (${ADDR[1]})\" --class flags/${CNTR,,} \{\n        linux  $VMLINUZDEFAULT boot=live components locales=${ADDR[1]}.UTF-8 keyboard-layouts=${CNTR,,},us quiet splash \"\$\{loopback\}\"\n        initrd $INITRDDEFAULT\n    \}"
+        LOCALES="$LOCALES\nmenuentry \"${ADDR[0]} (${ADDR[1]})\" --class flags/${CNTR,,} {\n    linux  /$VMLINUZFLE boot=live components locales=${ADDR[1]}.UTF-8 keyboard-layouts=${CNTR,,},us quiet splash \"\${loopback}\"\n    initrd /$INITRDFLE\n}"
     done
     
     # Build the menu
     if [ ! -z "$LOCALES" ]; then
-        LOCALES="submenu \"Start $TITLE with Localisation Support\" {$LOCALES\n}"
+        printf "$LOCALES\n" > $LOCALESCFG
     fi
 fi
 
-# Debian Installer
-if [ -d "d-i" ]; then
-    if [ -f "d-i/gtk/vmlinuz" ]; then
-        DEBINSTALLER="$DEBINSTALLER\n    menuentry \"Graphical Debian Installer\" {\n        linux  /d-i/gtk/vmlinuz append video=vesa:ywrap,mtrr vga=788 \"\$\{loopback\}\"\n        initrd /d-i/gtk/initrd.gz\n    }"
-    fi
-    if [ -f "d-i/vmlinuz" ]; then
-        DEBINSTALLER="$DEBINSTALLER\n    menuentry \"Debian Installer\" {\n        linux  /d-i/vmlinuz  \"\$\{loopback\}\"\n        initrd /d-i/initrd.gz\n    }"
-    fi
-    if [ -f "d-i/gtk/vmlinuz" ]; then
-        DEBINSTALLER="$DEBINSTALLER\n    menuentry \"Debian Installer with Speech Synthesis\" {\n        linux  /d-i/gtk/vmlinuz speakup.synth=soft \"\$\{loopback\}\"\n        initrd /d-i/gtk/initrd.gz\n    }"
-    fi
-    
-    # Build the menu
-    if [ ! -z "$DEBINSTALLER" ]; then
-        DEBINSTALLER="submenu \"Debian Installer\" {$DEBINSTALLER\n}"
-    fi
-fi
-
-# Update grub.cfg
-sed -i "s|\[LOCALES\]|$LOCALES\n|" "$GRUB"
-sed -i "s|\[DEBINSTALLER\]|$DEBINSTALLER\n|" "$GRUB"
-sed -i "s|\[VMLINUZ\]|$VMLINUZDEFAULT|" "$GRUB"
-sed -i "s|\[INITRD\]|$INITRDDEFAULT|" "$GRUB"
-
-echo "Grub gen successfuly generated: $GRUB"
+echo "Grub gen successfuly generated: $GRUBCFG"
 exit 0

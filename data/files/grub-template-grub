@@ -1,0 +1,14 @@
+source /boot/grub/config.cfg
+
+menuentry "Start [TITLE]" {
+    linux   [VMLINUZ] boot=live components quiet splash "${loopback}"
+    initrd  [INITRD]
+}
+submenu "Start [TITLE] with Localisation Support" --hotkey=l {
+    source /boot/grub/theme.cfg
+    source /boot/grub/locales.cfg
+}
+submenu "Advanced options" --hotkey=a {
+    source /boot/grub/theme.cfg
+    source /boot/grub/advanced.cfg
+}

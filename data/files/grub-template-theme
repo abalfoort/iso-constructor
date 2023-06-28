@@ -1,0 +1,9 @@
+set color_normal=light-gray/black
+set color_highlight=white/dark-gray
+
+if [ -e [THEME] ]; then
+    set theme=[THEME]
+else
+    set menu_color_normal=cyan/blue
+    set menu_color_highlight=white/blue
+fi

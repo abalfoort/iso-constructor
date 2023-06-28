@@ -1,0 +1,25 @@
+menuentry "Start [TITLE] (safe)" {
+    linux   [VMLINUZ] boot=live components memtest noapic noapm nodma nomce nolapic nosmp nosplash vga=788
+    initrd  [INITRD]
+}
+menuentry "Check the integrity of the medium" --hotkey=c {
+    linux   [VMLINUZ] boot=live verify-checksums
+    initrd  [INITRD]
+}
+menuentry "Boot from disk" --hotkey=d {
+    set root=(hd1)
+    chainloader +1
+}
+menuentry "System restart" --hotkey=r {
+    reboot
+}
+menuentry "System shutdown" --hotkey=s {
+    halt
+}
+if [ "${grub_platform}" = "efi" ]; then
+    menuentry "UEFI Firmware Settings" {
+        fwsetup
+    }
+fi
+
+ 

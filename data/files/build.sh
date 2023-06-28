@@ -45,13 +45,10 @@ case $ARCH in
     x86_64) DEBARCH="amd64" ;;
 esac
 DESCRIPTION=$(egrep '^DISTRIB_DESCRIPTION|^PRETTY_NAME' "$DISTPATH/root/etc/"*release | head -n 1 | cut -d'=' -f 2  | sed s'/(.*)//g;s/gnu//I;s/linux//I;s/bit//I;s/[/"\-]//g;s/ \+/ /g')
-VOLID=$(echo $DESCRIPTION | tr ' ' '_'  | tr '[:lower:]' '[:upper:]')
 CODENAME=$(egrep '^DISTRIB_CODENAME|^VERSION_CODENAME' "$DISTPATH/root/etc/"*release | head -n 1 | cut -d'=' -f 2  | tr -d ' "_\-')
-CODENAME=${CODENAME^^}
-DISTRIBID=$(egrep '^DISTRIB_ID|^ID' "$DISTPATH/root/etc/"*release | head -n 1 | cut -d'=' -f 2  | tr -d ' "')
-DISTRIBVERSION=$(egrep '^DISTRIB_RELEASE|^VERSION_ID|^VERSION' "$DISTPATH/root/etc/"*release | head -n 1 | cut -d'=' -f 2  | tr -d ' "')
 SHORTDATE=$(date +"%Y%m")
 ISODATE=$(date +"%FT%T")
+MODDATE=$(date +"%Y%m%d%H%M%S00")
 ISOFILENAME=$(echo $DESCRIPTION | tr ' ' '_' | cut -d'-' -f 1 | tr '[:upper:]' '[:lower:]')"_$SHORTDATE"
 LOCALIZED=$(grep -oP '(?<=LANG=).*?(?=_)' "$DISTPATH/root/etc/default/locale" | grep -v 'en')
 if [ ! -z "$LOCALIZED" ]; then
@@ -197,22 +194,23 @@ cp -vf '/usr/lib/ISOLINUX/isolinux.bin' "$DISTPATH/boot/isolinux"
 cp -vf '/usr/lib/syslinux/memdisk' "$DISTPATH/boot/isolinux"
 
 # copy efi mods
-if [ -d '/usr/lib/grub/x86_64-efi' ]; then
-    rm -r "$DISTPATH/boot/boot/grub/x86_64-efi"
-    cp -rvf '/usr/lib/grub/x86_64-efi' "$DISTPATH/boot/boot/grub/"
+if [ -d "$DISTPATH/root/usr/lib/grub/x86_64-efi" ]; then
+    mkdir -p "$DISTPATH/boot/boot/grub/x86_64-efi"
+    rm -rf "$DISTPATH/boot/boot/grub/x86_64-efi/"*
+    echo "Copy /usr/lib/grub/x86_64-efi to $DISTPATH/boot/boot/grub/"
+    cp -f "$DISTPATH/root/usr/lib/grub/x86_64-efi/"* "$DISTPATH/boot/boot/grub/x86_64-efi/"
 fi
 
-# Build EFI image
-GRUBEFI="bootx64"
-if [ "$ARCH" == 'i386' ]; then GRUBEFI='bootia32'; fi
+# Copy the signed efi files
+rm -rf "$DISTPATH/boot/EFI"
+mkdir -p "$DISTPATH/boot/EFI/boot"
+cp -av $DISTPATH/root/usr/lib/shim/shim*.efi.signed $DISTPATH/boot/EFI/boot/bootx64.efi
+cp -av $DISTPATH/root/usr/lib/grub/x86_64-efi-signed/gcdx64.efi.signed $DISTPATH/boot/EFI/boot/grubx64.efi
 
-rm -r "$DISTPATH/boot/EFI" 2>/dev/null
-mkdir -p "$DISTPATH/boot/EFI/boot" 2>/dev/null
-
-# Create embedded.cfg
-# Check contents with: strings bootx64.efi | grep "set=root"
-cat >"embedded.cfg" <<EOF
-search --file --set=root /md5sum.txt
+# Create img file
+if [ -f $DISTPATH/boot/EFI/boot/grubx64.efi ]; then
+    cat > $DISTPATH/grub.cfg << EOF
+search --set=root --file /.disk/info
 if [ -e (\$root)/boot/grub/grub.cfg ]; then
     set prefix=(\$root)/boot/grub
     configfile \$prefix/grub.cfg
@@ -220,34 +218,13 @@ else
     echo 'Could not find /boot/grub/grub.cfg!'
 fi
 EOF
-
-echo -e "embedded.cfg content:\n$(cat embedded.cfg)"
-
-# Now we can actually create the EFI file
-MODS="part_gpt part_msdos ntfs ntfscomp hfsplus fat ext2 chain boot configfile linux multiboot iso9660 gfxmenu gfxterm loadenv efi_gop efi_uga loadbios fixvideo png loopback search minicmd cat cpuid appleldr elf usb videotest halt help ls reboot echo test normal sleep memdisk tar font video_fb video gettext true video_bochs video_cirrus multiboot2 acpi gfxterm_background gfxterm_menu"
-
-CMD="grub-mkimage --prefix '' --config \"embedded.cfg\" -O $ARCH-efi -o \"$DISTPATH/boot/EFI/boot/$GRUBEFI.efi\" $MODS"
-echo $CMD
-eval $CMD
-rm -v embedded.cfg
-
-# Create img file
-if [ -f "$DISTPATH/boot/EFI/boot/$GRUBEFI.efi" ]; then
-    rm "$DISTPATH/boot/boot/grub/efi.img" 2>/dev/null
-    CMD="mkdosfs -F 12 -n \"$CODENAME\" -C \"$DISTPATH/boot/boot/grub/efi.img\" 2048"
-    echo $CMD
-    eval $CMD
-    EFIMNT="/mnt/efi"
-    mkdir -p $EFIMNT
-    CMD="mount -o loop \"$DISTPATH/boot/boot/grub/efi.img\" $EFIMNT"
-    echo $CMD
-    eval $CMD
-    mkdir -p "$EFIMNT/EFI/boot"
-    CMD="cp -a \"$DISTPATH/boot/EFI/boot/$GRUBEFI.efi\" \"$EFIMNT/EFI/boot\""
-    echo $CMD
-    eval $CMD
-    umount -f $EFIMNT
-    rm -r $EFIMNT
+    dd if=/dev/zero of=$DISTPATH/boot/boot/grub/efi.img bs=1M count=5
+    mkfs.vfat $DISTPATH/boot/boot/grub/efi.img 
+    mmd -i $DISTPATH/boot/boot/grub/efi.img EFI EFI/boot boot boot/grub
+    mcopy -vi $DISTPATH/boot/boot/grub/efi.img "$DISTPATH/boot/EFI/boot/bootx64.efi" ::EFI/boot/
+    mcopy -vi $DISTPATH/boot/boot/grub/efi.img "$DISTPATH/boot/EFI/boot/grubx64.efi" ::EFI/boot/
+    mcopy -vi $DISTPATH/boot/boot/grub/efi.img "$DISTPATH/grub.cfg" ::boot/grub/
+    rm $DISTPATH/grub.cfg
 fi
 
 # remove existing iso
@@ -263,9 +240,9 @@ for F in $(find . -type f ! -name "md5sum.txt" ! -name "isolinux.bin" ! -name "b
     md5sum "$F" >> 'md5sum.txt'
 done
 
-# build iso according to architecture
+# build iso
 cd "$DISTPATH"
-CMD="xorriso -x -outdev \"$ISOFILENAME\" -volid $VOLID -padding 0 -compliance no_emul_toc -map ./boot / -chmod 0755 / -- -boot_image isolinux dir=/isolinux -boot_image isolinux system_area=$ISOHDPFX -boot_image any next -boot_image any efi_path=boot/grub/efi.img -boot_image isolinux partition_entry=gpt_basdat"
+CMD="xorriso -as mkisofs -R -r -J -joliet-long -l -iso-level 3 -isohybrid-mbr ${ISOHDPFX} -partition_offset 16 -A \"${CODENAME} Live\" -publisher \"${CODENAME} Live project; https://solydxk.com\" -V \"${CODENAME^^}\" --modification-date=${MODDATE} -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus -o \"${ISOFILENAME}\" boot"
 echo $CMD
 eval $CMD
 
