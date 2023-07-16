@@ -192,14 +192,16 @@ chmod -R +w "$DISTPATH/boot/isolinux"
 cp -vf "/usr/lib/syslinux/modules/bios/"{chain.c32,hdt.c32,libmenu.c32,libgpl.c32,reboot.c32,vesamenu.c32,poweroff.c32,ldlinux.c32,libcom32.c32,libutil.c32} "$DISTPATH/boot/isolinux/"
 cp -vf '/usr/lib/ISOLINUX/isolinux.bin' "$DISTPATH/boot/isolinux"
 cp -vf '/usr/lib/syslinux/memdisk' "$DISTPATH/boot/isolinux"
+cp -vf "$SHAREDIR/isolinux/"* "$DISTPATH/boot/isolinux/"
 
-# copy efi mods
+# copy grub files
 if [ -d "$DISTPATH/root/usr/lib/grub/x86_64-efi" ]; then
     mkdir -p "$DISTPATH/boot/boot/grub/x86_64-efi"
     rm -rf "$DISTPATH/boot/boot/grub/x86_64-efi/"*
     echo "Copy /usr/lib/grub/x86_64-efi to $DISTPATH/boot/boot/grub/"
     cp -f "$DISTPATH/root/usr/lib/grub/x86_64-efi/"* "$DISTPATH/boot/boot/grub/x86_64-efi/"
 fi
+cp -vf "$SHAREDIR/grub/"* "$DISTPATH/boot/boot/grub/"
 
 # Copy the signed efi files
 rm -rf "$DISTPATH/boot/EFI"
