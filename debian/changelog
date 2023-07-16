@@ -1,3 +1,11 @@
+iso-constructor (4.2.1) stable; urgency=low
+
+  * Remove non-working menu item from grub.cfg
+  * Add memtest86+x64.efi to efi grub from memtest86+ package
+  * Update syslinux memtest86 (renamed memtest86+x64.bin)
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 29 Jun 2023 19:21:28 +0200
+
 iso-constructor (4.2.0) stable; urgency=low
 
   * Implement secure boot
