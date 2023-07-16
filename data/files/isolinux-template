@@ -26,7 +26,7 @@ MENU TITLE Advanced options
     LABEL xforcevesa
         MENU LABEL Start [TITLE] (safe)
         KERNEL [VMLINUZ]
-        APPEND initrd=[INITRD] boot=live components memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal
+        APPEND initrd=[INITRD] boot=live components noapic noapm nodma nomce nolapic nosmp nosplash vga=normal
 
     [MENUPLUS]
 
@@ -42,11 +42,6 @@ MENU TITLE Advanced options
     LABEL memtest
         MENU LABEL Memory Diagnostic Tool
         KERNEL memtest86
-
-    LABEL local
-        MENU LABEL Boot from disk
-        com32 chain.c32
-        APPEND hd0 0
 
     LABEL restart
         MENU LABEL System restart
