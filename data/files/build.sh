@@ -33,6 +33,14 @@ if [ -f "$USERDIR/keep-packages" ]; then
     KEEPPACKAGES=$(cat "$USERDIR/keep-packages" | sed -z 's/\n/,/g;s/,$//;s/ //')
     echo "> Using custom keep-packages file: $USERDIR/keep-packages"
 fi
+
+# Run configuration script
+cp -v "$SHAREDIR/_chroot-configure.sh" "$DISTPATH/root/"
+bash $SHAREDIR/chroot-dir.sh "$DISTPATH/root" "bash /_chroot-configure.sh"
+rm -f "$DISTPATH/root/_chroot-configure.sh"
+echo
+
+# Run cleanup script
 cp -v "$SHAREDIR/_chroot-cleanup.sh" "$DISTPATH/root/"
 bash $SHAREDIR/chroot-dir.sh "$DISTPATH/root" "bash /_chroot-cleanup.sh \"$KEEPPACKAGES\""
 rm -f "$DISTPATH/root/_chroot-cleanup.sh"

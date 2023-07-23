@@ -2,8 +2,6 @@
 
 KEEPPACKAGES=$1
 
-SKIPFIRMWARE='firmware-tomu firmware-nvidia-gsp firmware-nvidia-tesla-gsp firmware-siano firmware-samsung firmware-microbit-micropython firmware-microbit-micropython-doc firmware-ivtv'
-
 # Make this script unattended
 # https://debian-handbook.info/browse/stable/sect.automatic-upgrades.html
 export DEBIAN_FRONTEND=noninteractive
@@ -15,29 +13,10 @@ if [ "$DISTRIB_RELEASE" -lt 8 ]; then
     APT='apt-get --force-yes'
 fi
 
-# Reconfigure EE packages if they are installed
-dpkg-reconfigure solydkee-info 2>/dev/null
-dpkg-reconfigure solydxee-info 2>/dev/null
-
 if [ -e /usr/share/mime/packages/kde.xml ]; then
     echo '> Remove fake mime types in KDE'
     sed -i -e /\<.*fake.*\>/,/^$/d /usr/share/mime/packages/kde.xml
 fi
-
-if which gconftool-2 >/dev/null; then
-    echo '> Set gconf default settings'
-    gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --type bool --set /apps/gksu/sudo-mode true
-    gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --type bool --set /apps/gksu/display-no-pass-info false
-    gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --type string --set /apps/blueman/transfer/browse_command 'thunar --browser obex://[%d]'
-fi
-
-echo '> Make sure all firmware drivers are installed but do not install from backports'
-FIRMWARE=$(apt list --all-versions 2>/dev/null | grep -v -E 'backports|installed|micropython' | grep ^firmware | cut -d'/' -f 1)
-for F in $FIRMWARE; do
-    if [[ ! "$SKIPFIRMWARE" =~ "$PCK" ]]; then
-        eval $APT install $F
-    fi
-done
 
 echo '> Cleanup'
 apt-get clean
@@ -98,104 +77,9 @@ if [ -f /vmlinuz ] && [ -f /vmlinuz.old ]; then
     rm /vmlinuz.old
 fi
 
-if [ -f /etc/grub.d/20_memtest86+ ]; then
-    echo '> Disable memtest in Grub'
-    chmod -x /etc/grub.d/20_memtest86+
-fi
-
-echo '> Configure LightDM'    
-CONF='/etc/lightdm/lightdm.conf'
-XSESSION='/etc/lightdm/Xsession'
-if [ -e "$CONF" ]; then
-    for F in $(find etc/live/ -type f -name "*.conf"); do source "$F"; done
-    if [ ! -z "$LIVE_USERNAME" ]; then
-        sed -i -r -e "s|^#.*autologin-user=.*\$|autologin-user=$LIVE_USERNAME|" \
-                      -e "s|^#.*autologin-user-timeout=.*\$|autologin-user-timeout=0|" \
-                      "$CONF"
-    fi
-    sed -i -r -e "s|^#.*allow-user-switching=.*\$|allow-user-switching=true|" \
-                  -e "s|^#.*greeter-hide-users=.*\$|greeter-hide-users=false|" \
-                  "$CONF"
-    if [ -e "$XSESSION" ]; then
-        sed -i -r -e "s|^#.*session-wrapper=.*\$|session-wrapper=$XSESSION|"    "$CONF"
-    else
-        # Comment the line if not already commented
-        sed -i -r -e '/^session-wrapper=.*/ s/^#*/#/' "$CONF"
-    fi
-fi
-
 if [ -e /usr/sbin/policy-rc.d ]; then
     echo '> Remove unneeded policy-rc.d'
     rm -r /usr/sbin/policy-rc.d
-fi
-
-if which update-apt-xapian-index >/dev/null; then
-    echo '> Refresh xapian database'
-    update-apt-xapian-index
-fi
-
-if which updatedb >/dev/null; then
-    echo '> Update database for mlocate'
-    updatedb
-fi
-
-# Update pixbuf cache
-PB='/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders'
-if [ ! -e $PB ]; then
-    PB='/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders'
-fi
-if [ -e $PB ]; then
-    echo '> Update pixbuf cache'
-    $PB --update-cache
-fi
-
-UFW=$(which ufw)
-if [ ! -z "$UFW" ]; then
-    echo '> Setup ufw'
-    eval $UFW --force reset
-    rm /etc/ufw/*.rules.* 2>/dev/null
-    rm /lib/ufw/*.rules.* 2>/dev/null
-    eval $UFW default deny incoming
-    eval $UFW default allow outgoing
-    eval $UFW allow to any app CIFS 2>/dev/null
-    eval $UFW allow from any app CIFS 2>/dev/null
-    eval $UFW allow to any app CUPS 2>/dev/null
-    eval $UFW allow from any app CUPS 2>/dev/null
-    # msdn port
-    eval $UFW allow 5353/udp 2>/dev/null
-    eval $UFW allow out 5353/udp 2>/dev/null
-    eval $UFW enable
-fi
-
-FWD='/etc/firewalld/zones/public.xml'
-if [ -d /etc/firewalld/zones/ ]; then
-    echo '> Setup firewalld'
-    if [ -f "$FWD" ]; then
-        if ! grep -q mdns "$FWD"; then
-            # Allow mDNS (ping, etc)
-            sed -i '/\/zone/i <service name="mdns"\/>' "$FWD" 
-        fi
-        if ! grep -q ipp "$FWD"; then
-            # Allow CUPS
-            sed -i '/\/zone/i <service name="ipp"\/>' "$FWD" 
-        fi
-        if ! grep -q dhcpv6-client "$FWD"; then
-            # Allow dhcpv6
-            sed -i '/\/zone/i <service name="dhcpv6-client"\/>' "$FWD" 
-        fi
-    else
-        # Create initial file
-        cat > "$FWD" << EOF
-<?xml version="1.0" encoding="utf-8"?>
-<zone>
-  <short>Public</short>
-  <description>For use in public areas.</description>
-  <service name="dhcpv6-client"/>
-  <service name="mdns"/>
-  <service name="ipp"/>
-</zone>
-EOF
-    fi
 fi
 
 # Cleanup root history
