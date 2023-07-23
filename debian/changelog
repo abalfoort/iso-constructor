@@ -1,3 +1,10 @@
+iso-constructor (4.2.2) stable; urgency=low
+
+  * Add configuration script from adjustments packages
+  * Updated translations: da, de, fr, es, es_419, nb, ru, it
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 22 Jul 2023 14:32:08 +0200
+
 iso-constructor (4.2.1) stable; urgency=low
 
   * Remove non-working menu item from grub.cfg

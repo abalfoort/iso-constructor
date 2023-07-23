@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: iso-creator
-Version: 4.2.1
+Version: 4.2.2
 Summary: Tool to build and maintain Debian isos.
 Home-page: https://gitlab.com/abalfoort/iso-creator
 Download-URL: https://gitlab.com/abalfoort/iso-creator/-/archive/master/iso-creator-master.tar.gz
