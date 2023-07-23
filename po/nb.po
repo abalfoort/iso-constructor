@@ -4,8 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Juan Diego Sendra <sendradiego@gmail.com>, 2020
-# F A <jaw2pc@gmail.com>, 2022
+# Anders Dalen <anders@andersdalen.no>, 2020
 # Arjen Balfoort <arjenbalfoort@hotmail.com>, 2023
 # ilu lu, 2023
 #
@@ -14,65 +13,64 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-22 14:32+0200\n"
+"POT-Creation-Date: 2023-07-22 14:35+0200\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: ilu lu, 2023\n"
-"Language-Team: Spanish (Latin America) (https://app.transifex.com/abalfoort/"
-"teams/54212/es_419/)\n"
-"Language: es_419\n"
+"Language-Team: Norwegian Bokmål (https://app.transifex.com/abalfoort/"
+"teams/54212/nb/)\n"
+"Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
-"1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: iso-constructor/__init__.py:122
 msgid "Remove"
-msgstr "Remover"
+msgstr "Fjern"
 
 #: iso-constructor/__init__.py:123
 msgid "Test ISO in Qemu"
-msgstr "Prueba ISO en Qemu"
+msgstr "Test ISO i Qemu"
 
 #: iso-constructor/__init__.py:124
 msgid "Ctrl-Alt-F to exit full screen mode."
-msgstr "Ctrl-Alt-F para salir del modo de pantalla completa."
+msgstr "Ctrl-Alt-F for å avslutte fullskjermmodus."
 
 #: iso-constructor/__init__.py:125
 msgid "Test Qemu image"
-msgstr "Probar imagen para Qemu"
+msgstr "Test Qemu image"
 
 #: iso-constructor/__init__.py:127
 msgid "Select all"
-msgstr "Seleccionar todo"
+msgstr "Velg alt"
 
 #: iso-constructor/__init__.py:128
 msgid "Add"
-msgstr "Agregar"
+msgstr "Legg til"
 
 #: iso-constructor/__init__.py:129
 msgid "View log file"
-msgstr "Ver archivo de registros"
+msgstr "Vis loggfilen"
 
 #: iso-constructor/__init__.py:131
 msgid "Edit"
-msgstr "Editar"
+msgstr "Rediger"
 
 #: iso-constructor/__init__.py:132
 msgid "Upgrade"
-msgstr "Actualizar"
+msgstr "Oppgrader"
 
 #: iso-constructor/__init__.py:133
 msgid "Build"
-msgstr "Construir"
+msgstr "Bygg"
 
 #: iso-constructor/__init__.py:134
 msgid "Help"
-msgstr "Ayuda"
+msgstr "Hjelp"
 
 #: iso-constructor/__init__.py:139
 msgid "Add Distribution"
-msgstr "Agregar distribucion"
+msgstr "Legg til distribusjon"
 
 #: iso-constructor/__init__.py:140
 msgid "ISO"
@@ -80,36 +78,36 @@ msgstr "ISO"
 
 #: iso-constructor/__init__.py:142
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Avbryt"
 
 #: iso-constructor/__init__.py:208
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
 msgstr ""
-"¿Está seguro de que desea eliminar la distribución seleccionada de la lista? "
-"(Esto no eliminará el directorio y sus datos)"
+"Er du sikker på at du ønsker å fjerne den valgte distribusjonen fra lista?\n"
+"(dette vil ikke fjerne katalogen og dataene)"
 
 #: iso-constructor/__init__.py:375
 msgid "Select ISO file"
-msgstr "Seleccionar archivo ISO"
+msgstr "Velg ISO-fil"
 
 #: iso-constructor/__init__.py:389
 msgid "Select directory"
-msgstr "Seleccionar directorio"
+msgstr "Velg katalog"
 
 #: iso-constructor/__init__.py:404
 msgid "Save existing working directory"
-msgstr "Guarde el directorio de trabajo existente"
+msgstr "Lagre gjeldende arbeidskatalog"
 
 #: iso-constructor/__init__.py:406
 msgid "Unpack ISO and save"
-msgstr "Desempaquetar ISO y guardar"
+msgstr "Pakk ut ISO og lagre"
 
 #: iso-constructor/__init__.py:413
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
-msgstr "No se pudo crear el directorio {self.dir}: salir"
+msgstr "Kunne ikke opprette katalog {self.dir}: avslutter"
 
 #: iso-constructor/__init__.py:419
 #, python-brace-format
@@ -117,7 +115,7 @@ msgid ""
 "The path to the ISO file does not exist:\n"
 "{self.iso}"
 msgstr ""
-"La ruta al archivo ISO no existe:\n"
+"Adressen till ISO-filen eksisterer ikke:\n"
 "{self.iso}"
 
 #: iso-constructor/__init__.py:423
@@ -126,36 +124,36 @@ msgid ""
 "The destination directory is not empty.\n"
 "Are you sure you want to overwrite all data in {self.dir}?"
 msgstr ""
-"El directorio de destino no está vacío.\n"
-"¿Está seguro de que desea sobrescribir todos los datos en {self.dir}?"
+"Målkatalogen er ikke tom.\n"
+"Er du sikker på at du ønsker å skrive over alle data i {self.dir}?"
 
 #: iso-constructor/__init__.py:498
 msgid "Unpack ISO to directory"
-msgstr "Desempaquetar ISO en el directorio"
+msgstr "Pakk ut ISO til katalog"
 
 #: iso-constructor/__init__.py:499
 msgid "Unpack & Save"
-msgstr "Desempaquetar y guardar"
+msgstr "Pakk ut og lagre"
 
 #: iso-constructor/__init__.py:507
 msgid "Work directory"
-msgstr "Directorio de trabajo"
+msgstr "Arbeidskatalog"
 
 #: iso-constructor/__init__.py:508
 msgid "Save"
-msgstr "Guardar"
+msgstr "Lagre"
 
 #: iso-constructor/__init__.py:519
 msgid "Select"
-msgstr "Seleccionar"
+msgstr "Velg"
 
 #: iso-constructor/__init__.py:519
 msgid "Distribution"
-msgstr "Distribución"
+msgstr "Distribusjon"
 
 #: iso-constructor/__init__.py:519
 msgid "Working directory"
-msgstr "Directorio de trabajo"
+msgstr "Arbeidskatalog"
 
 #: data/iso-constructor.desktop.in.h:1
 msgid "ISO Constructor"
@@ -163,9 +161,9 @@ msgstr "ISO Constructor"
 
 #: data/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"
-msgstr "Herramienta para crear y mantener ISOs de Debian"
+msgstr "Verktøy for å bygge og vedlikeholde Debian ISO-er"
 
 #. (itstool) path: action/message
 #: data/org.debian.pkexec.iso-constructor.policy:8
 msgid "Authentication is required to run ISO Constructor"
-msgstr "La autenticación es necesaria para ejecutar ISO Constructor"
+msgstr "Autentisering kreves for å kjøre ISO Constructor"

@@ -7,17 +7,18 @@
 # anechampenois <analogic@zaclys.net>, 2020
 # Kyodev, 2020
 # Gaïus Baltar <ichbin1199@gmail.com>, 2020
-# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022
+# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2023
+# ilu lu, 2023
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-16 10:36+0200\n"
+"POT-Creation-Date: 2023-07-22 14:32+0200\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
-"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022\n"
-"Language-Team: French (https://www.transifex.com/abalfoort/teams/54212/fr/)\n"
+"Last-Translator: ilu lu, 2023\n"
+"Language-Team: French (https://app.transifex.com/abalfoort/teams/54212/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,15 +32,15 @@ msgstr "Retirer"
 
 #: iso-constructor/__init__.py:123
 msgid "Test ISO in Qemu"
-msgstr ""
+msgstr "Test ISO dans Qemu"
 
 #: iso-constructor/__init__.py:124
 msgid "Ctrl-Alt-F to exit full screen mode."
-msgstr ""
+msgstr "Ctrl-Alt-F pour quitter le mode plein écran."
 
 #: iso-constructor/__init__.py:125
 msgid "Test Qemu image"
-msgstr ""
+msgstr "Test de l'image Qemu"
 
 #: iso-constructor/__init__.py:127
 msgid "Select all"

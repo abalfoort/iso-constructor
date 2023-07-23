@@ -5,17 +5,18 @@
 #
 # Translators:
 # Михаил Ильинский <mail@milinsky.com>, 2020
-# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022
+# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2023
+# ilu lu, 2023
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-16 10:36+0200\n"
+"POT-Creation-Date: 2023-07-22 14:32+0200\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
-"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022\n"
-"Language-Team: Russian (https://www.transifex.com/abalfoort/teams/54212/"
+"Last-Translator: ilu lu, 2023\n"
+"Language-Team: Russian (https://app.transifex.com/abalfoort/teams/54212/"
 "ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -31,15 +32,15 @@ msgstr "Удалить"
 
 #: iso-constructor/__init__.py:123
 msgid "Test ISO in Qemu"
-msgstr ""
+msgstr "Тестирование ISO в Qemu"
 
 #: iso-constructor/__init__.py:124
 msgid "Ctrl-Alt-F to exit full screen mode."
-msgstr ""
+msgstr "Ctrl-Alt-F для выхода из полноэкранного режима."
 
 #: iso-constructor/__init__.py:125
 msgid "Test Qemu image"
-msgstr ""
+msgstr "Тестирование Qemu образа"
 
 #: iso-constructor/__init__.py:127
 msgid "Select all"
@@ -51,7 +52,7 @@ msgstr "Добавить"
 
 #: iso-constructor/__init__.py:129
 msgid "View log file"
-msgstr ""
+msgstr "Просмотр лог-файла"
 
 #: iso-constructor/__init__.py:131
 msgid "Edit"
@@ -91,7 +92,7 @@ msgstr ""
 
 #: iso-constructor/__init__.py:375
 msgid "Select ISO file"
-msgstr ""
+msgstr "Выбрать ISO-файл"
 
 #: iso-constructor/__init__.py:389
 msgid "Select directory"
@@ -162,7 +163,7 @@ msgstr "ISO Конструктор"
 
 #: data/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"
-msgstr ""
+msgstr "Инструменты для создания и поддержки ISO Debian"
 
 #. (itstool) path: action/message
 #: data/org.debian.pkexec.iso-constructor.policy:8
