@@ -172,7 +172,7 @@ if [ "$DESKTOP_ENV" == 'xfce' ]; then
     CONF='/etc/skel/.config/xfce4/panel/whiskermenu-9.rc'
     if [ -e "$FIREFOX" ] && [ -e $CONF ]; then
         echo "> Configure $CONF"
-        sed -i -e "s/firefox[a-z-]*.desktop/$(basename \"$FIREFOX\").desktop/" "$CONF"
+        sed -i -e "s/firefox[\"a-z-]*\./$(basename $FIREFOX)\./" "$CONF"
     fi
 
     CONF='/usr/lib/firefox-esr/distribution/distribution.ini'
@@ -478,32 +478,32 @@ if [ ! -z "$UFW" ]; then
     eval $UFW enable
 fi
 
-FWD='/etc/firewalld/zones/public.xml'
-if [ -d /etc/firewalld/zones/ ]; then
+# firewalld: cannot use firewall-cmd in a chrooted environment:
+# DBUS_ERROR: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+#firewall-cmd --set-default-zone=home
+#firewall-cmd --permanent --add-service=ipp
+#firewall-cmd --reload
+FWDCONF='/etc/firewalld/firewalld.conf'
+if [ -f "$FWDCONF" ]; then
     echo 'Setup Firewalld'
-    if [ -f "$FWD" ]; then
-        if ! grep -q mdns "$FWD"; then
-            # Allow mDNS (ping, etc)
-            sed -i '/\/zone/i <service name="mdns"\/>' "$FWD" 
-        fi
-        if ! grep -q ipp "$FWD"; then
-            # Allow CUPS
-            sed -i '/\/zone/i <service name="ipp"\/>' "$FWD" 
-        fi
-        if ! grep -q dhcpv6-client "$FWD"; then
-            # Allow dhcpv6
-            sed -i '/\/zone/i <service name="dhcpv6-client"\/>' "$FWD" 
-        fi
-    else
+    # Set default zone to home
+    sed -i -e 's/^DefaultZone=.*/DefaultZone=home/' $FWDCONF
+    mkdir -p /etc/firewalld/zones/
+    
+    # Setup home zone
+    FWDHOME='/etc/firewalld/zones/home.xml'
+    if [ ! -f "$FWDHOME" ]; then
         # Create initial file
-        cat > "$FWD" << EOF
+        cat > "$FWDHOME" << EOF
 <?xml version="1.0" encoding="utf-8"?>
 <zone>
-  <short>Public</short>
-  <description>For use in public areas.</description>
-  <service name="dhcpv6-client"/>
-  <service name="mdns"/>
-  <service name="ipp"/>
+<short>Home</short>
+<description>For use in home areas. You mostly trust the other computers on networks to not harm your computer. Only selected incoming connections are accepted.</description>
+<service name="mdns"/>
+<service name="samba-client"/>
+<service name="dhcpv6-client"/>
+<service name="ipp"/>
+<forward/>
 </zone>
 EOF
     fi
