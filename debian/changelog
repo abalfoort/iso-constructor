@@ -1,3 +1,10 @@
+iso-constructor (4.2.3) stable; urgency=low
+
+  * Fix _chroot-configure.sh mangling /etc/skel/.config/xfce4/panel/whiskermenu-9.rc
+  * Change default firewalld zone to home
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 13 Aug 2023 13:17:45 +0200
+
 iso-constructor (4.2.2) stable; urgency=low
 
   * Add configuration script from adjustments packages
