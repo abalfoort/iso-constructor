@@ -7,11 +7,13 @@ DESKTOP_ENV='kde'
 INFO='/usr/share/solydxk/info'
 [ -f "$INFO" ] && . "$INFO"
 
+DEFAULT_GRUB='/etc/default/grub'
+
 # ==========================
 # Start Manual Configuration
 # ==========================
 
-SKIP_FIRMWARE='firmware-tomu firmware-nvidia-gsp firmware-nvidia-tesla-gsp firmware-siano firmware-samsung firmware-microbit-micropython firmware-microbit-micropython-doc firmware-ivtv'
+SKIP_FIRMWARE='firmware-tomu firmware-nvidia-gsp firmware-nvidia-tesla-gsp firmware-siano firmware-samsung firmware-microbit-micropython firmware-microbit-micropython-doc firmware-ivtv dahdi-firmware-nonfree firmware-ast firmware-myricom firmware-netronome firmware-netxen firmware-qcom-soc firmware-qlogic'
 
 PLASMA_FAVORITES='preferred://browser,thunderbird.desktop,libreoffice-startcenter.desktop,org.kde.discover.desktop,systemsettings.desktop,org.kde.konsole.desktop'
 
@@ -19,29 +21,38 @@ PLASMA_FAVORITES='preferred://browser,thunderbird.desktop,libreoffice-startcente
 # /usr/share/desktop-base/${THEME_01}-theme/
 # /usr/share/grub/themes/${THEME_01}/
 # /usr/share/plymouth/themes/${THEME_01}/
-THEME_01='solydk-light'
-THEME_02='solydk-dark'
-THEME_03='solydk-black'
+THEMES='solydk-light solydk-dark solydk-black'
 ICON_THEME='evolvere-2-blue'
 BREEZE_THEME='Breeze'
 ROOT_FILES='.bashrc .profile .config/fontconfig/fonts.conf .config/gtk-3.0/settings.ini .config/gtk-4.0/settings.ini .local/share/dolphin/view_properties/global/.directory .local/share/kxmlgui5/dolphin/dolphinui.rc .gtkrc-2.0'
 
 if [ "$DESKTOP_ENV" == 'xfce' ]; then
-    THEME_01='solydx-light'
-    THEME_02='solydx-dark'
-    THEME_03='solydx-black'
+    THEMES='solydx-light solydx-dark solydx-black'
     ICON_THEME='evolvere-2'
     BREEZE_THEME='Breeze-X'
     ROOT_FILES='.bashrc .profile .config/gtk-3.0/settings.ini .config/xfce4/terminal/terminalrc .config/Thunar/thunarrc .config/Thunar/uca.xml .config/Thunar/volmanrc .config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml .config/mimeapps.list .gtkrc-2.0'
 fi
 
 if [ "$DESKTOP_ENV" == 'lxqt' ]; then
-    THEME_01='solydl-light'
-    THEME_02='solydl-dark'
-    THEME_03='solydl-black'
+    THEMES='solydl-light solydl-dark solydl-black'
     ICON_THEME='evolvere-2-blue'
     BREEZE_THEME='Breeze'
     ROOT_FILES='.bashrc .profile .config/fontconfig/fonts.conf gtk-3.0/settings.ini .config/pcmanfm-qt/lxqt/settings.conf .config/qterminal.org/qterminal.ini .config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml .config/lxqt-mimeapps.list .config/mimeapps.list .gtkrc-2.0'
+fi
+
+# Create a themes array
+THEMES=($THEMES)
+# Default to the first theme in the array
+THEME=${THEMES[0]}
+# Grub is leading for the theme name
+GRUB_THEME_NAME=$(grep -oP 'solyd[a-z-]*' /etc/default/grub)
+if [ ! -z "$GRUB_THEME_NAME" ]; then
+    THEME=$GRUB_THEME_NAME
+fi
+# Gtk is leading for the theme name
+GTK_THEME_NAME=$(grep -oP 'Breeze[a-zA-Z-]*' /etc/skel/.config/gtk-3.0/settings.ini)
+if [ ! -z "$GTK_THEME_NAME" ]; then
+    BREEZE_THEME=$GTK_THEME_NAME
 fi
 
 # ========================
@@ -58,7 +69,13 @@ function divert_file {
         dpkg-divert --package iso-constructor --add --rename --divert $FLE.divert $FLE
         ISDIVERTED=$(LANG=C dpkg-divert --list $FLE)
     fi
-    [ "$ISDIVERTED" ] && cp -f "$FLE.divert" "$FLE"
+    if [ "$ISDIVERTED" ]; then
+        if [ -e "$FLE.divert" ] && [ ! -e "$FLE" ]; then
+            cp -f "$FLE.divert" "$FLE"
+        elif [ ! -e "$FLE.divert" ] && [ -e "$FLE" ]; then
+            cp -f "$FLE" "$FLE.divert"
+        fi
+    fi
 }
 
 # When diverting essential files:
@@ -67,11 +84,18 @@ function divert_essential_file {
     FLE=$1
     ISDIVERTED=$(LANG=C dpkg-divert --list $FLE)
     if [ -f $FLE ] && [ ! "$ISDIVERTED" ]; then
-        cp "$FLE" "$FLE.divert"
-        dpkg-divert --package iso-constructor --add --no-rename --divert $FLE.divert $FLE
+        DIVERT="/$(echo $FLE | cut -d'/' -f 2)/${FLE##*/}"
+        cp "$FLE" "$DIVERT"
+        dpkg-divert --package iso-constructor --add --no-rename --divert $DIVERT $FLE
         ISDIVERTED=$(LANG=C dpkg-divert --list $FLE)
     fi
-    [ "$ISDIVERTED" ] && cp -f "$FLE.divert" "$FLE"
+    if [ "$ISDIVERTED" ]; then
+        if [ -e "$DIVERT" ] && [ ! -e "$FLE" ]; then
+            cp -f "$DIVERT" "$FLE"
+        elif [ ! -e "$DIVERT" ] && [ -e "$FLE" ]; then
+            cp -f "$FLE" "$DIVERT"
+        fi
+    fi
 }
 
 # Function to remove all diversions of a package
@@ -105,7 +129,7 @@ function remove_divert {
 # =====================
 # Firmware Installation
 # =====================
-echo 'Install firmware drivers'
+echo '> Firmware Installation'
 FIRMWARE=$(apt list --all-versions 2>/dev/null | grep -v -E 'backports|installed|micropython' | grep ^firmware | cut -d'/' -f 1)
 for F in $FIRMWARE; do
     if [[ ! "$SKIP_FIRMWARE" =~ "$PCK" ]]; then
@@ -269,27 +293,25 @@ fi
 DT_THEME='/usr/share/desktop-base/active-theme'
 DT_GRUB='/usr/share/images/desktop-base/desktop-grub.png'
 
-THEME_PATH="/usr/share/desktop-base/${THEME_01}-theme"
-if [ -d "$THEME_PATH" ]; then
-    update-alternatives --install $DT_THEME desktop-theme "$THEME_PATH" 100
-    update-alternatives --install $DT_GRUB desktop-grub "$THEME_PATH/grub/grub-16x9.png" 30
-    update-alternatives --install $DT_GRUB desktop-grub "$THEME_PATH/grub/grub-4x3.png" 30
+for T in ${THEMES[@]}; do
+    THEME_PATH="/usr/share/desktop-base/${T}-theme"
+    if [ -d "$THEME_PATH" ]; then
+        update-alternatives --install $DT_THEME desktop-theme "$THEME_PATH" 100
+        update-alternatives --install $DT_GRUB desktop-grub "$THEME_PATH/grub/grub-16x9.png" 30
+        update-alternatives --install $DT_GRUB desktop-grub "$THEME_PATH/grub/grub-4x3.png" 30
+    fi
+done
+
+if [[ ! " ${THEMES[@]} " =~ " $THEME " ]]; then
+    THEME_PATH="/usr/share/desktop-base/${THEME}-theme"
+    if [ -d "$THEME_PATH" ]; then
+        update-alternatives --install $DT_THEME desktop-theme "$THEME_PATH" 100
+        update-alternatives --install $DT_GRUB desktop-grub "$THEME_PATH/grub/grub-16x9.png" 30
+        update-alternatives --install $DT_GRUB desktop-grub "$THEME_PATH/grub/grub-4x3.png" 30
+    fi
 fi
 
-THEME_PATH="/usr/share/desktop-base/${THEME_02}-theme"
-if [ -d "$THEME_PATH" ]; then
-    update-alternatives --install $DT_THEME desktop-theme "$THEME_PATH" 100
-    update-alternatives --install $DT_GRUB desktop-grub "$THEME_PATH/grub/grub-16x9.png" 30
-    update-alternatives --install $DT_GRUB desktop-grub "$THEME_PATH/grub/grub-4x3.png" 30
-fi
-
-THEME_PATH="/usr/share/desktop-base/${THEME_03}-theme"
-if [ -d "$THEME_PATH" ]; then
-    update-alternatives --install $DT_THEME desktop-theme "$THEME_PATH" 100
-    update-alternatives --install $DT_GRUB desktop-grub "$THEME_PATH/grub/grub-16x9.png" 30
-    update-alternatives --install $DT_GRUB desktop-grub "$THEME_PATH/grub/grub-4x3.png" 30
-fi
-
+update-alternatives --set desktop-theme "/usr/share/desktop-base/${THEME}-theme"
 update-alternatives --auto desktop-theme
 update-alternatives --auto desktop-grub
 
@@ -311,6 +333,7 @@ clock-format = %d %b, %H:%M
 indicators = ~host;~spacer;~session;~language;~a11y;~clock;~power
 position = 60%,center 40%,center
 EOF
+
 
 LIGHTDM_DIR='/usr/share/lightdm/lightdm.conf.d'
 mkdir -p "$LIGHTDM_DIR"
@@ -334,14 +357,14 @@ EOF
 # ===================
 # Grub2 Configuration
 # ===================
-DEFAULT_GRUB='/etc/default/grub'
-GRUB_THEME="/usr/share/grub/themes/${THEME_01}/theme.txt"
+GRUB_THEME="/usr/share/grub/themes/${THEME}/theme.txt"
 GRUB_TEMPLATE='/usr/share/grub/default/grub'
-[ -e "$GRUB_TEMPLATE" ] && cp "$GRUB_TEMPLATE" "$DEFAULT_GRUB"
+if [ ! -e "$DEFAULT_GRUB" ] && [ -e "$GRUB_TEMPLATE" ]; then
+    cp "$GRUB_TEMPLATE" "$DEFAULT_GRUB"
+fi
 if [ -e "$GRUB_THEME" ]; then
     echo "> Set Grub2 theme: $GRUB_THEME"
     if grep -q '^GRUB_THEME=' $DEFAULT_GRUB; then
-        # Change existing Grub theme
         sed -i "s|^GRUB_THEME=.*|GRUB_THEME=$GRUB_THEME|" $DEFAULT_GRUB
     else
         # Append Grub theme
@@ -394,8 +417,8 @@ fi
 # Plymouth Configuration
 # ======================
 if [ ! -z "$(which plymouth-set-default-theme)" ]; then
-    echo "> Set Plymouth theme $THEME_01"
-    plymouth-set-default-theme -R "$THEME_01"
+    echo "> Set Plymouth theme $THEME"
+    plymouth-set-default-theme -R "$THEME"
 fi
 
 # ====================
@@ -404,6 +427,7 @@ fi
 FLE='/etc/skel/.bashrc'
 divert_essential_file "$FLE"
 if [ -f "$FLE" ]; then
+    echo '> Bashrc Configuration'
     # Fix multiple entries in .bashrc
     # - Search for start line until first empty line and delete that
     sed -i '/# Source the SolydXK info file/,/^$/{/^$/!d}' "$FLE"
@@ -426,13 +450,21 @@ fi
 # ==================
 # Root Configuration
 # ==================
+echo '> Root Configuration'
+cd /etc/skel
 for FILE in $ROOT_FILES; do
-    [ -e "/etc/skel/$FILE" ] && cp -v --parents "/etc/skel/$FILE" "/root/"
+    [ -e "$FILE" ] && cp -v --parents "$FILE" "/root/"
 done
-XTRA_ROOT_FILES=$(find /usr/share/solydxk/root_files -type f)
-for FILE in $XTRA_ROOT_FILES; do
-    cp -v --parents "$FILE" "/root/"
-done
+
+ROOT_FILES_DIR='/usr/share/solydxk/root_files'
+if [ -d "$ROOT_FILES_DIR" ]; then
+    cd "$ROOT_FILES_DIR"
+    XTRA_ROOT_FILES=$(find . -type f -printf '%P\n' 2>/dev/null)
+    for FILE in $XTRA_ROOT_FILES; do
+        cp -v --parents "$FILE" "/root/"
+    done
+fi
+
 echo 'SELECTED_EDITOR="/bin/nano"' > /root/.selected_editor
 [ -e /root/.mozilla ] && rm -r /root/.mozilla
 touch /root/.mozilla
@@ -442,6 +474,7 @@ touch /root/.thunderbird
 # ===================
 # Audio Configuration
 # ===================
+echo '> Audio configuration'
 CONF='/etc/modprobe.d/alsa-base.conf'
 [ -f "$CONF" ] && CONT=$(cat "$CONF")
 CHK="options snd-hda-intel model"
@@ -462,7 +495,7 @@ echo "flat-volumes = no" > "$PULSE_DIR/50_solydxk.conf"
 # ======================
 UFW=$(which ufw)
 if [ ! -z "$UFW" ]; then
-    echo 'Setup UFW'
+    echo '> Setup UFW'
     eval $UFW --force reset
     rm /etc/ufw/*.rules.* 2>/dev/null
     rm /lib/ufw/*.rules.* 2>/dev/null
@@ -485,33 +518,44 @@ fi
 #firewall-cmd --reload
 FWDCONF='/etc/firewalld/firewalld.conf'
 if [ -f "$FWDCONF" ]; then
-    echo 'Setup Firewalld'
+    echo '> Setup Firewalld'
     # Set default zone to home
     sed -i -e 's/^DefaultZone=.*/DefaultZone=home/' $FWDCONF
     mkdir -p /etc/firewalld/zones/
     
-    # Setup home zone
-    FWDHOME='/etc/firewalld/zones/home.xml'
-    if [ ! -f "$FWDHOME" ]; then
-        # Create initial file
-        cat > "$FWDHOME" << EOF
-<?xml version="1.0" encoding="utf-8"?>
+    # Create a multi-dimensional array:
+    # (('zone1', 'service1 service2') ('zone2', 'service1 service2'))
+    Z1=('home' 'mdns samba-client ipp dhcpv6-client')
+    Z2=('public' '')
+    Z3=('work' 'mdns samba-client ipp')
+    Z=(Z1 Z2 Z3)
+
+    declare -n E1
+
+    for E1 in "${Z[@]}"; do
+        ZONE=${E1[0]}
+        ZONEXML="/etc/firewalld/zones/$ZONE.xml"
+        if [ ! -f "$ZONEXML" ]; then
+            SXML=''
+            SERVICES=(${E1[1]})
+            for S in ${SERVICES[@]}; do
+                SXML="$SXML\n<service name=\"$S\"/>"
+            done
+            # Create initial file
+            echo -e "<?xml version=\"1.0\" encoding=\"utf-8\"?>
 <zone>
-<short>Home</short>
-<description>For use in home areas. You mostly trust the other computers on networks to not harm your computer. Only selected incoming connections are accepted.</description>
-<service name="mdns"/>
-<service name="samba-client"/>
-<service name="dhcpv6-client"/>
-<service name="ipp"/>
+<short>${ZONE^}</short>
+<description>For use in $ZONE areas. Only selected incoming connections are accepted.</description>$SXML
 <forward/>
-</zone>
-EOF
-    fi
+</zone>" > "$ZONEXML"
+        fi
+    done
 fi
 
 # ==============
 # Refresh caches
 # ==============
+echo '> Refresh cashes'
 # Update cache
 [ ! -z "$(which update-desktop-database)" ] && update-desktop-database -q
 
@@ -531,6 +575,7 @@ PIX_CACHE=$(dpkg -S *x86_64*gdk-pixbuf-query-loaders | awk '{print $2}')
 # =================
 # GPG Configuration
 # =================
+echo '> GPG Configuration'
 GPG='/etc/skel/.gnupg'
 [ -e $GPG ] && chmod 700 $GPG
 
@@ -538,7 +583,7 @@ APT=/etc/apt
 if [ -e $APT/trusted.gpg ]; then
     OBSOLETE=$APT/trusted.gpg.obsolete
     mv -f $APT/trusted.gpg $OBSOLETE
-    echo "> $APT/trusted.gpg renamed to $OBSOLETE"
+    echo "$APT/trusted.gpg renamed to $OBSOLETE"
     L=1
     T=$(LANG=C apt-key list 2>/dev/null)
     while read -r R; do
@@ -547,9 +592,9 @@ if [ -e $APT/trusted.gpg ]; then
             [ "${R#*expired:}" != "$R" ] && L=1 || L=0
         elif [ $L -eq 1 ]; then
             if grep -q "$R" <<<$T; then
-                echo "> $R already present"
+                echo "$R already present"
             else
-                echo "> $R exported to trusted.gpg.d"
+                echo "$R exported to trusted.gpg.d"
                 R="${R// /}"
                 apt-key --keyring $OBSOLETE export $R 2>/dev/null >$APT/trusted.gpg.d/$R.asc
             fi
@@ -560,6 +605,7 @@ fi
 # ===========================
 # Desktop Files Configuration
 # ===========================
+echo '> Desktop Files Configuration'
 FLE='/usr/share/applications/org.kde.kate.desktop'
 divert_file "$FLE"
 [ -e "$FLE" ] && sed -i 's/;Development//' "$FLE"
@@ -591,6 +637,7 @@ divert_file "$FLE"
 # ========================
 # Additional Configuration
 # ========================
+echo '> Additional Configuration'
 # Fix ping
 PING=$(which ping)
 [ ! -z "$PING" ] && chmod u+s "$PING"
