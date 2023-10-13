@@ -328,7 +328,6 @@ cat > "$CONF" << EOF
 theme-name = $BREEZE_THEME
 icon-theme-name = ${ICON_THEME}
 font-name = Clear Sans 11
-default-user-image = /usr/share/pixmaps/faces/user-generic.png
 clock-format = %d %b, %H:%M
 indicators = ~host;~spacer;~session;~language;~a11y;~clock;~power
 position = 60%,center 40%,center
