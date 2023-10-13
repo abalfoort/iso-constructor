@@ -5,15 +5,15 @@ MENU VSHIFT 5
 MENU BACKGROUND splash.png
 MENU TITLE Welcome to [TITLE]
 MENU COLOR border 0 #00000000 #00000000 none
-MENU COLOR sel 7 #cc000000 #66000000 none
+MENU COLOR sel 7 #cc000000 #66ffffff none
 MENU COLOR title 0 #cc000000 #00000000 none
 MENU COLOR tabmsg 0 #cc000000 #00000000 none
 MENU COLOR unsel 0 #cc000000 #00000000 none
 MENU COLOR hotsel 0 #ff000000 #ffffffff none
 MENU COLOR hotkey 7 #ffffffff #ff000000 none
-MENU COLOR timeout_msg 0 #ffffffff #00000000 none
-MENU COLOR timeout 0 #ffffffff #00000000 none
-MENU COLOR cmdline 0 #ffffffff #00000000 none
+MENU COLOR timeout_msg 0 #cc000000 #00000000 none
+MENU COLOR timeout 0 #cc000000 #00000000 none
+MENU COLOR cmdline 0 #cc000000 #00000000 none
 
 [MENU]
 
