@@ -23,11 +23,11 @@ apt-get clean
 eval $APT --purge autoremove
 
 # Remove old kernel and headers
-VERSION=$(ls -al / | grep -e "\svmlinuz\s" | cut -d'/' -f2 | cut -d'-' -f2,3)
+VERSION=$(readlink -s /vmlinuz | grep -o -P '(?<=vmlinuz-).*(?=-amd64)')
 if [ ! -z "$VERSION" ]; then
     OLDKERNEL=$(dpkg-query -W -f='${db:Status-Abbrev} ${binary:Package}\n' 'linux-image-[0-9]*' 'linux-headers-[0-9]*' | grep ^i | grep -v "$VERSION" | egrep -v "[a-z]-486|[a-z]-686|[a-z]-586" | awk '{print $2}')
     if [ ! -z "$OLDKERNEL" ]; then
-        echo "> Remove old kernel packages:\n$OLDKERNEL"
+        echo "> Remove old kernel packages: $OLDKERNEL"
         eval $APT purge $OLDKERNEL
         KBCNT=$(dpkg-query -W -f='${db:Status-Abbrev} ${binary:Package}\n' 'linux-kbuild*' | grep ^i | wc -l)
         if [ $KBCNT -gt 1 ]; then
