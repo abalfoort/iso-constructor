@@ -2,6 +2,15 @@
 
 KEEPPACKAGES=$1
 
+function obsolete_packages() {
+    if [ ! -z "$(which deborphan)" ]; then
+        deborphan
+    elif [ ! -z "$(which aptitude)" ]; then
+        # Alternative for deborphan
+        aptitude -F%p search '~o (~slibs|~soldlibs|~sintrospection) !~Rdepends:.*'
+    fi
+}
+
 # Make this script unattended
 # https://debian-handbook.info/browse/stable/sect.automatic-upgrades.html
 export DEBIAN_FRONTEND=noninteractive
@@ -56,15 +65,16 @@ for PCK in $(env LANG=C apt list --installed 2>/dev/null | grep installed,local 
     fi
 done
 
-if [ "$KEEPPACKAGES" != '*' ] && [ ! -z "$(which deborphan)" ]; then
-    echo '> Removing orphaned packages, except the ones listed in KEEPPACKAGES'
+if [ "$KEEPPACKAGES" != '*' ] && [ ! -z "$(which aptitude)" ]; then
+    echo '> Removing obsolete packages, except the ones listed in KEEPPACKAGES'
     Exclude=${KEEPPACKAGES//,/\/d;/}
-    Orphaned=$(deborphan | sed '/'$Exclude'/d')
-    while [ "$Orphaned" ]; do
-        eval $APT purge $Orphaned
+    
+    Obsolete=$(obsolete_packages | sed '/'$Exclude'/d')
+    while [ "$Obsolete" ]; do
+        eval $APT purge $Obsolete
         RC=$(dpkg-query -l | sed -n 's/^rc\s*\(\S*\).*/\1/p')
         [ "$RC" ] && eval $APT purge $RC
-        Orphaned=$(deborphan | sed '/'$Exclude':/d')
+        Obsolete=$(obsolete_packages | sed '/'$Exclude'/d')
     done
 fi
 

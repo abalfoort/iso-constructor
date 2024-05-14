@@ -26,7 +26,7 @@ fi
 
 # Chroot into distribution root directory and cleanup first
 USERDIR="/home/$(logname)/.iso-constructor"
-# Packages that deborphan must NOT treat as orphans - comma separated list
+# Packages that must NOT be treated as obsolete - comma separated list
 # Set to '*' to keep everything
 KEEPPACKAGES=$(cat "$SHAREDIR/keep-packages" | sed -z 's/\n/,/g;s/,$//;s/ //')
 if [ -f "$USERDIR/keep-packages" ]; then
