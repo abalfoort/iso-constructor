@@ -1,5 +1,5 @@
 __title__ = 'iso-creator'
-__version__ = '4.2.7'
+__version__ = '4.2.8'
 __author__ = 'Arjen Balfoort'
 __author_email__ = 'arjenbalfoort@hotmail.com'
 __maintainer__ = 'Arjen Balfoort'

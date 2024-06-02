@@ -1,3 +1,9 @@
+iso-constructor (4.2.8) stable; urgency=low
+
+  * _chroot-cleanup.sh: Replace hardinfo with hardinfo2 desktop file
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 02 Jun 2024 12:00:29 +0200
+
 iso-constructor (4.2.7) stable; urgency=low
 
   * _chroot-cleanup.sh: use aptitude ?obsolete instead of deborphan
