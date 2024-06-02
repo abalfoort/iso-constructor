@@ -621,9 +621,17 @@ FLE='/usr/share/applications/xfce4-web-browser.desktop'
 divert_file "$FLE"
 [ -e "$FLE" ] && sed -i 's#OnlyShowIn=.*#NoDisplay=true#' "$FLE"
 
+# Hardinfo replaced by hardinfo2
 FLE='/usr/share/applications/hardinfo.desktop'
-divert_file "$FLE"
-[ -e "$FLE" ] && sed -i 's#Icon=.*#Icon=hardinfo#' "$FLE"
+FLE2='/usr/share/applications/hardinfo2.desktop'
+if [ -e "$FLE2" ]; then
+    remove_divert "$FLE"
+    eval $APT purge hardinfo*
+    rm -f "$FLE"
+else
+    divert_file "$FLE"
+    [ -e "$FLE" ] && sed -i 's#Icon=.*#Icon=hardinfo#' "$FLE"
+fi
 
 FLE='/usr/share/applications/luckybackup-su.desktop'
 divert_file "$FLE"
