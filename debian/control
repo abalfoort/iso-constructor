@@ -22,7 +22,6 @@ Depends: ${misc:Depends}, ${python3:Depends}
   , rsync
   , apt-show-versions
   , isolinux
-  , gconf2
   , xorriso
   , dosfstools
   , uni2ascii
