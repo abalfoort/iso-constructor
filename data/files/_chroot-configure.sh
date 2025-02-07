@@ -149,33 +149,42 @@ if [ "$DESKTOP_ENV" == 'kde' ]; then
     divert_file "$KICKOFF"
     [ -e "$KICKOFF" ] && sed -i -e "s#preferred://browser,.*\.desktop#$PLASMA_FAVORITES#" "$KICKOFF"
 
+    # Fixed in plasma-workspace: https://bugs.kde.org/show_bug.cgi?id=448660
     KICKER='/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/config/main.xml'
-    divert_file "$KICKER"
-    [ -e "$KICKER" ] && sed -i -e "s#preferred://browser,.*\.desktop#$PLASMA_FAVORITES#" "$KICKER"
+    if [ -e "/etc/xdg/kicker-extra-favoritesrc" ]; then
+        remove_divert "$KICKER"
+    else
+        divert_file "$KICKER"
+        [ -e "$KICKER" ] && sed -i -e "s#preferred://browser,.*\.desktop#$PLASMA_FAVORITES#" "$KICKER"
+    fi
    
     DOLPHIN_DIR='/usr/share/kxmlgui5/dolphin'
     [ ! -d "$DOLPHIN_DIR" ] && mkdir -p "$DOLPHIN_DIR"
     
     # Create a link to kdesu in /usr/bin
     KDESU='/usr/bin/kdesu'
-    KF5KDESU="$(kf5-config --path libexec)kf5/kdesu"
-    KF5KDESUD=${KF5KDESU}d
-    if [ ! -e "$KDESU" ] && [ -e "$KF5KDESU" ]; then
-        ln -s "$KF5KDESU" "$KDESU"
+    KFKDESU="/usr/lib/x86_64-linux-gnu/libexec/kf5/kdesu"
+    if [ -e /usr/lib/x86_64-linux-gnu/libexec/kf6 ]; then
+        KFKDESU="/usr/lib/x86_64-linux-gnu/libexec/kf6/kdesu"
+    fi
+    KFKDESUD=${KFKDESU}d
+    if [ ! -e "$KDESU" ] && [ -e "$KFKDESU" ]; then
+        ln -s "$KFKDESU" "$KDESU"
     fi
     # Set sgid on kdesud
-    [ -e "$KF5KDESUD" ] && chmod g+s "$KF5KDESUD"
+    [ -e "$KFKDESUD" ] && chmod g+s "$KFKDESUD"
     
-    # This conf file sets user-session to kde-plasma-kf5. Unfortunately, the
-    # file in /usr/share/xsessions is called plasma.desktop and not
+    # This conf file sets user-session to kde-plasma-kf*. Unfortunately, the
+    # file in /usr/share/xsessions is called plasma*.desktop and not
     # kde-plasma-kf5.desktop. The default desktop file there still works, so...
-    CONF='/usr/share/lightdm/lightdm.conf.d/40-kde-plasma-kf5.conf'
-    if [ -e $CONF ]; then
-        KF5DT='/usr/share/xsessions/kde-plasma-kf5.desktop'
-        PDT='/usr/share/xsessions/plasma.desktop'
-        if [ ! -e $KF5DT ]; then
+    CONF=$(ls /usr/share/lightdm/lightdm.conf.d/*plasma*.conf)
+    FLENAME=$(basename $CONF)
+    KFDT="/usr/share/xsessions/${FLENAME:3}"
+    PDT=$(ls /usr/share/xsessions/plasma*.desktop)
+    if [ ! -z "$CONF" ]; then
+        if [ ! -e $KFDT ]; then
             if [ -e $PDT ]; then
-                ln -s $PDT $KF5DT
+                ln -s $PDT $KFDT
             else
                 divert_file $CONF
             fi
