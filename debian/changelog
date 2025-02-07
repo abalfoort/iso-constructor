@@ -1,3 +1,16 @@
+iso-constructor (4.3.0) stable; urgency=low
+
+  * Changes for Plasma 6
+  * Remove gconf dependency
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 29 Jan 2025 11:02:41 +0100
+
+iso-constructor (4.2.9) stable; urgency=low
+
+  * Remove kicker xml diversion if configured by /etc/xdg/kicker-extra-favoritesrc
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 07 Aug 2024 09:44:29 +0200
+
 iso-constructor (4.2.8) stable; urgency=low
 
   * _chroot-cleanup.sh: Replace hardinfo with hardinfo2 desktop file
