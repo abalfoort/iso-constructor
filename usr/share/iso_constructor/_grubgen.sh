@@ -4,7 +4,7 @@
 # Depends upon uni2ascii
 
 # Set variables
-SHAREDIR='/usr/share/iso-constructor'
+SHAREDIR='/usr/share/iso_constructor'
 USERDIR="/home/$(logname)/.iso-constructor"
 
 TMPLADVANCED="$SHAREDIR/grub-template-advanced"

@@ -13,10 +13,10 @@ export DH_OPTIONS
 .PHONY: update
 
 source := $(shell dpkg-parsechangelog -S Source)
-pyfiles := $(shell find ./iso-constructor -name '*.py' -print 2>/dev/null)
-#bashfiles := $(shell find ./scripts -type f -print 2>/dev/null>/dev/null)
-desktopfls := $(shell find ./data -name '*.desktop' -print 2>/dev/null)
-policyfiles := $(shell find ./data -name "*.policy" -print 2>/dev/null)
+pyfiles := $(shell find . -wholename ./debian -prune -o -name '*.py' -print 2>/dev/null)
+#bashfiles := $(shell find ./usr/bin/ -type f 2>/dev/null)
+desktopfls := $(shell find . -wholename ./debian -prune -o -name '*.desktop' -print 2>/dev/null)
+policyfiles := $(shell find ./usr/share/polkit-1/actions/ -name "*.policy" 2>/dev/null)
 
 
 # Create mo from the po files
@@ -26,24 +26,23 @@ policyfiles := $(shell find ./data -name "*.policy" -print 2>/dev/null)
 	msgfmt $< -o ./po/mo/$(basename $(notdir $<))/LC_MESSAGES/$(source).mo
 
 %:
-	dh $@ --with=python3 --buildsystem=pybuild
+	dh $@ --with=python3
 
 override_dh_auto_clean:
-	# Save new version in version.py
-	sed -i "s/^\(__version__\s*=\s*\).*\$$/\1'$(shell dpkg-parsechangelog -S Version)'/" version.py
 	# Cleanup first
-	rm -rf ./po/mo  ./po/pot ./.pybuild ./build
+	sudo rm -rf ./usr/lib/iso_constructor/__pycache__/
+	rm -rf ./po/mo  ./po/pot
 	mkdir ./po/mo  ./po/pot
 
 override_dh_auto_install: update $(patsubst %.po,%.mo,$(wildcard ./po/*.po))
 	# Set destination directory when co-building a transition package
-	dh_auto_install --destdir=debian/iso-constructor
+	#dh_auto_install --destdir=debian/iso-constructor
 
 override_dh_builddeb:
 	dh_builddeb
 	# Cleanup build directory when done
 	rm -rf ./debian/$(source)
-	rm -rf ./debian/iso-constructor
+	#rm -rf ./debian/iso-constructor
 
 update:
 	# Get translations from Transifex

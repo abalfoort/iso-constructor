@@ -1,6 +1,5 @@
-""" Module to provide a Vte.Terminal object """
-
 #!/usr/bin/env python3
+""" Module to provide a Vte.Terminal object """
 
 import time
 from os import environ
@@ -61,8 +60,6 @@ class Terminal(Vte.Terminal):
             None  # callback data
         )
 
-    
-
     def terminal_feed(self, command, wait_until_done=False,
                       disable_scrolling=True, pause_logging=False):
         """Feed a command to the terminal
@@ -108,12 +105,16 @@ class Terminal(Vte.Terminal):
             except Exception:
                 pass
             # First, wait until the last character is not a prompt sign
+
+            # TODO: vte_terminal_get_text: Passing a GArray to retrieve attributes is deprecated.
+            # TODO: In a future version, passing non-NULL as attributes array will make the function return NULL
             while self.get_text(None, None)[0].strip()[-1:] in '$#':
                 sleep()
             # Finally, the command is executing - wait until the last
             # character is a prompt sign
             while self.get_text(None, None)[0].strip()[-1:] not in '$#':
                 sleep()
+
             # Make the terminal scrollable again if it was at the start
             if parent_is_sensitive:
                 self.get_parent().set_sensitive(True)

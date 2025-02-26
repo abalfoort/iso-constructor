@@ -1,37 +1,25 @@
+#!/usr/bin/env python3
 """ Module providing initialization of the ISO Constructor application """
 
-#!/usr/bin/env python3
-
-import time
 from os import makedirs, system, listdir, \
     environ, remove, sysconf
-from os.path import join, dirname, exists, isdir
-import gettext
+from os.path import join, dirname, exists, isdir, abspath
 from configparser import ConfigParser
+from utils import get_user_home, get_logged_user, \
+                    get_package_version, getoutput, shell_exec, \
+                    get_lsb_release_info
+from dialogs import message_dialog, error_dialog, \
+                    SelectFileDialog, SelectDirectoryDialog, \
+                    question_dialog
+from terminal import Terminal
+from treeview import TreeViewHandler
+
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-try:
-    from .utils import get_user_home, get_logged_user, \
-                       get_package_version, getoutput, shell_exec, \
-                       get_lsb_release_info
-    from .dialogs import show_message_dialog, show_error_dialog, \
-                         SelectFileDialog, SelectDirectoryDialog, \
-                         show_question_dialog
-    from .terminal import Terminal
-    from .treeview import TreeViewHandler
-except ImportError:
-    from utils import get_user_home, get_logged_user, \
-                      get_package_version, getoutput, shell_exec, \
-                      get_lsb_release_info
-    from dialogs import show_message_dialog, show_error_dialog, \
-                        SelectFileDialog, SelectDirectoryDialog, \
-                        show_question_dialog
-    from terminal import Terminal
-    from treeview import TreeViewHandler
-
 # i18n: http://docs.python.org/3/library/gettext.html
+import gettext
 _ = gettext.translation('iso-constructor', fallback=True).gettext
 
 
@@ -40,7 +28,8 @@ class Constructor():
     ISO Constructor main class.
     '''
     def __init__(self):
-        self.share_dir = '/usr/share/iso-constructor'
+        self.script_dir = abspath(dirname(__file__))
+        self.share_dir = self.script_dir.replace('lib', 'share')
         self.chroot_script = join(self.share_dir, "chroot-dir.sh")
         self.user_app_dir = join(get_user_home(), ".iso-constructor")
         self.log_file = join(self.user_app_dir, 'iso-constructor.log')
@@ -204,7 +193,7 @@ class Constructor():
             toggle_col_nr=0, value_col_nr=2)
         if selected:
             for path in selected:
-                answer = show_question_dialog(self.remove_text,
+                answer = question_dialog(self.remove_text,
                                             _("Are you sure you want to remove "
                                             "the selected distribution from the list?\n"
                                             "(This will not remove the directory and its data)"))
@@ -283,7 +272,7 @@ class Constructor():
             toggle_col_nr=0, value_col_nr=2)
         if selected:
             self.enable_gui_elements(False)
-            show_message_dialog(self.test_iso_text,
+            message_dialog(self.test_iso_text,
                                 f"\n{self.test_qemo_text}")
             # Loop through selected distributions
             for path in selected:
@@ -292,8 +281,7 @@ class Constructor():
                         self.log(f'> Start testing ISO: {path}/{iso_path}')
 
                         # Start qemu to test the selected ISO
-                        shell_exec(
-                            command=f'iso-constructor -t "{path}"', wait=True)
+                        shell_exec(command=f'iso-constructor -t "{path}"', wait=True)
             self.enable_gui_elements(True)
 
         if exists(self.qemu_img):
@@ -305,7 +293,7 @@ class Constructor():
         '''
         if exists(self.qemu_img):
             self.enable_gui_elements(False)
-            show_message_dialog(self.test_img_text,
+            message_dialog(self.test_img_text,
                                 f"\n{self.test_qemo_text}")
             # Start qemu to test the selected ISO
             shell_exec(command='iso-constructor -i')
@@ -409,18 +397,19 @@ class Constructor():
             makedirs(self.dir)
 
         if not exists(self.dir):
-            show_error_dialog(title,
+            error_dialog(title,
                               _(f"Could not create directory {self.dir}: exiting"))
         else:
             self.window_adddistro.hide()
             if self.iso != "":
                 if not exists(self.iso):
-                    show_message_dialog(self.btn_save.get_label(),
+                    message_dialog(self.btn_save.get_label(),
                                         _(f"The path to the ISO file does not exist:\n{self.iso}"))
                     return
                 if listdir(self.dir):
-                    answer = show_question_dialog(self.btn_save.get_label(),
-                                                  _(f"The destination directory is not empty.\nAre you sure you want to overwrite all data in {self.dir}?"))
+                    answer = question_dialog(self.btn_save.get_label(),
+                            _("The destination directory is not empty.\n" \
+                             f"Are you sure you want to overwrite all data in {self.dir}?"))
                     if not answer:
                         return
 
@@ -665,18 +654,3 @@ class Constructor():
         if lang == '':
             lang = 'en'
         return lang
-
-
-def main():
-    '''
-    Create an instance of our GTK application
-    '''
-    try:
-        Constructor()
-        Gtk.main()
-    except KeyboardInterrupt:
-        pass
-
-
-if __name__ == '__main__':
-    main()

@@ -1,6 +1,5 @@
-""" Module to provide a functionalities to a treeview """
-
 #!/usr/bin/env python3
+""" Module to provide a functionalities to a treeview """
 
 import os
 import gi
@@ -139,8 +138,10 @@ class TreeViewHandler(GObject.GObject):
                                 if os.path.isfile(val):
                                     if fixed_img_height:
                                         pb_img = GdkPixbuf.Pixbuf.new_from_file(val)
-                                        pb_img_width = pb_img.get_width() * (fixed_img_height / pb_img.get_height())
-                                        val = f'GdkPixbuf.Pixbuf.new_from_file("{val}").scale_simple({pb_img_width}, {fixed_img_height}, GdkPixbuf.InterpType.BILINEAR)'
+                                        pb_img_width = pb_img.get_width() * \
+                                                       (fixed_img_height / pb_img.get_height())
+                                        val = f'GdkPixbuf.Pixbuf.new_from_file("{val}").scale_simple({pb_img_width}, ' \
+                                              f'{fixed_img_height}, GdkPixbuf.InterpType.BILINEAR)'
                                     else:
                                         val = f'GdkPixbuf.Pixbuf.new_from_file("{val}")'
                                 else:

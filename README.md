@@ -59,7 +59,7 @@ Builds the ISO and creates a sha256 file.
 
 If you installed packages that are not in the repository but you want to keep installed you can edit the keep-packages file:
 
-cp -v /usr/share/iso-constructor/keep-packages ~/.iso-constructor/
+cp -v /usr/share/iso_constructor/keep-packages ~/.iso-constructor/
 
 Note: to keep all packages you can simply write an asterisk (*) in the keep-packages file.
 
@@ -79,9 +79,9 @@ Note: ISO Constructor is not able to update the .udeb packages. These need to be
 
 To customize/translate the Grub and Isolinux boot menus you can create and edit the templates in ~/.iso-constructor/:
 
-cp -v /usr/share/iso-constructor/grub-template ~/.iso-constructor/
+cp -v /usr/share/iso_constructor/grub-template ~/.iso-constructor/
 
-cp -v /usr/share/iso-constructor/isolinux-template ~/.iso-constructor/
+cp -v /usr/share/iso_constructor/isolinux-template ~/.iso-constructor/
 
 
 # FILES
@@ -96,13 +96,13 @@ cp -v /usr/share/iso-constructor/isolinux-template ~/.iso-constructor/
 :   When testing ISOs with Qemu, this file is generated.
 
 ~/.iso-constructor/keep-packages (optional)
-:   List of packages not in repository. Use /usr/share/iso-constructor/keep-packages as base.
+:   List of packages not in repository. Use /usr/share/iso_constructor/keep-packages as base.
 
 ~/.iso-constructor/grub-template (optional)
-:   Custom template for grub.cfg. Use /usr/share/iso-constructor/grub-template as base.
+:   Custom template for grub.cfg. Use /usr/share/iso_constructor/grub-template as base.
 
 ~/.iso-constructor/isolinux-template (optional)
-:   Custom template for isolinux.cfg. Use /usr/share/iso-constructor/isolinux-template as base.
+:   Custom template for isolinux.cfg. Use /usr/share/iso_constructor/isolinux-template as base.
 
 # AUTHOR
 

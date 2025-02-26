@@ -1,47 +1,52 @@
-""" Module providing general purpose functions """
-
 #!/usr/bin/env python3
+""" Module providing general purpose functions """
 
 import os
 import subprocess
 import re
+import numbers
+import pwd
 from os.path import expanduser, exists
 import apt
 
 
-def shell_exec_popen(command, kwargs={}):
-    ''' Execute command with subprocess arguments. '''
-    print(('Executing:', command))
-    return subprocess.Popen(command, shell=True,
-                            stdout=subprocess.PIPE, **kwargs)
+def shell_exec_popen(command, kwargs=None):
+    """ Execute a command with Popen (returns the returncode attribute) """
+    if not kwargs:
+        kwargs = {}
+    print((f"Executing: {command}"))
+    # return subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, **kwargs)
+    return subprocess.Popen(command,
+                            shell=True,
+                            bufsize=0,
+                            stdout=subprocess.PIPE,
+                            universal_newlines=True,
+                            **kwargs)
 
 
 def shell_exec(command, wait=False):
-    ''' Execute command in shell '''
-    print(('Executing:', command))
+    """ Execute a command (returns the returncode attribute) """
+    print((f"Executing: {command}"))
     if wait:
         return subprocess.check_call(command, shell=True)
     return subprocess.call(command, shell=True)
 
 
-def getoutput(command):
-    ''' Get output from command. '''
+def getoutput(command, timeout=None):
+    """ Return command output (list) """
     try:
-        output = (subprocess.check_output(command, shell=True)
-                            .decode('utf-8')
-                            .strip()
-                            .replace('\r\n', '\n')
-                            .replace('\r', '\n')
-                            .split('\n'))
-    except Exception:
-        output = []
+        output = subprocess.check_output(
+            command, shell=True, timeout=timeout).decode('utf-8').strip().split('\n')
+    except Exception as detail:
+        print((f'getoutput exception: {detail}'))
+        output = ['']
     return output
 
 
-def chroot_exec(command, chroot_path):
-    ''' Run command in chroot environment'''
+def chroot_exec(command, target):
+    """ Excecute command in chroot """
     command = command.replace('"', "'").strip()  # FIXME
-    return shell_exec(f'chroot {chroot_path} /bin/sh -c "{command}"')
+    return shell_exec(f'chroot {target}/ /bin/sh -c "{command}"')
 
 
 def get_config_dict(file, key_value=re.compile(r'^\s*(\w+)\s*=\s*["\']?(.*?)["\']?\s*(#.*)?$')):
@@ -61,39 +66,53 @@ def get_config_dict(file, key_value=re.compile(r'^\s*(\w+)\s*=\s*["\']?(.*?)["\'
     return config_dict
 
 
-def get_package_version(package, candidate=False):
-    ''' Get the package version number.'''
-    version = ''
+def does_package_exist(package_name):
+    """ Check if a package exists """
     try:
-        cache = apt.Cache()
-        pkg = cache[package]
-        if candidate:
-            version = pkg.candidate.version
-        elif pkg.installed is not None:
-            version = pkg.installed.version
-    except Exception:
-        pass
-    return version
+        return bool(apt.Cache()[package_name])
+    except KeyError:
+        return False
 
 
-def str_to_nr(stringnr, to_int=False):
-    ''' Convert string to number.'''
-    number = 0
-    # Might be a int or float: convert to str
-    stringnr = str(stringnr).strip()
+def get_package_version(package_name, candidate=False):
+    """ Get package version (default=installed) """
+    if not does_package_exist(package_name=package_name):
+        return ''
+    if candidate:
+        return apt.Cache()[package_name].candidate.version
+    return apt.Cache()[package_name].installed.version
+
+
+def str_to_nr(value):
+    """ Convert string to number """
+    if isinstance(value, numbers.Number):
+        # Already numeric
+        return value
+
+    number = None
     try:
-        if to_int:
-            number = int(stringnr)
-        else:
-            number = float(stringnr)
+        number = int(value)
     except ValueError:
-        number = 0
+        try:
+            number = float(value)
+        except ValueError:
+            number = None
     return number
 
 
+def is_numeric(value):
+    """ Check if value is a number """
+    return bool(str_to_nr(value))
+
+
 def get_logged_user():
-    ''' Return current user.'''
-    return os.getlogin()
+    """ Get user name """
+    p = os.popen("logname", 'r')
+    user_name = p.readline().strip()
+    p.close()
+    if user_name == "":
+        user_name = pwd.getpwuid(os.getuid()).pw_name
+    return user_name
 
 
 def get_user_home():

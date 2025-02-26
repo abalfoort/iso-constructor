@@ -2,7 +2,7 @@
 
 if [ -z "$1" ] || [ "$1" == '-v' ] || [ "$1" == '--verbose' ]; then
     # Check if GUI is already started
-    if ! pgrep -f 'python3 '.*iso-constructor &>/dev/null; then
+    if ! pgrep -f 'python3 '.*iso_constructor &>/dev/null; then
         pkexec iso-constructor-pkexec $@
     fi
     exit 0
@@ -48,7 +48,7 @@ while getopts 'beituU:' OPT; do
             ;;
         i)
             # Test the Qemu image
-            sudo -u $(logname) /usr/share/iso-constructor/qemu-test.sh
+            sudo -u $(logname) /usr/share/iso_constructor/qemu-test.sh
             exit 0
             ;;
         t)
@@ -79,14 +79,14 @@ shift $(( OPTIND - 1 ))
 DISTPATH=${1?$( echo 'Missing distribution path.' )}
 
 # Path to chroot script
-CHROOT='/usr/share/iso-constructor/chroot-dir.sh'
+CHROOT='/usr/share/iso_constructor/chroot-dir.sh'
 
 if [ ! -z "$ISO" ]; then
     if [ ! -e "$ISO" ]; then
         echo "$ISO does not exist - exiting"
         exit 3
     fi
-    eval "sudo bash /usr/share/iso-constructor/unpack.sh \"$ISO\" \"$DISTPATH\""
+    eval "sudo bash /usr/share/iso_constructor/unpack.sh \"$ISO\" \"$DISTPATH\""
 fi
 
 # Check that it is a valid distribution path
@@ -100,15 +100,15 @@ if $EDIT; then
 fi
 
 if $TESTISO; then
-    sudo -u $(logname) /usr/share/iso-constructor/qemu-test.sh "$DISTPATH"
+    sudo -u $(logname) /usr/share/iso_constructor/qemu-test.sh "$DISTPATH"
 fi
 
 if $UPGRADE; then
-    sudo cp '/usr/share/iso-constructor/upgrade.sh' "$DISTPATH/root/"
+    sudo cp '/usr/share/iso_constructor/upgrade.sh' "$DISTPATH/root/"
     eval "sudo bash $CHROOT \"$DISTPATH/root\" \"bash /upgrade.sh\""
     sudo rm -f "$DISTPATH/root/upgrade.sh"
 fi
 
 if $BUILD; then
-    eval "sudo bash /usr/share/iso-constructor/build.sh \"$DISTPATH\""
+    eval "sudo bash /usr/share/iso_constructor/build.sh \"$DISTPATH\""
 fi
