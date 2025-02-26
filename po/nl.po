@@ -11,73 +11,83 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-16 10:36+0200\n"
+"POT-Creation-Date: 2025-02-24 19:52+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2023\n"
-"Language-Team: Dutch (https://www.transifex.com/abalfoort/teams/54212/nl/)\n"
+"Language-Team: Dutch (https://app.transifex.com/abalfoort/teams/54212/nl/)\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: iso-constructor/__init__.py:122
+#: usr/lib/iso_constructor/main.py:24
+msgid "Unexpected error"
+msgstr ""
+
+#: usr/lib/iso_constructor/main.py:25
+msgid ""
+"ISO Constructor has failed with the following unexpected error. Please "
+"submit a bug report!"
+msgstr ""
+
+#: usr/lib/iso_constructor/construcor.py:111
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: iso-constructor/__init__.py:123
+#: usr/lib/iso_constructor/construcor.py:112
 msgid "Test ISO in Qemu"
 msgstr "Test ISO in Qemu"
 
-#: iso-constructor/__init__.py:124
+#: usr/lib/iso_constructor/construcor.py:113
 msgid "Ctrl-Alt-F to exit full screen mode."
 msgstr "Ctrl-Alt-F om volledig scherm te verlaten."
 
-#: iso-constructor/__init__.py:125
+#: usr/lib/iso_constructor/construcor.py:114
 msgid "Test Qemu image"
 msgstr "Test Qemu image"
 
-#: iso-constructor/__init__.py:127
+#: usr/lib/iso_constructor/construcor.py:116
 msgid "Select all"
 msgstr "Selecteer alles"
 
-#: iso-constructor/__init__.py:128
+#: usr/lib/iso_constructor/construcor.py:117
 msgid "Add"
 msgstr "Toevoegen"
 
-#: iso-constructor/__init__.py:129
+#: usr/lib/iso_constructor/construcor.py:118
 msgid "View log file"
 msgstr "Logbestand bekijken"
 
-#: iso-constructor/__init__.py:131
+#: usr/lib/iso_constructor/construcor.py:120
 msgid "Edit"
 msgstr "Bewerken"
 
-#: iso-constructor/__init__.py:132
+#: usr/lib/iso_constructor/construcor.py:121
 msgid "Upgrade"
 msgstr "Upgrade"
 
-#: iso-constructor/__init__.py:133
+#: usr/lib/iso_constructor/construcor.py:122
 msgid "Build"
 msgstr "Bouwen"
 
-#: iso-constructor/__init__.py:134
+#: usr/lib/iso_constructor/construcor.py:123
 msgid "Help"
 msgstr "Help"
 
-#: iso-constructor/__init__.py:139
+#: usr/lib/iso_constructor/construcor.py:128
 msgid "Add Distribution"
 msgstr "Distributie toevoegen"
 
-#: iso-constructor/__init__.py:140
+#: usr/lib/iso_constructor/construcor.py:129
 msgid "ISO"
 msgstr "ISO"
 
-#: iso-constructor/__init__.py:142
+#: usr/lib/iso_constructor/construcor.py:131
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: iso-constructor/__init__.py:208
+#: usr/lib/iso_constructor/construcor.py:197
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -86,28 +96,28 @@ msgstr ""
 "verwijderen?\n"
 "(Dit zal de map met gegevens NIET verwijderen)"
 
-#: iso-constructor/__init__.py:375
+#: usr/lib/iso_constructor/construcor.py:363
 msgid "Select ISO file"
 msgstr "Selecteer ISO bestand"
 
-#: iso-constructor/__init__.py:389
+#: usr/lib/iso_constructor/construcor.py:377
 msgid "Select directory"
 msgstr "Selecteer map"
 
-#: iso-constructor/__init__.py:404
+#: usr/lib/iso_constructor/construcor.py:392
 msgid "Save existing working directory"
 msgstr "Bewaar bestaande werkmap"
 
-#: iso-constructor/__init__.py:406
+#: usr/lib/iso_constructor/construcor.py:394
 msgid "Unpack ISO and save"
 msgstr "ISO uitpakken en bewaren"
 
-#: iso-constructor/__init__.py:413
+#: usr/lib/iso_constructor/construcor.py:401
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Kon map {self.dir} niet maken: verlaten"
 
-#: iso-constructor/__init__.py:419
+#: usr/lib/iso_constructor/construcor.py:407
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -116,52 +126,47 @@ msgstr ""
 "Het pad naar het ISO bestand bestaat niet:\n"
 "{self.iso}"
 
-#: iso-constructor/__init__.py:423
-#, python-brace-format
-msgid ""
-"The destination directory is not empty.\n"
-"Are you sure you want to overwrite all data in {self.dir}?"
+#: usr/lib/iso_constructor/construcor.py:411
+msgid "The destination directory is not empty.\n"
 msgstr ""
-"De doeldirectory is niet leeg.\n"
-"Weet u zeker dat u alle data in {self.dir} wilt overschrijven?"
 
-#: iso-constructor/__init__.py:498
+#: usr/lib/iso_constructor/construcor.py:487
 msgid "Unpack ISO to directory"
 msgstr "ISO uitpakken naar map"
 
-#: iso-constructor/__init__.py:499
+#: usr/lib/iso_constructor/construcor.py:488
 msgid "Unpack & Save"
 msgstr "Uitpakken en bewaren"
 
-#: iso-constructor/__init__.py:507
+#: usr/lib/iso_constructor/construcor.py:496
 msgid "Work directory"
 msgstr "Werkmap"
 
-#: iso-constructor/__init__.py:508
+#: usr/lib/iso_constructor/construcor.py:497
 msgid "Save"
 msgstr "Bewaren"
 
-#: iso-constructor/__init__.py:519
+#: usr/lib/iso_constructor/construcor.py:508
 msgid "Select"
 msgstr "Selecteer"
 
-#: iso-constructor/__init__.py:519
+#: usr/lib/iso_constructor/construcor.py:508
 msgid "Distribution"
 msgstr "Distributie"
 
-#: iso-constructor/__init__.py:519
+#: usr/lib/iso_constructor/construcor.py:508
 msgid "Working directory"
 msgstr "Werkdirectory"
 
-#: data/iso-constructor.desktop.in.h:1
+#: usr/share/applications/iso-constructor.desktop.in.h:1
 msgid "ISO Constructor"
 msgstr "ISO Constructor"
 
-#: data/iso-constructor.desktop.in.h:2
+#: usr/share/applications/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"
 msgstr "Tool om Debian ISO's te bouwen en te onderhouden"
 
 #. (itstool) path: action/message
-#: data/org.debian.pkexec.iso-constructor.policy:8
+#: usr/share/polkit-1/actions/org.debian.pkexec.iso-constructor.policy:8
 msgid "Authentication is required to run ISO Constructor"
 msgstr "Verificatie is vereist om ISO Constructor uit te voeren"

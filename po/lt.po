@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022
+# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2020
 # Moo, 2023
 #
 #, fuzzy
@@ -12,10 +12,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-16 10:36+0200\n"
+"POT-Creation-Date: 2025-02-24 19:52+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Moo, 2023\n"
-"Language-Team: Lithuanian (https://www.transifex.com/abalfoort/teams/54212/"
+"Language-Team: Lithuanian (https://app.transifex.com/abalfoort/teams/54212/"
 "lt/)\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -25,63 +25,73 @@ msgstr ""
 "11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
 "1 : n % 1 != 0 ? 2: 3);\n"
 
-#: iso-constructor/__init__.py:122
+#: usr/lib/iso_constructor/main.py:24
+msgid "Unexpected error"
+msgstr ""
+
+#: usr/lib/iso_constructor/main.py:25
+msgid ""
+"ISO Constructor has failed with the following unexpected error. Please "
+"submit a bug report!"
+msgstr ""
+
+#: usr/lib/iso_constructor/construcor.py:111
 msgid "Remove"
 msgstr "Šalinti"
 
-#: iso-constructor/__init__.py:123
+#: usr/lib/iso_constructor/construcor.py:112
 msgid "Test ISO in Qemu"
 msgstr "Išbandyti ISO atvaizdį programoje Qemu"
 
-#: iso-constructor/__init__.py:124
+#: usr/lib/iso_constructor/construcor.py:113
 msgid "Ctrl-Alt-F to exit full screen mode."
 msgstr "Paspauskite Ctrl-Alt-F norėdami išeiti iš viso ekrano veiksenos."
 
-#: iso-constructor/__init__.py:125
+#: usr/lib/iso_constructor/construcor.py:114
 msgid "Test Qemu image"
 msgstr "Išbandyti Qemu atvaizdį"
 
-#: iso-constructor/__init__.py:127
+#: usr/lib/iso_constructor/construcor.py:116
 msgid "Select all"
 msgstr "Pažymėti visus"
 
-#: iso-constructor/__init__.py:128
+#: usr/lib/iso_constructor/construcor.py:117
 msgid "Add"
 msgstr "Pridėti"
 
-#: iso-constructor/__init__.py:129
+#: usr/lib/iso_constructor/construcor.py:118
 msgid "View log file"
 msgstr "Rodyti žurnalo failą"
 
-#: iso-constructor/__init__.py:131
+#: usr/lib/iso_constructor/construcor.py:120
 msgid "Edit"
 msgstr "Keisti"
 
-#: iso-constructor/__init__.py:132
+#: usr/lib/iso_constructor/construcor.py:121
 msgid "Upgrade"
 msgstr "Naujinti"
 
-#: iso-constructor/__init__.py:133
+#: usr/lib/iso_constructor/construcor.py:122
 msgid "Build"
 msgstr "Sukurti"
 
-#: iso-constructor/__init__.py:134
+#: usr/lib/iso_constructor/construcor.py:123
 msgid "Help"
 msgstr "Žinynas"
 
-#: iso-constructor/__init__.py:139
+#: usr/lib/iso_constructor/construcor.py:128
 msgid "Add Distribution"
 msgstr "Pridėti distribuciją"
 
-#: iso-constructor/__init__.py:140
+#: usr/lib/iso_constructor/construcor.py:129
 msgid "ISO"
 msgstr "ISO"
 
-#: iso-constructor/__init__.py:142
+#: usr/lib/iso_constructor/construcor.py:131
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: iso-constructor/__init__.py:208
+#: usr/lib/iso_constructor/construcor.py:197
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -89,28 +99,28 @@ msgstr ""
 "Ar tikrai norite pašalinti pasirinktą distribuciją iš sąrašo?\n"
 "(Tai nepašalins katalogo ir jame esančių duomenų)"
 
-#: iso-constructor/__init__.py:375
+#: usr/lib/iso_constructor/construcor.py:363
 msgid "Select ISO file"
 msgstr "Pasirinkite ISO"
 
-#: iso-constructor/__init__.py:389
+#: usr/lib/iso_constructor/construcor.py:377
 msgid "Select directory"
 msgstr "Pasirinkite katalogą"
 
-#: iso-constructor/__init__.py:404
+#: usr/lib/iso_constructor/construcor.py:392
 msgid "Save existing working directory"
 msgstr "Įrašyti esamą darbinį katalogą"
 
-#: iso-constructor/__init__.py:406
+#: usr/lib/iso_constructor/construcor.py:394
 msgid "Unpack ISO and save"
 msgstr "Išpakuoti ISO ir įrašyti"
 
-#: iso-constructor/__init__.py:413
+#: usr/lib/iso_constructor/construcor.py:401
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Nepavyko sukurti katalogo {self.dir}: išeinama"
 
-#: iso-constructor/__init__.py:419
+#: usr/lib/iso_constructor/construcor.py:407
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -119,52 +129,47 @@ msgstr ""
 "Kelio į ISO failą nėra:\n"
 "{self.iso}"
 
-#: iso-constructor/__init__.py:423
-#, python-brace-format
-msgid ""
-"The destination directory is not empty.\n"
-"Are you sure you want to overwrite all data in {self.dir}?"
+#: usr/lib/iso_constructor/construcor.py:411
+msgid "The destination directory is not empty.\n"
 msgstr ""
-"Paskirties katalogas nėra tuščias.\n"
-"Ar tikrai norite perrašyti visus duomenis, kurie yra {self.dir}?"
 
-#: iso-constructor/__init__.py:498
+#: usr/lib/iso_constructor/construcor.py:487
 msgid "Unpack ISO to directory"
 msgstr "Išpakuoti ISO į katalogą"
 
-#: iso-constructor/__init__.py:499
+#: usr/lib/iso_constructor/construcor.py:488
 msgid "Unpack & Save"
 msgstr "Išpakuoti ir įrašyti"
 
-#: iso-constructor/__init__.py:507
+#: usr/lib/iso_constructor/construcor.py:496
 msgid "Work directory"
 msgstr "Darbo katalogas"
 
-#: iso-constructor/__init__.py:508
+#: usr/lib/iso_constructor/construcor.py:497
 msgid "Save"
 msgstr "Įrašyti"
 
-#: iso-constructor/__init__.py:519
+#: usr/lib/iso_constructor/construcor.py:508
 msgid "Select"
 msgstr "Pasirinkti"
 
-#: iso-constructor/__init__.py:519
+#: usr/lib/iso_constructor/construcor.py:508
 msgid "Distribution"
 msgstr "Distribucija"
 
-#: iso-constructor/__init__.py:519
+#: usr/lib/iso_constructor/construcor.py:508
 msgid "Working directory"
 msgstr "Darbinis katalogas"
 
-#: data/iso-constructor.desktop.in.h:1
+#: usr/share/applications/iso-constructor.desktop.in.h:1
 msgid "ISO Constructor"
 msgstr "ISO konstruktorius"
 
-#: data/iso-constructor.desktop.in.h:2
+#: usr/share/applications/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"
 msgstr "Debian ISO atvaizdžių kūrimo ir priežiūros įrankis"
 
 #. (itstool) path: action/message
-#: data/org.debian.pkexec.iso-constructor.policy:8
+#: usr/share/polkit-1/actions/org.debian.pkexec.iso-constructor.policy:8
 msgid "Authentication is required to run ISO Constructor"
 msgstr "Norint paleisti ISO konstruktorių, reikia nustatyti tapatybę"

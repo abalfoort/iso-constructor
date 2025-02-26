@@ -7,7 +7,7 @@
 # anechampenois <analogic@zaclys.net>, 2020
 # Kyodev, 2020
 # Gaïus Baltar <ichbin1199@gmail.com>, 2020
-# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2023
+# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022
 # ilu lu, 2023
 #
 #, fuzzy
@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-22 14:32+0200\n"
+"POT-Creation-Date: 2025-02-24 19:52+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: ilu lu, 2023\n"
 "Language-Team: French (https://app.transifex.com/abalfoort/teams/54212/fr/)\n"
@@ -26,63 +26,73 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % "
 "1000000 == 0 ? 1 : 2;\n"
 
-#: iso-constructor/__init__.py:122
+#: usr/lib/iso_constructor/main.py:24
+msgid "Unexpected error"
+msgstr ""
+
+#: usr/lib/iso_constructor/main.py:25
+msgid ""
+"ISO Constructor has failed with the following unexpected error. Please "
+"submit a bug report!"
+msgstr ""
+
+#: usr/lib/iso_constructor/construcor.py:111
 msgid "Remove"
 msgstr "Retirer"
 
-#: iso-constructor/__init__.py:123
+#: usr/lib/iso_constructor/construcor.py:112
 msgid "Test ISO in Qemu"
 msgstr "Test ISO dans Qemu"
 
-#: iso-constructor/__init__.py:124
+#: usr/lib/iso_constructor/construcor.py:113
 msgid "Ctrl-Alt-F to exit full screen mode."
 msgstr "Ctrl-Alt-F pour quitter le mode plein écran."
 
-#: iso-constructor/__init__.py:125
+#: usr/lib/iso_constructor/construcor.py:114
 msgid "Test Qemu image"
 msgstr "Test de l'image Qemu"
 
-#: iso-constructor/__init__.py:127
+#: usr/lib/iso_constructor/construcor.py:116
 msgid "Select all"
 msgstr "Tout sélectionner"
 
-#: iso-constructor/__init__.py:128
+#: usr/lib/iso_constructor/construcor.py:117
 msgid "Add"
 msgstr "Ajouter"
 
-#: iso-constructor/__init__.py:129
+#: usr/lib/iso_constructor/construcor.py:118
 msgid "View log file"
 msgstr "Voir le fichier de journalisation"
 
-#: iso-constructor/__init__.py:131
+#: usr/lib/iso_constructor/construcor.py:120
 msgid "Edit"
 msgstr "Éditer"
 
-#: iso-constructor/__init__.py:132
+#: usr/lib/iso_constructor/construcor.py:121
 msgid "Upgrade"
 msgstr "Mettre à jour"
 
-#: iso-constructor/__init__.py:133
+#: usr/lib/iso_constructor/construcor.py:122
 msgid "Build"
 msgstr "Construire"
 
-#: iso-constructor/__init__.py:134
+#: usr/lib/iso_constructor/construcor.py:123
 msgid "Help"
 msgstr "Aide"
 
-#: iso-constructor/__init__.py:139
+#: usr/lib/iso_constructor/construcor.py:128
 msgid "Add Distribution"
 msgstr "Ajouter une distribution"
 
-#: iso-constructor/__init__.py:140
+#: usr/lib/iso_constructor/construcor.py:129
 msgid "ISO"
 msgstr "ISO"
 
-#: iso-constructor/__init__.py:142
+#: usr/lib/iso_constructor/construcor.py:131
 msgid "Cancel"
 msgstr "Annuler"
 
-#: iso-constructor/__init__.py:208
+#: usr/lib/iso_constructor/construcor.py:197
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -91,28 +101,28 @@ msgstr ""
 "liste?\n"
 "(Cela n'effacera pas le répertoire ni les données qu'il contient)"
 
-#: iso-constructor/__init__.py:375
+#: usr/lib/iso_constructor/construcor.py:363
 msgid "Select ISO file"
 msgstr "Choisir l'ISO"
 
-#: iso-constructor/__init__.py:389
+#: usr/lib/iso_constructor/construcor.py:377
 msgid "Select directory"
 msgstr "Choisir le répertoire"
 
-#: iso-constructor/__init__.py:404
+#: usr/lib/iso_constructor/construcor.py:392
 msgid "Save existing working directory"
 msgstr "Enregistrer le répertoire de travail existant"
 
-#: iso-constructor/__init__.py:406
+#: usr/lib/iso_constructor/construcor.py:394
 msgid "Unpack ISO and save"
 msgstr "Dépaqueter l'ISO et enregistrer"
 
-#: iso-constructor/__init__.py:413
+#: usr/lib/iso_constructor/construcor.py:401
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Impossible de créer le répertoire {self.dir}: arrêt du programme"
 
-#: iso-constructor/__init__.py:419
+#: usr/lib/iso_constructor/construcor.py:407
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -121,52 +131,47 @@ msgstr ""
 "Le chemin vers le fichier ISO n'existe pas:\n"
 "{self.iso}"
 
-#: iso-constructor/__init__.py:423
-#, python-brace-format
-msgid ""
-"The destination directory is not empty.\n"
-"Are you sure you want to overwrite all data in {self.dir}?"
+#: usr/lib/iso_constructor/construcor.py:411
+msgid "The destination directory is not empty.\n"
 msgstr ""
-"Le répertoire cible n'est pas vide.\n"
-"Etes-vous certain de vouloir écraser les données contenues dans {self.dir}?"
 
-#: iso-constructor/__init__.py:498
+#: usr/lib/iso_constructor/construcor.py:487
 msgid "Unpack ISO to directory"
 msgstr "Décompresser l'ISO dans le répertoire"
 
-#: iso-constructor/__init__.py:499
+#: usr/lib/iso_constructor/construcor.py:488
 msgid "Unpack & Save"
 msgstr "Décompresser et enregistrer"
 
-#: iso-constructor/__init__.py:507
+#: usr/lib/iso_constructor/construcor.py:496
 msgid "Work directory"
 msgstr "Répertoire de travail"
 
-#: iso-constructor/__init__.py:508
+#: usr/lib/iso_constructor/construcor.py:497
 msgid "Save"
 msgstr "Enregistrer"
 
-#: iso-constructor/__init__.py:519
+#: usr/lib/iso_constructor/construcor.py:508
 msgid "Select"
 msgstr "Choisir"
 
-#: iso-constructor/__init__.py:519
+#: usr/lib/iso_constructor/construcor.py:508
 msgid "Distribution"
 msgstr "Distribution"
 
-#: iso-constructor/__init__.py:519
+#: usr/lib/iso_constructor/construcor.py:508
 msgid "Working directory"
 msgstr "Répertoire de travail"
 
-#: data/iso-constructor.desktop.in.h:1
+#: usr/share/applications/iso-constructor.desktop.in.h:1
 msgid "ISO Constructor"
 msgstr "ISO Constructor"
 
-#: data/iso-constructor.desktop.in.h:2
+#: usr/share/applications/iso-constructor.desktop.in.h:2
 msgid "Tool to build and maintain Debian ISOs"
 msgstr "Outil de construction et de maintenance des ISOs Debian"
 
 #. (itstool) path: action/message
-#: data/org.debian.pkexec.iso-constructor.policy:8
+#: usr/share/polkit-1/actions/org.debian.pkexec.iso-constructor.policy:8
 msgid "Authentication is required to run ISO Constructor"
 msgstr "l'authentification est nécessaire pour exécuter ISO Constructor"
