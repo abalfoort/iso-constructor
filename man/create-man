@@ -1,4 +1,5 @@
 #!/bin/bash
 
 pandoc -s -t man iso-constructor.1.md -o iso-constructor.1
+gzip -fk iso-constructor.1
 man ./iso-constructor.1
