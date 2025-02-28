@@ -1,20 +1,10 @@
 #!/usr/bin/env python3
 """ Dialogs classes """
 
-from os.path import exists
-
 # Make sure the right Gtk version is loaded
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GLib, GdkPixbuf
-
-
-DIALOG_TYPES = {
-    Gtk.MessageType.INFO: 'MessageDialog',
-    Gtk.MessageType.ERROR: 'ErrorDialog',
-    Gtk.MessageType.WARNING: 'WarningDialog',
-    Gtk.MessageType.QUESTION: 'QuestionDialog',
-}
 
 
 class Dialog(Gtk.MessageDialog):
@@ -27,73 +17,77 @@ class Dialog(Gtk.MessageDialog):
         Gtk (MessageDialog): inherited
     """
     def __init__(self, message_type, buttons, title, text,
-                 text2=None, parent=None, safe=True, icon=None):
-        parent = parent or next((w for w in Gtk.Window.list_toplevels() if w.get_title()), None)
-        Gtk.MessageDialog.__init__(self,
-                                   parent=None,
-                                   modal=True,
-                                   destroy_with_parent=True,
-                                   message_type=message_type,
-                                   buttons=buttons,
-                                   text=text)
+                 text2=None, is_threaded=False):
+
+        # Search for parent window
+        parent = next((w for w in Gtk.Window.list_toplevels() if w.get_title()), None)
+
+        # Initialize the dialog object
+        super().__init__(self,
+                         parent=parent,
+                         message_type=message_type,
+                         buttons=buttons,
+                         text=text)
+
+        # Set position
         self.set_position(Gtk.WindowPosition.CENTER)
-        if parent is not None:
-            self.set_icon(parent.get_icon())
-        elif icon is not None:
-            if exists(icon):
-                self.set_icon_from_file(icon)
-            else:
-                self.set_icon_name(icon)
+        # Set title (window title)
         self.set_title(title)
-        self.set_markup(text)
-        self.desc = text[:30] + ' ...' if len(text) > 30 else text
-        self.dialog_type = DIALOG_TYPES[message_type]
+        # Set icon
+        if parent:
+            self.set_icon(parent.get_icon())
+        # Set secondary text - sets text to text title (bold)
         if text2:
             self.format_secondary_markup(text2)
-        self.safe = safe
-        if not safe:
+
+        self.is_threaded = is_threaded
+        self.has_parent = bool(parent)
+
+        # Connect the response action when running in a threaded process
+        if self.is_threaded:
             self.connect('response', self._handle_clicked)
 
     def _handle_clicked(self, *args):
         self.destroy()
 
-    def show(self):
-        if self.safe:
+    def show_dialog(self):
+        """ Show the dialog """
+        if not self.is_threaded:
             return self._do_show_dialog()
-        else:
-            return GLib.timeout_add(0, self._do_show_dialog)
+        # Use GLib to show the dialog when called from a threaded process
+        return GLib.timeout_add(0, self._do_show_dialog)
 
     def _do_show_dialog(self):
         """ Show the dialog.
             Returns True if user response was confirmatory.
         """
-        #print(('Showing {0.dialog_type} ({0.desc})'.format(self)))
-        try:
-            return self.run() in (Gtk.ResponseType.YES,
-                                  Gtk.ResponseType.APPLY,
-                                  Gtk.ResponseType.OK,
-                                  Gtk.ResponseType.ACCEPT)
-        finally:
-            if self.safe:
-                self.destroy()
-            else:
-                return False
+        response = self.run() in (Gtk.ResponseType.YES,
+                                    Gtk.ResponseType.APPLY,
+                                    Gtk.ResponseType.OK,
+                                    Gtk.ResponseType.ACCEPT)
+        self.destroy()
+
+        return response if not self.is_threaded else False
 
 
-def message_dialog(*args):
-    return Dialog(Gtk.MessageType.INFO, Gtk.ButtonsType.OK, *args).show()
+def message_dialog(*args, **kwargs):
+    """ Show message dialog """
+    return Dialog(Gtk.MessageType.INFO, Gtk.ButtonsType.OK, *args, **kwargs).show_dialog()
 
 
-def question_dialog(*args):
-    return Dialog(Gtk.MessageType.QUESTION, Gtk.ButtonsType.YES_NO, *args).show()
+def question_dialog(*args, **kwargs):
+    """ Show question dialog """
+    return Dialog(Gtk.MessageType.QUESTION, Gtk.ButtonsType.YES_NO, *args, **kwargs).show_dialog()
 
 
-def warning_dialog(*args):
-    return Dialog(Gtk.MessageType.WARNING, Gtk.ButtonsType.OK, *args).show()
+def warning_dialog(*args, **kwargs):
+    """ Show warning dialog """
+    return Dialog(Gtk.MessageType.WARNING, Gtk.ButtonsType.OK, *args, **kwargs).show_dialog()
 
 
-def error_dialog(*args):
-    return Dialog(Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, *args).show()
+def error_dialog(*args, **kwargs):
+    """ Show error dialog """
+    return Dialog(Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, *args, **kwargs).show_dialog()
 
 
 class CustomQuestionDialog(Gtk.Dialog):
@@ -113,7 +107,8 @@ class CustomQuestionDialog(Gtk.Dialog):
         self.width = width
         self.height = height
 
-    def show(self):
+    def show_dialog(self):
+        """ Show the question dialog """
         dialog = Gtk.Dialog(title=self.title,
                             parent=self.parent,
                             modal=True,
@@ -131,19 +126,17 @@ class CustomQuestionDialog(Gtk.Dialog):
         buttons = buttonbox.get_children()
         dialog.set_focus(buttons[0])
 
-        dialog.vbox.pack_start(self.my_object, True, True, 0)
+        box = dialog.get_content_area()
+        box.pack_start(self.my_object, True, True, 0)
         dialog.show_all()
 
         answer = dialog.run()
-        if answer == Gtk.ResponseType.OK:
-            return_value = True
-        else:
-            return_value = False
+        return_value = answer == Gtk.ResponseType.OK
         dialog.destroy()
         return return_value
 
 
-class SelectFileDialog(object):
+class SelectFileDialog():
     """Show select file dialog
     You can pass a Gtk.FileFilter object.
     Use add_mime_type, and add_pattern.
@@ -165,6 +158,7 @@ class SelectFileDialog(object):
                 self.is_mages = True
 
     def show(self):
+        """ Show the select file dialog """
         file_path = None
         image = Gtk.Image()
 
@@ -179,8 +173,8 @@ class SelectFileDialog(object):
                 valid_preview = False
             dialog.set_preview_widget_active(valid_preview)
 
-        dialog = Gtk.FileChooserDialog(title=self.title, 
-                                       parent=self.parent, 
+        dialog = Gtk.FileChooserDialog(title=self.title,
+                                       parent=self.parent,
                                        action=Gtk.FileChooserAction.OPEN)
         dialog.add_buttons(Gtk.STOCK_CANCEL,
                            Gtk.ResponseType.CANCEL,
@@ -204,7 +198,7 @@ class SelectFileDialog(object):
         return file_path
 
 
-class SelectImageDialog(object):
+class SelectImageDialog():
     """Select image dialog
 
     Args:
@@ -216,6 +210,7 @@ class SelectImageDialog(object):
         self.parent = parent
 
     def show(self):
+        """ Show the select file dialog """
         fle_filter = Gtk.FileFilter()
         fle_filter.set_name("Images")
         fle_filter.add_mime_type("image/png")
@@ -230,7 +225,7 @@ class SelectImageDialog(object):
         return fdg.show()
 
 
-class SelectDirectoryDialog(object):
+class SelectDirectoryDialog():
     """Select directory dialog
 
     Args:
@@ -242,9 +237,10 @@ class SelectDirectoryDialog(object):
         self.parent = parent
 
     def show(self):
+        """ Show the select directory dialog """
         directory = None
-        dialog = Gtk.FileChooserDialog(title=self.title, 
-                                       parent=self.parent, 
+        dialog = Gtk.FileChooserDialog(title=self.title,
+                                       parent=self.parent,
                                        action=Gtk.FileChooserAction.SELECT_FOLDER)
         dialog.add_buttons(Gtk.STOCK_CANCEL,
                            Gtk.ResponseType.CANCEL,
@@ -268,10 +264,12 @@ class InputDialog(Gtk.MessageDialog):
     """
     def __init__(self, title, text, text2=None, parent=None, default_value='', is_password=False):
         parent = parent or next((w for w in Gtk.Window.list_toplevels() if w.get_title()), None)
-
-        Gtk.MessageDialog.__init__(self, parent=parent,
-                                   modal=True,
-                                   destroy_with_parent=True,
+        modal = bool(parent)
+        Gtk.MessageDialog.__init__(self,
+                                   transient_for=self,
+                                   parent=parent,
+                                   modal=modal,
+                                   destroy_with_parent=modal,
                                    message_type=Gtk.MessageType.QUESTION,
                                    buttons=Gtk.ButtonsType.OK,
                                    text=text)
@@ -291,24 +289,21 @@ class InputDialog(Gtk.MessageDialog):
         entry.connect("activate",
                       lambda ent, dlg, resp: dlg.response(resp),
                       self, Gtk.ResponseType.OK)
-        self.vbox.pack_end(entry, True, True, 0)
-        self.vbox.show_all()
+        box = self.get_content_area()
+        box.pack_end(entry, True, True, 0)
+        box.show_all()
         self.entry = entry
 
         self.set_default_response(Gtk.ResponseType.OK)
 
     def set_value(self, text):
+        """ Set text with value """
         self.entry.set_text(text)
 
-    def show(self):
-        try:
-            result = self.run()
-            if result == Gtk.ResponseType.OK:
-                return self.entry.get_text().strip()
-            else:
-                return ''
-        except Exception as detail:
-            print((f">> InputDialog error: {detail}"))
-            return ''
-        finally:
-            self.destroy()
+    def show_dialog(self):
+        """ Show the input dialog """
+        text = ''
+        if self.run() == Gtk.ResponseType.OK:
+            text = self.entry.get_text().strip()
+        self.destroy()
+        return text
