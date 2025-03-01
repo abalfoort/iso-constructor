@@ -1,3 +1,9 @@
+iso-constructor (4.3.3) stable; urgency=low
+
+  * Use transient_for in dialogs init
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 01 Mar 2025 12:04:33 +0100
+
 iso-constructor (4.3.2) stable; urgency=low
 
   * Fix dialogs.py always returning False
