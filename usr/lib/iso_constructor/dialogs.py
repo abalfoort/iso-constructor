@@ -23,8 +23,7 @@ class Dialog(Gtk.MessageDialog):
         parent = next((w for w in Gtk.Window.list_toplevels() if w.get_title()), None)
 
         # Initialize the dialog object
-        super().__init__(self,
-                         parent=parent,
+        super().__init__(transient_for=parent,
                          message_type=message_type,
                          buttons=buttons,
                          text=text)
@@ -62,9 +61,9 @@ class Dialog(Gtk.MessageDialog):
             Returns True if user response was confirmatory.
         """
         response = self.run() in (Gtk.ResponseType.YES,
-                                    Gtk.ResponseType.APPLY,
-                                    Gtk.ResponseType.OK,
-                                    Gtk.ResponseType.ACCEPT)
+                                  Gtk.ResponseType.APPLY,
+                                  Gtk.ResponseType.OK,
+                                  Gtk.ResponseType.ACCEPT)
         self.destroy()
 
         return response if not self.is_threaded else False
