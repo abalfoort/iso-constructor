@@ -1,3 +1,15 @@
+iso-constructor (4.3.5) stable; urgency=low
+
+  * Create qemu share of user home directory
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 12 Mar 2025 12:52:03 +0100
+
+iso-constructor (4.3.4) stable; urgency=low
+
+  * Improve qemu support
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sun, 02 Mar 2025 21:47:45 +0100
+
 iso-constructor (4.3.3) stable; urgency=low
 
   * Use transient_for in dialogs init
