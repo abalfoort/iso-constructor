@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-25 13:32+0100\n"
+"POT-Creation-Date: 2025-03-12 18:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,16 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: usr/lib/iso_constructor/main.py:24
-msgid "Unexpected error"
-msgstr ""
-
-#: usr/lib/iso_constructor/main.py:25
-msgid ""
-"ISO Constructor has failed with the following unexpected error. Please "
-"submit a bug report!"
-msgstr ""
 
 #: usr/lib/iso_constructor/construcor.py:111
 msgid "Remove"
@@ -147,6 +137,16 @@ msgstr ""
 
 #: usr/lib/iso_constructor/construcor.py:508
 msgid "Working directory"
+msgstr ""
+
+#: usr/lib/iso_constructor/main.py:24
+msgid "Unexpected error"
+msgstr ""
+
+#: usr/lib/iso_constructor/main.py:25
+msgid ""
+"ISO Constructor has failed with the following unexpected error. Please "
+"submit a bug report!"
 msgstr ""
 
 #: usr/share/applications/iso-constructor.desktop.in.h:1
