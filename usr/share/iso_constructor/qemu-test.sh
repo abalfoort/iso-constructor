@@ -1,6 +1,10 @@
 #!/bin/bash
 
-HDQCOW="$HOME/.iso-constructor/qemu.qcow2"
+MACHINE_NAME="SolydXK"
+HDQCOW="$HOME/.iso-constructor/${MACHINE_NAME}.qcow2"
+OVMF_CODE="/usr/share/OVMF/OVMF_CODE_4M.ms.fd"
+OVMF_VARS_ORIG="/usr/share/OVMF/OVMF_VARS_4M.ms.fd"
+OVMF_VARS="$HOME/.iso-constructor/$(basename "${OVMF_VARS_ORIG}")"
 DISTPATH=$1
 
 if [ $UID -eq 0 ]; then
@@ -10,6 +14,10 @@ fi
 
 if [ ! -z "$DISTPATH" ]; then
     TISO=$(ls "$DISTPATH"/*.iso | head -n 1)
+    if [ ! -e "${TISO}" ]; then
+        echo "Cannot find ISO file ${TISO}"
+        exit 2
+    fi
 fi
 
 if [ -z "$(which qemu-system-x86_64)" ]; then
@@ -17,66 +25,91 @@ if [ -z "$(which qemu-system-x86_64)" ]; then
     exit 3
 fi
 
-OVMF=$(dpkg -S OVMF.fd | head -n 1 | cut -d' ' -f 2)
-if [ -z "$OVMF" ]; then
-    echo "Cannot find OVMF.fd - exiting"
+if [ ! -e "${OVMF_VARS}" ] && [ -e "${OVMF_VARS_ORIG}" ]; then
+    cp "${OVMF_VARS_ORIG}" "${OVMF_VARS}"
+fi
+
+if [ ! -e "${OVMF_CODE}" ] || [ ! -e ${OVMF_VARS} ]; then
+    echo "Cannot find OVMF files - exiting"
     exit 4
 fi
 
 # Get memory to use
 MEM=2
 MEMKB=$(grep MemTotal /proc/meminfo | awk '{print $2}')
-MEMGB=$(($MEMKB/1024/1024))
-if [ $MEMGB -lt 4 ]; then
+MEMGB=$((${MEMKB}/1024/1024))
+if ((${MEMGB}<=4)); then
     echo "Not enough RAM (at least 4GB) - exiting"
     exit 5
 fi
-if [ $MEMGB -gt 8 ]; then
-    MEM=4
-fi
-if [ $MEMGB -gt 16 ]; then
-    MEM=8
-fi
+((${MEMGB}>=8)) && MEM=4
+((${MEMGB}>=16)) && MEM=8
+((${MEMGB}>=32)) && MEM=16
 
-# Check audio device
-HDA=$(qemu-system-x86_64 -device help | grep hda)
-AUDIODEV=$(qemu-system-x86_64 -device help | grep -i audio | head -n 1 | cut -d'"' -f 2)
-if [ ! -z "$AUDIODEV" ]; then
-    #SRV=$(pactl info 2>/dev/null | grep -i 'Server String:' | cut -d' ' -f 3)
-    SRV="/run/user/$UID/pulse/native"
-    if [ -e "$SRV" ]; then
-        #-device intel-hda -device hda-duplex,audiodev=pa1
-        AUDIO="-audiodev id=pa1,driver=pa,server=$SRV -device $AUDIODEV,audiodev=pa1"
-    fi
+# Get nr of CPUs to use
+CPU=1
+TCPU=$(grep -c ^processor /proc/cpuinfo)
+UCPU=$(($TCPU/2))
+if ((${UCPU}<2)); then
+    echo "Just one CPU available - exiting"
+    exit 6
 fi
+((${UCPU}>=4)) && CPU=2
+((${UCPU}>=8)) && CPU=4
+((${UCPU}>=16)) && CPU=8
 
 # Create image
-HDIMG="$HOME/.iso-constructor/qemu.img"
-if [ -e "$HDIMG" ]; then
-    qemu-img convert -f raw -O qcow2 "$HDIMG" "$HDQCOW"
-    rm "$HDIMG"
-fi
-if [ ! -e "$HDQCOW" ]; then
+if [ ! -e "${HDQCOW}" ]; then
     # Check if 25G space available for 20G hd image
     AVAIL=$(df -k --output=avail "/tmp" | tail -n 1)
-    if [ $AVAIL -gt 26214400 ]; then
-        qemu-img create -f qcow2 $HDQCOW 20G
+    if [ ${AVAIL} -gt 26214400 ]; then
+        qemu-img create -f qcow2 ${HDQCOW} 20G
+    fi
+    if [ ! -e "${HDQCOW}" ]; then
+        echo "Cannot create ${HDQCOW}"
+        exit 7
     fi
 fi
-if [ -e "$HDQCOW" ]; then
-    HD="-drive file=\"$HDQCOW\",format=qcow2,media=disk,if=virtio"
+
+# Build the connected USB paramater
+USBS=$(lsblk -p -S -o NAME,TRAN | grep usb | awk '{print $1}')
+for USB in $USBS; do
+    IDSARRAY=( $(udevadm info --query=property --name=$USB --property=ID_VENDOR_ID --property=ID_MODEL_ID --value) )
+    if [ ${#IDSARRAY[@]} -eq 2 ]; then
+        USBDEVICE+="-device usb-host,vendorid=0x${IDSARRAY[1]},productid=0x${IDSARRAY[0]},id=usb${IDSARRAY[1]}${IDSARRAY[0]} "
+    fi
+done
+if [ ! -z "$USBDEVICE" ]; then
+    USBDEVICE="-device qemu-xhci $USBDEVICE"
 fi
 
-if [ ! -z "$TISO" ]; then
-    CDROM="-drive file=\"$TISO\",media=cdrom,if=none,id=cdrom1 -device ide-cd,drive=cdrom1,id=ide-cd1,bootindex=-1"
-fi
 
-if [ -z "$HD" ] && [ -z "$CDROM" ]; then
-    echo "Cannot find ISO or $HDQCOW"
-    exit 0
-fi
-
-# List VGA devices:
-# qemu-system-x86_64 -device help | grep -i vga
-echo "Test ISO command: qemu-system-x86_64 -m ${MEM}G -enable-kvm $AUDIO -display gtk -vga virtio -full-screen -bios $OVMF $CDROM $HD"
-eval "qemu-system-x86_64 -m ${MEM}G -enable-kvm $AUDIO -display gtk -vga virtio -full-screen -bios $OVMF $CDROM $HD" 
+CMD="qemu-system-x86_64 \
+ -enable-kvm \
+ -name \"${MACHINE_NAME}\" \
+ -cpu host \
+ -machine q35,accel=kvm \
+ -vga virtio -full-screen \
+ -netdev user,id=net0 \
+ -m ${MEM}G \
+ -smp cores=${CPU} \
+ -drive if=pflash,format=raw,readonly=on,file=${OVMF_CODE},index=0 \
+ -drive if=pflash,format=raw,file=${OVMF_VARS},index=1 \
+ -drive file=\"${HDQCOW}\",id=disk,format=qcow2,index=2,if=virtio \
+ -drive file=\"${TISO}\",format=raw,index=3,media=cdrom \
+ -chardev qemu-vdagent,id=ch1,name=vdagent,clipboard=on \
+ -device virtio-balloon \
+ -device virtio-net-pci,netdev=net0 \
+ -device intel-hda \
+ -device hda-output,audiodev=audio0 \
+ -device virtio-serial-pci \
+ -device virtserialport,chardev=ch1,id=ch1,name=com.redhat.spice.0 \
+ -audiodev sdl,id=audio0 \
+ -virtfs local,path=${HOME},mount_tag=hostshare,security_model=passthrough,id=hostshare \
+ $USBDEVICE"
+ 
+ echo $CMD
+ 
+ eval $CMD
+ 
+exit 0
