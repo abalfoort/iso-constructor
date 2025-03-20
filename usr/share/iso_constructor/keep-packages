@@ -1,4 +1,6 @@
-baloo
 virtualbox-guest-x11
 virtualbox-guest-dkms
 virtualbox-guest-utils
+calamares-settings-solydxk
+calamares
+qemu-guest-agent
