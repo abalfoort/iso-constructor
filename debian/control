@@ -2,11 +2,11 @@ Source: iso-constructor
 Section: devel
 Priority: optional
 Maintainer: Arjen Balfoort <arjenbalfoort@hotmail.com>
-Build-Depends: debhelper-compat (= 12)
-  , dh-python
-  , python3-all
-  , itstool
-  , translate-toolkit
+Build-Depends: debhelper-compat (= 12),
+  dh-python,
+  python3-all,
+  itstool,
+  translate-toolkit
 Standards-Version: 4.5.0
 Vcs-Git: https://gitlab.com/abalfoort/iso-creator.git
 X-Python3-Version: >= 3.6
@@ -14,24 +14,25 @@ X-Python3-Version: >= 3.6
 Package: iso-constructor
 Architecture: all
 Multi-Arch: foreign
-Depends: ${misc:Depends}, ${python3:Depends}
-  , python3-gi
-  , python3-apt
-  , gir1.2-gtk-3.0
-  , squashfs-tools
-  , rsync
-  , apt-show-versions
-  , isolinux
-  , xorriso
-  , dosfstools
-  , uni2ascii
-  , grub-efi-amd64-bin
-  , sensible-utils
-  , apt-utils
-Recommends: qemu-utils
-  , qemu-system-x86
-  , qemu-system-gui
-  , ovmf
+Depends: ${misc:Depends}, ${python3:Depends},
+  python3-gi,
+  python3-apt,
+  gir1.2-gtk-3.0,
+  gir1.2-vte-2.91,
+  squashfs-tools,
+  rsync,
+  apt-show-versions,
+  isolinux,
+  xorriso,
+  dosfstools,
+  uni2ascii,
+  grub-efi-amd64-bin,
+  sensible-utils,
+  apt-utils,
+  libnotify-bin,
+  virt-manager,
+  qemu-kvm,
+  bridge-utils
 Conflicts: solydxk-constructor (<= 3.7.3)
 Replaces: solydxk-constructor (<= 3.7.3)
 Description: Create custom Debian Live ISOs
