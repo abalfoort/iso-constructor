@@ -1,3 +1,13 @@
+iso-constructor (4.3.6) stable; urgency=low
+
+  * Add dependencies virt-manager, libnotify-bin
+  * Remove recommends qemu
+  * Update default keep-packages
+  * Remove internal testing with Qemu
+  * Add button to open virt-manager
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Wed, 19 Mar 2025 11:42:20 +0100
+
 iso-constructor (4.3.5) stable; urgency=low
 
   * Create qemu share of user home directory
