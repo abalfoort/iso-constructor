@@ -23,12 +23,6 @@ Options for terminal use (no GUI):
 -h
 :   Help screen
 
--i
-:   Test Qemu image
-
--t
-:   Test the ISO in Qemu
-
 -u
 :   Upgrade the distribution
 
@@ -63,12 +57,6 @@ cp -v /usr/share/iso_constructor/keep-packages ~/.iso-constructor/
 
 Note: to keep all packages you can simply write an asterisk (*) in the keep-packages file.
 
-## Test ISOs in Qemu
-If you have these (recommended) packages installed, the Qemu test button will be available:
-:   qemu-utils, qemu-system-x86, qemu-system-gui, ovmf
-
-Note: if you test ISO builds newer than your host system the ISO might not boot or there are erros. Upgrade qemu to the latest version (backports).
-
 # REPOSITORY
 
 You can create a pool directory structure as in the live Debian ISOs. Any .deb are updated automatically during build. Release information in the dists directory is generated during build.
@@ -91,9 +79,6 @@ cp -v /usr/share/iso_constructor/isolinux-template ~/.iso-constructor/
 
 ~/.iso-constructor/iso-constructor.log
 :   Log file.
-
-~/.iso-constructor/qemu.qcow2 (optional)
-:   When testing ISOs with Qemu, this file is generated.
 
 ~/.iso-constructor/keep-packages (optional)
 :   List of packages not in repository. Use /usr/share/iso_constructor/keep-packages as base.

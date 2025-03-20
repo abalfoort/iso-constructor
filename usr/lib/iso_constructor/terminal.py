@@ -108,11 +108,11 @@ class Terminal(Vte.Terminal):
 
             # TODO: vte_terminal_get_text: Passing a GArray to retrieve attributes is deprecated.
             # TODO: In a future version, passing non-NULL as attributes array will make the function return NULL
-            while self.get_text(None, None)[0].strip()[-1:] in '$#':
+            while self.get_text()[0].strip()[-1:] in '$#':
                 sleep()
             # Finally, the command is executing - wait until the last
             # character is a prompt sign
-            while self.get_text(None, None)[0].strip()[-1:] not in '$#':
+            while self.get_text()[0].strip()[-1:] not in '$#':
                 sleep()
 
             # Make the terminal scrollable again if it was at the start

@@ -40,12 +40,6 @@ Edit the distribution
 -h
 Help screen
 .TP
--i
-Test Qemu image
-.TP
--t
-Test the ISO in Qemu
-.TP
 -u
 Upgrade the distribution
 .TP
@@ -82,14 +76,6 @@ cp -v /usr/share/iso_constructor/keep-packages \[ti]/.iso-constructor/
 .PP
 Note: to keep all packages you can simply write an asterisk (*) in the
 keep-packages file.
-.SS Test ISOs in Qemu
-.TP
-If you have these (recommended) packages installed, the Qemu test button will be available:
-qemu-utils, qemu-system-x86, qemu-system-gui, ovmf
-.PP
-Note: if you test ISO builds newer than your host system the ISO might
-not boot or there are erros.
-Upgrade qemu to the latest version (backports).
 .SH REPOSITORY
 .PP
 You can create a pool directory structure as in the live Debian ISOs.
@@ -114,9 +100,6 @@ Configuration file
 .TP
 \[ti]/.iso-constructor/iso-constructor.log
 Log file.
-.TP
-\[ti]/.iso-constructor/qemu.qcow2 (optional)
-When testing ISOs with Qemu, this file is generated.
 .TP
 \[ti]/.iso-constructor/keep-packages (optional)
 List of packages not in repository.

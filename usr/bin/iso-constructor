@@ -18,8 +18,6 @@ DISTRIBUTION_PATH contains the unpacked distribution with a boot and root direct
 -b                      Build the distribution.
 -e                      Edit the distribution.
 -h                      This help screen.
--i                      Test Qemu image
--t                      Test the ISO in Qemu
 -u                      Update the distribution.
 -U [iso_path]           Unpack ISO
 
@@ -33,7 +31,6 @@ BUILD=false
 EDIT=false
 LOCALIZE=false
 UPGRADE=false
-TESTISO=false
 
 # Get parameters
 while getopts 'beituU:' OPT; do
@@ -45,15 +42,6 @@ while getopts 'beituU:' OPT; do
         e)
             # Edit distribution
             EDIT=true
-            ;;
-        i)
-            # Test the Qemu image
-            sudo -u $(logname) /usr/share/iso_constructor/qemu-test.sh
-            exit 0
-            ;;
-        t)
-            # Test the ISO in Qemu
-            TESTISO=true
             ;;
         u)
             # Upgrade distribution
@@ -97,10 +85,6 @@ fi
 
 if $EDIT; then
     eval "sudo bash $CHROOT \"$DISTPATH/root\""
-fi
-
-if $TESTISO; then
-    sudo -u $(logname) /usr/share/iso_constructor/qemu-test.sh "$DISTPATH"
 fi
 
 if $UPGRADE; then

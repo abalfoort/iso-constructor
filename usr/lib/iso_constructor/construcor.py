@@ -92,8 +92,7 @@ class Constructor():
         self.btn_edit = builder_obj('btn_edit')
         self.btn_upgrade = builder_obj('btn_upgrade')
         self.btn_buildiso = builder_obj('btn_build_iso')
-        self.btn_qemu = builder_obj('btn_qemu')
-        self.btn_qemu_img = builder_obj('btn_qemu_img')
+        self.btn_virt = builder_obj('btn_virt')
 
         # Add iso window objects
         self.window_adddistro = builder_obj('add_distro_window')
@@ -109,9 +108,7 @@ class Constructor():
 
         # Main window translations
         self.remove_text = _("Remove")
-        self.test_iso_text = _("Test ISO in Qemu")
-        self.test_qemo_text = _("Ctrl-Alt-F to exit full screen mode.")
-        self.test_img_text = _("Test Qemu image")
+        self.test_iso_text = _("Test ISO in virt-manager")
         self.window.set_title("ISO Constructor")
         self.chk_selectall.set_label(_("Select all"))
         self.btn_add.set_tooltip_text(_("Add"))
@@ -121,8 +118,7 @@ class Constructor():
         self.btn_upgrade.set_tooltip_text(_("Upgrade"))
         self.btn_buildiso.set_tooltip_text(_("Build"))
         self.btn_help.set_tooltip_text(_("Help"))
-        self.btn_qemu.set_tooltip_text(self.test_iso_text)
-        self.btn_qemu_img.set_tooltip_text(self.test_img_text)
+        self.btn_virt.set_tooltip_text(self.test_iso_text)
 
         # Add iso window translations
         self.window_adddistro.set_title(_("Add Distribution"))
@@ -157,23 +153,6 @@ class Constructor():
         # Version information
         ver = get_package_version('iso-constructor')
         self.log(f'> ISO Constructor {ver}')
-
-        # Check if qemu is installed and show the qemu button if it is.
-        self.show_qemu = False
-        self.btn_qemu.set_visible(False)
-        qemu_ver = get_package_version('qemu-system-x86')
-        ovmf_ver = get_package_version('ovmf')
-        # Get RAM in GB
-        mem_bytes = sysconf('SC_PAGE_SIZE') * sysconf('SC_PHYS_PAGES')
-        mem_gib = int(mem_bytes/(1024.**3))
-        if qemu_ver and ovmf_ver and mem_gib >= 4:
-            self.btn_qemu.set_visible(True)
-            self.show_qemu = True
-
-        self.btn_qemu_img.set_visible(False)
-        self.qemu_img = join(self.user_app_dir, "qemu.qcow2")
-        if self.show_qemu and exists(self.qemu_img):
-            self.btn_qemu_img.set_visible(True)
 
     # ===============================================
     # Main Window Functions
@@ -264,40 +243,11 @@ class Constructor():
                     command=f'iso-constructor -b "{path}"', wait_until_done=True)
             self.enable_gui_elements(True)
 
-    def on_btn_qemu_clicked(self, widget):
+    def on_btn_virt_clicked(self, widget):
         '''
-        Test ISOs from selected distribution(s) in Qemu.
+        Open virt-manager.
         '''
-        selected = self.tv_handlerdistros.get_toggled_values(
-            toggle_col_nr=0, value_col_nr=2)
-        if selected:
-            self.enable_gui_elements(False)
-            message_dialog(self.test_iso_text,
-                                f"\n{self.test_qemo_text}")
-            # Loop through selected distributions
-            for path in selected:
-                for iso_path in listdir(path):
-                    if iso_path.endswith(".iso"):
-                        self.log(f'> Start testing ISO: {path}/{iso_path}')
-
-                        # Start qemu to test the selected ISO
-                        shell_exec(command=f'iso-constructor -t "{path}"', wait=True)
-            self.enable_gui_elements(True)
-
-        if exists(self.qemu_img):
-            self.btn_qemu_img.set_visible(True)
-
-    def on_btn_qemu_img_clicked(self, widget):
-        '''
-        Test installed image in Qemu.
-        '''
-        if exists(self.qemu_img):
-            self.enable_gui_elements(False)
-            message_dialog(self.test_img_text,
-                                f"\n{self.test_qemo_text}")
-            # Start qemu to test the selected ISO
-            shell_exec(command='iso-constructor -i')
-            self.enable_gui_elements(True)
+        shell_exec(command=f"sudo -u {get_logged_user()} virt-manager")
 
     def on_chk_select_all_toggled(self, widget):
         '''
@@ -549,8 +499,7 @@ class Constructor():
             self.btn_edit.set_sensitive(False)
             self.btn_remove.set_sensitive(False)
             self.btn_upgrade.set_sensitive(False)
-            self.btn_qemu.set_sensitive(False)
-            self.btn_qemu_img.set_sensitive(False)
+            self.btn_virt.set_sensitive(False)
             self.btn_dir.set_sensitive(False)
             self.btn_help.set_sensitive(False)
         else:
@@ -563,10 +512,7 @@ class Constructor():
             self.btn_edit.set_sensitive(True)
             self.btn_remove.set_sensitive(True)
             self.btn_upgrade.set_sensitive(True)
-            if self.show_qemu:
-                self.btn_qemu.set_sensitive(True)
-                if exists(self.qemu_img):
-                    self.btn_qemu_img.set_sensitive(True)
+            self.btn_virt.set_sensitive(True)
             self.btn_dir.set_sensitive(True)
             self.btn_help.set_sensitive(True)
 

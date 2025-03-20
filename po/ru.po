@@ -5,7 +5,7 @@
 #
 # Translators:
 # Михаил Ильинский (milinsky) <mail@milinsky.com>, 2020
-# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022
+# Arjen Balfoort <arjenbalfoort@tutamail.com>, 2022
 # ilu lu, 2023
 #
 #, fuzzy
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-12 12:52+0100\n"
+"POT-Creation-Date: 2025-03-19 16:21+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: ilu lu, 2023\n"
 "Language-Team: Russian (https://app.transifex.com/abalfoort/teams/54212/"
@@ -26,63 +26,55 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: usr/lib/iso_constructor/construcor.py:111
+#: usr/lib/iso_constructor/construcor.py:110
 msgid "Remove"
 msgstr "Удалить"
 
-#: usr/lib/iso_constructor/construcor.py:112
-msgid "Test ISO in Qemu"
-msgstr "Тестирование ISO в Qemu"
+#: usr/lib/iso_constructor/construcor.py:111
+msgid "Test ISO in virt-manager"
+msgstr ""
 
 #: usr/lib/iso_constructor/construcor.py:113
-msgid "Ctrl-Alt-F to exit full screen mode."
-msgstr "Ctrl-Alt-F для выхода из полноэкранного режима."
-
-#: usr/lib/iso_constructor/construcor.py:114
-msgid "Test Qemu image"
-msgstr "Тестирование Qemu образа"
-
-#: usr/lib/iso_constructor/construcor.py:116
 msgid "Select all"
 msgstr "Выделить все"
 
-#: usr/lib/iso_constructor/construcor.py:117
+#: usr/lib/iso_constructor/construcor.py:114
 msgid "Add"
 msgstr "Добавить"
 
-#: usr/lib/iso_constructor/construcor.py:118
+#: usr/lib/iso_constructor/construcor.py:115
 msgid "View log file"
 msgstr "Просмотр лог-файла"
 
-#: usr/lib/iso_constructor/construcor.py:120
+#: usr/lib/iso_constructor/construcor.py:117
 msgid "Edit"
 msgstr "Изменить"
 
-#: usr/lib/iso_constructor/construcor.py:121
+#: usr/lib/iso_constructor/construcor.py:118
 msgid "Upgrade"
 msgstr "Обновить"
 
-#: usr/lib/iso_constructor/construcor.py:122
+#: usr/lib/iso_constructor/construcor.py:119
 msgid "Build"
 msgstr "Собрать"
 
-#: usr/lib/iso_constructor/construcor.py:123
+#: usr/lib/iso_constructor/construcor.py:120
 msgid "Help"
 msgstr "Помощь"
 
-#: usr/lib/iso_constructor/construcor.py:128
+#: usr/lib/iso_constructor/construcor.py:124
 msgid "Add Distribution"
 msgstr "Добавить дистрибутив"
 
-#: usr/lib/iso_constructor/construcor.py:129
+#: usr/lib/iso_constructor/construcor.py:125
 msgid "ISO"
 msgstr "ISO"
 
-#: usr/lib/iso_constructor/construcor.py:131
+#: usr/lib/iso_constructor/construcor.py:127
 msgid "Cancel"
 msgstr "Отмена"
 
-#: usr/lib/iso_constructor/construcor.py:197
+#: usr/lib/iso_constructor/construcor.py:176
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -90,28 +82,28 @@ msgstr ""
 "Вы уверены, что хотите удалить выбранный дистрибутив из списка?\n"
 "(Это не удалит каталог и его данные)"
 
-#: usr/lib/iso_constructor/construcor.py:363
+#: usr/lib/iso_constructor/construcor.py:313
 msgid "Select ISO file"
 msgstr "Выбрать ISO-файл"
 
-#: usr/lib/iso_constructor/construcor.py:377
+#: usr/lib/iso_constructor/construcor.py:327
 msgid "Select directory"
 msgstr "Выберите директорию"
 
-#: usr/lib/iso_constructor/construcor.py:392
+#: usr/lib/iso_constructor/construcor.py:342
 msgid "Save existing working directory"
 msgstr "Сохранить существующий рабочий каталог"
 
-#: usr/lib/iso_constructor/construcor.py:394
+#: usr/lib/iso_constructor/construcor.py:344
 msgid "Unpack ISO and save"
 msgstr "Распаковать ISO и сохранить"
 
-#: usr/lib/iso_constructor/construcor.py:401
+#: usr/lib/iso_constructor/construcor.py:351
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Не удалось создать каталог {self.dir}: выход"
 
-#: usr/lib/iso_constructor/construcor.py:407
+#: usr/lib/iso_constructor/construcor.py:357
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -120,35 +112,35 @@ msgstr ""
 "Путь к ISO-файл не существует\n"
 "{self.iso}"
 
-#: usr/lib/iso_constructor/construcor.py:411
+#: usr/lib/iso_constructor/construcor.py:361
 msgid "The destination directory is not empty.\n"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:487
+#: usr/lib/iso_constructor/construcor.py:437
 msgid "Unpack ISO to directory"
 msgstr "Распаковать ISO в каталог"
 
-#: usr/lib/iso_constructor/construcor.py:488
+#: usr/lib/iso_constructor/construcor.py:438
 msgid "Unpack & Save"
 msgstr "Распаковать И Сохранить"
 
-#: usr/lib/iso_constructor/construcor.py:496
+#: usr/lib/iso_constructor/construcor.py:446
 msgid "Work directory"
 msgstr "Работа каталог"
 
-#: usr/lib/iso_constructor/construcor.py:497
+#: usr/lib/iso_constructor/construcor.py:447
 msgid "Save"
 msgstr "Сохранить"
 
-#: usr/lib/iso_constructor/construcor.py:508
+#: usr/lib/iso_constructor/construcor.py:458
 msgid "Select"
 msgstr "Выбрать"
 
-#: usr/lib/iso_constructor/construcor.py:508
+#: usr/lib/iso_constructor/construcor.py:458
 msgid "Distribution"
 msgstr "Дистрибутив"
 
-#: usr/lib/iso_constructor/construcor.py:508
+#: usr/lib/iso_constructor/construcor.py:458
 msgid "Working directory"
 msgstr "Рабочий каталог"
 

@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022
-# Eduard Selma <selma@tinet.cat>, 2023
+# Eduard Selma <selma@tinet.cat>, 2021
+# Arjen Balfoort <arjenbalfoort@tutamail.com>, 2022
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-12 12:52+0100\n"
+"POT-Creation-Date: 2025-03-19 16:21+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
-"Last-Translator: Eduard Selma <selma@tinet.cat>, 2023\n"
+"Last-Translator: Arjen Balfoort <arjenbalfoort@tutamail.com>, 2022\n"
 "Language-Team: Catalan (https://app.transifex.com/abalfoort/teams/54212/"
 "ca/)\n"
 "Language: ca\n"
@@ -23,63 +23,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: usr/lib/iso_constructor/construcor.py:111
+#: usr/lib/iso_constructor/construcor.py:110
 msgid "Remove"
 msgstr "Elimina"
 
-#: usr/lib/iso_constructor/construcor.py:112
-msgid "Test ISO in Qemu"
-msgstr "Comprova l'ISO a Qemu"
+#: usr/lib/iso_constructor/construcor.py:111
+msgid "Test ISO in virt-manager"
+msgstr ""
 
 #: usr/lib/iso_constructor/construcor.py:113
-msgid "Ctrl-Alt-F to exit full screen mode."
-msgstr "Ctrl-Alt-F per sortir al mode de pantalla completa."
-
-#: usr/lib/iso_constructor/construcor.py:114
-msgid "Test Qemu image"
-msgstr "Comprova la imatge a Qemu"
-
-#: usr/lib/iso_constructor/construcor.py:116
 msgid "Select all"
 msgstr "Selecciona'ls tots"
 
-#: usr/lib/iso_constructor/construcor.py:117
+#: usr/lib/iso_constructor/construcor.py:114
 msgid "Add"
 msgstr "Afegeix"
 
-#: usr/lib/iso_constructor/construcor.py:118
+#: usr/lib/iso_constructor/construcor.py:115
 msgid "View log file"
 msgstr "Veure el fitxer de registre"
 
-#: usr/lib/iso_constructor/construcor.py:120
+#: usr/lib/iso_constructor/construcor.py:117
 msgid "Edit"
 msgstr "Edita"
 
-#: usr/lib/iso_constructor/construcor.py:121
+#: usr/lib/iso_constructor/construcor.py:118
 msgid "Upgrade"
 msgstr "Actualitza"
 
-#: usr/lib/iso_constructor/construcor.py:122
+#: usr/lib/iso_constructor/construcor.py:119
 msgid "Build"
 msgstr "Crea"
 
-#: usr/lib/iso_constructor/construcor.py:123
+#: usr/lib/iso_constructor/construcor.py:120
 msgid "Help"
 msgstr "Ajuda"
 
-#: usr/lib/iso_constructor/construcor.py:128
+#: usr/lib/iso_constructor/construcor.py:124
 msgid "Add Distribution"
 msgstr "Afegeix distribució"
 
-#: usr/lib/iso_constructor/construcor.py:129
+#: usr/lib/iso_constructor/construcor.py:125
 msgid "ISO"
 msgstr "ISO"
 
-#: usr/lib/iso_constructor/construcor.py:131
+#: usr/lib/iso_constructor/construcor.py:127
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: usr/lib/iso_constructor/construcor.py:197
+#: usr/lib/iso_constructor/construcor.py:176
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -87,28 +79,28 @@ msgstr ""
 "Esteu segurs que voleu eliminar aquesta distribució de la llista?\n"
 "(Això no eliminarà el directori ni les seves dades)"
 
-#: usr/lib/iso_constructor/construcor.py:363
+#: usr/lib/iso_constructor/construcor.py:313
 msgid "Select ISO file"
 msgstr "Trieu la imatge"
 
-#: usr/lib/iso_constructor/construcor.py:377
+#: usr/lib/iso_constructor/construcor.py:327
 msgid "Select directory"
 msgstr "Selecciona directori"
 
-#: usr/lib/iso_constructor/construcor.py:392
+#: usr/lib/iso_constructor/construcor.py:342
 msgid "Save existing working directory"
 msgstr "Desa el directori de treball actual"
 
-#: usr/lib/iso_constructor/construcor.py:394
+#: usr/lib/iso_constructor/construcor.py:344
 msgid "Unpack ISO and save"
 msgstr "Desempaqueta i desa l'ISO"
 
-#: usr/lib/iso_constructor/construcor.py:401
+#: usr/lib/iso_constructor/construcor.py:351
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "No he pogut crear el directori {self.dir}: sortint"
 
-#: usr/lib/iso_constructor/construcor.py:407
+#: usr/lib/iso_constructor/construcor.py:357
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -117,35 +109,35 @@ msgstr ""
 "No hi ha camí fins al fitxer ISO\n"
 "{self.iso}"
 
-#: usr/lib/iso_constructor/construcor.py:411
+#: usr/lib/iso_constructor/construcor.py:361
 msgid "The destination directory is not empty.\n"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:487
+#: usr/lib/iso_constructor/construcor.py:437
 msgid "Unpack ISO to directory"
 msgstr "Desempaquetant l'ISO al directori"
 
-#: usr/lib/iso_constructor/construcor.py:488
+#: usr/lib/iso_constructor/construcor.py:438
 msgid "Unpack & Save"
 msgstr "Desempaqueta i Desa"
 
-#: usr/lib/iso_constructor/construcor.py:496
+#: usr/lib/iso_constructor/construcor.py:446
 msgid "Work directory"
 msgstr "Directori de treball"
 
-#: usr/lib/iso_constructor/construcor.py:497
+#: usr/lib/iso_constructor/construcor.py:447
 msgid "Save"
 msgstr "Desa"
 
-#: usr/lib/iso_constructor/construcor.py:508
+#: usr/lib/iso_constructor/construcor.py:458
 msgid "Select"
 msgstr "Selecciona"
 
-#: usr/lib/iso_constructor/construcor.py:508
+#: usr/lib/iso_constructor/construcor.py:458
 msgid "Distribution"
 msgstr "Distribució"
 
-#: usr/lib/iso_constructor/construcor.py:508
+#: usr/lib/iso_constructor/construcor.py:458
 msgid "Working directory"
 msgstr "Directori de treball"
 
