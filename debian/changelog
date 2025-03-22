@@ -1,3 +1,16 @@
+iso-constructor (4.3.8) stable; urgency=low
+
+  * Fix Alsa errors when testing in Virt Manager
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 22 Mar 2025 14:02:33 +0100
+
+iso-constructor (4.3.7) stable; urgency=low
+
+  * Move virt-manager e.o. recommended packages
+  * Use virt-manager to test the ISOs
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Thu, 20 Mar 2025 19:40:44 +0100
+
 iso-constructor (4.3.6) stable; urgency=low
 
   * Add dependencies virt-manager, libnotify-bin
