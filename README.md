@@ -23,6 +23,9 @@ Options for terminal use (no GUI):
 -h
 :   Help screen
 
+-t
+:   Test the ISO in virt-manager
+
 -u
 :   Upgrade the distribution
 
@@ -56,6 +59,12 @@ If you installed packages that are not in the repository but you want to keep in
 cp -v /usr/share/iso_constructor/keep-packages ~/.iso-constructor/
 
 Note: to keep all packages you can simply write an asterisk (*) in the keep-packages file.
+
+## Test ISOs in virt-manager
+If you have these (recommended) packages installed, the Virtual Manager test button will be available:
+:   virt-manager, qemu-kvm, bridge-utils, spice-vdagent
+
+Note: if you test ISO builds newer than your host system the ISO might not boot or there are errors. Upgrade qemu to the latest version (backports).
 
 # REPOSITORY
 

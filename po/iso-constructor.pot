@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-19 19:44+0100\n"
+"POT-Creation-Date: 2025-03-22 14:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,69 +65,69 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:176
+#: usr/lib/iso_constructor/construcor.py:180
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:313
+#: usr/lib/iso_constructor/construcor.py:330
 msgid "Select ISO file"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:327
+#: usr/lib/iso_constructor/construcor.py:344
 msgid "Select directory"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:342
+#: usr/lib/iso_constructor/construcor.py:359
 msgid "Save existing working directory"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:344
+#: usr/lib/iso_constructor/construcor.py:361
 msgid "Unpack ISO and save"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:351
+#: usr/lib/iso_constructor/construcor.py:368
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:357
+#: usr/lib/iso_constructor/construcor.py:374
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
 "{self.iso}"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:361
+#: usr/lib/iso_constructor/construcor.py:378
 msgid "The destination directory is not empty.\n"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:437
+#: usr/lib/iso_constructor/construcor.py:454
 msgid "Unpack ISO to directory"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:438
+#: usr/lib/iso_constructor/construcor.py:455
 msgid "Unpack & Save"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:446
+#: usr/lib/iso_constructor/construcor.py:463
 msgid "Work directory"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:447
+#: usr/lib/iso_constructor/construcor.py:464
 msgid "Save"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:458
+#: usr/lib/iso_constructor/construcor.py:475
 msgid "Select"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:458
+#: usr/lib/iso_constructor/construcor.py:475
 msgid "Distribution"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:458
+#: usr/lib/iso_constructor/construcor.py:475
 msgid "Working directory"
 msgstr ""
 

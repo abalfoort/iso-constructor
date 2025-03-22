@@ -130,7 +130,7 @@ class Terminal(Vte.Terminal):
 
     def get_last_line(self):
         ''' Get the last line in the terminal. '''
-        text = self.get_text(None, None)[0].strip()
+        text = self.get_text()[0].strip()
         text = text.split('\n')
         i_pos = len(text) - 1
         while text[i_pos] == '':

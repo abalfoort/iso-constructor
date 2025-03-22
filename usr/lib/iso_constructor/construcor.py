@@ -2,12 +2,12 @@
 """ Module providing initialization of the ISO Constructor application """
 
 from os import makedirs, system, listdir, \
-    environ, remove, sysconf
+    environ, remove
 from os.path import join, dirname, exists, isdir, abspath
 from configparser import ConfigParser
 from utils import get_user_home, get_logged_user, \
                     get_package_version, getoutput, shell_exec, \
-                    get_lsb_release_info
+                    get_lsb_release_info, is_package_installed
 from dialogs import message_dialog, error_dialog, \
                     SelectFileDialog, SelectDirectoryDialog, \
                     question_dialog
@@ -150,6 +150,10 @@ class Constructor():
         self.builder.connect_signals(self)
         self.window.show_all()
 
+        self.virt_installed = is_package_installed("virt-manager")
+        if not self.virt_installed:
+            self.btn_virt.set_visible(False)
+
         # Version information
         ver = get_package_version('iso-constructor')
         self.log(f'> ISO Constructor {ver}')
@@ -245,9 +249,22 @@ class Constructor():
 
     def on_btn_virt_clicked(self, widget):
         '''
-        Open virt-manager.
+        Test ISOs from selected distribution(s) in virt-manager.
         '''
-        shell_exec(command=f"sudo -u {get_logged_user()} virt-manager")
+        selected = self.tv_handlerdistros.get_toggled_values(
+            toggle_col_nr=0, value_col_nr=2)
+        if selected:
+            self.enable_gui_elements(False)
+            # Loop through selected distributions
+            for path in selected:
+                for iso_path in listdir(path):
+                    if iso_path.endswith(".iso"):
+                        self.log(f'> Start testing ISO: {path}/{iso_path}')
+
+                        # Start qemu to test the selected ISO
+                        shell_exec(
+                            command=f'iso-constructor -t "{path}"', wait=True)
+            self.enable_gui_elements(True)
 
     def on_chk_select_all_toggled(self, widget):
         '''
@@ -499,9 +516,10 @@ class Constructor():
             self.btn_edit.set_sensitive(False)
             self.btn_remove.set_sensitive(False)
             self.btn_upgrade.set_sensitive(False)
-            self.btn_virt.set_sensitive(False)
             self.btn_dir.set_sensitive(False)
             self.btn_help.set_sensitive(False)
+            if self.virt_installed:
+                self.btn_virt.set_sensitive(False)
         else:
             self.terminal.set_input_enabled(False)
             self.chk_selectall.set_sensitive(True)
@@ -512,9 +530,10 @@ class Constructor():
             self.btn_edit.set_sensitive(True)
             self.btn_remove.set_sensitive(True)
             self.btn_upgrade.set_sensitive(True)
-            self.btn_virt.set_sensitive(True)
             self.btn_dir.set_sensitive(True)
             self.btn_help.set_sensitive(True)
+            if self.virt_installed:
+                self.btn_virt.set_sensitive(True)
 
     def get_distros(self):
         ''' Get list with distributions '''

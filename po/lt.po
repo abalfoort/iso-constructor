@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-19 16:21+0100\n"
+"POT-Creation-Date: 2025-03-21 09:04+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Moo, 2025\n"
 "Language-Team: Lithuanian (https://app.transifex.com/abalfoort/teams/54212/"
@@ -31,7 +31,7 @@ msgstr "Šalinti"
 
 #: usr/lib/iso_constructor/construcor.py:111
 msgid "Test ISO in virt-manager"
-msgstr ""
+msgstr "Išbandyti ISO atvaizdį programoje virt-manager"
 
 #: usr/lib/iso_constructor/construcor.py:113
 msgid "Select all"
@@ -73,7 +73,7 @@ msgstr "ISO"
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: usr/lib/iso_constructor/construcor.py:176
+#: usr/lib/iso_constructor/construcor.py:180
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -81,28 +81,28 @@ msgstr ""
 "Ar tikrai norite pašalinti pasirinktą distribuciją iš sąrašo?\n"
 "(Tai nepašalins katalogo ir jame esančių duomenų)"
 
-#: usr/lib/iso_constructor/construcor.py:313
+#: usr/lib/iso_constructor/construcor.py:330
 msgid "Select ISO file"
 msgstr "Pasirinkite ISO"
 
-#: usr/lib/iso_constructor/construcor.py:327
+#: usr/lib/iso_constructor/construcor.py:344
 msgid "Select directory"
 msgstr "Pasirinkite katalogą"
 
-#: usr/lib/iso_constructor/construcor.py:342
+#: usr/lib/iso_constructor/construcor.py:359
 msgid "Save existing working directory"
 msgstr "Įrašyti esamą darbinį katalogą"
 
-#: usr/lib/iso_constructor/construcor.py:344
+#: usr/lib/iso_constructor/construcor.py:361
 msgid "Unpack ISO and save"
 msgstr "Išpakuoti ISO ir įrašyti"
 
-#: usr/lib/iso_constructor/construcor.py:351
+#: usr/lib/iso_constructor/construcor.py:368
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Nepavyko sukurti katalogo {self.dir}: išeinama"
 
-#: usr/lib/iso_constructor/construcor.py:357
+#: usr/lib/iso_constructor/construcor.py:374
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -111,35 +111,35 @@ msgstr ""
 "Kelio į ISO failą nėra:\n"
 "{self.iso}"
 
-#: usr/lib/iso_constructor/construcor.py:361
+#: usr/lib/iso_constructor/construcor.py:378
 msgid "The destination directory is not empty.\n"
 msgstr "Paskirties katalogas nėra tuščias.\n"
 
-#: usr/lib/iso_constructor/construcor.py:437
+#: usr/lib/iso_constructor/construcor.py:454
 msgid "Unpack ISO to directory"
 msgstr "Išpakuoti ISO į katalogą"
 
-#: usr/lib/iso_constructor/construcor.py:438
+#: usr/lib/iso_constructor/construcor.py:455
 msgid "Unpack & Save"
 msgstr "Išpakuoti ir įrašyti"
 
-#: usr/lib/iso_constructor/construcor.py:446
+#: usr/lib/iso_constructor/construcor.py:463
 msgid "Work directory"
 msgstr "Darbo katalogas"
 
-#: usr/lib/iso_constructor/construcor.py:447
+#: usr/lib/iso_constructor/construcor.py:464
 msgid "Save"
 msgstr "Įrašyti"
 
-#: usr/lib/iso_constructor/construcor.py:458
+#: usr/lib/iso_constructor/construcor.py:475
 msgid "Select"
 msgstr "Pasirinkti"
 
-#: usr/lib/iso_constructor/construcor.py:458
+#: usr/lib/iso_constructor/construcor.py:475
 msgid "Distribution"
 msgstr "Distribucija"
 
-#: usr/lib/iso_constructor/construcor.py:458
+#: usr/lib/iso_constructor/construcor.py:475
 msgid "Working directory"
 msgstr "Darbinis katalogas"
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-19 16:21+0100\n"
+"POT-Creation-Date: 2025-03-20 19:41+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@tutamail.com>, 2022\n"
 "Language-Team: Danish (https://app.transifex.com/abalfoort/teams/54212/da/)\n"
@@ -70,7 +70,7 @@ msgstr "ISO"
 msgid "Cancel"
 msgstr "Annuller"
 
-#: usr/lib/iso_constructor/construcor.py:176
+#: usr/lib/iso_constructor/construcor.py:180
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -78,28 +78,28 @@ msgstr ""
 "Er du sikker på at du vil fjerne den valgte distribution fra listen?\n"
 "(Dette vil ikke fjerne mappen og dens data)"
 
-#: usr/lib/iso_constructor/construcor.py:313
+#: usr/lib/iso_constructor/construcor.py:330
 msgid "Select ISO file"
 msgstr "Vælg ISO"
 
-#: usr/lib/iso_constructor/construcor.py:327
+#: usr/lib/iso_constructor/construcor.py:344
 msgid "Select directory"
 msgstr "Vælg arbejdsmappe"
 
-#: usr/lib/iso_constructor/construcor.py:342
+#: usr/lib/iso_constructor/construcor.py:359
 msgid "Save existing working directory"
 msgstr "Gem eksisterende arbejdsmappe"
 
-#: usr/lib/iso_constructor/construcor.py:344
+#: usr/lib/iso_constructor/construcor.py:361
 msgid "Unpack ISO and save"
 msgstr "Udpak ISO og gem"
 
-#: usr/lib/iso_constructor/construcor.py:351
+#: usr/lib/iso_constructor/construcor.py:368
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Mappen {self.dir} kunne ikke oprettes. Programmet afsluttes"
 
-#: usr/lib/iso_constructor/construcor.py:357
+#: usr/lib/iso_constructor/construcor.py:374
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -108,35 +108,35 @@ msgstr ""
 "Stien til ISO filen findes ikke:\n"
 "{self.iso}"
 
-#: usr/lib/iso_constructor/construcor.py:361
+#: usr/lib/iso_constructor/construcor.py:378
 msgid "The destination directory is not empty.\n"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:437
+#: usr/lib/iso_constructor/construcor.py:454
 msgid "Unpack ISO to directory"
 msgstr "Udpak ISO til mappe"
 
-#: usr/lib/iso_constructor/construcor.py:438
+#: usr/lib/iso_constructor/construcor.py:455
 msgid "Unpack & Save"
 msgstr "Udpak og gem"
 
-#: usr/lib/iso_constructor/construcor.py:446
+#: usr/lib/iso_constructor/construcor.py:463
 msgid "Work directory"
 msgstr "Arbejdsmappe"
 
-#: usr/lib/iso_constructor/construcor.py:447
+#: usr/lib/iso_constructor/construcor.py:464
 msgid "Save"
 msgstr "Gem"
 
-#: usr/lib/iso_constructor/construcor.py:458
+#: usr/lib/iso_constructor/construcor.py:475
 msgid "Select"
 msgstr "Vælg"
 
-#: usr/lib/iso_constructor/construcor.py:458
+#: usr/lib/iso_constructor/construcor.py:475
 msgid "Distribution"
 msgstr "Distribution"
 
-#: usr/lib/iso_constructor/construcor.py:458
+#: usr/lib/iso_constructor/construcor.py:475
 msgid "Working directory"
 msgstr "Arbejdsmappe"
 

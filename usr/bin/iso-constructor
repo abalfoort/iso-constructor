@@ -18,6 +18,7 @@ DISTRIBUTION_PATH contains the unpacked distribution with a boot and root direct
 -b                      Build the distribution.
 -e                      Edit the distribution.
 -h                      This help screen.
+-t                      Test the ISO in virt-manager
 -u                      Update the distribution.
 -U [iso_path]           Unpack ISO
 
@@ -31,6 +32,7 @@ BUILD=false
 EDIT=false
 LOCALIZE=false
 UPGRADE=false
+TESTISO=false
 
 # Get parameters
 while getopts 'beituU:' OPT; do
@@ -42,6 +44,10 @@ while getopts 'beituU:' OPT; do
         e)
             # Edit distribution
             EDIT=true
+            ;;
+        t)
+            # Test the ISO in virt-manager
+            TESTISO=true
             ;;
         u)
             # Upgrade distribution
@@ -85,6 +91,10 @@ fi
 
 if $EDIT; then
     eval "sudo bash $CHROOT \"$DISTPATH/root\""
+fi
+
+if $TESTISO; then
+    sudo -u $(logname) /usr/share/iso_constructor/virt-test.sh "$DISTPATH"
 fi
 
 if $UPGRADE; then

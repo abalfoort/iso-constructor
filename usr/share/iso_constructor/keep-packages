@@ -4,3 +4,4 @@ virtualbox-guest-utils
 calamares-settings-solydxk
 calamares
 qemu-guest-agent
+spice-vdagent

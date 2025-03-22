@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-19 16:21+0100\n"
+"POT-Creation-Date: 2025-03-20 19:41+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@tutamail.com>, 2022\n"
 "Language-Team: French (https://app.transifex.com/abalfoort/teams/54212/fr/)\n"
@@ -73,7 +73,7 @@ msgstr "ISO"
 msgid "Cancel"
 msgstr "Annuler"
 
-#: usr/lib/iso_constructor/construcor.py:176
+#: usr/lib/iso_constructor/construcor.py:180
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -82,28 +82,28 @@ msgstr ""
 "liste?\n"
 "(Cela n'effacera pas le répertoire ni les données qu'il contient)"
 
-#: usr/lib/iso_constructor/construcor.py:313
+#: usr/lib/iso_constructor/construcor.py:330
 msgid "Select ISO file"
 msgstr "Choisir l'ISO"
 
-#: usr/lib/iso_constructor/construcor.py:327
+#: usr/lib/iso_constructor/construcor.py:344
 msgid "Select directory"
 msgstr "Choisir le répertoire"
 
-#: usr/lib/iso_constructor/construcor.py:342
+#: usr/lib/iso_constructor/construcor.py:359
 msgid "Save existing working directory"
 msgstr "Enregistrer le répertoire de travail existant"
 
-#: usr/lib/iso_constructor/construcor.py:344
+#: usr/lib/iso_constructor/construcor.py:361
 msgid "Unpack ISO and save"
 msgstr "Dépaqueter l'ISO et enregistrer"
 
-#: usr/lib/iso_constructor/construcor.py:351
+#: usr/lib/iso_constructor/construcor.py:368
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Impossible de créer le répertoire {self.dir}: arrêt du programme"
 
-#: usr/lib/iso_constructor/construcor.py:357
+#: usr/lib/iso_constructor/construcor.py:374
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -112,35 +112,35 @@ msgstr ""
 "Le chemin vers le fichier ISO n'existe pas:\n"
 "{self.iso}"
 
-#: usr/lib/iso_constructor/construcor.py:361
+#: usr/lib/iso_constructor/construcor.py:378
 msgid "The destination directory is not empty.\n"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:437
+#: usr/lib/iso_constructor/construcor.py:454
 msgid "Unpack ISO to directory"
 msgstr "Décompresser l'ISO dans le répertoire"
 
-#: usr/lib/iso_constructor/construcor.py:438
+#: usr/lib/iso_constructor/construcor.py:455
 msgid "Unpack & Save"
 msgstr "Décompresser et enregistrer"
 
-#: usr/lib/iso_constructor/construcor.py:446
+#: usr/lib/iso_constructor/construcor.py:463
 msgid "Work directory"
 msgstr "Répertoire de travail"
 
-#: usr/lib/iso_constructor/construcor.py:447
+#: usr/lib/iso_constructor/construcor.py:464
 msgid "Save"
 msgstr "Enregistrer"
 
-#: usr/lib/iso_constructor/construcor.py:458
+#: usr/lib/iso_constructor/construcor.py:475
 msgid "Select"
 msgstr "Choisir"
 
-#: usr/lib/iso_constructor/construcor.py:458
+#: usr/lib/iso_constructor/construcor.py:475
 msgid "Distribution"
 msgstr "Distribution"
 
-#: usr/lib/iso_constructor/construcor.py:458
+#: usr/lib/iso_constructor/construcor.py:475
 msgid "Working directory"
 msgstr "Répertoire de travail"
 

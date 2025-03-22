@@ -66,6 +66,14 @@ def get_config_dict(file, key_value=re.compile(r'^\s*(\w+)\s*=\s*["\']?(.*?)["\'
     return config_dict
 
 
+def is_package_installed(package_name):
+    """ Check if package is installed """
+    cache = apt.Cache()
+    if cache[package_name].is_installed:
+        return True
+    return False
+
+
 def does_package_exist(package_name):
     """ Check if a package exists """
     try:

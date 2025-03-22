@@ -40,6 +40,9 @@ Edit the distribution
 -h
 Help screen
 .TP
+-t
+Test the ISO in virt-manager
+.TP
 -u
 Upgrade the distribution
 .TP
@@ -76,6 +79,14 @@ cp -v /usr/share/iso_constructor/keep-packages \[ti]/.iso-constructor/
 .PP
 Note: to keep all packages you can simply write an asterisk (*) in the
 keep-packages file.
+.SS Test ISOs in virt-manager
+.TP
+If you have these (recommended) packages installed, the Virtual Manager test button will be available:
+virt-manager, qemu-kvm, bridge-utils, spice-vdagent
+.PP
+Note: if you test ISO builds newer than your host system the ISO might
+not boot or there are errors.
+Upgrade qemu to the latest version (backports).
 .SH REPOSITORY
 .PP
 You can create a pool directory structure as in the live Debian ISOs.
