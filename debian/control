@@ -28,11 +28,12 @@ Depends: ${misc:Depends}, ${python3:Depends},
   uni2ascii,
   grub-efi-amd64-bin,
   sensible-utils,
-  apt-utils,
-  libnotify-bin,
+  apt-utils
+Recommends: libnotify-bin,
   virt-manager,
   qemu-kvm,
-  bridge-utils
+  bridge-utils,
+  spice-vdagent
 Conflicts: solydxk-constructor (<= 3.7.3)
 Replaces: solydxk-constructor (<= 3.7.3)
 Description: Create custom Debian Live ISOs
