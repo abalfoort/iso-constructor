@@ -64,30 +64,25 @@ fi
 
 ARGS=(
  --name ${NAME}
- --vcpus ${CPU}
  --memory ${MEM}
  --memorybacking source.type=memfd,access.mode=shared
- --arch x86_64
- --machine q35
- --network type=user,model=virtio
+ --vcpus ${CPU}
  --cpu host
- --video virtio
- --virt-type kvm
- --sound ich9
- ${HDQCOW}
  --cdrom ${ISO}
- --os-variant debiantesting
  --boot cdrom,hd,menu=on,firmware=efi
- --noreboot
- --filesystem $HOME,hostshare
- --controller type=virtio-serial
- --controller type=usb,model=none
- --controller type=scsi,model=virtio-scsi
- --input type=keyboard,bus=virtio
- --input type=tablet,bus=virtio
- --rng /dev/urandom,model=virtio
- --check all=off
+ --os-variant debiantesting
+ ${HDQCOW}
+ --filesystem source=$HOME,target=hostshare
+ --network type=user,model=virtio
+ --virt-type kvm
+ --controller usb2
+ --controller usb3
+ --sound default
+ --video virtio
+ --rng /dev/urandom
  --destroy-on-exit
+ --noreboot
+ --check path_in_use=off
 )
 
 echo
