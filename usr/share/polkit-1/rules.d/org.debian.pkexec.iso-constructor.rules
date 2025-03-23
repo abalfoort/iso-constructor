@@ -1,0 +1,10 @@
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.debian.pkexec.iso-constructor" &&
+        subject.isInGroup("sudo")) {
+        return polkit.Result.YES;
+    }
+    if (action.id == "org.debian.pkexec.env" &&
+        subject.isInGroup("sudo")) {
+        return polkit.Result.YES;
+    }
+});
