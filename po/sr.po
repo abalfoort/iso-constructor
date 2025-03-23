@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 19:41+0100\n"
+"POT-Creation-Date: 2025-03-23 13:52+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@tutamail.com>, 2022\n"
 "Language-Team: Serbian (https://app.transifex.com/abalfoort/teams/54212/"
@@ -24,55 +24,51 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: usr/lib/iso_constructor/construcor.py:110
+#: usr/lib/iso_constructor/construcor.py:109
 msgid "Remove"
 msgstr "Уклони"
 
-#: usr/lib/iso_constructor/construcor.py:111
+#: usr/lib/iso_constructor/construcor.py:110
 msgid "Test ISO in virt-manager"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:113
+#: usr/lib/iso_constructor/construcor.py:112
 msgid "Select all"
 msgstr "изабери све"
 
-#: usr/lib/iso_constructor/construcor.py:114
+#: usr/lib/iso_constructor/construcor.py:113
 msgid "Add"
 msgstr "Додај"
 
-#: usr/lib/iso_constructor/construcor.py:115
+#: usr/lib/iso_constructor/construcor.py:114
 msgid "View log file"
 msgstr "Погледај фајл дневника"
 
-#: usr/lib/iso_constructor/construcor.py:117
+#: usr/lib/iso_constructor/construcor.py:116
 msgid "Edit"
 msgstr "Уреди"
 
-#: usr/lib/iso_constructor/construcor.py:118
+#: usr/lib/iso_constructor/construcor.py:117
 msgid "Upgrade"
 msgstr "Надогради"
 
-#: usr/lib/iso_constructor/construcor.py:119
+#: usr/lib/iso_constructor/construcor.py:118
 msgid "Build"
 msgstr "Изгради"
 
-#: usr/lib/iso_constructor/construcor.py:120
-msgid "Help"
-msgstr "Помоћ"
-
-#: usr/lib/iso_constructor/construcor.py:124
+#: usr/lib/iso_constructor/construcor.py:122
 msgid "Add Distribution"
 msgstr "Додај дистрибуцију"
 
-#: usr/lib/iso_constructor/construcor.py:125
+#: usr/lib/iso_constructor/construcor.py:123
 msgid "ISO"
 msgstr "ИСО"
 
-#: usr/lib/iso_constructor/construcor.py:127
+#: usr/lib/iso_constructor/construcor.py:125
 msgid "Cancel"
 msgstr "Откажи"
 
-#: usr/lib/iso_constructor/construcor.py:180
+#: usr/lib/iso_constructor/construcor.py:177
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -80,28 +76,28 @@ msgstr ""
 "Заиста желите да уклоните изабрану дистрибуцију са листе?\n"
 "(ово неће уклонити директоријум и њене податке)"
 
-#: usr/lib/iso_constructor/construcor.py:330
+#: usr/lib/iso_constructor/construcor.py:312
 msgid "Select ISO file"
 msgstr "Изабери ИСО фајл"
 
-#: usr/lib/iso_constructor/construcor.py:344
+#: usr/lib/iso_constructor/construcor.py:326
 msgid "Select directory"
 msgstr "Изаберите директоријум"
 
-#: usr/lib/iso_constructor/construcor.py:359
+#: usr/lib/iso_constructor/construcor.py:341
 msgid "Save existing working directory"
 msgstr "Сачувај постојећи радни директоријум"
 
-#: usr/lib/iso_constructor/construcor.py:361
+#: usr/lib/iso_constructor/construcor.py:343
 msgid "Unpack ISO and save"
 msgstr "Распакуј ИСО и сачувај"
 
-#: usr/lib/iso_constructor/construcor.py:368
+#: usr/lib/iso_constructor/construcor.py:350
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Не могу да направим {self.dir}: излазим"
 
-#: usr/lib/iso_constructor/construcor.py:374
+#: usr/lib/iso_constructor/construcor.py:356
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -110,35 +106,35 @@ msgstr ""
 "Путања до ИСО фајла не постоји:\n"
 "{self.iso}"
 
-#: usr/lib/iso_constructor/construcor.py:378
+#: usr/lib/iso_constructor/construcor.py:360
 msgid "The destination directory is not empty.\n"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:454
+#: usr/lib/iso_constructor/construcor.py:436
 msgid "Unpack ISO to directory"
 msgstr "Распакуј ИСО у директоријум"
 
-#: usr/lib/iso_constructor/construcor.py:455
+#: usr/lib/iso_constructor/construcor.py:437
 msgid "Unpack & Save"
 msgstr "Распакуј и сачувај"
 
-#: usr/lib/iso_constructor/construcor.py:463
+#: usr/lib/iso_constructor/construcor.py:445
 msgid "Work directory"
 msgstr "Радни директоријум"
 
-#: usr/lib/iso_constructor/construcor.py:464
+#: usr/lib/iso_constructor/construcor.py:446
 msgid "Save"
 msgstr "Сачувај"
 
-#: usr/lib/iso_constructor/construcor.py:475
+#: usr/lib/iso_constructor/construcor.py:457
 msgid "Select"
 msgstr "избор"
 
-#: usr/lib/iso_constructor/construcor.py:475
+#: usr/lib/iso_constructor/construcor.py:457
 msgid "Distribution"
 msgstr "дистрибуција"
 
-#: usr/lib/iso_constructor/construcor.py:475
+#: usr/lib/iso_constructor/construcor.py:457
 msgid "Working directory"
 msgstr "радни директоријум"
 

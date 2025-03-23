@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-22 14:15+0100\n"
+"POT-Creation-Date: 2025-03-23 17:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,117 +17,113 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: usr/lib/iso_constructor/construcor.py:110
+#: usr/lib/iso_constructor/construcor.py:109
 msgid "Remove"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:111
+#: usr/lib/iso_constructor/construcor.py:110
 msgid "Test ISO in virt-manager"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:113
+#: usr/lib/iso_constructor/construcor.py:112
 msgid "Select all"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:114
+#: usr/lib/iso_constructor/construcor.py:113
 msgid "Add"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:115
+#: usr/lib/iso_constructor/construcor.py:114
 msgid "View log file"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:117
+#: usr/lib/iso_constructor/construcor.py:116
 msgid "Edit"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:118
+#: usr/lib/iso_constructor/construcor.py:117
 msgid "Upgrade"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:119
+#: usr/lib/iso_constructor/construcor.py:118
 msgid "Build"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:120
-msgid "Help"
-msgstr ""
-
-#: usr/lib/iso_constructor/construcor.py:124
+#: usr/lib/iso_constructor/construcor.py:122
 msgid "Add Distribution"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:125
+#: usr/lib/iso_constructor/construcor.py:123
 msgid "ISO"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:127
+#: usr/lib/iso_constructor/construcor.py:125
 msgid "Cancel"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:180
+#: usr/lib/iso_constructor/construcor.py:177
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:330
+#: usr/lib/iso_constructor/construcor.py:312
 msgid "Select ISO file"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:344
+#: usr/lib/iso_constructor/construcor.py:326
 msgid "Select directory"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:359
+#: usr/lib/iso_constructor/construcor.py:341
 msgid "Save existing working directory"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:361
+#: usr/lib/iso_constructor/construcor.py:343
 msgid "Unpack ISO and save"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:368
+#: usr/lib/iso_constructor/construcor.py:350
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:374
+#: usr/lib/iso_constructor/construcor.py:356
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
 "{self.iso}"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:378
+#: usr/lib/iso_constructor/construcor.py:360
 msgid "The destination directory is not empty.\n"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:454
+#: usr/lib/iso_constructor/construcor.py:436
 msgid "Unpack ISO to directory"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:455
+#: usr/lib/iso_constructor/construcor.py:437
 msgid "Unpack & Save"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:463
+#: usr/lib/iso_constructor/construcor.py:445
 msgid "Work directory"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:464
+#: usr/lib/iso_constructor/construcor.py:446
 msgid "Save"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:475
+#: usr/lib/iso_constructor/construcor.py:457
 msgid "Select"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:475
+#: usr/lib/iso_constructor/construcor.py:457
 msgid "Distribution"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:475
+#: usr/lib/iso_constructor/construcor.py:457
 msgid "Working directory"
 msgstr ""
 

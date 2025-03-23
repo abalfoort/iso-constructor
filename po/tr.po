@@ -6,16 +6,16 @@
 # Translators:
 # Butterfly <gokhanlnx@gmail.com>, 2020
 # abc Def <hdogan1974@gmail.com>, 2021
-# Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022
+# Arjen Balfoort <arjenbalfoort@tutamail.com>, 2022
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 19:41+0100\n"
+"POT-Creation-Date: 2025-03-23 13:52+0100\n"
 "PO-Revision-Date: 2020-10-02 13:14+0000\n"
-"Last-Translator: Arjen Balfoort <arjenbalfoort@hotmail.com>, 2022\n"
+"Last-Translator: Arjen Balfoort <arjenbalfoort@tutamail.com>, 2022\n"
 "Language-Team: Turkish (https://app.transifex.com/abalfoort/teams/54212/"
 "tr/)\n"
 "Language: tr\n"
@@ -24,55 +24,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: usr/lib/iso_constructor/construcor.py:110
+#: usr/lib/iso_constructor/construcor.py:109
 msgid "Remove"
 msgstr "Sil"
 
-#: usr/lib/iso_constructor/construcor.py:111
+#: usr/lib/iso_constructor/construcor.py:110
 msgid "Test ISO in virt-manager"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:113
+#: usr/lib/iso_constructor/construcor.py:112
 msgid "Select all"
 msgstr "Tümünü seç"
 
-#: usr/lib/iso_constructor/construcor.py:114
+#: usr/lib/iso_constructor/construcor.py:113
 msgid "Add"
 msgstr "Ekle"
 
-#: usr/lib/iso_constructor/construcor.py:115
+#: usr/lib/iso_constructor/construcor.py:114
 msgid "View log file"
 msgstr "Günlük dosyasını görüntüle"
 
-#: usr/lib/iso_constructor/construcor.py:117
+#: usr/lib/iso_constructor/construcor.py:116
 msgid "Edit"
 msgstr "Düzenle"
 
-#: usr/lib/iso_constructor/construcor.py:118
+#: usr/lib/iso_constructor/construcor.py:117
 msgid "Upgrade"
 msgstr "Yükselt"
 
-#: usr/lib/iso_constructor/construcor.py:119
+#: usr/lib/iso_constructor/construcor.py:118
 msgid "Build"
 msgstr "İnşa et"
 
-#: usr/lib/iso_constructor/construcor.py:120
-msgid "Help"
-msgstr "Yardım"
-
-#: usr/lib/iso_constructor/construcor.py:124
+#: usr/lib/iso_constructor/construcor.py:122
 msgid "Add Distribution"
 msgstr "Dağıtım Ekle"
 
-#: usr/lib/iso_constructor/construcor.py:125
+#: usr/lib/iso_constructor/construcor.py:123
 msgid "ISO"
 msgstr "ISO"
 
-#: usr/lib/iso_constructor/construcor.py:127
+#: usr/lib/iso_constructor/construcor.py:125
 msgid "Cancel"
 msgstr "İptal"
 
-#: usr/lib/iso_constructor/construcor.py:180
+#: usr/lib/iso_constructor/construcor.py:177
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
@@ -80,28 +76,28 @@ msgstr ""
 "Listeden seçilen dağıtımı silmek istediğinize emin misiniz?\n"
 "(Bu dizini ve verilerini silmeyecek)"
 
-#: usr/lib/iso_constructor/construcor.py:330
+#: usr/lib/iso_constructor/construcor.py:312
 msgid "Select ISO file"
 msgstr "ISO dosyası seçin"
 
-#: usr/lib/iso_constructor/construcor.py:344
+#: usr/lib/iso_constructor/construcor.py:326
 msgid "Select directory"
 msgstr "Dizin seç"
 
-#: usr/lib/iso_constructor/construcor.py:359
+#: usr/lib/iso_constructor/construcor.py:341
 msgid "Save existing working directory"
 msgstr "Mevcut çalıştırma dizinini kaydet"
 
-#: usr/lib/iso_constructor/construcor.py:361
+#: usr/lib/iso_constructor/construcor.py:343
 msgid "Unpack ISO and save"
 msgstr "ISO çıkart ve kaydet"
 
-#: usr/lib/iso_constructor/construcor.py:368
+#: usr/lib/iso_constructor/construcor.py:350
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr "Dizin {self.dir} oluşturulamadı: mevcut"
 
-#: usr/lib/iso_constructor/construcor.py:374
+#: usr/lib/iso_constructor/construcor.py:356
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
@@ -110,35 +106,35 @@ msgstr ""
 "Hedefteki ISO dosyası mevcut değil:\n"
 "{self.iso}"
 
-#: usr/lib/iso_constructor/construcor.py:378
+#: usr/lib/iso_constructor/construcor.py:360
 msgid "The destination directory is not empty.\n"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:454
+#: usr/lib/iso_constructor/construcor.py:436
 msgid "Unpack ISO to directory"
 msgstr "ISO dosyasını dizine çıkart"
 
-#: usr/lib/iso_constructor/construcor.py:455
+#: usr/lib/iso_constructor/construcor.py:437
 msgid "Unpack & Save"
 msgstr "Çıkart & Kaydet"
 
-#: usr/lib/iso_constructor/construcor.py:463
+#: usr/lib/iso_constructor/construcor.py:445
 msgid "Work directory"
 msgstr "Çalışma dizini"
 
-#: usr/lib/iso_constructor/construcor.py:464
+#: usr/lib/iso_constructor/construcor.py:446
 msgid "Save"
 msgstr "Kaydet"
 
-#: usr/lib/iso_constructor/construcor.py:475
+#: usr/lib/iso_constructor/construcor.py:457
 msgid "Select"
 msgstr "Seç"
 
-#: usr/lib/iso_constructor/construcor.py:475
+#: usr/lib/iso_constructor/construcor.py:457
 msgid "Distribution"
 msgstr "Dağıtım"
 
-#: usr/lib/iso_constructor/construcor.py:475
+#: usr/lib/iso_constructor/construcor.py:457
 msgid "Working directory"
 msgstr "Çalışma dizini"
 
