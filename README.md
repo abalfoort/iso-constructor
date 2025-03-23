@@ -2,41 +2,6 @@
 
 iso-constructor - Tool to build and maintain custom Debian Live ISOs.
 
-# SYNOPSIS
-
-Usage: iso-constructor [OPTIONS] [DISTRIBUTION_PATH]
-
-DISTRIBUTION_PATH contains the unpacked distribution with a boot and root directory.
-
-# DESCRIPTION
-
-Without parameters the GUI is started.
-
-Options for terminal use (no GUI):
-
--b
-:   Build the distribution
-
--e
-:   Edit the distribution
-
--h
-:   Help screen
-
--t
-:   Test the ISO in virt-manager
-
--u
-:   Upgrade the distribution
-
--U [iso_path]
-:   Unpack the ISO
-
-Options for the GUI (all other parameters will be ignored):
-
--v
-:   Prints debug information while running the GUI.
-
 # GUI
 
 ## Add distribution
