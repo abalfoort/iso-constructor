@@ -17,11 +17,6 @@
     <property name="can-focus">False</property>
     <property name="pixbuf">buttons/edit.svg</property>
   </object>
-  <object class="GtkImage" id="img_help">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
-    <property name="pixbuf">buttons/help.svg</property>
-  </object>
   <object class="GtkImage" id="img_log">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
@@ -177,18 +172,6 @@
                 <property name="can-focus">False</property>
                 <property name="label-widget">img_log</property>
                 <signal name="clicked" handler="on_btn_log_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="homogeneous">True</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkToolButton" id="btn_help">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label-widget">img_help</property>
-                <signal name="clicked" handler="on_btn_help_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
