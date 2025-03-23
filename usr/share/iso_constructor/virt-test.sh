@@ -1,6 +1,13 @@
 #!/bin/bash
 # Test ISOs from ISO Constructor
 
+# This script must run as user
+if [ $EUID -eq 0 ]; then
+    echo "Run $0 as $(logname)"
+    sudo -i -u $(logname) "$0" $@
+    exit
+fi
+
 DISTPATH=$1
 if [ ! -z "$DISTPATH" ]; then
     ISO=$(ls "$DISTPATH"/*.iso | head -n 1)
@@ -59,7 +66,7 @@ if [ ! -e "${HDQCOW}" ]; then
         HDQCOW=""
     fi
 else
-    HDQCOW="--disk=${HDQCOW}"
+    HDQCOW="--disk ${HDQCOW}"
 fi
 
 ARGS=(
