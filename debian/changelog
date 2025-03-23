@@ -1,3 +1,14 @@
+iso-constructor (4.3.9) stable; urgency=low
+
+  * Move shell commands to constructor.py
+  * Add usb controllers to virt-install
+  * Remove redundant settings for virt-install
+  * Now gui only app: remove man pages
+  * Add polkit rules file
+  * Simplify /usr/bin/iso-constructor
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Sat, 22 Mar 2025 19:44:15 +0100
+
 iso-constructor (4.3.8) stable; urgency=low
 
   * Fix Alsa errors when testing in Virt Manager
