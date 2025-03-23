@@ -36,10 +36,10 @@ class Constructor():
         self.conf_file = join(self.user_app_dir, 'iso-constructor.conf')
 
         # Create the user's application directory if it doesn't exist
-        user_name = get_logged_user()
+        self.user_name = get_logged_user()
         if not isdir(self.user_app_dir):
             makedirs(self.user_app_dir)
-            system(f"chown -R {user_name}:{user_name} {self.user_app_dir}")
+            system(f"chown -R {self.user_name}:{self.user_name} {self.user_app_dir}")
 
         # Load window and widgets
         self.builder = Gtk.Builder()
@@ -60,7 +60,7 @@ class Constructor():
         # Create conf file if it does not exist
         if not exists(self.conf_file):
             self.save_settings()
-            system(f"chown -R {user_name}:{user_name} {self.user_app_dir}")
+            system(f"chown -R {self.user_name}:{self.user_name} {self.user_app_dir}")
 
         # Old file with distro paths
         distro_file = join(self.user_app_dir, "distributions.list")
@@ -100,7 +100,6 @@ class Constructor():
         self.txt_dir = builder_obj('txt_dir')
         self.btn_dir = builder_obj('btn_dir')
         self.btn_save = builder_obj('btn_save')
-        self.btn_help = builder_obj('btn_help')
         self.lbl_iso = builder_obj('lbl_iso')
         self.box_iso = builder_obj('box_iso')
         self.lbl_dir = builder_obj('lbl_dir')
@@ -117,7 +116,6 @@ class Constructor():
         self.btn_edit.set_tooltip_text(_("Edit"))
         self.btn_upgrade.set_tooltip_text(_("Upgrade"))
         self.btn_buildiso.set_tooltip_text(_("Build"))
-        self.btn_help.set_tooltip_text(_("Help"))
         self.btn_virt.set_tooltip_text(self.test_iso_text)
 
         # Add iso window translations
@@ -137,7 +135,6 @@ class Constructor():
         self.iso = None
         self.dir = None
         self.html_dir = join(self.share_dir, "html")
-        self.help = join(self.get_language_dir(), "help.html")
         self.chk_fromiso.set_active(True)
         self.skip_select_all = False
 
@@ -205,7 +202,7 @@ class Constructor():
                 self.log(f'> Start editing {path}')
 
                 # Edit the distribution in a chroot session
-                self.terminal.terminal_feed(command=f'iso-constructor -e "{path}"')
+                self.terminal.terminal_feed(command=f'{self.share_dir}/chroot-dir.sh "{path}/root"')
 
                 # Check if chrooted and wait until user is done
                 while self._is_path_chrooted(path):
@@ -227,7 +224,7 @@ class Constructor():
 
                 # Upgrade the distribtution
                 self.terminal.terminal_feed(
-                    command=f'iso-constructor -u "{path}"', wait_until_done=True)
+                    command=f'{self.share_dir}/upgrade.sh "{path}"', wait_until_done=True)
             self.enable_gui_elements(True)
 
     def on_btn_build_iso_clicked(self, widget):
@@ -244,7 +241,7 @@ class Constructor():
 
                 # Build the ISO
                 self.terminal.terminal_feed(
-                    command=f'iso-constructor -b "{path}"', wait_until_done=True)
+                    command=f'{self.share_dir}/build.sh "{path}"', wait_until_done=True)
             self.enable_gui_elements(True)
 
     def on_btn_virt_clicked(self, widget):
@@ -263,7 +260,7 @@ class Constructor():
 
                         # Start qemu to test the selected ISO
                         shell_exec(
-                            command=f'iso-constructor -t "{path}"', wait=True)
+                            command=f'{self.share_dir}/virt-test.sh "{path}"', wait=True)
             self.enable_gui_elements(True)
 
     def on_chk_select_all_toggled(self, widget):
@@ -281,26 +278,11 @@ class Constructor():
         '''
         self.tv_handlerdistros.treeview_toggle_rows(toggle_col_nr_list=[0])
 
-    def on_btn_help_clicked(self, widget):
-        '''
-        Show help.
-        '''
-        self.enable_gui_elements(False)
-        command = 'man iso-constructor'
-        self.terminal.terminal_feed(command=command, wait_until_done=True,
-                           disable_scrolling=False, pause_logging=True)
-        self.enable_gui_elements(True)
-
     def on_btn_log_clicked(self, widget):
         '''
         Show log file.
         '''
-        self.enable_gui_elements(False)
-        self.terminal.terminal_feed(command=f'sensible-editor {self.log_file}',
-                                    wait_until_done=True,
-                                    disable_scrolling=False,
-                                    pause_logging=True)
-        self.enable_gui_elements(True)
+        shell_exec(f"sudo -u {self.user_name} xdg-open {self.log_file}")
 
     def on_constructor_window_delete_event(self, widget, data):
         ''' Save Settings '''
@@ -385,7 +367,7 @@ class Constructor():
                 self.log(f'> Start unpacking {self.iso} to {self.dir}')
 
                 # Start unpacking the ISO
-                self.terminal.terminal_feed(command=f'iso-constructor -U "{self.iso}" "{self.dir}"',
+                self.terminal.terminal_feed(command=f'{self.share_dir}/unpack.sh "{self.iso}" "{self.dir}"',
                                    wait_until_done=True)
 
                 self.save_distro(self.dir)
@@ -517,7 +499,6 @@ class Constructor():
             self.btn_remove.set_sensitive(False)
             self.btn_upgrade.set_sensitive(False)
             self.btn_dir.set_sensitive(False)
-            self.btn_help.set_sensitive(False)
             if self.virt_installed:
                 self.btn_virt.set_sensitive(False)
         else:
@@ -531,7 +512,6 @@ class Constructor():
             self.btn_remove.set_sensitive(True)
             self.btn_upgrade.set_sensitive(True)
             self.btn_dir.set_sensitive(True)
-            self.btn_help.set_sensitive(True)
             if self.virt_installed:
                 self.btn_virt.set_sensitive(True)
 
