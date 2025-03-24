@@ -46,7 +46,7 @@ def getoutput(command, timeout=None):
 def chroot_exec(command, target):
     """ Excecute command in chroot """
     command = command.replace('"', "'").strip()  # FIXME
-    return shell_exec(f'chroot {target}/ /bin/sh -c "{command}"')
+    return shell_exec(f'chroot {target}/ /bin/bash -c "{command}"')
 
 
 def get_config_dict(file, key_value=re.compile(r'^\s*(\w+)\s*=\s*["\']?(.*?)["\']?\s*(#.*)?$')):
