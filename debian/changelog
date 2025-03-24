@@ -1,3 +1,10 @@
+iso-constructor (4.4.1) stable; urgency=low
+
+  * Fix bug Vte.Terminal not having any env variables
+  * Fix chrooting in path with spaces
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 24 Mar 2025 16:55:17 +0100
+
 iso-constructor (4.4.0) stable; urgency=low
 
   * Open log file in new process
