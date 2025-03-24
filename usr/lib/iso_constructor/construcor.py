@@ -5,6 +5,7 @@ from os import makedirs, system, listdir, \
     environ, remove
 from os.path import join, dirname, exists, isdir, abspath
 from configparser import ConfigParser
+from multiprocessing import Process
 from utils import get_user_home, get_logged_user, \
                     get_package_version, getoutput, shell_exec, \
                     get_lsb_release_info, is_package_installed
@@ -258,6 +259,10 @@ class Constructor():
                     if iso_path.endswith(".iso"):
                         self.log(f'> Start testing ISO: {path}/{iso_path}')
 
+                        # Update the parent window
+                        while Gtk.events_pending():
+                            Gtk.main_iteration()
+
                         # Start qemu to test the selected ISO
                         shell_exec(
                             command=f'{self.share_dir}/virt-test.sh "{path}"', wait=True)
@@ -282,7 +287,8 @@ class Constructor():
         '''
         Show log file.
         '''
-        shell_exec(f"sudo -u {self.user_name} xdg-open {self.log_file}")
+        p = Process(target=shell_exec, args=(f'sudo -u {self.user_name} xdg-open "{self.log_file}"',))
+        p.start()
 
     def on_constructor_window_delete_event(self, widget, data):
         ''' Save Settings '''
