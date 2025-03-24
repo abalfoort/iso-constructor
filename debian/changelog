@@ -1,3 +1,9 @@
+iso-constructor (4.4.0) stable; urgency=low
+
+  * Open log file in new process
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 24 Mar 2025 10:20:55 +0100
+
 iso-constructor (4.3.9) stable; urgency=low
 
   * Move shell commands to constructor.py
