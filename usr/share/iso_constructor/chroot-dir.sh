@@ -22,18 +22,18 @@ set -e
 # Create bash to mount temporary API filesystems
 cat > "${TMP}"  <<END
 #!/bin/bash
-set -e ${X}
+set -e
 : Entered private mount namespace
-if [ -h ${TARGET}/dev/shm ]; then mkdir -p ${TARGET}$(readlink ${TARGET}/dev/shm); fi
-if [ -h ${TARGET}/var/lock ]; then mkdir -p ${TARGET}$(readlink ${TARGET}/var/lock); fi
-mount -t devtmpfs devtmpfs ${TARGET}/dev
-mount -t devpts devpts ${TARGET}/dev/pts
-mount -t tmpfs tmpfs ${TARGET}/dev/shm
-mount -t proc proc ${TARGET}/proc
-mount -t sysfs sysfs ${TARGET}/sys
+if [ -h "${TARGET}/dev/shm" ]; then mkdir -p "${TARGET}$(readlink ${TARGET}/dev/shm)"; fi
+if [ -h "${TARGET}/var/lock" ]; then mkdir -p "${TARGET}$(readlink ${TARGET}/var/lock)"; fi
+mount -t devtmpfs devtmpfs "${TARGET}/dev"
+mount -t devpts devpts "${TARGET}/dev/pts"
+mount -t tmpfs tmpfs "${TARGET}/dev/shm"
+mount -t proc proc "${TARGET}/proc"
+mount -t sysfs sysfs "${TARGET}/sys"
 if [ -d /sys/firmware/efi/efivars ] && 
-   [ -d ${TARGET}/sys/firmware/efi/efivars ]; then
-    mount -t efivarfs efivarfs ${TARGET}/sys/firmware/efi/efivars
+   [ -d "${TARGET}/sys/firmware/efi/efivars" ]; then
+    mount -t efivarfs efivarfs "${TARGET}/sys/firmware/efi/efivars"
 fi
 export LANGUAGE=C
 export LANG=C
