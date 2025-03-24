@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Arjen Balfoort <arjenbalfoort@hotmail.com>
 Build-Depends: debhelper-compat (= 12),
   dh-python,
-  python3-all,
+  python3:any,
   itstool,
   translate-toolkit
 Standards-Version: 4.5.0
@@ -14,7 +14,9 @@ X-Python3-Version: >= 3.6
 Package: iso-constructor
 Architecture: all
 Multi-Arch: foreign
-Depends: ${misc:Depends}, ${python3:Depends},
+Depends: ${misc:Depends},
+  ${python3:Depends},
+  python3:any,
   python3-gi,
   python3-apt,
   gir1.2-gtk-3.0,
