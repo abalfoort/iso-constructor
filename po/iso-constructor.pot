@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-23 17:53+0100\n"
+"POT-Creation-Date: 2025-03-24 10:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,113 +17,113 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: usr/lib/iso_constructor/construcor.py:109
+#: usr/lib/iso_constructor/construcor.py:110
 msgid "Remove"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:110
+#: usr/lib/iso_constructor/construcor.py:111
 msgid "Test ISO in virt-manager"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:112
+#: usr/lib/iso_constructor/construcor.py:113
 msgid "Select all"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:113
+#: usr/lib/iso_constructor/construcor.py:114
 msgid "Add"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:114
+#: usr/lib/iso_constructor/construcor.py:115
 msgid "View log file"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:116
+#: usr/lib/iso_constructor/construcor.py:117
 msgid "Edit"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:117
+#: usr/lib/iso_constructor/construcor.py:118
 msgid "Upgrade"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:118
+#: usr/lib/iso_constructor/construcor.py:119
 msgid "Build"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:122
+#: usr/lib/iso_constructor/construcor.py:123
 msgid "Add Distribution"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:123
+#: usr/lib/iso_constructor/construcor.py:124
 msgid "ISO"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:125
+#: usr/lib/iso_constructor/construcor.py:126
 msgid "Cancel"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:177
+#: usr/lib/iso_constructor/construcor.py:178
 msgid ""
 "Are you sure you want to remove the selected distribution from the list?\n"
 "(This will not remove the directory and its data)"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:312
+#: usr/lib/iso_constructor/construcor.py:318
 msgid "Select ISO file"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:326
+#: usr/lib/iso_constructor/construcor.py:332
 msgid "Select directory"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:341
+#: usr/lib/iso_constructor/construcor.py:347
 msgid "Save existing working directory"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:343
+#: usr/lib/iso_constructor/construcor.py:349
 msgid "Unpack ISO and save"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:350
+#: usr/lib/iso_constructor/construcor.py:356
 #, python-brace-format
 msgid "Could not create directory {self.dir}: exiting"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:356
+#: usr/lib/iso_constructor/construcor.py:362
 #, python-brace-format
 msgid ""
 "The path to the ISO file does not exist:\n"
 "{self.iso}"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:360
+#: usr/lib/iso_constructor/construcor.py:366
 msgid "The destination directory is not empty.\n"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:436
+#: usr/lib/iso_constructor/construcor.py:442
 msgid "Unpack ISO to directory"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:437
+#: usr/lib/iso_constructor/construcor.py:443
 msgid "Unpack & Save"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:445
+#: usr/lib/iso_constructor/construcor.py:451
 msgid "Work directory"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:446
+#: usr/lib/iso_constructor/construcor.py:452
 msgid "Save"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:457
+#: usr/lib/iso_constructor/construcor.py:463
 msgid "Select"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:457
+#: usr/lib/iso_constructor/construcor.py:463
 msgid "Distribution"
 msgstr ""
 
-#: usr/lib/iso_constructor/construcor.py:457
+#: usr/lib/iso_constructor/construcor.py:463
 msgid "Working directory"
 msgstr ""
 
