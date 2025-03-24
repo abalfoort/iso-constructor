@@ -10,7 +10,7 @@ gi.require_version('Gdk', '3.0')
 from gi.repository import Gtk, GLib, Vte, Gdk, Gio
 
 
-# Reference: https://lazka.github.io/pgi-docs/#Vte-3.91/classes/Terminal.html
+# Reference: https://lazka.github.io/pgi-docs/#Vte-2.91/classes/Terminal.html
 class Terminal(Vte.Terminal):
     ''' Terminal class. '''
 
@@ -36,7 +36,7 @@ class Terminal(Vte.Terminal):
         fg_color = Gdk.RGBA()
         bg_color = Gdk.RGBA()
         fg_color.parse('#ffffff')
-        bg_color.parse('#1c1f22')
+        bg_color.parse('#1a1c1f')
         self.set_color_foreground(fg_color)
         self.set_color_background(bg_color)
 
@@ -48,10 +48,10 @@ class Terminal(Vte.Terminal):
         # Use async from version 0.48
         self.spawn_async(
             Vte.PtyFlags.DEFAULT,  # pty flags
-            environ['HOME'],  # working directory
+            '/',  # working directory
             ["/bin/bash"],  # argmument vector
             [],  # list with environment variables
-            GLib.SpawnFlags(Vte.SPAWN_NO_PARENT_ENVV),  # spawn flags
+            GLib.SpawnFlags.DEFAULT,  # spawn flags
             None,  # child_setup function
             None,  # child_setup data (gpointer)
             -1,  # timeout
@@ -85,8 +85,7 @@ class Terminal(Vte.Terminal):
         self._cancellable.reset()
         self.grab_focus()
         self.pause_logging = pause_logging
-        command += '\n'
-        self.feed_child(command.encode())
+        self.feed_child((command + '\n').encode('utf-8'))
         # We need to wait until the command is complete fed
         sleep()
 
@@ -104,8 +103,8 @@ class Terminal(Vte.Terminal):
                     self.get_parent().set_sensitive(False)
             except Exception:
                 pass
-            # First, wait until the last character is not a prompt sign
 
+            # First, wait until the last character is not a prompt sign
             # TODO: vte_terminal_get_text: Passing a GArray to retrieve attributes is deprecated.
             # TODO: In a future version, passing non-NULL as attributes array will make the function return NULL
             while self.get_text()[0].strip()[-1:] in '$#':
