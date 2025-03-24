@@ -71,6 +71,7 @@ update:
 
 	# Get strings from the desktop file
 	@ for LAUNCHER in $(desktopfls); do \
+		sed -i '/^.*=\s*$$/d' $$LAUNCHER ; \
 		sed -r \
 			-e '/^(Name|Comment|GenericName|Keywords)\[/d' \
 			-e 's/^(Name=|Comment=|GenericName=|Keywords=)/_\1/' \
