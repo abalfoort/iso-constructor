@@ -203,7 +203,7 @@ class Constructor():
                 self.log(f'> Start editing {path}')
 
                 # Edit the distribution in a chroot session
-                self.terminal.terminal_feed(command=f'{self.share_dir}/chroot-dir.sh "{path}/root"')
+                self.terminal.exec(command=f'{self.share_dir}/chroot-dir.sh "{path}/root"')
 
                 # Check if chrooted and wait until user is done
                 while self._is_path_chrooted(path):
@@ -224,8 +224,8 @@ class Constructor():
                 self.log(f'> Start upgrading {path}')
 
                 # Upgrade the distribtution
-                self.terminal.terminal_feed(
-                    command=f'{self.share_dir}/upgrade.sh "{path}"', wait_until_done=True)
+                self.terminal.exec(command=f'{self.share_dir}/upgrade.sh "{path}"',
+                                   wait_until_done=True)
             self.enable_gui_elements(True)
 
     def on_btn_build_iso_clicked(self, widget):
@@ -241,8 +241,8 @@ class Constructor():
                 self.log(f'> Start building ISO in: {path}')
 
                 # Build the ISO
-                self.terminal.terminal_feed(
-                    command=f'{self.share_dir}/build.sh "{path}"', wait_until_done=True)
+                self.terminal.exec(command=f'{self.share_dir}/build.sh "{path}"',
+                                   wait_until_done=True)
             self.enable_gui_elements(True)
 
     def on_btn_virt_clicked(self, widget):
@@ -264,8 +264,8 @@ class Constructor():
                             Gtk.main_iteration()
 
                         # Start qemu to test the selected ISO
-                        shell_exec(
-                            command=f'{self.share_dir}/virt-test.sh "{path}"', wait=True)
+                        shell_exec(command=f'{self.share_dir}/virt-test.sh "{path}"',
+                                   wait=True)
             self.enable_gui_elements(True)
 
     def on_chk_select_all_toggled(self, widget):
@@ -373,7 +373,7 @@ class Constructor():
                 self.log(f'> Start unpacking {self.iso} to {self.dir}')
 
                 # Start unpacking the ISO
-                self.terminal.terminal_feed(command=f'{self.share_dir}/unpack.sh "{self.iso}" "{self.dir}"',
+                self.terminal.exec(command=f'{self.share_dir}/unpack.sh "{self.iso}" "{self.dir}"',
                                    wait_until_done=True)
 
                 self.save_distro(self.dir)
@@ -499,7 +499,6 @@ class Constructor():
             self.chk_selectall.set_sensitive(False)
             self.tv_distros.set_sensitive(False)
             self.btn_add.set_sensitive(False)
-            self.btn_log.set_sensitive(False)
             self.btn_buildiso.set_sensitive(False)
             self.btn_edit.set_sensitive(False)
             self.btn_remove.set_sensitive(False)
@@ -512,7 +511,6 @@ class Constructor():
             self.chk_selectall.set_sensitive(True)
             self.tv_distros.set_sensitive(True)
             self.btn_add.set_sensitive(True)
-            self.btn_log.set_sensitive(True)
             self.btn_buildiso.set_sensitive(True)
             self.btn_edit.set_sensitive(True)
             self.btn_remove.set_sensitive(True)
