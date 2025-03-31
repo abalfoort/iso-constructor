@@ -13,7 +13,7 @@ from gi.repository import Gtk, GLib, Vte, Gdk, Gio
 class Terminal(Vte.Terminal):
     ''' Terminal class. '''
 
-    def __init__(self):
+    def __init__(self, colors=None):
         super().__init__()
 
         # Signals
@@ -32,10 +32,17 @@ class Terminal(Vte.Terminal):
         self._cmd_is_running = False
 
         # Colors
-        colors = ["#191919", "#c01c28", "#26a269", "#a2734c",
-                  "#12488b", "#a347ba", "#2aa1b3", "#cfcfcf",
-                  "#5d5d5d", "#f66151", "#33d17a", "#e9ad0c",
-                  "#2a7bde", "#c061cb", "#33c7de", "#ffffff"]
+        use_default_colors = False
+        if not isinstance(colors, list):
+            use_default_colors = True
+        if not use_default_colors:
+            if len(colors) not in [8, 16, 232, 256]:
+                use_default_colors = True
+        if use_default_colors:
+            colors = ["#191919", "#c01c28", "#26a269", "#a2734c",
+                      "#12488b", "#a347ba", "#2aa1b3", "#cfcfcf",
+                      "#5d5d5d", "#f66151", "#33d17a", "#e9ad0c",
+                      "#2a7bde", "#c061cb", "#33c7de", "#ffffff"]
 
         # Create the RGBA palette from the colors
         palette = [Gdk.RGBA() for c in colors]
@@ -54,12 +61,12 @@ class Terminal(Vte.Terminal):
 
         if app_dark or "dark" in theme_name.lower():
             print(("Vte dark theme"))
-            fg_color.parse(colors[15])
+            fg_color.parse(colors[len(colors) - 1])
             bg_color.parse(colors[0])
         else:
             print(("Vte light theme"))
             fg_color.parse(colors[0])
-            bg_color.parse(colors[15])
+            bg_color.parse(colors[len(colors) - 1])
 
         # Set the colors
         self.set_colors(fg_color, bg_color, palette)
