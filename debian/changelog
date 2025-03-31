@@ -1,3 +1,9 @@
+iso-constructor (4.4.3) stable; urgency=low
+
+  * Add some missing update-alternatives
+
+ -- Arjen Balfoort <arjenbalfoort@hotmail.com>  Mon, 31 Mar 2025 13:36:16 +0200
+
 iso-constructor (4.4.2) stable; urgency=low
 
   * Cleanup Vte class
