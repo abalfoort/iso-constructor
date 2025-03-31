@@ -323,6 +323,12 @@ fi
 update-alternatives --set desktop-theme "/usr/share/desktop-base/${THEME}-theme"
 update-alternatives --auto desktop-theme
 update-alternatives --auto desktop-grub
+update-alternatives --auto desktop-background
+update-alternatives --auto desktop-background.xml
+update-alternatives --auto desktop-grub
+update-alternatives --auto desktop-lockscreen.xml
+update-alternatives --auto desktop-login-background
+update-alternatives --auto desktop-plasma5-wallpaper
 
 # =====================
 # LightDM Configuration
@@ -570,7 +576,7 @@ echo '> Refresh cashes'
 # Refresh xapian database
 [ ! -z "$(which update-apt-xapian-index)" ] && update-apt-xapian-index
 
-# Update database for mlocate
+# Update database for mlocate/plocate
 [ ! -z "$(which updatedb)" ] && updatedb
 
 # Recreate pixbuf cache
