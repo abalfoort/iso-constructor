@@ -25,10 +25,13 @@ class Terminal(Vte.Terminal):
         self.pause_logging = False
         self.log_file = None
         self.enable_copy_paste = True
+        self.version = (Vte.get_major_version(),
+                        Vte.get_minor_version(),
+                        Vte.get_micro_version())
         self.set_scroll_on_output(True)
         self.set_input_enabled(True)
         self._cancellable = Gio.Cancellable()
-        self._last_row = 0
+        self._last_pos = (0, 0) #Last saved terminal column/row
         self._cmd_is_running = False
 
         # Colors
@@ -160,26 +163,20 @@ class Terminal(Vte.Terminal):
 
     def last_line(self):
         ''' Get the last line in the terminal. '''
-        text = self.get_text()[0].strip()
-        text = text.split('\n')
-        i_pos = len(text) - 1
-        while text[i_pos] == '':
-            i_pos = i_pos - 1
-        text = text[i_pos]
-        return text
-
-    def version(self):
-        ''' Return tuple of vte version. '''
-        return Vte.get_major_version(), Vte.get_minor_version(), Vte.get_micro_version()
+        text_array = self.get_text()[0].strip().split('\n')
+        return text_array[len(text_array) - 1]
 
     def on_contents_changed(self, terminal):
         ''' Log the content of the terminal. '''
         if self.log_file and not self.pause_logging:
-            column, row = self.get_cursor_position()
-            if self._last_row != row:
-                text = self.get_text_range(self._last_row, column, row, column + 1)[0]
-                text = text.strip()
-                self._last_row = row
+            last_col, last_row = self._last_pos
+            col, row = self.get_cursor_position()
+            # Only log when row has changed (new line)
+            if last_row != row:
+                # From v 0.76:
+                # get_range_format(Vte.Format.TEXT, last_row, last_col, row, col)
+                text = self.get_text_range(last_row, last_col, row, col)[0].strip()
+                self._last_pos = (col, row)
                 with open(file=self.log_file, mode='a', encoding='utf-8') as log_file:
                     log_file.write(text + '\n')
 
@@ -191,7 +188,7 @@ class Terminal(Vte.Terminal):
             if ctrl and shift:
                 keyval = Gdk.keyval_to_upper(event.keyval)
                 if keyval == Gdk.KEY_C and self.get_has_selection():
-                    self.copy_clipboard()
+                    self.copy_clipboard_format(Vte.Format.TEXT )
                     return True
                 if keyval == Gdk.KEY_V:
                     self.paste_clipboard()
