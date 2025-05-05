@@ -1,14 +1,14 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: iso-constructor
-Upstream-Contact: Arjen Balfoort <arjenbalfoort@hotmail.com>
+Upstream-Contact: Arjen Balfoort <solydxk.abalfoort@tuta.com>
 Source: <https://gitlab.com/abalfoort/iso-creator>
 
 Files: *
-Copyright: 2014 Arjen Balfoort <arjenbalfoort@hotmail.com>
+Copyright: 2014 Arjen Balfoort <solydxk.abalfoort@tuta.com>
 License: GPL-2+
 
 Files: debian/*
-Copyright: 2014 Arjen Balfoort <arjenbalfoort@hotmail.com>
+Copyright: 2014 Arjen Balfoort <solydxk.abalfoort@tuta.com>
 License: GPL-2+
 
 License: GPL-2+
