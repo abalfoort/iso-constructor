@@ -17,33 +17,29 @@ SKIP_FIRMWARE='firmware-tomu firmware-nvidia-gsp firmware-nvidia-tesla-gsp firmw
 
 PLASMA_FAVORITES='preferred://browser,thunderbird.desktop,libreoffice-startcenter.desktop,org.kde.discover.desktop,systemsettings.desktop,org.kde.konsole.desktop'
 
-# Make sure the default theme THEME_01 exists:
-# /usr/share/desktop-base/${THEME_01}-theme/
-# /usr/share/grub/themes/${THEME_01}/
-# /usr/share/plymouth/themes/${THEME_01}/
-THEMES='solydk-light solydk-dark solydk-black'
+# Make sure the default theme THEME exists:
+# /usr/share/desktop-base/${THEME}-theme/
+# /usr/share/grub/themes/${THEME}/
+# /usr/share/plymouth/themes/${THEME}/
+THEME='solydk-light'
 ICON_THEME='evolvere-2-blue'
 BREEZE_THEME='Breeze'
 ROOT_FILES='.bashrc .profile .config/fontconfig/fonts.conf .config/gtk-3.0/settings.ini .config/gtk-4.0/settings.ini .local/share/dolphin/view_properties/global/.directory .local/share/kxmlgui5/dolphin/dolphinui.rc .gtkrc-2.0'
 
 if [ "$DESKTOP_ENV" == 'xfce' ]; then
-    THEMES='solydx-light solydx-dark solydx-black'
+    THEME='solydx-light'
     ICON_THEME='evolvere-2'
     BREEZE_THEME='Breeze-X'
     ROOT_FILES='.bashrc .profile .config/gtk-3.0/settings.ini .config/xfce4/terminal/terminalrc .config/Thunar/thunarrc .config/Thunar/uca.xml .config/Thunar/volmanrc .config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml .config/mimeapps.list .gtkrc-2.0'
 fi
 
 if [ "$DESKTOP_ENV" == 'lxqt' ]; then
-    THEMES='solydl-light solydl-dark solydl-black'
+    THEME='solydl-light'
     ICON_THEME='evolvere-2-blue'
     BREEZE_THEME='Breeze'
     ROOT_FILES='.bashrc .profile .config/fontconfig/fonts.conf gtk-3.0/settings.ini .config/pcmanfm-qt/lxqt/settings.conf .config/qterminal.org/qterminal.ini .config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml .config/lxqt-mimeapps.list .config/mimeapps.list .gtkrc-2.0'
 fi
 
-# Create a themes array
-THEMES=($THEMES)
-# Default to the first theme in the array
-THEME=${THEMES[0]}
 # Grub is leading for the theme name
 GRUB_THEME_NAME=$(grep -oP 'solyd[a-z-]*' /etc/default/grub)
 if [ ! -z "$GRUB_THEME_NAME" ]; then
@@ -295,40 +291,6 @@ if [ "$DESKTOP_ENV" == 'lxqt' ]; then
     
     update-icon-caches /usr/share/icons/$ICON_THEME
 fi
-
-# ===================
-# Update alternatives
-# ===================
-DT_THEME='/usr/share/desktop-base/active-theme'
-DT_GRUB='/usr/share/images/desktop-base/desktop-grub.png'
-
-for T in ${THEMES[@]}; do
-    THEME_PATH="/usr/share/desktop-base/${T}-theme"
-    if [ -d "$THEME_PATH" ]; then
-        update-alternatives --install $DT_THEME desktop-theme "$THEME_PATH" 100
-        update-alternatives --install $DT_GRUB desktop-grub "$THEME_PATH/grub/grub-16x9.png" 30
-        update-alternatives --install $DT_GRUB desktop-grub "$THEME_PATH/grub/grub-4x3.png" 30
-    fi
-done
-
-if [[ ! " ${THEMES[@]} " =~ " $THEME " ]]; then
-    THEME_PATH="/usr/share/desktop-base/${THEME}-theme"
-    if [ -d "$THEME_PATH" ]; then
-        update-alternatives --install $DT_THEME desktop-theme "$THEME_PATH" 100
-        update-alternatives --install $DT_GRUB desktop-grub "$THEME_PATH/grub/grub-16x9.png" 30
-        update-alternatives --install $DT_GRUB desktop-grub "$THEME_PATH/grub/grub-4x3.png" 30
-    fi
-fi
-
-update-alternatives --set desktop-theme "/usr/share/desktop-base/${THEME}-theme"
-update-alternatives --auto desktop-theme
-update-alternatives --auto desktop-grub
-update-alternatives --auto desktop-background
-update-alternatives --auto desktop-background.xml
-update-alternatives --auto desktop-grub
-update-alternatives --auto desktop-lockscreen.xml
-update-alternatives --auto desktop-login-background
-update-alternatives --auto desktop-plasma5-wallpaper
 
 # =====================
 # LightDM Configuration
