@@ -1,7 +1,7 @@
 Source: iso-constructor
 Section: devel
 Priority: optional
-Maintainer: Arjen Balfoort <arjenbalfoort@hotmail.com>
+Maintainer: Arjen Balfoort <solydxk.abalfoort@tuta.com>
 Build-Depends: debhelper-compat (= 12),
   dh-python,
   python3:any,
@@ -32,10 +32,7 @@ Depends: ${misc:Depends},
   sensible-utils,
   apt-utils
 Recommends: libnotify-bin,
-  virt-manager,
-  qemu-kvm,
-  bridge-utils,
-  spice-vdagent
+  virtinst
 Conflicts: solydxk-constructor (<= 3.7.3)
 Replaces: solydxk-constructor (<= 3.7.3)
 Description: Create custom Debian Live ISOs

@@ -148,7 +148,7 @@ class Constructor():
         self.builder.connect_signals(self)
         self.window.show_all()
 
-        self.virt_installed = is_package_installed("virt-manager")
+        self.virt_installed = is_package_installed("virtinst")
         if not self.virt_installed:
             self.btn_virt.set_visible(False)
 
