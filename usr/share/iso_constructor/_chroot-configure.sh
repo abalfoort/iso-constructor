@@ -13,7 +13,7 @@ DEFAULT_GRUB='/etc/default/grub'
 # Start Manual Configuration
 # ==========================
 
-SKIP_FIRMWARE='firmware-tomu firmware-nvidia-gsp firmware-nvidia-tesla-gsp firmware-siano firmware-samsung firmware-microbit-micropython firmware-microbit-micropython-doc firmware-ivtv dahdi-firmware-nonfree firmware-ast firmware-myricom firmware-netronome firmware-netxen firmware-qcom-soc firmware-qlogic'
+SKIP_FIRMWARE='firmware-tomu firmware-nvidia-gsp firmware-nvidia-tesla-gsp firmware-siano firmware-samsung firmware-microbit-micropython firmware-microbit-micropython-doc firmware-ivtv dahdi-firmware-nonfree firmware-ast firmware-myricom firmware-netronome firmware-netxen firmware-qcom-soc firmware-qlogic firmware-marvell-prestera'
 
 PLASMA_FAVORITES='preferred://browser,thunderbird.desktop,libreoffice-startcenter.desktop,org.kde.discover.desktop,systemsettings.desktop,org.kde.konsole.desktop'
 
