@@ -637,4 +637,7 @@ mkdir -p /usr/local/bin
 ICON='/usr/share/icons/hicolor/scalable/apps/solydk.svg'
 [ "$DESKTOP_ENV" == 'xfce' ] && ICON='/usr/share/icons/hicolor/scalable/apps/solydx.svg'
 [ "$DESKTOP_ENV" == 'lxqt' ] && ICON='/usr/share/icons/hicolor/scalable/apps/solydl.svg'
-[ -f "$ICON" ] && cp "$ICON" /etc/skel/.face
+if [ -f "$ICON" ]; then
+    divert_file /etc/skel/.face
+    cp "$ICON" /etc/skel/.face
+fi
